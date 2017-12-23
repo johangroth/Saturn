@@ -41,13 +41,13 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 6
 Title "Saturn SBC"
-Date "2017-06-28"
-Rev "1.0"
+Date "2017-12-23"
+Rev "0.1"
 Comp "Linux Grotto"
-Comment1 ""
-Comment2 ""
-Comment3 ""
-Comment4 ""
+Comment1 "Control logic is implemented using an ispMACH4A5"
+Comment2 "IDE interface realised with two VIA 65C22"
+Comment3 "Serial Communication with a 28L92 and MAX238"
+Comment4 "Real Time clock, a DS1511Y"
 $EndDescr
 $Sheet
 S 1225 1000 1775 2075
@@ -57,9 +57,9 @@ F1 "mpu_rom_ram.sch" 60
 F2 "D[0..7]" B R 3000 1075 60 
 F3 "A[0..18]" O R 3000 1200 60 
 F4 "CLK" I R 3000 1325 60 
-F5 "IRQ" I R 3000 1450 60 
-F6 "~NMI" I R 3000 1575 60 
-F7 "BE" I R 3000 1675 60 
+F5 "~NMI" I R 3000 1575 60 
+F6 "BE" I R 3000 1675 60 
+F7 "~IRQ" I R 3000 1450 60 
 $EndSheet
 $Sheet
 S 4000 1000 1775 1975
@@ -70,7 +70,7 @@ F2 "D[0..7]" B L 4000 1075 60
 F3 "~MWR" I L 4000 1850 60 
 F4 "~MRD" I L 4000 2000 60 
 F5 "RES" I L 4000 2125 60 
-F6 "~IRQ" O L 4000 2300 60 
+F6 "~IRQ" O L 4000 1450 60 
 F7 "A[0..18]" I L 4000 1200 60 
 $EndSheet
 Wire Wire Line
@@ -110,14 +110,11 @@ F14 "TDO" O R 5825 4875 60
 F15 "~KS" O R 5825 5450 60 
 $EndSheet
 Wire Wire Line
-	3000 1450 3900 1450
+	3000 1450 4000 1450
 Wire Wire Line
 	3900 1450 3900 4200
 Wire Wire Line
-	3900 2300 4000 2300
-Wire Wire Line
 	3025 4200 4050 4200
-Connection ~ 3900 2300
 Wire Wire Line
 	3000 1325 3850 1325
 Wire Wire Line
@@ -155,4 +152,5 @@ F8 "~MWR" I R 9200 4300 60
 F9 "~MRD" I R 9200 4525 60 
 F10 "~RTCSEL" I R 9200 4825 60 
 $EndSheet
+Connection ~ 3900 1450
 $EndSCHEMATC

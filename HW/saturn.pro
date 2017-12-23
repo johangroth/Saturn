@@ -1,4 +1,4 @@
-update=Wed 20 Dec 2017 22:34:43 GMT
+update=Sat 23 Dec 2017 09:53:21 CET
 version=1
 last_client=kicad
 [pcbnew]
@@ -23,8 +23,6 @@ ModuleOutlineThickness=0.150000000000
 [cvpcb]
 version=1
 NetIExt=net
-[general]
-version=1
 [eeschema]
 version=1
 LibDir=../HW;../../../../C64/KiCadLibraries/kicad-library/library;../../../../C64/KiCadLibraries/kicad-lib/components;../../../../C64/KiCadLibraries/kicad-library2/libs
@@ -64,3 +62,5 @@ LibName32=/home/jgroth/C64/KiCadLibraries/65xx_Library/KiCad/65xx
 LibName33=/home/jgroth/dev/repos_github/PLUTO2/HW/SBC/pluto
 LibName34=Oscillators
 LibName35=switches
+[general]
+version=1

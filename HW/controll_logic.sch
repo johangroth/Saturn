@@ -40,10 +40,10 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 5 6
-Title ""
-Date ""
-Rev ""
-Comp ""
+Title "Glue and control logic"
+Date "2017-12-23"
+Rev "0.1"
+Comp "Linux Grotto"
 Comment1 ""
 Comment2 ""
 Comment3 ""
@@ -107,12 +107,12 @@ $EndComp
 $Comp
 L R_Network07 RN2
 U 1 1 5A3B46CC
-P 6600 1550
-F 0 "RN2" V 6200 1550 50  0000 C CNN
-F 1 "3.3kOhm" V 7000 1550 50  0000 C CNN
-F 2 "Resistors_THT:R_Array_SIP8" V 7075 1550 50  0001 C CNN
-F 3 "" H 6600 1550 50  0001 C CNN
-	1    6600 1550
+P 1750 1100
+F 0 "RN2" V 1350 1100 50  0000 C CNN
+F 1 "3.3kOhm" V 2150 1100 50  0000 C CNN
+F 2 "Resistors_THT:R_Array_SIP8" V 2225 1100 50  0001 C CNN
+F 3 "" H 1750 1100 50  0001 C CNN
+	1    1750 1100
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -153,38 +153,6 @@ CLK
 Text Label 4850 6425 2    60   ~ 0
 CLK
 NoConn ~ 2350 6625
-Wire Wire Line
-	2950 6625 3225 6625
-Wire Wire Line
-	2650 6075 2650 6325
-Wire Wire Line
-	2650 6075 3825 6075
-Wire Wire Line
-	3825 7175 3075 7175
-Wire Wire Line
-	3075 7175 3075 6075
-Connection ~ 3075 6075
-Wire Wire Line
-	4425 6825 4575 6825
-Wire Wire Line
-	4575 6825 4575 5975
-Wire Wire Line
-	4575 5975 3225 5975
-Wire Wire Line
-	3225 5975 3225 6425
-Wire Wire Line
-	4425 6425 4850 6425
-Wire Wire Line
-	2650 6925 2650 7050
-Wire Wire Line
-	1300 6075 700  6075
-Wire Wire Line
-	700  6075 700  7375
-Connection ~ 700  6425
-Connection ~ 700  6625
-Wire Wire Line
-	1300 7175 700  7175
-Connection ~ 700  7175
 NoConn ~ 1900 6425
 NoConn ~ 1900 6825
 $Comp
@@ -198,36 +166,6 @@ F 3 "" H 3925 1150 50  0001 C CNN
 	1    3925 1150
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3925 1350 3925 1150
-Wire Wire Line
-	4525 1750 4525 1925
-Wire Wire Line
-	4525 1925 4750 1925
-Wire Wire Line
-	4425 1750 4425 2025
-Wire Wire Line
-	4425 2025 4750 2025
-Wire Wire Line
-	4325 1750 4325 2125
-Wire Wire Line
-	4325 2125 4750 2125
-Wire Wire Line
-	4225 1750 4225 2225
-Wire Wire Line
-	4225 2225 4750 2225
-Wire Wire Line
-	4125 1750 4125 2325
-Wire Wire Line
-	4125 2325 4750 2325
-Wire Wire Line
-	4025 1750 4025 2425
-Wire Wire Line
-	4025 2425 4750 2425
-Wire Wire Line
-	3925 1750 3925 2825
-Wire Wire Line
-	3925 2525 4750 2525
 Text HLabel 4750 1925 2    60   BiDi ~ 0
 ~IRQ
 Text HLabel 4750 2025 2    60   BiDi ~ 0
@@ -242,15 +180,8 @@ Text HLabel 4750 2525 2    60   Output ~ 0
 ~RES
 Text HLabel 4750 2325 2    60   Output ~ 0
 ~SO
-Connection ~ 3925 2525
 Text HLabel 4750 2625 2    60   Output ~ 0
 RES
-Wire Wire Line
-	3925 3050 4250 3050
-Wire Wire Line
-	4250 2625 4250 3375
-Wire Wire Line
-	4250 2625 4750 2625
 $Comp
 L C_Small C15
 U 1 1 5A3B6A11
@@ -315,12 +246,8 @@ F 1 "RESET" H 2000 3315 50  0000 C CNN
 F 2 "" H 2000 3575 50  0001 C CNN
 F 3 "" H 2000 3575 50  0001 C CNN
 	1    2000 3375
-	0    1    1    0   
+	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	2325 3275 2325 3375
-Wire Wire Line
-	2325 3575 2325 3650
 $Comp
 L GND #PWR16
 U 1 1 5A3B95EF
@@ -332,10 +259,6 @@ F 3 "" H 3125 3850 50  0001 C CNN
 	1    3125 3850
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2000 3850 4250 3850
-Wire Wire Line
-	3125 3850 3125 3600
 $Comp
 L VCC #PWR13
 U 1 1 5A3B9B69
@@ -347,8 +270,139 @@ F 3 "" H 2325 2500 50  0001 C CNN
 	1    2325 2500
 	1    0    0    -1  
 $EndComp
+$Comp
+L VCC #PWR18
+U 1 1 5A3BAB89
+P 1450 700
+F 0 "#PWR18" H 1450 550 50  0001 C CNN
+F 1 "VCC" H 1450 850 50  0000 C CNN
+F 2 "" H 1450 700 50  0001 C CNN
+F 3 "" H 1450 700 50  0001 C CNN
+	1    1450 700 
+	1    0    0    -1  
+$EndComp
+Text HLabel 2300 1475 2    60   Input ~ 0
+TCK
+Text HLabel 2300 1575 2    60   Input ~ 0
+TMS
+Text HLabel 2300 1675 2    60   Input ~ 0
+TDI
+Text HLabel 2300 1775 2    60   Output ~ 0
+TDO
+Text HLabel 2300 1875 2    60   Output ~ 0
+~KS
+$Comp
+L ispMACH4A U?
+U 1 1 5A3F3D11
+P 8275 2325
+F 0 "U?" H 8275 3775 60  0000 C CNN
+F 1 "ispMACH4A" V 8275 1950 60  0000 C CNN
+F 2 "" H 7950 2300 60  0001 C CNN
+F 3 "" H 7950 2300 60  0001 C CNN
+	1    8275 2325
+	1    0    0    -1  
+$EndComp
+Text HLabel 7250 3075 0    60   Output ~ 0
+~DUARTSEL
 Wire Wire Line
-	2000 2500 3125 2500
+	2950 6625 3225 6625
+Wire Wire Line
+	2650 6075 2650 6325
+Wire Wire Line
+	2650 6075 3075 6075
+Wire Wire Line
+	3075 6075 3825 6075
+Wire Wire Line
+	3825 7175 3075 7175
+Wire Wire Line
+	3075 7175 3075 6075
+Connection ~ 3075 6075
+Wire Wire Line
+	4425 6825 4575 6825
+Wire Wire Line
+	4575 6825 4575 5975
+Wire Wire Line
+	4575 5975 3225 5975
+Wire Wire Line
+	3225 5975 3225 6425
+Wire Wire Line
+	4425 6425 4850 6425
+Wire Wire Line
+	2650 6925 2650 7050
+Wire Wire Line
+	1300 6075 700  6075
+Wire Wire Line
+	700  6075 700  6425
+Wire Wire Line
+	700  6425 700  6625
+Wire Wire Line
+	700  6625 700  7175
+Wire Wire Line
+	700  7175 700  7375
+Connection ~ 700  6425
+Connection ~ 700  6625
+Wire Wire Line
+	1300 7175 700  7175
+Connection ~ 700  7175
+Wire Wire Line
+	3925 1350 3925 1150
+Wire Wire Line
+	4525 1750 4525 1925
+Wire Wire Line
+	4525 1925 4750 1925
+Wire Wire Line
+	4425 1750 4425 2025
+Wire Wire Line
+	4425 2025 4750 2025
+Wire Wire Line
+	4325 1750 4325 2125
+Wire Wire Line
+	4325 2125 4750 2125
+Wire Wire Line
+	4225 1750 4225 2225
+Wire Wire Line
+	4225 2225 4750 2225
+Wire Wire Line
+	4125 1750 4125 2325
+Wire Wire Line
+	4125 2325 4750 2325
+Wire Wire Line
+	4025 1750 4025 2425
+Wire Wire Line
+	4025 2425 4750 2425
+Wire Wire Line
+	3925 1750 3925 2525
+Wire Wire Line
+	3925 2525 3925 2825
+Wire Wire Line
+	3925 2525 4750 2525
+Connection ~ 3925 2525
+Wire Wire Line
+	3925 3050 4250 3050
+Wire Wire Line
+	4250 2625 4250 3050
+Wire Wire Line
+	4250 3050 4250 3375
+Wire Wire Line
+	4250 2625 4750 2625
+Wire Wire Line
+	2325 3275 2325 3375
+Wire Wire Line
+	2325 3575 2325 3650
+Wire Wire Line
+	2000 3850 2325 3850
+Wire Wire Line
+	2325 3850 3125 3850
+Wire Wire Line
+	3125 3850 3925 3850
+Wire Wire Line
+	3925 3850 4250 3850
+Wire Wire Line
+	3125 3850 3125 3600
+Wire Wire Line
+	2000 2500 2325 2500
+Wire Wire Line
+	2325 2500 3125 2500
 Wire Wire Line
 	2325 2500 2325 2825
 Wire Wire Line
@@ -370,55 +424,48 @@ Connection ~ 3125 3850
 Wire Wire Line
 	4250 3850 4250 3575
 Connection ~ 3925 3850
-$Comp
-L VCC #PWR18
-U 1 1 5A3BAB89
-P 6300 1150
-F 0 "#PWR18" H 6300 1000 50  0001 C CNN
-F 1 "VCC" H 6300 1300 50  0000 C CNN
-F 2 "" H 6300 1150 50  0001 C CNN
-F 3 "" H 6300 1150 50  0001 C CNN
-	1    6300 1150
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	6300 1350 6300 1150
+	1450 900  1450 700 
 Wire Wire Line
-	6900 1750 6900 1925
+	2050 1300 2050 1475
 Wire Wire Line
-	6900 1925 7150 1925
+	2050 1475 2300 1475
 Wire Wire Line
-	6800 1750 6800 2025
+	1950 1300 1950 1575
 Wire Wire Line
-	6800 2025 7150 2025
+	1950 1575 2300 1575
 Wire Wire Line
-	6700 1750 6700 2125
+	1850 1300 1850 1675
 Wire Wire Line
-	6700 2125 7150 2125
+	1850 1675 2300 1675
 Wire Wire Line
-	6600 1750 6600 2225
+	1750 1300 1750 1775
 Wire Wire Line
-	6600 2225 7150 2225
+	1750 1775 2300 1775
 Wire Wire Line
-	6500 1750 6500 2325
+	1650 1300 1650 1875
 Wire Wire Line
-	6500 2325 7150 2325
+	1650 1875 2300 1875
 Wire Wire Line
-	6400 1750 6400 2425
+	1550 1300 1550 1975
 Wire Wire Line
-	6400 2425 7150 2425
+	1550 1975 2300 1975
 Wire Wire Line
-	6300 1750 6300 2525
+	1450 1300 1450 2075
 Wire Wire Line
-	6300 2525 7150 2525
-Text HLabel 7150 1925 2    60   Input ~ 0
-TCK
-Text HLabel 7150 2025 2    60   Input ~ 0
-TMS
-Text HLabel 7150 2125 2    60   Input ~ 0
-TDI
-Text HLabel 7150 2225 2    60   Output ~ 0
-TDO
-Text HLabel 7150 2325 2    60   Output ~ 0
-~KS
+	1450 2075 2300 2075
+Wire Wire Line
+	7550 3075 7250 3075
+Wire Wire Line
+	7550 3200 7250 3200
+Wire Wire Line
+	7550 3325 7250 3325
+Wire Wire Line
+	7550 3450 7250 3450
+Text HLabel 7250 3200 0    60   Output ~ 0
+~VIA1SEL
+Text HLabel 7250 3325 0    60   Output ~ 0
+~VIA2SEL
+Text HLabel 7250 3450 0    60   Output ~ 0
+~RTCSEL
 $EndSCHEMATC

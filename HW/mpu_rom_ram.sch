@@ -41,8 +41,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 2 6
 Title "Saturn SBC"
-Date "2017-06-28"
-Rev "1.0"
+Date "2017-12-23"
+Rev "0.1"
 Comp "Linux Grotto"
 Comment1 ""
 Comment2 ""
@@ -110,7 +110,7 @@ L AS7C34096A U2
 U 1 1 5965591C
 P 8025 2425
 F 0 "U2" H 8275 3500 60  0000 C CNN
-F 1 "AS7C34096A" V 8025 2425 60  0000 C CNN
+F 1 "AS7C34096A" V 8025 2025 60  0000 C CNN
 F 2 "" H 8025 2425 60  0001 C CNN
 F 3 "" H 8025 2425 60  0001 C CNN
 	1    8025 2425
@@ -263,55 +263,11 @@ Wire Wire Line
 Wire Wire Line
 	1825 3275 1600 3275
 Wire Bus Line
-	3700 925  3700 1375
-Wire Bus Line
-	3700 1375 3700 1475
-Wire Bus Line
-	3700 1475 3700 1575
-Wire Bus Line
-	3700 1575 3700 1675
-Wire Bus Line
-	3700 1675 3700 1775
-Wire Bus Line
-	3700 1775 3700 1875
-Wire Bus Line
-	3700 1875 3700 1975
-Wire Bus Line
-	3700 1975 3700 2075
+	3700 925  3700 2075
 Wire Bus Line
 	3700 925  5150 925 
 Wire Bus Line
-	1500 950  1500 1375
-Wire Bus Line
-	1500 1375 1500 1475
-Wire Bus Line
-	1500 1475 1500 1575
-Wire Bus Line
-	1500 1575 1500 1675
-Wire Bus Line
-	1500 1675 1500 1775
-Wire Bus Line
-	1500 1775 1500 1875
-Wire Bus Line
-	1500 1875 1500 1975
-Wire Bus Line
-	1500 1975 1500 2075
-Wire Bus Line
-	1500 2075 1500 2175
-Wire Bus Line
-	1500 2175 1500 2275
-Wire Bus Line
-	1500 2275 1500 2375
-Wire Bus Line
-	1500 2375 1500 2475
-Wire Bus Line
-	1500 2475 1500 2575
-Wire Bus Line
-	1500 2575 1500 2675
-Wire Bus Line
-	1500 2675 1500 2775
-Wire Bus Line
-	1500 2775 1500 2875
+	1500 950  1500 2875
 Wire Bus Line
 	1500 950  1100 950 
 Wire Wire Line
@@ -331,37 +287,7 @@ Wire Wire Line
 Wire Wire Line
 	8625 2225 9000 2225
 Wire Bus Line
-	9100 925  9100 1425
-Wire Bus Line
-	9100 1425 9100 1525
-Wire Bus Line
-	9100 1525 9100 1625
-Wire Bus Line
-	9100 1625 9100 1725
-Wire Bus Line
-	9100 1725 9100 1825
-Wire Bus Line
-	9100 1825 9100 1925
-Wire Bus Line
-	9100 1925 9100 2025
-Wire Bus Line
-	9100 2025 9100 2125
-Wire Bus Line
-	9100 2125 9100 4200
-Wire Bus Line
-	9100 4200 9100 4300
-Wire Bus Line
-	9100 4300 9100 4400
-Wire Bus Line
-	9100 4400 9100 4500
-Wire Bus Line
-	9100 4500 9100 4600
-Wire Bus Line
-	9100 4600 9100 4700
-Wire Bus Line
-	9100 4700 9100 4800
-Wire Bus Line
-	9100 4800 9100 4900
+	9100 925  9100 4900
 Wire Bus Line
 	5125 925  9925 925 
 Wire Wire Line
@@ -462,21 +388,7 @@ Wire Wire Line
 Wire Wire Line
 	6050 2225 6425 2225
 Wire Bus Line
-	6525 925  6525 1425
-Wire Bus Line
-	6525 1425 6525 1525
-Wire Bus Line
-	6525 1525 6525 1625
-Wire Bus Line
-	6525 1625 6525 1725
-Wire Bus Line
-	6525 1725 6525 1825
-Wire Bus Line
-	6525 1825 6525 1925
-Wire Bus Line
-	6525 1925 6525 2025
-Wire Bus Line
-	6525 2025 6525 2125
+	6525 925  6525 2125
 Text Label 4800 1525 0    60   ~ 0
 A0
 Text Label 4800 1625 0    60   ~ 0
@@ -544,35 +456,7 @@ Wire Bus Line
 Wire Wire Line
 	5125 2925 4800 2925
 Wire Bus Line
-	4700 1100 4700 1425
-Wire Bus Line
-	4700 1425 4700 1525
-Wire Bus Line
-	4700 1525 4700 1625
-Wire Bus Line
-	4700 1625 4700 1725
-Wire Bus Line
-	4700 1725 4700 1825
-Wire Bus Line
-	4700 1825 4700 1925
-Wire Bus Line
-	4700 1925 4700 2025
-Wire Bus Line
-	4700 2025 4700 2125
-Wire Bus Line
-	4700 2125 4700 2225
-Wire Bus Line
-	4700 2225 4700 2325
-Wire Bus Line
-	4700 2325 4700 2425
-Wire Bus Line
-	4700 2425 4700 2525
-Wire Bus Line
-	4700 2525 4700 2625
-Wire Bus Line
-	4700 2625 4700 2725
-Wire Bus Line
-	4700 2725 4700 2825
+	4700 1100 4700 2825
 $Comp
 L WD65C816S_PLCC44 U1
 U 1 1 5A3AB10B
@@ -651,14 +535,10 @@ F 3 "" H 2600 3900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2500 3750 2600 3750
-Wire Wire Line
-	2600 3750 2700 3750
+	2500 3750 2700 3750
 Connection ~ 2600 3750
 Wire Wire Line
-	2600 3750 2600 3850
-Wire Wire Line
-	2600 3850 2600 3900
+	2600 3750 2600 3900
 Wire Wire Line
 	2500 1125 2100 1125
 Wire Wire Line
@@ -666,11 +546,9 @@ Wire Wire Line
 Wire Wire Line
 	3375 1125 3850 1125
 Wire Wire Line
-	3850 1125 3850 3850
+	3850 3850 3850 1125
 Wire Wire Line
-	3850 3850 2600 3850
-Wire Wire Line
-	2600 3850 1300 3850
+	1300 3850 3850 3850
 Connection ~ 2600 3850
 Wire Wire Line
 	1900 1125 1300 1125
@@ -805,47 +683,11 @@ Entry Wire Line
 Entry Wire Line
 	3600 2175 3700 2075
 Wire Bus Line
-	7000 1100 7000 1425
-Wire Bus Line
-	7000 1425 7000 1525
-Wire Bus Line
-	7000 1525 7000 1625
-Wire Bus Line
-	7000 1625 7000 1725
-Wire Bus Line
-	7000 1725 7000 1825
-Wire Bus Line
-	7000 1825 7000 1925
-Wire Bus Line
-	7000 1925 7000 2025
-Wire Bus Line
-	7000 2025 7000 2125
-Wire Bus Line
-	7000 2125 7000 2225
-Wire Bus Line
-	7000 2225 7000 2325
-Wire Bus Line
-	7000 2325 7000 2425
-Wire Bus Line
-	7000 2425 7000 2525
-Wire Bus Line
-	7000 2525 7000 2625
-Wire Bus Line
-	7000 2625 7000 2725
-Wire Bus Line
-	7000 2725 7000 2825
-Wire Bus Line
-	7000 2825 7000 2925
-Wire Bus Line
-	7000 2925 7000 3025
-Wire Bus Line
-	7000 3025 7000 3125
-Wire Bus Line
-	7000 3125 7000 3225
+	7000 1100 7000 6000
 Text HLabel 3600 2275 2    60   Input ~ 0
 CLK
 Text HLabel 3600 2375 2    60   Input ~ 0
-IRQ
+~IRQ
 Text HLabel 3600 2475 2    60   Input ~ 0
 ~NMI
 Text HLabel 3600 3075 2    60   Input ~ 0
@@ -855,7 +697,7 @@ L AS7C34096A U6
 U 1 1 5A3C052C
 P 8025 5200
 F 0 "U6" H 8275 6275 60  0000 C CNN
-F 1 "AS7C34096A" V 8025 5200 60  0000 C CNN
+F 1 "AS7C34096A" V 8025 4800 60  0000 C CNN
 F 2 "" H 8025 5200 60  0001 C CNN
 F 3 "" H 8025 5200 60  0001 C CNN
 	1    8025 5200
@@ -1049,46 +891,6 @@ Entry Wire Line
 	7000 5900 7100 6000
 Entry Wire Line
 	7000 6000 7100 6100
-Wire Bus Line
-	7000 3150 7000 3225
-Wire Bus Line
-	7000 3225 7000 4200
-Wire Bus Line
-	7000 4200 7000 4300
-Wire Bus Line
-	7000 4300 7000 4400
-Wire Bus Line
-	7000 4400 7000 4500
-Wire Bus Line
-	7000 4500 7000 4600
-Wire Bus Line
-	7000 4600 7000 4700
-Wire Bus Line
-	7000 4700 7000 4800
-Wire Bus Line
-	7000 4800 7000 4900
-Wire Bus Line
-	7000 4900 7000 5000
-Wire Bus Line
-	7000 5000 7000 5100
-Wire Bus Line
-	7000 5100 7000 5200
-Wire Bus Line
-	7000 5200 7000 5300
-Wire Bus Line
-	7000 5300 7000 5400
-Wire Bus Line
-	7000 5400 7000 5500
-Wire Bus Line
-	7000 5500 7000 5600
-Wire Bus Line
-	7000 5600 7000 5700
-Wire Bus Line
-	7000 5700 7000 5800
-Wire Bus Line
-	7000 5800 7000 5900
-Wire Bus Line
-	7000 5900 7000 6000
 Wire Wire Line
 	8725 3600 9600 3600
 Wire Wire Line
@@ -1113,4 +915,53 @@ Wire Wire Line
 	6850 6375 6850 4000
 Wire Wire Line
 	6850 4000 7925 4000
+Text HLabel 8775 2725 2    60   Input ~ 0
+~MRD
+Text HLabel 8775 2550 2    60   Input ~ 0
+~MWR
+Text HLabel 8775 2400 2    60   Input ~ 0
+~RAM0
+Text HLabel 8925 5500 2    60   Input ~ 0
+~MRD
+Text HLabel 8925 5175 2    60   Input ~ 0
+~RAM1
+Wire Wire Line
+	6050 2475 6350 2475
+Wire Wire Line
+	6050 2600 6350 2600
+Wire Wire Line
+	8625 2400 8775 2400
+Wire Wire Line
+	8625 2550 8775 2550
+Wire Wire Line
+	8625 2725 8775 2725
+Text HLabel 8925 5325 2    60   Input ~ 0
+~MWR
+Wire Wire Line
+	8625 5175 8925 5175
+Wire Wire Line
+	8625 5325 8925 5325
+Wire Wire Line
+	8625 5500 8925 5500
+Text HLabel 6350 2475 2    60   Input ~ 0
+~MRD
+Text HLabel 6350 2600 2    60   Input ~ 0
+~ROM
+Wire Wire Line
+	6050 2725 6350 2725
+$Comp
+L VCC #PWR?
+U 1 1 5A3F84C5
+P 6350 2725
+F 0 "#PWR?" H 6350 2575 50  0001 C CNN
+F 1 "VCC" H 6350 2875 50  0000 C CNN
+F 2 "" H 6350 2725 50  0001 C CNN
+F 3 "" H 6350 2725 50  0001 C CNN
+	1    6350 2725
+	-1   0    0    1   
+$EndComp
+Text Notes 8050 5150 1    60   ~ 12
+SOJ36
+Text Notes 8075 2425 1    60   ~ 12
+SOJ36
 $EndSCHEMATC

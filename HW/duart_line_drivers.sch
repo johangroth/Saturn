@@ -41,8 +41,8 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 3 6
 Title "Saturn SBC"
-Date "2017-06-28"
-Rev "1.0"
+Date "2017-12-23"
+Rev "0.1"
 Comp "Linux Grotto"
 Comment1 ""
 Comment2 ""
@@ -586,4 +586,8 @@ Wire Wire Line
 	2100 3875 2100 3650
 Wire Wire Line
 	2100 3650 2025 3650
+Text HLabel 7800 3625 2    60   Input ~ 0
+~DUARTSEL
+Wire Wire Line
+	7400 3625 7800 3625
 $EndSCHEMATC
