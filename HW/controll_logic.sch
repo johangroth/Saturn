@@ -468,4 +468,6 @@ Text HLabel 7250 3325 0    60   Output ~ 0
 ~VIA2SEL
 Text HLabel 7250 3450 0    60   Output ~ 0
 ~RTCSEL
+Text HLabel 2300 1975 2    60   Output ~ 0
+~ABT
 $EndSCHEMATC

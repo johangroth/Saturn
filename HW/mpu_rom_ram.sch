@@ -1165,7 +1165,7 @@ NoConn ~ 3375 3275
 Text HLabel 1600 3275 0    60   Input ~ 0
 ~RES
 Text HLabel 1600 3175 0    60   Input ~ 0
-/ABT
+~ABT
 Text HLabel 1600 3075 0    60   Input ~ 0
 RDY
 Text Notes 7550 3700 0    60   ~ 12
