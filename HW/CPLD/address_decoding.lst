@@ -1,0 +1,27 @@
+0001 |MODULE Address_Decoding
+0002 |
+0003 |TITLE 'Decode of addresses and IO with VDA and VPA assertion.'
+0004 |
+0005 |	A15,A14,A13,A12,A11,A10 pin;
+0006 |	ROM1,IO,ROM2,RAM	pin istype 'com';
+0007 |	H,L,X	= 1,0,.X.;
+0008 |	Address	= [A15,A14,A13,A12, A11,A10,X,X, X,X,X,X, X,X,X,X];
+0009 |
+0010 |equations
+0011 |	!RAM	= (Address <= ^hDFFF);
+0012 |	!IO	= (Address >= ^hE000) & (Address <= ^hE7FF);
+0013 |	!ROM2	= (Address >= ^hF000) & (Address <= ^hF7FF);
+0014 |	!ROM1	= (Address >= ^hF800);
+0015 |
+0016 |test_vectors
+0017 |		(Address -> [ROM1,ROM2,IO,RAM])
+0018 |		  ^h0000 -> [ H, H, H, L ];
+0019 |                  ^h4000 -> [ H, H, H, L ];
+0020 |                  ^h8000 -> [ H, H, H, L ];
+0021 |                  ^hC000 -> [ H, H, H, L ];
+0022 |                  ^hE000 -> [ H, H, L, H ];
+0023 |                  ^hE800 -> [ H, H, H, H ];
+0024 |                  ^hF000 -> [ H, L, H, H ];
+0025 |                  ^hF800 -> [ L, H, H, H ];
+0026 |END
+0027 |

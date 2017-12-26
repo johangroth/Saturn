@@ -94,28 +94,6 @@ F 3 "" H 2550 6625 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R_Network07 RN1
-U 1 1 5A3B464D
-P 4225 1550
-F 0 "RN1" V 3825 1550 50  0000 C CNN
-F 1 "3.3kOhm" V 4625 1550 50  0000 C CNN
-F 2 "Resistors_THT:R_Array_SIP8" V 4700 1550 50  0001 C CNN
-F 3 "" H 4225 1550 50  0001 C CNN
-	1    4225 1550
-	1    0    0    -1  
-$EndComp
-$Comp
-L R_Network07 RN2
-U 1 1 5A3B46CC
-P 1750 1100
-F 0 "RN2" V 1350 1100 50  0000 C CNN
-F 1 "3.3kOhm" V 2150 1100 50  0000 C CNN
-F 2 "Resistors_THT:R_Array_SIP8" V 2225 1100 50  0001 C CNN
-F 3 "" H 1750 1100 50  0001 C CNN
-	1    1750 1100
-	1    0    0    -1  
-$EndComp
-$Comp
 L VCC #PWR14
 U 1 1 5A3B5086
 P 2650 6075
@@ -178,8 +156,6 @@ Text HLabel 4750 2425 2    60   Output ~ 0
 ~PWR
 Text HLabel 4750 2525 2    60   Output ~ 0
 ~RES
-Text HLabel 4750 2325 2    60   Output ~ 0
-~SO
 Text HLabel 4750 2625 2    60   Output ~ 0
 RES
 $Comp
@@ -270,26 +246,15 @@ F 3 "" H 2325 2500 50  0001 C CNN
 	1    2325 2500
 	1    0    0    -1  
 $EndComp
-$Comp
-L VCC #PWR18
-U 1 1 5A3BAB89
-P 1450 700
-F 0 "#PWR18" H 1450 550 50  0001 C CNN
-F 1 "VCC" H 1450 850 50  0000 C CNN
-F 2 "" H 1450 700 50  0001 C CNN
-F 3 "" H 1450 700 50  0001 C CNN
-	1    1450 700 
-	1    0    0    -1  
-$EndComp
-Text HLabel 2300 1475 2    60   Input ~ 0
+Text HLabel 9950 3675 2    60   Input ~ 0
 TCK
-Text HLabel 2300 1575 2    60   Input ~ 0
+Text HLabel 9950 3775 2    60   Input ~ 0
 TMS
-Text HLabel 2300 1675 2    60   Input ~ 0
+Text HLabel 9950 3875 2    60   Input ~ 0
 TDI
-Text HLabel 2300 1775 2    60   Output ~ 0
+Text HLabel 9950 3975 2    60   Output ~ 0
 TDO
-Text HLabel 2300 1875 2    60   Output ~ 0
+Text HLabel 4750 1825 2    60   Output ~ 0
 ~KS
 $Comp
 L ispMACH4A U?
@@ -309,9 +274,7 @@ Wire Wire Line
 Wire Wire Line
 	2650 6075 2650 6325
 Wire Wire Line
-	2650 6075 3075 6075
-Wire Wire Line
-	3075 6075 3825 6075
+	2650 6075 3825 6075
 Wire Wire Line
 	3825 7175 3075 7175
 Wire Wire Line
@@ -332,13 +295,7 @@ Wire Wire Line
 Wire Wire Line
 	1300 6075 700  6075
 Wire Wire Line
-	700  6075 700  6425
-Wire Wire Line
-	700  6425 700  6625
-Wire Wire Line
-	700  6625 700  7175
-Wire Wire Line
-	700  7175 700  7375
+	700  6075 700  7375
 Connection ~ 700  6425
 Connection ~ 700  6625
 Wire Wire Line
@@ -371,18 +328,14 @@ Wire Wire Line
 Wire Wire Line
 	4025 2425 4750 2425
 Wire Wire Line
-	3925 1750 3925 2525
-Wire Wire Line
-	3925 2525 3925 2825
+	3925 1750 3925 2825
 Wire Wire Line
 	3925 2525 4750 2525
 Connection ~ 3925 2525
 Wire Wire Line
 	3925 3050 4250 3050
 Wire Wire Line
-	4250 2625 4250 3050
-Wire Wire Line
-	4250 3050 4250 3375
+	4250 2625 4250 3375
 Wire Wire Line
 	4250 2625 4750 2625
 Wire Wire Line
@@ -390,19 +343,11 @@ Wire Wire Line
 Wire Wire Line
 	2325 3575 2325 3650
 Wire Wire Line
-	2000 3850 2325 3850
-Wire Wire Line
-	2325 3850 3125 3850
-Wire Wire Line
-	3125 3850 3925 3850
-Wire Wire Line
-	3925 3850 4250 3850
+	2000 3850 4250 3850
 Wire Wire Line
 	3125 3850 3125 3600
 Wire Wire Line
-	2000 2500 2325 2500
-Wire Wire Line
-	2325 2500 3125 2500
+	2000 2500 3125 2500
 Wire Wire Line
 	2325 2500 2325 2825
 Wire Wire Line
@@ -425,36 +370,6 @@ Wire Wire Line
 	4250 3850 4250 3575
 Connection ~ 3925 3850
 Wire Wire Line
-	1450 900  1450 700 
-Wire Wire Line
-	2050 1300 2050 1475
-Wire Wire Line
-	2050 1475 2300 1475
-Wire Wire Line
-	1950 1300 1950 1575
-Wire Wire Line
-	1950 1575 2300 1575
-Wire Wire Line
-	1850 1300 1850 1675
-Wire Wire Line
-	1850 1675 2300 1675
-Wire Wire Line
-	1750 1300 1750 1775
-Wire Wire Line
-	1750 1775 2300 1775
-Wire Wire Line
-	1650 1300 1650 1875
-Wire Wire Line
-	1650 1875 2300 1875
-Wire Wire Line
-	1550 1300 1550 1975
-Wire Wire Line
-	1550 1975 2300 1975
-Wire Wire Line
-	1450 1300 1450 2075
-Wire Wire Line
-	1450 2075 2300 2075
-Wire Wire Line
 	7550 3075 7250 3075
 Wire Wire Line
 	7550 3200 7250 3200
@@ -468,6 +383,21 @@ Text HLabel 7250 3325 0    60   Output ~ 0
 ~VIA2SEL
 Text HLabel 7250 3450 0    60   Output ~ 0
 ~RTCSEL
-Text HLabel 2300 1975 2    60   Output ~ 0
+Text HLabel 4750 2325 2    60   Output ~ 0
 ~ABT
+$Comp
+L R_Network08 RN?
+U 1 1 5A416FA2
+P 4325 1550
+F 0 "RN?" V 3825 1550 50  0000 C CNN
+F 1 "3.3k" H 4275 1725 50  0000 C CNN
+F 2 "Resistors_THT:R_Array_SIP9" V 4800 1550 50  0001 C CNN
+F 3 "" H 4325 1550 50  0001 C CNN
+	1    4325 1550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4625 1750 4625 1825
+Wire Wire Line
+	4625 1825 4750 1825
 $EndSCHEMATC

@@ -1,0 +1,34 @@
+ ispLEVER Classic 2.0.00.17.20.15 Linked Equations File
+Copyright(C), 1992-2015, Lattice Semiconductor Corp.
+All Rights Reserved.
+
+Design address_decoding created  Sun Dec 24 11:09:15 2017
+
+Title:  Decode of addresses and IO with VDA and VPA assertion.
+
+ P-Terms   Fan-in  Fan-out  Type  Name (attributes)
+---------  ------  -------  ----  -----------------
+   1          5        1    Pin   ROM1- 
+   1          5        1    Pin   IO- 
+   1          5        1    Pin   ROM2- 
+   1          3        1    Pin   RAM 
+=========
+   4                 P-Term Total: 4
+                       Total Pins: 10
+                      Total Nodes: 0
+            Average P-Term/Output: 1
+
+
+Equations:
+
+!ROM1 = (A15 & A14 & A13 & A12 & A11);
+
+!IO = (A15 & A14 & A13 & !A12 & !A11);
+
+!ROM2 = (A15 & A14 & A13 & A12 & !A11);
+
+RAM = (A15 & A14 & A13);
+
+
+Reverse-Polarity Equations:
+

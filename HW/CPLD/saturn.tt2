@@ -1,0 +1,27 @@
+#$ TOOL ispLEVER Classic 2.0.00.17.20.15
+#$ DATE Sun Dec 24 11:09:15 2017
+#$ TITLE Decode of addresses and IO with VDA and VPA assertion.
+#$ MODULE saturn
+#$ JEDECFILE address_decoding
+#$ PINS 10 A10:2 A11:3 A12:4 A13:5 A14:6 A15:7 ROM1 IO ROM2 RAM
+.type fr
+.i 5
+.o 4
+.ilb A15 A14 A13 A12 A11
+.ob ROM1 IO ROM2 RAM
+.p 14
+0---- 111~
+-0--- 111~
+111-- ~~~1
+--0-- 111~
+---1- ~1~~
+---0- 1~1~
+----1 ~11~
+----0 1~~~
+0---- ~~~0
+-0--- ~~~0
+--0-- ~~~0
+11111 0~~~
+11110 ~~0~
+11100 ~0~~
+.end

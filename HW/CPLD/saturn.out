@@ -1,0 +1,47 @@
+
+9 "number of signals after reading design file"
+
+"sig    sig    sig pair blk fan                       PT xor sync"
+"num   name   type  sig num out             pin node cnt  PT type"
+"---   ----   ---- ---- --- ---             --- ---- --- --- ----"
+
+ 149        RAM  0        0   0              -1   -1   1   0   21
+ 148       ROM2  0        1   0              -1   -1   1   0   21
+ 147         IO  0        2   0              -1   -1   1   0   21
+ 146       ROM1  0        3   0              -1   -1   1   0   21
+ 143        A13  1   -1  -1   4  0  1  2  3  -1   -1
+ 142        A14  1   -1  -1   4  0  1  2  3  -1   -1
+ 141        A15  1   -1  -1   4  0  1  2  3  -1   -1
+ 145        A11  1   -1  -1   3     1  2  3  -1   -1
+ 144        A12  1   -1  -1   3     1  2  3  -1   -1
+9 "number of signals after reading design file"
+
+"sig    sig    sig pair blk fan                       PT xor sync"
+"num   name   type  sig num out             pin node cnt  PT type"
+"---   ----   ---- ---- --- ---             --- ---- --- --- ----"
+
+ 149        RAM  0        0   0              -1   -1   1   0   21
+ 148       ROM2  0        1   0              -1   -1   1   0   21
+ 147         IO  0        2   0              -1   -1   1   0   21
+ 146       ROM1  0        3   0              -1   -1   1   0   21
+ 143        A13  1   -1  -1   4  0  1  2  3  -1   -1
+ 142        A14  1   -1  -1   4  0  1  2  3  -1   -1
+ 141        A15  1   -1  -1   4  0  1  2  3  -1   -1
+ 145        A11  1   -1  -1   3     1  2  3  -1   -1
+ 144        A12  1   -1  -1   3     1  2  3  -1   -1
+10 "number of signals after reading design file"
+
+"sig    sig    sig pair blk fan                       PT xor sync"
+"num   name   type  sig num out             pin node cnt  PT type"
+"---   ----   ---- ---- --- ---             --- ---- --- --- ----"
+
+ 144        RAM  0        0   0              -1   -1   1   0   21
+ 143       ROM2  0        1   0              -1   -1   1   0   21
+ 142         IO  0        2   0              -1   -1   1   0   21
+ 141       ROM1  0        3   0              -1   -1   1   0   21
+   6        A15  1   -1  -1   4  0  1  2  3   6   -1
+   5        A14  1   -1  -1   4  0  1  2  3   5   -1
+   4        A13  1   -1  -1   4  0  1  2  3   4   -1
+   3        A12  1   -1  -1   3     1  2  3   3   -1
+   2        A11  1   -1  -1   3     1  2  3   2   -1
+   1        A10  1   -1  -1   0               1   -1

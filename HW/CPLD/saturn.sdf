@@ -1,0 +1,94 @@
+// SDF delay-file
+(DELAYFILE
+  (SDFVERSION "2.1")
+  (DESIGN "saturn")
+  (DATE "12/23/2017 23:12:34")
+  (VENDOR "Lattice Semiconductor")
+  (PROGRAM "SDF Generator")
+  (VERSION "2.0.00.17.20.15 Data sheet version: RevD-8/2000")
+  (DIVIDER /)
+  (VOLTAGE :5.0:)
+  (PROCESS "worst")
+  (TEMPERATURE :90:)
+  (TIMESCALE 100ps)
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_ROM1_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (30:30:30) (30:30:30) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_IO_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (30:30:30) (30:30:30) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_ROM2_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (30:30:30) (30:30:30) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "OBUF")
+    (INSTANCE OUT_RAM_I_1)
+    (DELAY
+      (ABSOLUTE
+        (IOPATH I0 O (30:30:30) (30:30:30) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "AND3")
+    (INSTANCE GATE_RAM_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (PORT I1 (0:0:0) (0:0:0) )
+        (PORT I2 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (70:70:70) (70:70:70) )
+        (IOPATH I1 O (70:70:70) (70:70:70) )
+        (IOPATH I2 O (70:70:70) (70:70:70) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "INV")
+    (INSTANCE GATE_ROM1_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (70:70:70) (70:70:70) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "INV")
+    (INSTANCE GATE_IO_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (70:70:70) (70:70:70) )
+      )
+    )
+  )
+  (CELL
+    (CELLTYPE "INV")
+    (INSTANCE GATE_ROM2_I_1)
+    (DELAY
+      (ABSOLUTE
+        (PORT I0 (0:0:0) (0:0:0) )
+        (IOPATH I0 O (70:70:70) (70:70:70) )
+      )
+    )
+  )
+)

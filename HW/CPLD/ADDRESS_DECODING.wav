@@ -1,0 +1,15 @@
+[NameRules]
+InstanceSeparator=^
+
+[Waves]
+Count=10
+Net0=A15
+Net1=A14
+Net2=A13
+Net3=A12
+Net4=A11
+Net5=A10
+Net6=ROM1
+Net7=ROM2
+Net8=IO
+Net9=RAM

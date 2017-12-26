@@ -1,0 +1,15 @@
+#$ TOOL ispLEVER Classic 2.0.00.17.20.15
+#$ MODULE address_decoding
+#$ TITLE Decode of addresses and IO with VDA and VPA assertion.
+S10;
+A15 A14 A13 A12 A11 A10 -> ROM1 ROM2 IO RAM 
+$
+000000->1110;
+010000->1110;
+100000->1110;
+110000->1110;
+111000->1101;
+111010->1111;
+111100->1011;
+111110->0111;
+$

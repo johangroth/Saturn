@@ -1,0 +1,41 @@
+MODEL
+MODEL_VERSION "1.0";
+DESIGN "saturn";
+DATE "Sat Dec 23 23:11:18 2017";
+VENDOR "Lattice Semiconductor Corporation";
+PROGRAM "STAMP Model Generator";
+
+/* port name and type */
+INPUT A11;
+INPUT A12;
+INPUT A13;
+INPUT A14;
+INPUT A15;
+OUTPUT IO;
+OUTPUT RAM;
+OUTPUT ROM1;
+OUTPUT ROM2;
+
+/* timing arc definitions */
+A11_IO_delay: DELAY A11 IO;
+A11_ROM1_delay: DELAY A11 ROM1;
+A11_ROM2_delay: DELAY A11 ROM2;
+A12_IO_delay: DELAY A12 IO;
+A12_ROM1_delay: DELAY A12 ROM1;
+A12_ROM2_delay: DELAY A12 ROM2;
+A13_IO_delay: DELAY A13 IO;
+A13_RAM_delay: DELAY A13 RAM;
+A13_ROM1_delay: DELAY A13 ROM1;
+A13_ROM2_delay: DELAY A13 ROM2;
+A14_IO_delay: DELAY A14 IO;
+A14_RAM_delay: DELAY A14 RAM;
+A14_ROM1_delay: DELAY A14 ROM1;
+A14_ROM2_delay: DELAY A14 ROM2;
+A15_IO_delay: DELAY A15 IO;
+A15_RAM_delay: DELAY A15 RAM;
+A15_ROM1_delay: DELAY A15 ROM1;
+A15_ROM2_delay: DELAY A15 ROM2;
+
+/* timing check arc definitions */
+
+ENDMODEL

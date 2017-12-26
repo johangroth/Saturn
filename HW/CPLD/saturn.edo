@@ -1,0 +1,297 @@
+(edif Address_Decoding
+  (edifVersion 2 0 0)
+  (edifLevel 0)
+  (keywordMap (keywordLevel 0))
+  (status (written
+    (timeStamp 2017 12 23 23 12 34)
+    (program "blif2net" (version "ispLEVER Classic 2.0.00.17.20.15"))))
+
+  (external MACH4
+    (edifLevel 0)
+    (technology (numberDefinition))
+
+    (cell AND2
+      (cellType GENERIC)
+      (view NetList
+        (viewType NETLIST)
+        (interface
+          (port O (direction OUTPUT))
+          (port I0 (direction INPUT))
+          (port I1 (direction INPUT))
+        )
+      )
+    )
+
+    (cell AND3
+      (cellType GENERIC)
+      (view NetList
+        (viewType NETLIST)
+        (interface
+          (port O (direction OUTPUT))
+          (port I0 (direction INPUT))
+          (port I1 (direction INPUT))
+          (port I2 (direction INPUT))
+        )
+      )
+    )
+
+    (cell IBUF
+      (cellType GENERIC)
+      (view NetList
+        (viewType NETLIST)
+        (interface
+          (port O (direction OUTPUT))
+          (port I0 (direction INPUT))
+        )
+      )
+    )
+
+    (cell INV
+      (cellType GENERIC)
+      (view NetList
+        (viewType NETLIST)
+        (interface
+          (port O (direction OUTPUT))
+          (port I0 (direction INPUT))
+        )
+      )
+    )
+
+    (cell OBUF
+      (cellType GENERIC)
+      (view NetList
+        (viewType NETLIST)
+        (interface
+          (port O (direction OUTPUT))
+          (port I0 (direction INPUT))
+        )
+      )
+    )
+  )
+
+  (library Address_Decoding
+    (edifLevel 0)
+    (technology (numberDefinition))
+
+    (cell Address_Decoding
+      (cellType GENERIC)
+      (view NetList
+        (viewType NETLIST)
+        (interface
+          (port A15 (direction INPUT))
+          (port A14 (direction INPUT))
+          (port A13 (direction INPUT))
+          (port A12 (direction INPUT))
+          (port A11 (direction INPUT))
+          (port ROM1 (direction OUTPUT))
+          (port IO (direction OUTPUT))
+          (port ROM2 (direction OUTPUT))
+          (port RAM (direction OUTPUT))
+        )
+
+        (contents
+          (instance IN_A15_I_1 (viewRef NetList (cellRef IBUF (libraryRef MACH4)))
+            (property PULL (string "Hold"))
+          )
+          (instance IN_A14_I_1 (viewRef NetList (cellRef IBUF (libraryRef MACH4)))
+            (property PULL (string "Hold"))
+          )
+          (instance IN_A13_I_1 (viewRef NetList (cellRef IBUF (libraryRef MACH4)))
+            (property PULL (string "Hold"))
+          )
+          (instance IN_A12_I_1 (viewRef NetList (cellRef IBUF (libraryRef MACH4)))
+            (property PULL (string "Hold"))
+          )
+          (instance IN_A11_I_1 (viewRef NetList (cellRef IBUF (libraryRef MACH4)))
+            (property PULL (string "Hold"))
+          )
+          (instance OUT_ROM1_I_1 (viewRef NetList (cellRef OBUF (libraryRef MACH4))))
+          (instance OUT_IO_I_1 (viewRef NetList (cellRef OBUF (libraryRef MACH4))))
+          (instance OUT_ROM2_I_1 (viewRef NetList (cellRef OBUF (libraryRef MACH4))))
+          (instance OUT_RAM_I_1 (viewRef NetList (cellRef OBUF (libraryRef MACH4))))
+          (instance GATE_T_0_I_1 (viewRef NetList (cellRef AND3 (libraryRef MACH4))))
+          (instance GATE_T_1_I_1 (viewRef NetList (cellRef INV (libraryRef MACH4))))
+          (instance GATE_T_1_I_2 (viewRef NetList (cellRef AND3 (libraryRef MACH4))))
+          (instance GATE_T_2_I_1 (viewRef NetList (cellRef INV (libraryRef MACH4))))
+          (instance GATE_T_2_I_2 (viewRef NetList (cellRef AND3 (libraryRef MACH4))))
+          (instance GATE_RAM_I_1 (viewRef NetList (cellRef AND3 (libraryRef MACH4))))
+          (instance GATE_ROM1_I_1 (viewRef NetList (cellRef INV (libraryRef MACH4))))
+          (instance GATE_IO_I_1 (viewRef NetList (cellRef INV (libraryRef MACH4))))
+          (instance GATE_ROM2_I_1 (viewRef NetList (cellRef INV (libraryRef MACH4))))
+          (instance GATE_T_3_I_1 (viewRef NetList (cellRef AND2 (libraryRef MACH4))))
+          (instance GATE_T_4_I_1 (viewRef NetList (cellRef AND2 (libraryRef MACH4))))
+          (instance GATE_T_5_I_1 (viewRef NetList (cellRef AND2 (libraryRef MACH4))))
+          (instance GATE_T_5_I_2 (viewRef NetList (cellRef INV (libraryRef MACH4))))
+          (instance GATE_T_6_I_1 (viewRef NetList (cellRef AND2 (libraryRef MACH4))))
+          (instance GATE_T_7_I_1 (viewRef NetList (cellRef AND2 (libraryRef MACH4))))
+          (instance GATE_T_8_I_1 (viewRef NetList (cellRef AND2 (libraryRef MACH4))))
+
+          (net A15 (joined
+            (portRef A15)
+            (portRef I0 (instanceRef IN_A15_I_1))
+          ))
+
+          (net A15PIN (joined
+            (portRef O (instanceRef IN_A15_I_1))
+            (portRef I1 (instanceRef GATE_RAM_I_1))
+            (portRef I0 (instanceRef GATE_T_4_I_1))
+            (portRef I0 (instanceRef GATE_T_6_I_1))
+            (portRef I0 (instanceRef GATE_T_8_I_1))
+          ))
+
+          (net A14 (joined
+            (portRef A14)
+            (portRef I0 (instanceRef IN_A14_I_1))
+          ))
+
+          (net A14PIN (joined
+            (portRef O (instanceRef IN_A14_I_1))
+            (portRef I2 (instanceRef GATE_RAM_I_1))
+            (portRef I1 (instanceRef GATE_T_4_I_1))
+            (portRef I1 (instanceRef GATE_T_6_I_1))
+            (portRef I1 (instanceRef GATE_T_8_I_1))
+          ))
+
+          (net A13 (joined
+            (portRef A13)
+            (portRef I0 (instanceRef IN_A13_I_1))
+          ))
+
+          (net A13PIN (joined
+            (portRef O (instanceRef IN_A13_I_1))
+            (portRef I0 (instanceRef GATE_RAM_I_1))
+            (portRef I0 (instanceRef GATE_T_3_I_1))
+            (portRef I1 (instanceRef GATE_T_5_I_1))
+            (portRef I0 (instanceRef GATE_T_7_I_1))
+          ))
+
+          (net A12 (joined
+            (portRef A12)
+            (portRef I0 (instanceRef IN_A12_I_1))
+          ))
+
+          (net A12PIN (joined
+            (portRef O (instanceRef IN_A12_I_1))
+            (portRef I1 (instanceRef GATE_T_3_I_1))
+            (portRef I0 (instanceRef GATE_T_5_I_2))
+            (portRef I1 (instanceRef GATE_T_7_I_1))
+          ))
+
+          (net A11 (joined
+            (portRef A11)
+            (portRef I0 (instanceRef IN_A11_I_1))
+          ))
+
+          (net A11PIN (joined
+            (portRef O (instanceRef IN_A11_I_1))
+            (portRef I1 (instanceRef GATE_T_0_I_1))
+            (portRef I0 (instanceRef GATE_T_1_I_1))
+            (portRef I0 (instanceRef GATE_T_2_I_1))
+          ))
+
+          (net ROM1 (joined
+            (portRef ROM1)
+            (portRef O (instanceRef OUT_ROM1_I_1))
+          ))
+
+          (net ROM1COM (joined
+            (portRef I0 (instanceRef OUT_ROM1_I_1))
+            (portRef O (instanceRef GATE_ROM1_I_1))
+          ))
+
+          (net IO (joined
+            (portRef IO)
+            (portRef O (instanceRef OUT_IO_I_1))
+          ))
+
+          (net IOCOM (joined
+            (portRef I0 (instanceRef OUT_IO_I_1))
+            (portRef O (instanceRef GATE_IO_I_1))
+          ))
+
+          (net ROM2 (joined
+            (portRef ROM2)
+            (portRef O (instanceRef OUT_ROM2_I_1))
+          ))
+
+          (net ROM2COM (joined
+            (portRef I0 (instanceRef OUT_ROM2_I_1))
+            (portRef O (instanceRef GATE_ROM2_I_1))
+          ))
+
+          (net RAM (joined
+            (portRef RAM)
+            (portRef O (instanceRef OUT_RAM_I_1))
+          ))
+
+          (net RAMCOM (joined
+            (portRef I0 (instanceRef OUT_RAM_I_1))
+            (portRef O (instanceRef GATE_RAM_I_1))
+          ))
+
+          (net T_0 (joined
+            (portRef O (instanceRef GATE_T_0_I_1))
+            (portRef I0 (instanceRef GATE_ROM1_I_1))
+          ))
+
+          (net T_1 (joined
+            (portRef O (instanceRef GATE_T_1_I_2))
+            (portRef I0 (instanceRef GATE_IO_I_1))
+          ))
+
+          (net T_2 (joined
+            (portRef O (instanceRef GATE_T_2_I_2))
+            (portRef I0 (instanceRef GATE_ROM2_I_1))
+          ))
+
+          (net T_3 (joined
+            (portRef I1 (instanceRef GATE_T_2_I_2))
+            (portRef O (instanceRef GATE_T_3_I_1))
+          ))
+
+          (net T_4 (joined
+            (portRef I2 (instanceRef GATE_T_2_I_2))
+            (portRef O (instanceRef GATE_T_4_I_1))
+          ))
+
+          (net T_5 (joined
+            (portRef I1 (instanceRef GATE_T_1_I_2))
+            (portRef O (instanceRef GATE_T_5_I_1))
+          ))
+
+          (net T_6 (joined
+            (portRef I2 (instanceRef GATE_T_1_I_2))
+            (portRef O (instanceRef GATE_T_6_I_1))
+          ))
+
+          (net T_7 (joined
+            (portRef I0 (instanceRef GATE_T_0_I_1))
+            (portRef O (instanceRef GATE_T_7_I_1))
+          ))
+
+          (net T_8 (joined
+            (portRef I2 (instanceRef GATE_T_0_I_1))
+            (portRef O (instanceRef GATE_T_8_I_1))
+          ))
+
+          (net GATE_T_1_A (joined
+            (portRef O (instanceRef GATE_T_1_I_1))
+            (portRef I0 (instanceRef GATE_T_1_I_2))
+          ))
+
+          (net GATE_T_2_A (joined
+            (portRef O (instanceRef GATE_T_2_I_1))
+            (portRef I0 (instanceRef GATE_T_2_I_2))
+          ))
+
+          (net GATE_T_5_A (joined
+            (portRef I0 (instanceRef GATE_T_5_I_1))
+            (portRef O (instanceRef GATE_T_5_I_2))
+          ))
+        )
+      )
+    )
+  )
+
+  (design Address_Decoding (cellRef Address_Decoding (libraryRef Address_Decoding)))
+)

@@ -1,0 +1,66 @@
+
+Timing Report for STAMP
+
+//  Project = saturn
+//  Family  = mach4a
+//  Device  = M4A5-64/32
+//  Speed   = -10
+//  Voltage = 5.0
+//  Operating Condition = COM
+//  Data sheet version  = RevD-8/2000
+
+//  Pass Bidirection = OFF
+//  Pass S/R = OFF
+//  Pass Latch = OFF
+//  T_SU Endpoints D/T inputs = ON
+//  T_SU Endpoints CE inputs = OFF
+//  T_SU Endpoints S/R inputs = OFF
+//  T_SU Endpoints RAM gated = ON
+//  Fmax of CE = ON
+//  Fmax of RAM = ON
+
+//  Location(From => To)
+//    Pin number: numeric number preceded by "p", BGA number as is
+//    Macrocell number: Segment#,GLB#,Macrocell#
+//                      Segment#: starts from 0 (if applicable)
+//                      GLB#: starts from A..Z, AA..ZZ
+//                      Macrocell#: starts from 0 to 31
+
+
+Section IO
+  //DESTINATION NODES;
+  IO [out]
+  RAM [out]
+  ROM1 [out]
+  ROM2 [out]
+
+  //SOURCE NODES;
+  A11 [in]
+  A12 [in]
+  A13 [in]
+  A14 [in]
+  A15 [in]
+
+
+Section tPD
+
+   Delay         Level   Location(From => To)    Source                        Destination
+  =====         =====   ====================    ======                        ===========
+   10.0           1     p3        => p26        A11                           IO
+   10.0           1     p3        => p41        A11                           ROM1
+   10.0           1     p3        => p19        A11                           ROM2
+   10.0           1     p5        => p26        A12                           IO
+   10.0           1     p5        => p41        A12                           ROM1
+   10.0           1     p5        => p19        A12                           ROM2
+   10.0           1     p11       => p26        A13                           IO
+   10.0           1     p11       => p4         A13                           RAM
+   10.0           1     p11       => p41        A13                           ROM1
+   10.0           1     p11       => p19        A13                           ROM2
+   10.0           1     p33       => p26        A14                           IO
+   10.0           1     p33       => p4         A14                           RAM
+   10.0           1     p33       => p41        A14                           ROM1
+   10.0           1     p33       => p19        A14                           ROM2
+   10.0           1     p2        => p26        A15                           IO
+   10.0           1     p2        => p4         A15                           RAM
+   10.0           1     p2        => p41        A15                           ROM1
+   10.0           1     p2        => p19        A15                           ROM2

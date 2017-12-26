@@ -1,0 +1,502 @@
+|--------------------------------------------|
+|- ispLEVER Fitter Report File              -|
+|- Version 2.0.00.17.20.15                       -|
+|- (c)Copyright, Lattice Semiconductor 2002 -|
+|--------------------------------------------|
+
+
+
+
+Project_Summary
+~~~~~~~~~~~~~~~
+
+Project Name :          saturn
+Project Path :          Z:\Saturn\HW\CPLD
+Project Fitted on :     Sun Dec 24 11:09:40 2017
+
+Device :                M4A5-64/32
+Package :               44PLCC
+Speed :                 -10
+Partnumber :            M4A5-64/32-10JC
+Source Format :         ABEL_Schematic
+
+
+// Project 'saturn' was Fitted Successfully! //
+
+
+Compilation_Times
+~~~~~~~~~~~~~~~~~
+Reading/DRC                                   0 sec
+Partition                                     0 sec
+Place                                         0 sec
+Route                                         0 sec
+Jedec/Report generation                       0 sec
+                                         --------
+Fitter                                   00:00:00
+
+
+Design_Summary
+~~~~~~~~~~~~~~
+  Total Input Pins :                  6
+  Total Output Pins :                 4
+  Total Bidir I/O Pins :              0
+  Total Flip-Flops :                  0
+  Total Product Terms :               4
+  Total Reserved Pins :               0
+  Total Reserved Blocks :             0
+
+
+Device_Resource_Summary
+~~~~~~~~~~~~~~~~~~~~~~~
+                                 Total
+                               Available  Used  Available  Utilization
+Dedicated Pins
+  Input-Only Pins                ..       ..     ..    -->    ..
+  Clock/Input Pins                2        0      2    -->     0%
+I/O Pins                         32       10     22    -->    31%
+Logic Macrocells                 64        4     60    -->     6%
+  Input Registers                32        0     32    -->     0%
+  Unusable Macrocells            ..        0     ..
+
+CSM Outputs/Total Block Inputs  132       18    114    -->    13%
+Logical Product Terms           320        4    316    -->     1%
+Product Term Clusters            64        0     64    -->     0%
+
+
+Blocks_Resource_Summary
+~~~~~~~~~~~~~~~~~~~~~~~
+                                                                  # of PT  
+                   I/O    Inp    Macrocells   Macrocells   logic  clusters 
+          Fanin    Pins   Reg   Used Unusable  available    PTs   available  Pwr
+---------------------------------------------------------------------------------
+Maximum     33      8      8     --     --         16       80       16       -
+---------------------------------------------------------------------------------
+Block  A     3      7      0      1      0         15        1       16       Hi 
+Block  B     5      1      0      1      0         15        1       16       Hi 
+Block  C     5      1      0      1      0         15        1       16       Hi 
+Block  D     5      1      0      1      0         15        1       16       Hi 
+---------------------------------------------------------------------------------
+
+<Note> Four rightmost columns above reflect last status of the placement process.
+<Note> Pwr (Power) : Hi = High
+                     Lo = Low.
+
+
+Optimizer_and_Fitter_Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Pin Assignment :                       Yes
+Group Assignment :                     No
+Pin Reservation :                      No (1)
+Block Reservation :                    No
+
+@Ignore_Project_Constraints :
+  Pin Assignments :                    No
+      Keep Block Assignment            --
+      Keep Segment Assignment          --
+  Group Assignments :                  No
+  Macrocell Assignment :               No
+      Keep Block Assignment            --
+      Keep Segment Assignment          --
+
+@Backannotate_Project_Constraints
+  Pin Assignments :                    No
+  Pin And Block Assignments :          No
+  Pin, Macrocell and Block :           No
+
+@Timing_Constraints :                  No
+
+@Global_Project_Optimization :
+  Balanced Partitioning :              Yes
+  Spread Placement :                   Yes
+
+  Note :
+    Pack Design :
+       Balanced Partitioning = No
+       Spread Placement      = No
+    Spread Design :
+       Balanced Partitioning = Yes
+       Spread Placement      = Yes
+
+@Logic_Synthesis :
+  Logic Reduction :                    Yes
+  Node Collapsing :                    Yes
+  D/T Synthesis :                      Yes
+  Clock Optimization :                 No
+  Input Register Optimization :        Yes
+  XOR Synthesis :                      Yes
+  Max. P-Term for Collapsing :         16
+  Max. P-Term for Splitting :          16
+  Max. Equation Fanin :                32
+  Keep Xor :                           Yes
+
+@Utilization_options
+  Max. % of macrocells used :          100
+  Max. % of block inputs used :        100
+  Max. % of segment lines used :       ---
+  Max. % of macrocells used :          ---
+
+
+@Import_Source_Constraint_Option       No
+
+@Zero_Hold_Time                        No
+
+@Pull_up                               No
+
+@User_Signature                        #H0
+
+@Output_Slew_Rate                      Default = Fast(2)
+
+@Power                                 Default = High(2)
+
+
+Device Options:
+<Note> 1 : Reserved unused I/Os can be independently driven to Low or High, and does not
+           follow the drive level set for the Global Configure Unused I/O Option.
+<Note> 2 : For user-specified constraints on individual signals, refer to the Output, 
+           Bidir and Burried Signal Lists.
+
+
+
+
+Pinout_Listing
+~~~~~~~~~~~~~~
+      | Pin  |Blk |Assigned|
+Pin No| Type |Pad |Pin     | Signal name
+---------------------------------------------------------------
+    1 |  GND |    |        |
+    2 |  I_O | A7 |   *    |A10
+3     |  I_O | A6 |   *    |A11
+4     |  I_O | A5 |   *    |A12
+5     |  I_O | A4 |   *    |A13
+6     |  I_O | A3 |   *    |A14
+7     |  I_O | A2 |   *    |A15
+8     |  I_O | A1 |        |
+9     |  I_O | A0 |        |RAM
+10    | JTAG |    |        |
+11    | CkIn |    |        |
+12    |  GND |    |        |
+13    | JTAG |    |        |
+14    |  I_O | B0 |        |
+15    |  I_O | B1 |        |
+16    |  I_O | B2 |        |
+17    |  I_O | B3 |        |
+18    |  I_O | B4 |        |
+19    |  I_O | B5 |        |ROM2
+20    |  I_O | B6 |        |
+21    |  I_O | B7 |        |
+22    |  Vcc |    |        |
+23    |  GND |    |        |
+24    |  I_O | C7 |        |
+25    |  I_O | C6 |        |
+26    |  I_O | C5 |        |IO
+27    |  I_O | C4 |        |
+28    |  I_O | C3 |        |
+29    |  I_O | C2 |        |
+30    |  I_O | C1 |        |
+31    |  I_O | C0 |        |
+32    | JTAG |    |        |
+33    | CkIn |    |        |
+34    |  GND |    |        |
+35    | JTAG |    |        |
+36    |  I_O | D0 |        |
+37    |  I_O | D1 |        |
+38    |  I_O | D2 |        |
+39    |  I_O | D3 |        |
+40    |  I_O | D4 |        |
+41    |  I_O | D5 |        |ROM1
+42    |  I_O | D6 |        |
+43    |  I_O | D7 |        |
+44    |  Vcc |    |        |
+
+---------------------------------------------------------------------------
+
+<Note> Blk Pad : This notation refers to the Block I/O pad number in the device.
+<Note> Assigned Pin : user or dedicated input assignment (E.g. Clock pins).
+<Note> Pin Type : 
+           CkIn : Dedicated input or clock pin 
+           CLK  : Dedicated clock pin
+           INP  : Dedicated input pin
+           JTAG : JTAG Control and test pin
+           NC   : No connected
+
+
+
+Input_Signal_List
+~~~~~~~~~~~~~~~~~
+                 P R
+            Pin  r e O   Input 
+Pin Blk PTs Type e s E   Fanout Pwr Slew      Signal 
+----------------------------------------------------------------------
+  2  A   .  I/O          ----    Hi Fast      A10   
+  3  A   .  I/O          -BCD    Hi Fast      A11   
+  4  A   .  I/O          -BCD    Hi Fast      A12   
+  5  A   .  I/O          ABCD    Hi Fast      A13   
+  6  A   .  I/O          ABCD    Hi Fast      A14   
+  7  A   .  I/O          ABCD    Hi Fast      A15   
+----------------------------------------------------------------------
+
+<Note> Power : Hi = High
+               MH = Medium High
+               ML = Medium Low
+               Lo = Low
+
+
+
+Output_Signal_List
+~~~~~~~~~~~~~~~~~~
+                 P R
+            Pin  r e O   Output 
+Pin Blk PTs Type e s E   Fanout Pwr Slew      Signal 
+----------------------------------------------------------------------
+ 26  C   1  COM          ----    Hi Fast      IO   
+  9  A   1  COM          ----    Hi Fast      RAM   
+ 41  D   1  COM          ----    Hi Fast      ROM1   
+ 19  B   1  COM          ----    Hi Fast      ROM2   
+----------------------------------------------------------------------
+
+<Note> Power : Hi = High
+               MH = Medium High
+               ML = Medium Low
+               Lo = Low
+
+
+
+Bidir_Signal_List
+~~~~~~~~~~~~~~~~~
+                 P R
+            Pin  r e O   Bidir 
+Pin Blk PTs Type e s E   Fanout Pwr Slew      Signal 
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+<Note> Power : Hi = High
+               MH = Medium High
+               ML = Medium Low
+               Lo = Low
+
+
+
+Buried_Signal_List
+~~~~~~~~~~~~~~~~~~
+                 P R
+            Pin  r e O   Node 
+#Mc Blk PTs Type e s E   Fanout Pwr Slew      Signal 
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+
+<Note> Power : Hi = High
+               MH = Medium High
+               ML = Medium Low
+               Lo = Low
+
+
+
+
+Signals_Fanout_List
+~~~~~~~~~~~~~~~~~~~
+Signal Source  :    Fanout List
+-----------------------------------------------------------------------------
+        A11{ B}:           ROM1{ D}             IO{ C}           ROM2{ B}
+        A12{ B}:           ROM1{ D}             IO{ C}           ROM2{ B}
+        A13{ B}:           ROM1{ D}             IO{ C}           ROM2{ B}
+               :            RAM{ A}
+        A14{ B}:           ROM1{ D}             IO{ C}           ROM2{ B}
+               :            RAM{ A}
+        A15{ B}:           ROM1{ D}             IO{ C}           ROM2{ B}
+               :            RAM{ A}
+-----------------------------------------------------------------------------
+
+<Note> {.} : Indicates block location of signal
+
+
+Set_Reset_Summary
+~~~~~~~~~~~~~~~~~
+
+Block  A
+block level set pt   : 
+block level reset pt : 
+Equations :
+|     |     |Block|Block| Signal
+| Reg |Mode |Set  |Reset| Name
++-----+-----+-----+-----+------------------------
+|     |     |     |     | RAM
+|     |     |     |     | A15
+|     |     |     |     | A14
+|     |     |     |     | A13
+|     |     |     |     | A12
+|     |     |     |     | A11
+|     |     |     |     | A10
+
+
+Block  B
+block level set pt   : 
+block level reset pt : 
+Equations :
+|     |     |Block|Block| Signal
+| Reg |Mode |Set  |Reset| Name
++-----+-----+-----+-----+------------------------
+|     |     |     |     | ROM2
+
+
+Block  C
+block level set pt   : 
+block level reset pt : 
+Equations :
+|     |     |Block|Block| Signal
+| Reg |Mode |Set  |Reset| Name
++-----+-----+-----+-----+------------------------
+|     |     |     |     | IO
+
+
+Block  D
+block level set pt   : 
+block level reset pt : 
+Equations :
+|     |     |Block|Block| Signal
+| Reg |Mode |Set  |Reset| Name
++-----+-----+-----+-----+------------------------
+|     |     |     |     | ROM1
+
+
+<Note> (S) means the macrocell is configured in synchronous mode
+       i.e. it uses the block-level set and reset pt.
+       (A) means the macrocell is configured in asynchronous mode
+       i.e. it can have its independant set or reset pt.
+       (BS) means the block-level set pt is selected.
+       (BR) means the block-level reset pt is selected.
+
+
+
+
+BLOCK_A_LOGIC_ARRAY_FANIN
+~~~~~~~~~~~~~~~~~~~~~~~~~
+CSM             Signal    Source        CSM             Signal    Source
+------------------------------------    ------------------------------------
+mx A0             ...           ...     mx A17             ...           ...
+mx A1             ...           ...     mx A18             ...           ...
+mx A2             ...           ...     mx A19             ...           ...
+mx A3             A14         pin 6     mx A20             ...           ...
+mx A4             ...           ...     mx A21             ...           ...
+mx A5             ...           ...     mx A22             ...           ...
+mx A6             ...           ...     mx A23             ...           ...
+mx A7             ...           ...     mx A24             ...           ...
+mx A8             ...           ...     mx A25             ...           ...
+mx A9             ...           ...     mx A26             A15         pin 7
+mx A10             ...           ...     mx A27             ...           ...
+mx A11             ...           ...     mx A28             ...           ...
+mx A12             A13         pin 5     mx A29             ...           ...
+mx A13             ...           ...     mx A30             ...           ...
+mx A14             ...           ...     mx A31             ...           ...
+mx A15             ...           ...     mx A32             ...           ...
+mx A16             ...           ...
+----------------------------------------------------------------------------
+
+
+BLOCK_B_LOGIC_ARRAY_FANIN
+~~~~~~~~~~~~~~~~~~~~~~~~~
+CSM             Signal    Source        CSM             Signal    Source
+------------------------------------    ------------------------------------
+mx B0             ...           ...     mx B17             ...           ...
+mx B1             A11         pin 3     mx B18             ...           ...
+mx B2             ...           ...     mx B19             ...           ...
+mx B3             A14         pin 6     mx B20             ...           ...
+mx B4             ...           ...     mx B21             ...           ...
+mx B5             ...           ...     mx B22             ...           ...
+mx B6             ...           ...     mx B23             ...           ...
+mx B7             ...           ...     mx B24             ...           ...
+mx B8             ...           ...     mx B25             ...           ...
+mx B9             ...           ...     mx B26             A15         pin 7
+mx B10             ...           ...     mx B27             ...           ...
+mx B11             ...           ...     mx B28             ...           ...
+mx B12             A12         pin 4     mx B29             ...           ...
+mx B13             ...           ...     mx B30             ...           ...
+mx B14             A13         pin 5     mx B31             ...           ...
+mx B15             ...           ...     mx B32             ...           ...
+mx B16             ...           ...
+----------------------------------------------------------------------------
+
+
+BLOCK_C_LOGIC_ARRAY_FANIN
+~~~~~~~~~~~~~~~~~~~~~~~~~
+CSM             Signal    Source        CSM             Signal    Source
+------------------------------------    ------------------------------------
+mx C0             ...           ...     mx C17             ...           ...
+mx C1             A11         pin 3     mx C18             ...           ...
+mx C2             ...           ...     mx C19             ...           ...
+mx C3             A14         pin 6     mx C20             ...           ...
+mx C4             ...           ...     mx C21             ...           ...
+mx C5             ...           ...     mx C22             ...           ...
+mx C6             ...           ...     mx C23             ...           ...
+mx C7             ...           ...     mx C24             ...           ...
+mx C8             ...           ...     mx C25             ...           ...
+mx C9             ...           ...     mx C26             A15         pin 7
+mx C10             ...           ...     mx C27             ...           ...
+mx C11             ...           ...     mx C28             ...           ...
+mx C12             A12         pin 4     mx C29             ...           ...
+mx C13             ...           ...     mx C30             ...           ...
+mx C14             A13         pin 5     mx C31             ...           ...
+mx C15             ...           ...     mx C32             ...           ...
+mx C16             ...           ...
+----------------------------------------------------------------------------
+
+
+BLOCK_D_LOGIC_ARRAY_FANIN
+~~~~~~~~~~~~~~~~~~~~~~~~~
+CSM             Signal    Source        CSM             Signal    Source
+------------------------------------    ------------------------------------
+mx D0             ...           ...     mx D17             ...           ...
+mx D1             A11         pin 3     mx D18             ...           ...
+mx D2             ...           ...     mx D19             ...           ...
+mx D3             A14         pin 6     mx D20             ...           ...
+mx D4             ...           ...     mx D21             ...           ...
+mx D5             ...           ...     mx D22             ...           ...
+mx D6             ...           ...     mx D23             ...           ...
+mx D7             ...           ...     mx D24             ...           ...
+mx D8             ...           ...     mx D25             ...           ...
+mx D9             ...           ...     mx D26             A15         pin 7
+mx D10             ...           ...     mx D27             ...           ...
+mx D11             ...           ...     mx D28             ...           ...
+mx D12             A12         pin 4     mx D29             ...           ...
+mx D13             ...           ...     mx D30             ...           ...
+mx D14             A13         pin 5     mx D31             ...           ...
+mx D15             ...           ...     mx D32             ...           ...
+mx D16             ...           ...
+----------------------------------------------------------------------------
+
+<Note> CSM indicates the mux inputs from the Central Switch Matrix.
+<Note> Source indicates where the signal comes from (pin or macrocell). 
+
+
+
+
+PostFit_Equations
+~~~~~~~~~~~~~~~~~
+
+Title:  Decode of addresses and IO with VDA and VPA assertion.
+
+ P-Terms   Fan-in  Fan-out  Type  Name (attributes)
+---------  ------  -------  ----  -----------------
+   1          5        1    Pin   ROM1- 
+   1          5        1    Pin   IO- 
+   1          5        1    Pin   ROM2- 
+   1          3        1    Pin   RAM 
+=========
+   4                 P-Term Total: 4
+                       Total Pins: 10
+                      Total Nodes: 0
+            Average P-Term/Output: 1
+
+
+Equations:
+
+!ROM1 = (A15 & A14 & A13 & A12 & A11);
+
+!IO = (A15 & A14 & A13 & !A12 & !A11);
+
+!ROM2 = (A15 & A14 & A13 & A12 & !A11);
+
+RAM = (A15 & A14 & A13);
+
+
+Reverse-Polarity Equations:
+

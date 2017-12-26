@@ -1,0 +1,31 @@
+#$ TOOL ispLEVER Classic 2.0.00.17.20.15
+#$ DATE Sun Dec 24 11:09:15 2017
+#$ TITLE Decode of addresses and IO with VDA and VPA assertion.
+#$ MODULE address_decoding
+#$ JEDECFILE address_decoding
+#$ PINS 10 A10:2 A11:3 A12:4 A13:5 A14:6 A15:7 ROM1 IO ROM2 RAM
+
+.model address_decoding
+.inputs A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF
+.outputs ROM1 IO ROM2 RAM
+.names A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF ROM1
+0---- 1
+-0--- 1
+--0-- 1
+---0- 1
+----0 1
+.names A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF IO
+0---- 1
+-0--- 1
+--0-- 1
+---1- 1
+----1 1
+.names A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF ROM2
+0---- 1
+-0--- 1
+--0-- 1
+---0- 1
+----1 1
+.names A15.BLIF A14.BLIF A13.BLIF RAM
+111 1
+.end
