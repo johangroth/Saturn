@@ -104,7 +104,7 @@ D[0..7]
 Text Label 1100 950  0    60   ~ 0
 A[0..18]
 Text HLabel 1100 950  0    60   Output ~ 0
-A[0..18]
+A[0..19]
 $Comp
 L AS7C34096A U2
 U 1 1 5965591C
@@ -414,7 +414,7 @@ A14
 Text Label 4300 1100 0    60   ~ 0
 A[0..18]
 Text HLabel 4300 1100 0    60   Output ~ 0
-A[0..18]
+A[0..19]
 Wire Wire Line
 	5125 1525 4800 1525
 Wire Wire Line
@@ -538,9 +538,9 @@ Wire Wire Line
 Wire Wire Line
 	3375 1125 3850 1125
 Wire Wire Line
-	3850 3850 3850 1125
+	3850 1125 3850 3850
 Wire Wire Line
-	1300 3850 3850 3850
+	3850 3850 1300 3850
 Connection ~ 2600 3850
 Wire Wire Line
 	1900 1125 1300 1125
@@ -942,10 +942,10 @@ Text HLabel 6350 2600 2    60   Input ~ 0
 Wire Wire Line
 	6050 2725 6350 2725
 $Comp
-L VCC #PWR?
+L VCC #PWR2
 U 1 1 5A3F84C5
 P 6350 2725
-F 0 "#PWR?" H 6350 2575 50  0001 C CNN
+F 0 "#PWR2" H 6350 2575 50  0001 C CNN
 F 1 "VCC" H 6350 2875 50  0000 C CNN
 F 2 "" H 6350 2725 50  0001 C CNN
 F 3 "" H 6350 2725 50  0001 C CNN

@@ -8,18 +8,34 @@
 ; Source file saturn.tt4
 ; FITTER-generated Placements.
 ; DEVICE   mach463a
-; DATE     Sun Dec 24 11:09:40 2017
+; DATE     Sun Dec 31 10:52:54 2017
 
 
-Pin   2  A10
-Pin   3  A11
-Pin   4  A12
-Pin   5  A13
-Pin   6  A14
+Pin   28  A5
+Pin   27  A6
+Pin   25  A7
+Pin   20  A8
+Pin   18  A9
+Pin   17  A10
+Pin   16  A11
+Pin   15  A12
+Pin   14  A13
+Pin   9  A14
 Pin   7  A15
-Pin   41  ROM1 Comb ; S6=1  S9=1  Pair 117
-Pin   26  IO Comb ; S6=1  S9=1  Pair 93
-Pin   19  ROM2 Comb ; S6=1  S9=1  Pair 69
-Pin   9  RAM Comb ; S6=1  S9=1  Pair 45
+Pin   6  A16
+Pin   5  A17
+Pin   3  A18
+Pin   33  A19
+Pin   29  RW
+Pin   24  ROM Comb ; S6=1  S9=1  Pair 99
+Pin   41  RAM1 Comb ; S6=1  S9=1  Pair 117
+Pin   8  RAM2 Comb ; S6=1  S9=1  Pair 57
+Pin   2  DUART Comb ; S6=1  S9=1  Pair 51
+Pin   26  VIA1 Comb ; S6=1  S9=1  Pair 93
+Pin   4  VIA2 Comb ; S6=1  S9=1  Pair 45
+Pin   43  RTC Comb ; S6=1  S9=1  Pair 123
+Pin   21  MRD Comb ; S6=1  S9=1  Pair 75
+Pin   19  MWR Comb ; S6=1  S9=1  Pair 69
+Pin   11  CLK
 ; Unused Pins & Nodes
 ; -> None Found.

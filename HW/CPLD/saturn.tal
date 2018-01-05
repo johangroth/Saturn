@@ -32,7 +32,12 @@ TCR, Clocked Output-to-Register Time,
                     TSU       TCO       TPD       TCR
                   #passes   #passes   #passes   #passes
 SIGNAL NAME       min  max  min  max  min  max  min  max
-            ROM1  ..   ..   ..   ..    1    1   ..   ..   
-              IO  ..   ..   ..   ..    1    1   ..   ..   
-            ROM2  ..   ..   ..   ..    1    1   ..   ..   
-             RAM  ..   ..   ..   ..    1    1   ..   ..   
+             ROM  ..   ..   ..   ..    1    1   ..   ..   
+            RAM1  ..   ..   ..   ..    1    1   ..   ..   
+            RAM2  ..   ..   ..   ..    1    1   ..   ..   
+           DUART  ..   ..   ..   ..    1    1   ..   ..   
+            VIA1  ..   ..   ..   ..    1    1   ..   ..   
+            VIA2  ..   ..   ..   ..    1    1   ..   ..   
+             RTC  ..   ..   ..   ..    1    1   ..   ..   
+             MRD  ..   ..   ..   ..    1    1   ..   ..   
+             MWR  ..   ..   ..   ..    1    1   ..   ..   

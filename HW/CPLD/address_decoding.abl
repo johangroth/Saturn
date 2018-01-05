@@ -2,27 +2,64 @@ MODULE Address_Decoding
 
 TITLE 'Decode of addresses and IO with VDA and VPA assertion.'
 
-	A10..A15 pin 2,3,4,5,6,7 istype 'com';
-	" A15,A14,A13,A12,A11,A10 pin;
-	ROM1,IO,ROM2,RAM	pin istype 'com';
+	A5..A19  pin;
+	A16..A18 pin;
+	D0..D3   pin;
+	RW	 pin;
+	VDA	 pin;
+	VPA	 pin;
+	ROM	 pin istype 'com';
+	RAM1	 pin istype 'com';
+	RAM2	 pin istype 'com';
+	DUART	 pin istype 'com';
+	VIA1	 pin istype 'com';
+	VIA2	 pin istype 'com';
+	RTC	 pin istype 'com';
+	MRD	 pin istype 'com';
+	MWR	 pin istype 'com';
+	CLK	 pin 11;
+
 	H,L,X	= 1,0,.X.;
-	Address	= [A15,A14,A13,A12, A11,A10,X,X, X,X,X,X, X,X,X,X];
+	Address	= [D3,D2,D1,D0, A15,A14,A13,A12, A11,A10,A9,A8, A7,A6,A5,X, X,X,X,X];
+	valid_address node istype 'com';
 
 equations
-	!RAM	= (Address <= ^hDFFF);
-	!IO	= (Address >= ^hE000) & (Address <= ^hE7FF);
-	!ROM2	= (Address >= ^hF000) & (Address <= ^hF7FF);
-	!ROM1	= (Address >= ^hF800);
+	valid_address	= VDA # VPA;
+	
+	
+	!RAM1	= ((Address >= ^h000000) & (Address <= ^h0002ff)) # ((Address >= ^h000400) & (Address <=  ^h007FFF)) #
+		  ((Address >= ^h010000) & (Address <= ^h07ffff));
+	!RAM2	= (Address >= ^h080000) & (Address <= ^h0FFFFF);
+	!VIA1	= (Address >= ^h000300) & (Address <= ^h00031F);
+	!VIA2	= (Address >= ^h000320) & (Address <= ^h00033F);
+	!RTC	= (Address >= ^h000340) & (Address <= ^h00035F);
+	!DUART  = (Address >= ^h000360) & (Address <= ^h00037F);
+	!ROM	= (Address >= ^h008000) & (Address <= ^h00FFFF);
+
+	!MWR	= !RW & CLK;
+	!MRD	= RW;
+
 
 test_vectors
-		(Address -> [ROM1,ROM2,IO,RAM])
-		  ^h0000 -> [ H, H, H, L ];
-                  ^h4000 -> [ H, H, H, L ];
-                  ^h8000 -> [ H, H, H, L ];
-                  ^hC000 -> [ H, H, H, L ];
-                  ^hE000 -> [ H, H, L, H ];
-                  ^hE800 -> [ H, H, H, H ];
-                  ^hF000 -> [ H, L, H, H ];
-                  ^hF800 -> [ L, H, H, H ];
+		(Address -> [	RAM1,	RAM2,	DUART,	VIA1,	VIA2,	RTC,	ROM	])
+		^h000000 -> [ 	L, 	H, 	H, 	H, 	H,	H,	H	];
+		^h000300 -> [	H,	H,	H,	L,	H,	H,	H	];
+		^H00031F -> [	H,	H,	H,	L,	H,	H,	H	];
+		^H000320 -> [	H,	H,	H,	H,	L,	H,	H	];
+		^H00033f -> [	H,	H,	H,	H,	L,	H,	H	];
+		^h000340 -> [	H,	H,	L,	H,	H,	H,	H	];
+		^h00035f -> [	H,	H,	L,	H,	H,	H,	H	];
+		^h000360 -> [	H,	H,	H,	H,	H,	L,	H	];
+		^h00037f -> [	H,	H,	H,	H,	H,	L,	H	];
+		^h000400 -> [ 	L, 	H, 	H, 	H, 	H,	H,	H	];
+		^h001000 -> [ 	L, 	H, 	H, 	H, 	H,	H,	H	];
+		^h007FFF -> [	L,	H,	H,	H,	H,	H,	H	];
+		^h008000 -> [	H,	H,	H,	H,	H,	H,	L	];
+		^h00FFFF -> [	H,	H,	H,	H,	H,	H,	L	];
+		^h010000 -> [ 	L,	H,	H,	H,	H,	H,	H	];
+		^h020000 -> [ 	L,	H,	H,	H,	H,	H,	H	];
+		^H07FFFF -> [	L,	H,	H,	H,	H,	H,	H	];
+		^h080000 -> [	H,	L,	H,	H,	H,	H,	H	];
+		^h0FFFFF -> [	H,	L,	H,	H,	H,	H,	H	];
 END
 

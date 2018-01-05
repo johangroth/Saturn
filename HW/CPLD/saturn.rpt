@@ -12,7 +12,7 @@ Project_Summary
 
 Project Name :          saturn
 Project Path :          Z:\Saturn\HW\CPLD
-Project Fitted on :     Sun Dec 24 11:09:40 2017
+Project Fitted on :     Sun Dec 31 10:52:54 2017
 
 Device :                M4A5-64/32
 Package :               44PLCC
@@ -37,11 +37,11 @@ Fitter                                   00:00:00
 
 Design_Summary
 ~~~~~~~~~~~~~~
-  Total Input Pins :                  6
-  Total Output Pins :                 4
+  Total Input Pins :                 17
+  Total Output Pins :                 9
   Total Bidir I/O Pins :              0
   Total Flip-Flops :                  0
-  Total Product Terms :               4
+  Total Product Terms :              11
   Total Reserved Pins :               0
   Total Reserved Blocks :             0
 
@@ -52,15 +52,15 @@ Device_Resource_Summary
                                Available  Used  Available  Utilization
 Dedicated Pins
   Input-Only Pins                ..       ..     ..    -->    ..
-  Clock/Input Pins                2        0      2    -->     0%
-I/O Pins                         32       10     22    -->    31%
-Logic Macrocells                 64        4     60    -->     6%
+  Clock/Input Pins                2        2      0    -->   100%
+I/O Pins                         32       24      8    -->    75%
+Logic Macrocells                 64        9     55    -->    14%
   Input Registers                32        0     32    -->     0%
   Unusable Macrocells            ..        0     ..
 
-CSM Outputs/Total Block Inputs  132       18    114    -->    13%
-Logical Product Terms           320        4    316    -->     1%
-Product Term Clusters            64        0     64    -->     0%
+CSM Outputs/Total Block Inputs  132       47     85    -->    35%
+Logical Product Terms           320       11    309    -->     3%
+Product Term Clusters            64        1     63    -->     1%
 
 
 Blocks_Resource_Summary
@@ -71,10 +71,10 @@ Blocks_Resource_Summary
 ---------------------------------------------------------------------------------
 Maximum     33      8      8     --     --         16       80       16       -
 ---------------------------------------------------------------------------------
-Block  A     3      7      0      1      0         15        1       16       Hi 
-Block  B     5      1      0      1      0         15        1       16       Hi 
-Block  C     5      1      0      1      0         15        1       16       Hi 
-Block  D     5      1      0      1      0         15        1       16       Hi 
+Block  A    15      8      0      3      0         13        3       16       Hi 
+Block  B     2      8      0      2      0         14        2       16       Hi 
+Block  C    15      6      0      2      0         14        2       16       Hi 
+Block  D    15      2      0      2      0         14        4       15       Hi 
 ---------------------------------------------------------------------------------
 
 <Note> Four rightmost columns above reflect last status of the placement process.
@@ -164,38 +164,38 @@ Pinout_Listing
 Pin No| Type |Pad |Pin     | Signal name
 ---------------------------------------------------------------
     1 |  GND |    |        |
-    2 |  I_O | A7 |   *    |A10
-3     |  I_O | A6 |   *    |A11
-4     |  I_O | A5 |   *    |A12
-5     |  I_O | A4 |   *    |A13
-6     |  I_O | A3 |   *    |A14
-7     |  I_O | A2 |   *    |A15
-8     |  I_O | A1 |        |
-9     |  I_O | A0 |        |RAM
+    2 |  I_O | A7 |        |DUART
+3     |  I_O | A6 |        |A18
+4     |  I_O | A5 |        |VIA2
+5     |  I_O | A4 |        |A17
+6     |  I_O | A3 |        |A16
+7     |  I_O | A2 |        |A15
+8     |  I_O | A1 |        |RAM2
+9     |  I_O | A0 |        |A14
 10    | JTAG |    |        |
-11    | CkIn |    |        |
+11    | CkIn |    |   *    |CLK
 12    |  GND |    |        |
 13    | JTAG |    |        |
-14    |  I_O | B0 |        |
-15    |  I_O | B1 |        |
-16    |  I_O | B2 |        |
-17    |  I_O | B3 |        |
-18    |  I_O | B4 |        |
-19    |  I_O | B5 |        |ROM2
-20    |  I_O | B6 |        |
-21    |  I_O | B7 |        |
+14    |  I_O | B0 |        |A13
+15    |  I_O | B1 |        |A12
+16    |  I_O | B2 |        |A11
+17    |  I_O | B3 |        |A10
+18    |  I_O | B4 |        |A9
+19    |  I_O | B5 |        |MWR
+20    |  I_O | B6 |        |A8
+21    |  I_O | B7 |        |MRD
 22    |  Vcc |    |        |
 23    |  GND |    |        |
-24    |  I_O | C7 |        |
-25    |  I_O | C6 |        |
-26    |  I_O | C5 |        |IO
-27    |  I_O | C4 |        |
-28    |  I_O | C3 |        |
-29    |  I_O | C2 |        |
+24    |  I_O | C7 |        |ROM
+25    |  I_O | C6 |        |A7
+26    |  I_O | C5 |        |VIA1
+27    |  I_O | C4 |        |A6
+28    |  I_O | C3 |        |A5
+29    |  I_O | C2 |        |RW
 30    |  I_O | C1 |        |
 31    |  I_O | C0 |        |
 32    | JTAG |    |        |
-33    | CkIn |    |        |
+33    | CkIn |    |        |A19
 34    |  GND |    |        |
 35    | JTAG |    |        |
 36    |  I_O | D0 |        |
@@ -203,9 +203,9 @@ Pin No| Type |Pad |Pin     | Signal name
 38    |  I_O | D2 |        |
 39    |  I_O | D3 |        |
 40    |  I_O | D4 |        |
-41    |  I_O | D5 |        |ROM1
+41    |  I_O | D5 |        |RAM1
 42    |  I_O | D6 |        |
-43    |  I_O | D7 |        |
+43    |  I_O | D7 |        |RTC
 44    |  Vcc |    |        |
 
 ---------------------------------------------------------------------------
@@ -227,12 +227,23 @@ Input_Signal_List
             Pin  r e O   Input 
 Pin Blk PTs Type e s E   Fanout Pwr Slew      Signal 
 ----------------------------------------------------------------------
-  2  A   .  I/O          ----    Hi Fast      A10   
-  3  A   .  I/O          -BCD    Hi Fast      A11   
-  4  A   .  I/O          -BCD    Hi Fast      A12   
-  5  A   .  I/O          ABCD    Hi Fast      A13   
-  6  A   .  I/O          ABCD    Hi Fast      A14   
-  7  A   .  I/O          ABCD    Hi Fast      A15   
+ 17  B   .  I/O          A-CD    Hi Fast      A10   
+ 16  B   .  I/O          A-CD    Hi Fast      A11   
+ 15  B   .  I/O          A-CD    Hi Fast      A12   
+ 14  B   .  I/O          A-CD    Hi Fast      A13   
+  9  A   .  I/O          A-CD    Hi Fast      A14   
+  7  A   .  I/O          A-CD    Hi Fast      A15   
+  6  A   .  I/O          A-CD    Hi Fast      A16   
+  5  A   .  I/O          A-CD    Hi Fast      A17   
+  3  A   .  I/O          A-CD    Hi Fast      A18   
+ 28  C   .  I/O          A-CD    Hi Fast      A5   
+ 27  C   .  I/O          A-CD    Hi Fast      A6   
+ 25  C   .  I/O          A-CD    Hi Fast      A7   
+ 20  B   .  I/O          A-CD    Hi Fast      A8   
+ 18  B   .  I/O          A-CD    Hi Fast      A9   
+ 29  C   .  I/O          -B--    Hi Fast      RW   
+ 11  .   . Ck/I          -B--    -  Fast      CLK   
+ 33  .   . Ck/I          A-CD    -  Fast      A19   
 ----------------------------------------------------------------------
 
 <Note> Power : Hi = High
@@ -248,10 +259,15 @@ Output_Signal_List
             Pin  r e O   Output 
 Pin Blk PTs Type e s E   Fanout Pwr Slew      Signal 
 ----------------------------------------------------------------------
- 26  C   1  COM          ----    Hi Fast      IO   
-  9  A   1  COM          ----    Hi Fast      RAM   
- 41  D   1  COM          ----    Hi Fast      ROM1   
- 19  B   1  COM          ----    Hi Fast      ROM2   
+  2  A   1  COM          ----    Hi Fast      DUART   
+ 21  B   1  COM          ----    Hi Fast      MRD   
+ 19  B   1  COM          ----    Hi Fast      MWR   
+ 41  D   3  COM          ----    Hi Fast      RAM1   
+  8  A   1  COM          ----    Hi Fast      RAM2   
+ 24  C   1  COM          ----    Hi Fast      ROM   
+ 43  D   1  COM          ----    Hi Fast      RTC   
+ 26  C   1  COM          ----    Hi Fast      VIA1   
+  4  A   1  COM          ----    Hi Fast      VIA2   
 ----------------------------------------------------------------------
 
 <Note> Power : Hi = High
@@ -296,14 +312,39 @@ Signals_Fanout_List
 ~~~~~~~~~~~~~~~~~~~
 Signal Source  :    Fanout List
 -----------------------------------------------------------------------------
-        A11{ B}:           ROM1{ D}             IO{ C}           ROM2{ B}
-        A12{ B}:           ROM1{ D}             IO{ C}           ROM2{ B}
-        A13{ B}:           ROM1{ D}             IO{ C}           ROM2{ B}
-               :            RAM{ A}
-        A14{ B}:           ROM1{ D}             IO{ C}           ROM2{ B}
-               :            RAM{ A}
-        A15{ B}:           ROM1{ D}             IO{ C}           ROM2{ B}
-               :            RAM{ A}
+         A5{ D}:          DUART{ A}           VIA1{ C}           VIA2{ A}
+               :            RTC{ D}
+         A6{ D}:          DUART{ A}           VIA1{ C}           VIA2{ A}
+               :            RTC{ D}
+         A7{ D}:          DUART{ A}           VIA1{ C}           VIA2{ A}
+               :            RTC{ D}
+         A8{ C}:           RAM1{ D}          DUART{ A}           VIA1{ C}
+               :           VIA2{ A}            RTC{ D}
+         A9{ C}:           RAM1{ D}          DUART{ A}           VIA1{ C}
+               :           VIA2{ A}            RTC{ D}
+        A10{ C}:           RAM1{ D}          DUART{ A}           VIA1{ C}
+               :           VIA2{ A}            RTC{ D}
+        A11{ C}:           RAM1{ D}          DUART{ A}           VIA1{ C}
+               :           VIA2{ A}            RTC{ D}
+        A12{ C}:           RAM1{ D}          DUART{ A}           VIA1{ C}
+               :           VIA2{ A}            RTC{ D}
+        A13{ C}:           RAM1{ D}          DUART{ A}           VIA1{ C}
+               :           VIA2{ A}            RTC{ D}
+        A14{ B}:           RAM1{ D}          DUART{ A}           VIA1{ C}
+               :           VIA2{ A}            RTC{ D}
+        A15{ B}:            ROM{ C}           RAM1{ D}          DUART{ A}
+               :           VIA1{ C}           VIA2{ A}            RTC{ D}
+        A16{ B}:            ROM{ C}           RAM1{ D}          DUART{ A}
+               :           VIA1{ C}           VIA2{ A}            RTC{ D}
+        A17{ B}:            ROM{ C}           RAM1{ D}          DUART{ A}
+               :           VIA1{ C}           VIA2{ A}            RTC{ D}
+        A18{ B}:            ROM{ C}           RAM1{ D}          DUART{ A}
+               :           VIA1{ C}           VIA2{ A}            RTC{ D}
+        A19{. }:            ROM{ C}           RAM1{ D}           RAM2{ A}
+               :          DUART{ A}           VIA1{ C}           VIA2{ A}
+               :            RTC{ D}
+         RW{ D}:            MRD{ B}            MWR{ B}
+        CLK{. }:            MWR{ B}
 -----------------------------------------------------------------------------
 
 <Note> {.} : Indicates block location of signal
@@ -319,13 +360,14 @@ Equations :
 |     |     |Block|Block| Signal
 | Reg |Mode |Set  |Reset| Name
 +-----+-----+-----+-----+------------------------
-|     |     |     |     | RAM
+|     |     |     |     | VIA2
+|     |     |     |     | DUART
+|     |     |     |     | RAM2
+|     |     |     |     | A18
+|     |     |     |     | A17
+|     |     |     |     | A16
 |     |     |     |     | A15
 |     |     |     |     | A14
-|     |     |     |     | A13
-|     |     |     |     | A12
-|     |     |     |     | A11
-|     |     |     |     | A10
 
 
 Block  B
@@ -335,7 +377,14 @@ Equations :
 |     |     |Block|Block| Signal
 | Reg |Mode |Set  |Reset| Name
 +-----+-----+-----+-----+------------------------
-|     |     |     |     | ROM2
+|     |     |     |     | MWR
+|     |     |     |     | MRD
+|     |     |     |     | A13
+|     |     |     |     | A12
+|     |     |     |     | A11
+|     |     |     |     | A10
+|     |     |     |     | A9
+|     |     |     |     | A8
 
 
 Block  C
@@ -345,7 +394,12 @@ Equations :
 |     |     |Block|Block| Signal
 | Reg |Mode |Set  |Reset| Name
 +-----+-----+-----+-----+------------------------
-|     |     |     |     | IO
+|     |     |     |     | VIA1
+|     |     |     |     | ROM
+|     |     |     |     | A7
+|     |     |     |     | A6
+|     |     |     |     | A5
+|     |     |     |     | RW
 
 
 Block  D
@@ -355,7 +409,8 @@ Equations :
 |     |     |Block|Block| Signal
 | Reg |Mode |Set  |Reset| Name
 +-----+-----+-----+-----+------------------------
-|     |     |     |     | ROM1
+|     |     |     |     | RAM1
+|     |     |     |     | RTC
 
 
 <Note> (S) means the macrocell is configured in synchronous mode
@@ -372,21 +427,21 @@ BLOCK_A_LOGIC_ARRAY_FANIN
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 CSM             Signal    Source        CSM             Signal    Source
 ------------------------------------    ------------------------------------
-mx A0             ...           ...     mx A17             ...           ...
-mx A1             ...           ...     mx A18             ...           ...
-mx A2             ...           ...     mx A19             ...           ...
-mx A3             A14         pin 6     mx A20             ...           ...
-mx A4             ...           ...     mx A21             ...           ...
+mx A0             ...           ...     mx A17             A14         pin 9
+mx A1             A18         pin 3     mx A18             ...           ...
+mx A2             ...           ...     mx A19             A16         pin 6
+mx A3             A13        pin 14     mx A20             A10        pin 17
+mx A4              A7        pin 25     mx A21              A5        pin 28
 mx A5             ...           ...     mx A22             ...           ...
-mx A6             ...           ...     mx A23             ...           ...
+mx A6             A11        pin 16     mx A23             A19        pin 33
 mx A7             ...           ...     mx A24             ...           ...
-mx A8             ...           ...     mx A25             ...           ...
-mx A9             ...           ...     mx A26             A15         pin 7
+mx A8              A6        pin 27     mx A25             ...           ...
+mx A9              A9        pin 18     mx A26             A15         pin 7
 mx A10             ...           ...     mx A27             ...           ...
-mx A11             ...           ...     mx A28             ...           ...
-mx A12             A13         pin 5     mx A29             ...           ...
+mx A11              A8        pin 20     mx A28             ...           ...
+mx A12             A12        pin 15     mx A29             ...           ...
 mx A13             ...           ...     mx A30             ...           ...
-mx A14             ...           ...     mx A31             ...           ...
+mx A14             A17         pin 5     mx A31             ...           ...
 mx A15             ...           ...     mx A32             ...           ...
 mx A16             ...           ...
 ----------------------------------------------------------------------------
@@ -397,20 +452,20 @@ BLOCK_B_LOGIC_ARRAY_FANIN
 CSM             Signal    Source        CSM             Signal    Source
 ------------------------------------    ------------------------------------
 mx B0             ...           ...     mx B17             ...           ...
-mx B1             A11         pin 3     mx B18             ...           ...
-mx B2             ...           ...     mx B19             ...           ...
-mx B3             A14         pin 6     mx B20             ...           ...
+mx B1             ...           ...     mx B18             ...           ...
+mx B2             CLK        pin 11     mx B19             ...           ...
+mx B3              RW        pin 29     mx B20             ...           ...
 mx B4             ...           ...     mx B21             ...           ...
 mx B5             ...           ...     mx B22             ...           ...
 mx B6             ...           ...     mx B23             ...           ...
 mx B7             ...           ...     mx B24             ...           ...
 mx B8             ...           ...     mx B25             ...           ...
-mx B9             ...           ...     mx B26             A15         pin 7
+mx B9             ...           ...     mx B26             ...           ...
 mx B10             ...           ...     mx B27             ...           ...
 mx B11             ...           ...     mx B28             ...           ...
-mx B12             A12         pin 4     mx B29             ...           ...
+mx B12             ...           ...     mx B29             ...           ...
 mx B13             ...           ...     mx B30             ...           ...
-mx B14             A13         pin 5     mx B31             ...           ...
+mx B14             ...           ...     mx B31             ...           ...
 mx B15             ...           ...     mx B32             ...           ...
 mx B16             ...           ...
 ----------------------------------------------------------------------------
@@ -420,21 +475,21 @@ BLOCK_C_LOGIC_ARRAY_FANIN
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 CSM             Signal    Source        CSM             Signal    Source
 ------------------------------------    ------------------------------------
-mx C0             ...           ...     mx C17             ...           ...
-mx C1             A11         pin 3     mx C18             ...           ...
-mx C2             ...           ...     mx C19             ...           ...
-mx C3             A14         pin 6     mx C20             ...           ...
-mx C4             ...           ...     mx C21             ...           ...
+mx C0             ...           ...     mx C17             A14         pin 9
+mx C1             A18         pin 3     mx C18             ...           ...
+mx C2             ...           ...     mx C19             A16         pin 6
+mx C3             A13        pin 14     mx C20             A10        pin 17
+mx C4              A7        pin 25     mx C21              A5        pin 28
 mx C5             ...           ...     mx C22             ...           ...
-mx C6             ...           ...     mx C23             ...           ...
+mx C6             A11        pin 16     mx C23             A19        pin 33
 mx C7             ...           ...     mx C24             ...           ...
-mx C8             ...           ...     mx C25             ...           ...
-mx C9             ...           ...     mx C26             A15         pin 7
+mx C8              A6        pin 27     mx C25             ...           ...
+mx C9              A9        pin 18     mx C26             A15         pin 7
 mx C10             ...           ...     mx C27             ...           ...
-mx C11             ...           ...     mx C28             ...           ...
-mx C12             A12         pin 4     mx C29             ...           ...
+mx C11              A8        pin 20     mx C28             ...           ...
+mx C12             A12        pin 15     mx C29             ...           ...
 mx C13             ...           ...     mx C30             ...           ...
-mx C14             A13         pin 5     mx C31             ...           ...
+mx C14             A17         pin 5     mx C31             ...           ...
 mx C15             ...           ...     mx C32             ...           ...
 mx C16             ...           ...
 ----------------------------------------------------------------------------
@@ -444,21 +499,21 @@ BLOCK_D_LOGIC_ARRAY_FANIN
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 CSM             Signal    Source        CSM             Signal    Source
 ------------------------------------    ------------------------------------
-mx D0             ...           ...     mx D17             ...           ...
-mx D1             A11         pin 3     mx D18             ...           ...
-mx D2             ...           ...     mx D19             ...           ...
-mx D3             A14         pin 6     mx D20             ...           ...
-mx D4             ...           ...     mx D21             ...           ...
+mx D0             ...           ...     mx D17             A14         pin 9
+mx D1             A18         pin 3     mx D18             ...           ...
+mx D2             ...           ...     mx D19             A16         pin 6
+mx D3             A13        pin 14     mx D20             A10        pin 17
+mx D4              A7        pin 25     mx D21              A5        pin 28
 mx D5             ...           ...     mx D22             ...           ...
-mx D6             ...           ...     mx D23             ...           ...
+mx D6             A11        pin 16     mx D23             A19        pin 33
 mx D7             ...           ...     mx D24             ...           ...
-mx D8             ...           ...     mx D25             ...           ...
-mx D9             ...           ...     mx D26             A15         pin 7
+mx D8              A6        pin 27     mx D25             ...           ...
+mx D9              A9        pin 18     mx D26             A15         pin 7
 mx D10             ...           ...     mx D27             ...           ...
-mx D11             ...           ...     mx D28             ...           ...
-mx D12             A12         pin 4     mx D29             ...           ...
+mx D11              A8        pin 20     mx D28             ...           ...
+mx D12             A12        pin 15     mx D29             ...           ...
 mx D13             ...           ...     mx D30             ...           ...
-mx D14             A13         pin 5     mx D31             ...           ...
+mx D14             A17         pin 5     mx D31             ...           ...
 mx D15             ...           ...     mx D32             ...           ...
 mx D16             ...           ...
 ----------------------------------------------------------------------------
@@ -476,26 +531,43 @@ Title:  Decode of addresses and IO with VDA and VPA assertion.
 
  P-Terms   Fan-in  Fan-out  Type  Name (attributes)
 ---------  ------  -------  ----  -----------------
-   1          5        1    Pin   ROM1- 
-   1          5        1    Pin   IO- 
-   1          5        1    Pin   ROM2- 
-   1          3        1    Pin   RAM 
+   1          5        1    Pin   ROM- 
+   3         12        1    Pin   RAM1 
+   1          1        1    Pin   RAM2 
+   1         15        1    Pin   DUART- 
+   1         15        1    Pin   VIA1- 
+   1         15        1    Pin   VIA2- 
+   1         15        1    Pin   RTC- 
+   1          1        1    Pin   MRD 
+   1          2        1    Pin   MWR- 
 =========
-   4                 P-Term Total: 4
-                       Total Pins: 10
+  11                 P-Term Total: 11
+                       Total Pins: 26
                       Total Nodes: 0
             Average P-Term/Output: 1
 
 
 Equations:
 
-!ROM1 = (A15 & A14 & A13 & A12 & A11);
+!ROM = (!A19 & !A18 & !A17 & !A16 & A15);
 
-!IO = (A15 & A14 & A13 & !A12 & !A11);
+RAM1 = (A19
+     # !A18 & !A17 & !A16 & A15
+     # !A18 & !A17 & !A16 & !A14 & !A13 & !A12 & !A11 & !A10 & A9 & A8);
 
-!ROM2 = (A15 & A14 & A13 & A12 & !A11);
+RAM2 = (!A19);
 
-RAM = (A15 & A14 & A13);
+!DUART = (!A19 & !A18 & !A17 & !A16 & !A15 & !A14 & !A13 & !A12 & !A11 & !A10 & A9 & A8 & !A7 & A6 & A5);
+
+!VIA1 = (!A19 & !A18 & !A17 & !A16 & !A15 & !A14 & !A13 & !A12 & !A11 & !A10 & A9 & A8 & !A7 & !A6 & !A5);
+
+!VIA2 = (!A19 & !A18 & !A17 & !A16 & !A15 & !A14 & !A13 & !A12 & !A11 & !A10 & A9 & A8 & !A7 & !A6 & A5);
+
+!RTC = (!A19 & !A18 & !A17 & !A16 & !A15 & !A14 & !A13 & !A12 & !A11 & !A10 & A9 & A8 & !A7 & A6 & !A5);
+
+MRD = (!RW);
+
+!MWR = (!RW & CLK);
 
 
 Reverse-Polarity Equations:

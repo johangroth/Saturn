@@ -1,30 +1,103 @@
 #$ TOOL ispLEVER Classic 2.0.00.17.20.15
-#$ DATE Sun Dec 24 11:09:15 2017
+#$ DATE Sun Dec 31 10:52:51 2017
 #$ TITLE Decode of addresses and IO with VDA and VPA assertion.
 #$ MODULE address_decoding
 #$ JEDECFILE address_decoding
-#$ PINS 10 A10:2 A11:3 A12:4 A13:5 A14:6 A15:7 ROM1 IO ROM2 RAM
+#$ PINS 32 A5 A6 A7 A8 A9 A10 A11 A12 A13 A14 A15 A16 A17 A18 A19 D0 D1 D2 D3 RW VDA VPA ROM RAM1 RAM2 \
+#  DUART VIA1 VIA2 RTC MRD MWR CLK:11
+#$ NODES 1 valid_address
 .model address_decoding
-.inputs A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF
-.outputs ROM1 IO ROM2 RAM
-.names A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF ROM1
-0---- 1
--0--- 1
---0-- 1
----0- 1
-----0 1
-.names A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF IO
-0---- 1
--0--- 1
---0-- 1
+.inputs VDA.BLIF VPA.BLIF A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF \
+A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF A7.BLIF A6.BLIF \
+A5.BLIF RW.BLIF CLK.BLIF
+.outputs ROM RAM1 RAM2 DUART VIA1 VIA2 RTC MRD MWR valid_address
+.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF ROM
+1---- 1
+-1--- 1
+--1-- 1
 ---1- 1
-----1 1
-.names A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF ROM2
-0---- 1
--0--- 1
---0-- 1
----0- 1
-----1 1
-.names A15.BLIF A14.BLIF A13.BLIF RAM
-111 1
+----0 1
+.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF \
+A11.BLIF A10.BLIF A9.BLIF A8.BLIF RAM1
+1----------- 1
+-0001------- 1
+-000-0000011 1
+.names A19.BLIF RAM2
+0 1
+.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF \
+A11.BLIF A10.BLIF A9.BLIF A8.BLIF A7.BLIF A6.BLIF A5.BLIF DUART
+1-------------- 1
+-1------------- 1
+--1------------ 1
+---1----------- 1
+----1---------- 1
+-----1--------- 1
+------1-------- 1
+-------1------- 1
+--------1------ 1
+---------1----- 1
+----------0---- 1
+-----------0--- 1
+------------1-- 1
+-------------0- 1
+--------------0 1
+.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF \
+A11.BLIF A10.BLIF A9.BLIF A8.BLIF A7.BLIF A6.BLIF A5.BLIF VIA1
+1-------------- 1
+-1------------- 1
+--1------------ 1
+---1----------- 1
+----1---------- 1
+-----1--------- 1
+------1-------- 1
+-------1------- 1
+--------1------ 1
+---------1----- 1
+----------0---- 1
+-----------0--- 1
+------------1-- 1
+-------------1- 1
+--------------1 1
+.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF \
+A11.BLIF A10.BLIF A9.BLIF A8.BLIF A7.BLIF A6.BLIF A5.BLIF VIA2
+1-------------- 1
+-1------------- 1
+--1------------ 1
+---1----------- 1
+----1---------- 1
+-----1--------- 1
+------1-------- 1
+-------1------- 1
+--------1------ 1
+---------1----- 1
+----------0---- 1
+-----------0--- 1
+------------1-- 1
+-------------1- 1
+--------------0 1
+.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF \
+A11.BLIF A10.BLIF A9.BLIF A8.BLIF A7.BLIF A6.BLIF A5.BLIF RTC
+1-------------- 1
+-1------------- 1
+--1------------ 1
+---1----------- 1
+----1---------- 1
+-----1--------- 1
+------1-------- 1
+-------1------- 1
+--------1------ 1
+---------1----- 1
+----------0---- 1
+-----------0--- 1
+------------1-- 1
+-------------0- 1
+--------------1 1
+.names RW.BLIF MRD
+0 1
+.names RW.BLIF CLK.BLIF MWR
+1- 1
+-0 1
+.names VDA.BLIF VPA.BLIF valid_address
+1- 1
+-1 1
 .end

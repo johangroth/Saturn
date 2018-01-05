@@ -2,32 +2,49 @@
 Copyright(C), 1992-2015, Lattice Semiconductor Corp.
 All Rights Reserved.
 
-Design address_decoding created  Sun Dec 24 11:09:15 2017
+Design address_decoding created  Sun Dec 31 10:52:51 2017
 
 Title:  Decode of addresses and IO with VDA and VPA assertion.
 
  P-Terms   Fan-in  Fan-out  Type  Name (attributes)
 ---------  ------  -------  ----  -----------------
-   1          5        1    Pin   ROM1- 
-   1          5        1    Pin   IO- 
-   1          5        1    Pin   ROM2- 
-   1          3        1    Pin   RAM 
+   1          5        1    Pin   ROM- 
+   3         12        1    Pin   RAM1 
+   1          1        1    Pin   RAM2 
+   1         15        1    Pin   DUART- 
+   1         15        1    Pin   VIA1- 
+   1         15        1    Pin   VIA2- 
+   1         15        1    Pin   RTC- 
+   1          1        1    Pin   MRD 
+   1          2        1    Pin   MWR- 
 =========
-   4                 P-Term Total: 4
-                       Total Pins: 10
+  11                 P-Term Total: 11
+                       Total Pins: 26
                       Total Nodes: 0
             Average P-Term/Output: 1
 
 
 Equations:
 
-!ROM1 = (A15 & A14 & A13 & A12 & A11);
+!ROM = (!A19 & !A18 & !A17 & !A16 & A15);
 
-!IO = (A15 & A14 & A13 & !A12 & !A11);
+RAM1 = (A19
+     # !A18 & !A17 & !A16 & A15
+     # !A18 & !A17 & !A16 & !A14 & !A13 & !A12 & !A11 & !A10 & A9 & A8);
 
-!ROM2 = (A15 & A14 & A13 & A12 & !A11);
+RAM2 = (!A19);
 
-RAM = (A15 & A14 & A13);
+!DUART = (!A19 & !A18 & !A17 & !A16 & !A15 & !A14 & !A13 & !A12 & !A11 & !A10 & A9 & A8 & !A7 & A6 & A5);
+
+!VIA1 = (!A19 & !A18 & !A17 & !A16 & !A15 & !A14 & !A13 & !A12 & !A11 & !A10 & A9 & A8 & !A7 & !A6 & !A5);
+
+!VIA2 = (!A19 & !A18 & !A17 & !A16 & !A15 & !A14 & !A13 & !A12 & !A11 & !A10 & A9 & A8 & !A7 & !A6 & A5);
+
+!RTC = (!A19 & !A18 & !A17 & !A16 & !A15 & !A14 & !A13 & !A12 & !A11 & !A10 & A9 & A8 & !A7 & A6 & !A5);
+
+MRD = (!RW);
+
+!MWR = (!RW & CLK);
 
 
 Reverse-Polarity Equations:

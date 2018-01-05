@@ -1,15 +1,12 @@
-Simulator. Version 1.4
-Copyright (c) 1998-2007 by Lattice Semiconductor Corporation.
-Initializing mapping data.
-Initializing mapping data successfully.
 ticksize 100 ps
 stepsize 100000 ps
-mode max
-mode transport
+mode unit
 Loading netlist......
-
-Edif netlist reader and Sdf netlist reader completed successfully.
-WARNING 26447: In reading command, signal A10 does not exist; signal in command is ignored.
-WARNING 26447: In reading command, signal A10 does not exist; signal in command is ignored.
-WARNING 26447: In reading command, signal A10 does not exist; signal in command is ignored.
+Loading netlist successfully.
+run 1,900.0 ns
+at 500.000 ns, DUART  expected: 0, actual: 1
+at 500.000 ns, RTC  expected: 1, actual: 0
+at 700.000 ns, DUART  expected: 1, actual: 0
+at 700.000 ns, RTC  expected: 0, actual: 1
+Operation RUN ends.
 quit

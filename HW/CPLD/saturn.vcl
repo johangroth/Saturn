@@ -17,8 +17,8 @@ Parent = m4a5.lci;
 SDS_file = m4a5.sds;
 Design = saturn.tt4;
 Rev = 0.01;
-DATE = 12/24/17;
-TIME = 11:09:40;
+DATE = 12/31/17;
+TIME = 10:52:54;
 Type = TT2;
 Pre_Fit_Time = 1;
 Source_Format = ABEL_Schematic;
@@ -134,7 +134,12 @@ layer = OFF;
 [LOCATION ASSIGNMENT]
 
 Layer = OFF
-RAM = OUTPUT,*,0,-;
-ROM2 = OUTPUT,*,1,-;
-IO = OUTPUT,*,2,-;
-ROM1 = OUTPUT,*,3,-;
+RAM1 = OUTPUT,*,3,-;
+MWR = OUTPUT,*,1,-;
+MRD = OUTPUT,*,1,-;
+RTC = OUTPUT,*,3,-;
+VIA2 = OUTPUT,*,0,-;
+VIA1 = OUTPUT,*,2,-;
+DUART = OUTPUT,*,0,-;
+RAM2 = OUTPUT,*,0,-;
+ROM = OUTPUT,*,2,-;

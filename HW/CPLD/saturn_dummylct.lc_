@@ -15,8 +15,9 @@ Voltage = 5.0;
 RCS = "$Revision: 1.2 $";
 Parent = m4a5.lci;
 SDS_File = m4a5.sds;
-DATE = 2002;
-TIME = 0:00:00;
+Design = saturn.tt4;
+DATE = 12/31/17;
+TIME = 10:52:54;
 Source_Format = ABEL_Schematic;
 Type = TT2;
 Pre_Fit_Time = 1;
@@ -52,80 +53,73 @@ Pin_Block = No;
 Pin_Macrocell_Block = No;
 Routing = No;
 
-[GLOBAL PROJECT OPTIMIZATION]
-Balanced_Partitioning = Yes;
-Spread_Placement = Yes;
-Max_Pin_Percent = 100;
-Max_Macrocell_Percent = 100;
-Max_Blk_In_Percent = 100;
-
-[OPTIMIZATION OPTIONS]
-Logic_Reduction = Yes;
+[GLOBAL CONSTRAINTS]
 Max_PTerm_Split = 16;
 Max_PTerm_Collapse = 16;
+Max_Pin_Percent = 100;
+Max_Macrocell_Percent = 100;
+Max_GLB_Input_Percent = 100;
+Max_Seg_In_Percent = 100;
+Logic_Reduction = Yes;
 XOR_Synthesis = Yes;
-EN_XOR_Synthesis = Yes;
-XOR_Gate = Yes;
-Node_Collapse = Yes;
-Keep_XOR = Yes;
 DT_Synthesis = Yes;
-Clock_PTerm = Min;
-Reset_PTerm = On;
-Preset_PTerm = On;
-Clock_Enable_PTerm = On;
-Output_Enable_PTerm = On;
-EN_DT_Synthesis = Yes;
-Cluster_PTerm = 5;
-FF_inv = No;
-EN_Use_CE = No;
-Use_CE = No;
-Use_Internal_COM_FB = Yes;
-EN_use_Internal_COM_FB = Yes;
-Set_Reset_Swap = No;
-EN_Set_Reset_Swap = No;
-Density = No;
-DeMorgan = Yes;
-T_FF = Yes;
-Max_Symbols = 32;
-
-[FITTER GLOBAL OPTIONS]
+Node_Collapse = Yes;
 Run_Time = 0;
 Set_Reset_Dont_Care = No;
-EN_Set_Reset_Dont_Care = Yes;
-In_Reg_Optimize = Yes;
-EN_In_Reg_Optimize = No;
 Clock_Optimize = No;
-Global_Clock_As_Pterm = No;
-Show_Iterations = No;
-Routing_Attempts = 2;
-Conf_Unused_IOs = Out_Low;
-
-[HARDWARE DEVICE OPTIONS]
-Zero_Hold_Time = No;
-Signature_Word = 0;
-Pull_up = No;
-Out_Slew_Rate = FAST,SLOW,0;
+In_Reg_Optimize = Yes;
+Balanced_Partitioning = Yes;
 Device_max_fanin = 33;
 Device_max_pterms = 20;
+Usercode = 0;
 Usercode_Format = Hex;
 
-[PIN RESERVATIONS]
+[LOCATION ASSIGNMENTS]
+Layer = OFF;
+A5 = pin,28,-,C,-;
+A6 = pin,27,-,C,-;
+A7 = pin,25,-,C,-;
+A8 = pin,20,-,B,-;
+A9 = pin,18,-,B,-;
+A10 = pin,17,-,B,-;
+A11 = pin,16,-,B,-;
+A12 = pin,15,-,B,-;
+A13 = pin,14,-,B,-;
+A14 = pin,9,-,A,-;
+A15 = pin,7,-,A,-;
+A16 = pin,6,-,A,-;
+A17 = pin,5,-,A,-;
+A18 = pin,3,-,A,-;
+A19 = pin,33,-,-,-;
+RW = pin,29,-,C,-;
+ROM = pin,24,-,C,-;
+RAM1 = pin,41,-,D,-;
+RAM2 = pin,8,-,A,-;
+DUART = pin,2,-,A,-;
+VIA1 = pin,26,-,C,-;
+VIA2 = pin,4,-,A,-;
+RTC = pin,43,-,D,-;
+MRD = pin,21,-,B,-;
+MWR = pin,19,-,B,-;
+CLK = pin,11,-,-,-;
+
+[GROUP ASSIGNMENTS]
 Layer = OFF;
 
-[LOCATION ASSIGNMENT]
-Layer = OFF;
-CLK = input,11,-,-;
-
-[GROUP ASSIGNMENT]
+[RESOURCE RESERVATIONS]
 Layer = OFF;
 
-[SPACE RESERVATIONS]
-Layer = OFF;
+[SLEWRATE]
+Default = FAST;
 
-[BACKANNOTATE NETLIST]
+[PULLUP]
+Default = Hold;
+
+[NETLIST/DELAY FORMAT]
 Delay_File = SDF;
 Netlist = VHDL;
-VCC_GND = Cell;
+
+[OSM BYPASS]
 
 [FITTER REPORT FORMAT]
 Fitter_Options = Yes;
@@ -139,6 +133,7 @@ Node_Signal_List = Yes;
 Signal_Fanout_List = Yes;
 Block_Segment_Fanin_List = Yes;
 Postfit_Eqn = Yes;
+Prefit_Eqn = Yes;
 Page_Break = Yes;
 
 [POWER]
@@ -147,12 +142,8 @@ Default = High;
 Type = GLB;
 
 [SOURCE CONSTRAINT OPTION]
-Import_source_constraint = Yes;
-Disable_warning_message = No;
 
 [TIMING ANALYZER]
 Last_source=;
 Last_source_type=Fmax;
-
-[INPUT REGISTERS]
 

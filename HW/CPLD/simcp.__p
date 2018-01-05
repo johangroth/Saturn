@@ -1,0 +1,2 @@
+simcp.pre1 -ini simcpls.ini -unit simcp.pre1
+-cfg gen_isp.fdk address_decoding.lts

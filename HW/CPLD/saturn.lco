@@ -1,3 +1,4 @@
+
 [DEVICE]
 Family = M4A5;
 PartType = M4A5-64/32;
@@ -16,8 +17,8 @@ RCS = "$Revision: 1.2 $";
 Parent = m4a5.lci;
 SDS_File = m4a5.sds;
 Design = saturn.tt4;
-DATE = 12/24/17;
-TIME = 11:09:40;
+DATE = 12/31/17;
+TIME = 10:52:54;
 Source_Format = ABEL_Schematic;
 Type = TT2;
 Pre_Fit_Time = 1;
@@ -75,23 +76,39 @@ Usercode = 0;
 Usercode_Format = Hex;
 
 [LOCATION ASSIGNMENTS]
-Layer = OFF;
-A10 = pin,2,-,A,-;
-A11 = pin,3,-,A,-;
-A12 = pin,4,-,A,-;
-A13 = pin,5,-,A,-;
-A14 = pin,6,-,A,-;
-A15 = pin,7,-,A,-;
-ROM1 = pin,41,-,D,-;
-IO = pin,26,-,C,-;
-ROM2 = pin,19,-,B,-;
-RAM = pin,9,-,A,-;
+layer = OFF;
+A5 = pin, 28, -, C, -;
+A6 = pin, 27, -, C, -;
+A7 = pin, 25, -, C, -;
+A8 = pin, 20, -, B, -;
+A9 = pin, 18, -, B, -;
+A10 = pin, 17, -, B, -;
+A11 = pin, 16, -, B, -;
+A12 = pin, 15, -, B, -;
+A13 = pin, 14, -, B, -;
+A14 = pin, 9, -, A, -;
+A15 = pin, 7, -, A, -;
+A16 = pin, 6, -, A, -;
+A17 = pin, 5, -, A, -;
+A18 = pin, 3, -, A, -;
+A19 = pin, 33, -, -, -;
+RW = pin, 29, -, C, -;
+ROM = pin, 24, -, C, -;
+RAM1 = pin, 41, -, D, -;
+RAM2 = pin, 8, -, A, -;
+DUART = pin, 2, -, A, -;
+VIA1 = pin, 26, -, C, -;
+VIA2 = pin, 4, -, A, -;
+RTC = pin, 43, -, D, -;
+MRD = pin, 21, -, B, -;
+MWR = pin, 19, -, B, -;
+CLK = pin, 11, -, -, -;
 
 [GROUP ASSIGNMENTS]
-Layer = OFF;
+layer = OFF;
 
 [RESOURCE RESERVATIONS]
-Layer = OFF;
+layer = OFF;
 
 [SLEWRATE]
 Default = FAST;
@@ -121,13 +138,48 @@ Prefit_Eqn = Yes;
 Page_Break = Yes;
 
 [POWER]
-Powerlevel =  Low,High;
+Powerlevel = Low, High;
 Default = High;
 Type = GLB;
 
 [SOURCE CONSTRAINT OPTION]
 
 [TIMING ANALYZER]
-Last_source=;
-Last_source_type=Fmax;
+Last_source = ;
+Last_source_type = Fmax;
 
+[Pin attributes list]
+
+[LOCATION ASSIGNMENTS LIST]
+
+[RESOURCE RESERVATIONS LIST]
+
+[global constraints list]
+
+[opt global constraints list]
+
+[Global Constraints Process Update]
+
+[Explorer Results]
+
+[Explorer User Settings]
+
+[VHDL synplify constraints]
+
+[VHDL spectrum constraints]
+
+[verilog synplify constraints]
+
+[verilog spectrum constraints]
+
+[VHDL synplify constraints list]
+
+[VHDL spectrum constraints list]
+
+[verilog synplify constraints list]
+
+[verilog spectrum constraints list]
+
+[Timing Results]
+Tpd = 10.00;
+Logic_level = 1;

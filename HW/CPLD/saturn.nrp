@@ -1,7 +1,7 @@
 ispLEVER Classic 2.0.00.17.20.15 SDFGEN
 Copyright(C),1992-2015, Lattice Semiconductor Corporation. All Rights Reserved.
 Output Files:
-  Netlist File: saturn.edo
+  Netlist File: saturn.vho
   Delay   File: saturn.sdf
 
 Parsing C:/ispLEVER_Classic2_0/ispcpld/dat/sdf.mdl
@@ -10,7 +10,7 @@ Reading library information ...
 Mapping to combinational gates 
 Mapping to netlist view.
 Utilization Estimate
-    Combinational Macros:         13
+    Combinational Macros:         38
     Flip-Flop and Latch Macros:    0
-    I/O Pads:                      9
-Elapsed time: 1 seconds
+    I/O Pads:                     26
+Elapsed time: 2 seconds

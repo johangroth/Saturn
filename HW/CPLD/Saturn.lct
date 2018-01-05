@@ -25,12 +25,7 @@ Synthesis = Synplify;
 
 [Location Assignments]
 layer = OFF;
-A10 = pin,2,-,-,-;
-A11 = pin,3,-,-,-;
-A12 = pin,4,-,-,-;
-A13 = pin,5,-,-,-;
-A14 = pin,6,-,-,-;
-A15 = pin,7,-,-,-;
+CLK = pin,11,-,-,-;
 
 [Group Assignments]
 layer = OFF;

@@ -1,2 +1,0 @@
-simcp.post5 -ini simcpls.ini -all simcp.post5
--cfg machisc.fdk address_decoding.lts -map Address_Decoding.lsi

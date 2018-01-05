@@ -29,6 +29,6 @@
 //                      Macrocell#: starts from 0 to 31
 
 //  tPD critical path delay: 10.0 ns
-//    -     0.0                                    A11                      ==>  IO
-//    -     7.0  tPDi                              IO                       ==>  IO
-//    -     3.0  tBUF                              IO                       ==>  IO
+//    -     0.0                                    A5                       ==>  DUART
+//    -     7.0  tPDi                              DUART                    ==>  DUART
+//    -     3.0  tBUF                              DUART                    ==>  DUART
