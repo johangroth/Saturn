@@ -7,11 +7,13 @@ PartType = M4A5-64/32;
 Speed = -10;
 Operating_condition = COM;
 Status = Production;
+EN_PinGLB = Yes;
+EN_PinMacrocell = Yes;
 
 [Revision]
 Parent = m4a5.lci;
-DATE = 2002;
-TIME = 0:00:00;
+DATE = 03/02/2018;
+TIME = 07:40:24;
 Source_Format = ABEL_Schematic;
 Synthesis = Synplify;
 
@@ -25,7 +27,38 @@ Synthesis = Synplify;
 
 [Location Assignments]
 layer = OFF;
-CLK = pin,11,-,-,-;
+PHI = Pin, 11, -, -, -;
+A8 = Pin, 9, -, A, -;
+A9 = Pin, 14, -, B, -;
+A10 = Pin, 16, -, B, -;
+A11 = Pin, 18, -, B, -;
+A12 = Pin, 20, -, B, -;
+A13 = Pin, 27, -, C, -;
+A14 = Pin, 29, -, C, -;
+RESB = Pin, 36, -, D, -;
+RWB = Pin, 7, -, A, -;
+VDA = Pin, 5, -, A, -;
+VPA = Pin, 33, -, -, -;
+STP = Pin, 42, -, D, -;
+A16 = Pin, 17, -, B, -;
+IO1 = Pin, 15, -, B, -;
+IO0 = Pin, 28, -, C, -;
+IO3 = Pin, 21, -, B, -;
+DUART = Pin, 8, -, A, -;
+RAM0 = Pin, 2, -, A, -;
+RAM1 = Pin, 25, -, C, -;
+RD = Pin, 19, -, B, -;
+A18 = Pin, 6, -, A, -;
+ROM = Pin, 39, -, D, -;
+RTC = Pin, 37, -, D, -;
+A17 = Pin, 3, -, A, -;
+IO2 = Pin, 30, -, C, -;
+WD = Pin, 24, -, C, -;
+D0 = Pin, 41, -, D, -;
+D1 = Pin, 43, -, D, -;
+D2 = Pin, 4, -, A, -;
+D3 = Pin, 26, -, C, -;
+A15 = Pin, 31, -, C, -;
 
 [Group Assignments]
 layer = OFF;
@@ -105,3 +138,15 @@ layer = OFF;
 [verilog synplify constraints list]
 
 [verilog spectrum constraints list]
+
+[Constraint Version]
+version = 1.0;
+
+[ORP ASSIGNMENTS]
+layer = OFF;
+
+[Node attribute]
+layer = OFF;
+
+[SYMBOL/MODULE attribute]
+layer = OFF;

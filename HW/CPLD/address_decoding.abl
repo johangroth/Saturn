@@ -3,7 +3,6 @@ MODULE Address_Decoding
 TITLE 'Decode of addresses and IO with VDA and VPA assertion.'
 
 	A5..A19  pin;
-	A16..A18 pin;
 	D0..D3   pin;
 	RW	 pin;
 	VDA	 pin;
@@ -37,7 +36,7 @@ equations
 	!ROM	= (Address >= ^h008000) & (Address <= ^h00FFFF);
 
 	!MWR	= !RW & CLK;
-	!MRD	= RW;
+	!MRD	= RW & CLK;
 
 
 test_vectors

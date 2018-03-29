@@ -8,34 +8,53 @@
 ; Source file saturn.tt4
 ; FITTER-generated Placements.
 ; DEVICE   mach463a
-; DATE     Sun Dec 31 10:52:54 2017
+; DATE     Fri Mar 02 06:32:47 2018
 
 
-Pin   28  A5
-Pin   27  A6
-Pin   25  A7
-Pin   20  A8
-Pin   18  A9
-Pin   17  A10
-Pin   16  A11
-Pin   15  A12
-Pin   14  A13
-Pin   9  A14
-Pin   7  A15
-Pin   6  A16
-Pin   5  A17
-Pin   3  A18
-Pin   33  A19
-Pin   29  RW
-Pin   24  ROM Comb ; S6=1  S9=1  Pair 99
-Pin   41  RAM1 Comb ; S6=1  S9=1  Pair 117
-Pin   8  RAM2 Comb ; S6=1  S9=1  Pair 57
-Pin   2  DUART Comb ; S6=1  S9=1  Pair 51
-Pin   26  VIA1 Comb ; S6=1  S9=1  Pair 93
-Pin   4  VIA2 Comb ; S6=1  S9=1  Pair 45
-Pin   43  RTC Comb ; S6=1  S9=1  Pair 123
-Pin   21  MRD Comb ; S6=1  S9=1  Pair 75
-Pin   19  MWR Comb ; S6=1  S9=1  Pair 69
-Pin   11  CLK
+Pin   31  A15
+Pin   29  A14
+Pin   27  A13
+Pin   20  A12
+Pin   18  A11
+Pin   16  A10
+Pin   14  A9
+Pin   9  A8
+Pin   26  D3 Comb ; S6=1  S9=1  Pair 93
+Pin   4  D2 Comb ; S6=1  S9=1  Pair 45
+Pin   43  D1 Comb ; S6=1  S9=1  Pair 123
+Pin   41  D0 Comb ; S6=1  S9=1  Pair 117
+Pin   11  PHI
+Pin   7  RWB
+Pin   5  VDA
+Pin   33  VPA
+Pin   36  RESB
+Pin   17  A16 Comb ; S6=1  S9=1  Pair 87
+Pin   3  A17 Comb ; S6=1  S9=1  Pair 47
+Pin   6  A18 Comb ; S6=1  S9=1  Pair 63
+Pin   2  RAM0 Comb ; S6=1  S9=1  Pair 51
+Pin   25  RAM1 Comb ; S6=1  S9=1  Pair 95
+Pin   39  ROM Comb ; S6=1  S9=1  Pair 135
+Pin   19  RD Comb ; S6=1  S9=1  Pair 69
+Pin   24  WD Comb ; S6=1  S9=1  Pair 99
+Pin   8  DUART Comb ; S6=1  S9=1  Pair 57
+Pin   37  RTC Comb ; S6=1  S9=1  Pair 129
+Pin   28  IO0 Comb ; S6=1  S9=1  Pair 111
+Pin   15  IO1 Comb ; S6=1  S9=1  Pair 81
+Pin   30  IO2 Comb ; S6=1  S9=1  Pair 105
+Pin   21  IO3 Comb ; S6=1  S9=1  Pair 75
+Pin   42  STP Reg  ; S6=1  S9=1  Pair 119
+Node  119  RN_STP Reg  ; S6=1  S9=1 
+Node  83  wsext Comb ; S6=1  S9=1 
+Node  125  vab Comb ; S6=1  S9=1 
+Node  131  wsflag Comb ; S6=1  S9=1 
+Node  107  blatch0 Lat  ; S6=1  S9=0 
+Node  101  blatch1 Lat  ; S6=1  S9=0 
+Node  77  blatch2 Lat  ; S6=1  S9=0 
+Node  71  blatch3 Lat  ; S6=1  S9=0 
+Node  65  hmucfg0 Lat  ; S6=1  S9=0 
+Node  59  hmucfg1 Lat  ; S6=1  S9=0 
+Node  53  hmucfg2 Lat  ; S6=1  S9=0 
+Node  89  hmucfg3 Lat  ; S6=1  S9=0 
+Node  137  wsff0 Reg  ; S6=0  S9=1 
 ; Unused Pins & Nodes
 ; -> None Found.

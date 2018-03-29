@@ -1,117 +1,659 @@
 #$ TOOL ispLEVER Classic 2.0.00.17.20.15
-#$ DATE Sun Dec 31 10:52:51 2017
-#$ TITLE Decode of addresses and IO with VDA and VPA assertion.
+#$ DATE Fri Mar 02 06:32:43 2018
+#$ TITLE Saturn address decoding with ROM/IO waitstates.
 #$ MODULE saturn
-#$ JEDECFILE address_decoding
-#$ PINS 26 A5 A6 A7 A8 A9 A10 A11 A12 A13 A14 A15 A16 A17 A18 A19 RW ROM RAM1 RAM2 DUART VIA1 VIA2 \
-#  RTC MRD MWR CLK:11
-.model address_decoding
-.inputs A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF A14.BLIF A13.BLIF \
-A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF A7.BLIF A6.BLIF A5.BLIF RW.BLIF \
-CLK.BLIF
-.outputs ROM RAM1 RAM2 DUART VIA1 VIA2 RTC MRD MWR
-.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF ROM
----1- 1
---1-- 1
--1--- 1
-1---- 1
-----0 1
-00001 0
-.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF \
-A11.BLIF A10.BLIF A9.BLIF A8.BLIF RAM1
--000-0000011 1
--0001------- 1
-1----------- 1
-0---0-----0- 0
-0---0----1-- 0
-0---0---1--- 0
-0---0--1---- 0
-0---0-1----- 0
-0---01------ 0
-0--1-------- 0
-0-1--------- 0
-01---------- 0
-0---0------0 0
-.names A19.BLIF RAM2
-0 1
-1 0
-.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF \
-A11.BLIF A10.BLIF A9.BLIF A8.BLIF A7.BLIF A6.BLIF A5.BLIF DUART
--------------0- 1
+#$ JEDECFILE saturn
+#$ PINS 32 A15 A14 A13 A12 A11 A10 A9 A8 D3 D2 D1 D0 PHI:11 RWB VDA VPA RESB A16 A17 A18 RAM0 RAM1 \
+#  ROM RD WD STP DUART RTC IO0 IO1 IO2 IO3
+#$ NODES 13 wsext vab wsflag blatch0+ blatch1+ blatch2+ blatch3+ hmucfg0+ hmucfg1+ \
+#  hmucfg2+ hmucfg3+ wsff0+ wsff1+
+.model saturn
+.inputs PHI.BLIF RESB.PIN.BLIF VDA.BLIF VPA.BLIF vab.BLIF RWB.BLIF wsext.BLIF \
+D0.BLIF D1.BLIF D2.BLIF D3.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF \
+blatch0.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF \
+A8.BLIF hmucfg0.BLIF hmucfg2.BLIF hmucfg1.BLIF hmucfg3.BLIF wsflag.BLIF \
+wsff0.BLIF wsff1.BLIF
+.outputs D3 D2 D1 D0 A16 A17 A18 RAM0 RAM1 ROM RD WD STP DUART RTC IO0 IO1 IO2 \
+IO3 wsext vab wsflag wsff0.C wsff1.C hmucfg0.AR hmucfg1.AR hmucfg2.AR \
+hmucfg3.AR blatch0.LE blatch1.LE blatch2.LE blatch3.LE blatch0.REG blatch1.REG \
+blatch2.REG blatch3.REG wsff0.AR wsff1.AP wsff1.REG wsff0.REG STP.OE D0.OE \
+D1.OE D2.OE D3.OE hmucfg0.LE hmucfg1.LE hmucfg2.LE hmucfg3.LE hmucfg0.REG \
+hmucfg1.REG hmucfg2.REG hmucfg3.REG
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg3.BLIF D3
+110000110111111 1
+-------------0- 0
+------------0-- 0
+-----------0--- 0
+----------0---- 0
+---------0----- 0
+--------1------ 0
+-------0------- 0
+------0-------- 0
+-----1--------- 0
+----1---------- 0
+---1----------- 0
+--1------------ 0
+-0------------- 0
+0-------------- 0
+--------------0 0
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg2.BLIF D2
+110000110111111 1
+-------------0- 0
+------------0-- 0
+-----------0--- 0
+----------0---- 0
+---------0----- 0
+--------1------ 0
+-------0------- 0
+------0-------- 0
+-----1--------- 0
+----1---------- 0
+---1----------- 0
+--1------------ 0
+-0------------- 0
+0-------------- 0
+--------------0 0
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg1.BLIF D1
+110000110111111 1
+-------------0- 0
+------------0-- 0
+-----------0--- 0
+----------0---- 0
+---------0----- 0
+--------1------ 0
+-------0------- 0
+------0-------- 0
+-----1--------- 0
+----1---------- 0
+---1----------- 0
+--1------------ 0
+-0------------- 0
+0-------------- 0
+--------------0 0
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg0.BLIF D0
+110000110111111 1
+-------------0- 0
+------------0-- 0
+-----------0--- 0
+----------0---- 0
+---------0----- 0
+--------1------ 0
+-------0------- 0
+------0-------- 0
+-----1--------- 0
+----1---------- 0
+---1----------- 0
+--1------------ 0
+-0------------- 0
+0-------------- 0
+--------------0 0
+.names VDA.BLIF VPA.BLIF blatch0.BLIF A16
+-11 1
+1-1 1
+00- 0
+--0 0
+.names VDA.BLIF VPA.BLIF blatch1.BLIF A17
+-11 1
+1-1 1
+00- 0
+--0 0
+.names VDA.BLIF VPA.BLIF blatch2.BLIF A18
+-11 1
+1-1 1
+00- 0
+--0 0
+.names VDA.BLIF VPA.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF \
+blatch0.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF \
+A8.BLIF hmucfg0.BLIF hmucfg2.BLIF hmucfg1.BLIF RAM0
+----00011011111--- 1
+--1-0001100----1-- 1
+----00011010----0- 1
+--1-000111-------0 1
+00---------------- 1
+---1-------------- 1
+-1-0-----010----1- 0
+1--0-----010----1- 0
+-1-0-----011--0--- 0
+1--0-----011--0--- 0
+-1-0-----011-0---- 0
+1--0-----011-0---- 0
+-1-0-----0110----- 0
+1--0-----0110----- 0
+-1-0-----00----0-- 0
+1--0-----00----0-- 0
+-100-----1-------- 0
+1-00-----1-------- 0
+-100------0------- 0
+1-00------0------- 0
+-1-0----0--------- 0
+1--0----0--------- 0
+-1-0---0---------- 0
+1--0---0---------- 0
+-1-0--1----------- 0
+1--0--1----------- 0
+-1-0-1------------ 0
+1--0-1------------ 0
+-1-01------------- 0
+1--01------------- 0
+-1-0-----1-------1 0
+1--0-----1-------1 0
+.names VDA.BLIF VPA.BLIF blatch3.BLIF RAM1
+00- 1
+--0 1
+-11 0
+1-1 0
+.names RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF A15.BLIF \
+A14.BLIF A13.BLIF A12.BLIF hmucfg0.BLIF hmucfg1.BLIF ROM
+-------0-0- 1
+-------01-- 1
+------0---- 1
+-----0----- 1
+----1------ 1
+---1------- 1
+--1-------- 1
+-1--------- 1
+0---------- 1
+-------1--1 1
+1000011001- 0
+10000111--0 0
+.names PHI.BLIF VDA.BLIF VPA.BLIF RWB.BLIF wsff1.BLIF RD
+-00-- 1
+---0- 1
+0---1 1
+1-11- 0
+11-1- 0
+--110 0
+-1-10 0
+.names PHI.BLIF VDA.BLIF VPA.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF \
+blatch1.BLIF blatch0.BLIF A15.BLIF A14.BLIF A13.BLIF hmucfg3.BLIF wsff1.BLIF \
+WD
+----00001111- 1
+-00---------- 1
+---1--------- 1
+0-----------1 1
+1-10-------0- 0
+11-0-------0- 0
+1-10------0-- 0
+11-0------0-- 0
+1-10-----0--- 0
+11-0-----0--- 0
+1-10----0---- 0
+11-0----0---- 0
+1-10---1----- 0
+11-0---1----- 0
+1-10--1------ 0
+11-0--1------ 0
+1-10-1------- 0
+11-0-1------- 0
+1-101-------- 0
+11-01-------- 0
+--10-------00 0
+-1-0-------00 0
+--10------0-0 0
+-1-0------0-0 0
+--10-----0--0 0
+-1-0-----0--0 0
+--10----0---0 0
+-1-0----0---0 0
+--10---1----0 0
+-1-0---1----0 0
+--10--1-----0 0
+-1-0--1-----0 0
+--10-1------0 0
+-1-0-1------0 0
+--101-------0 0
+-1-01-------0 0
+.names VDA.BLIF VPA.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg2.BLIF DUART
+00------------- 1
+-------------1- 1
 ------------1-- 1
------------0--- 1
-----------0---- 1
----------1----- 1
+-----------1--- 1
+----------1---- 1
+---------0----- 1
 --------1------ 1
--------1------- 1
-------1-------- 1
+-------0------- 1
+------0-------- 1
 -----1--------- 1
 ----1---------- 1
 ---1----------- 1
 --1------------ 1
--1------------- 1
-1-------------- 1
---------------0 1
-000000000011011 0
-.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF \
-A11.BLIF A10.BLIF A9.BLIF A8.BLIF A7.BLIF A6.BLIF A5.BLIF VIA1
+--------------1 1
+-10000110100000 0
+1-0000110100000 0
+.names VDA.BLIF VPA.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg2.BLIF RTC
+00------------- 1
+-------------0- 1
+------------1-- 1
+-----------1--- 1
+----------1---- 1
+---------0----- 1
+--------1------ 1
+-------0------- 1
+------0-------- 1
+-----1--------- 1
+----1---------- 1
+---1----------- 1
+--1------------ 1
+--------------1 1
+-10000110100010 0
+1-0000110100010 0
+.names VDA.BLIF VPA.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg2.BLIF IO0
+00------------- 1
+-------------1- 1
+------------0-- 1
+-----------1--- 1
+----------1---- 1
+---------0----- 1
+--------1------ 1
+-------0------- 1
+------0-------- 1
+-----1--------- 1
+----1---------- 1
+---1----------- 1
+--1------------ 1
+--------------1 1
+-10000110100100 0
+1-0000110100100 0
+.names VDA.BLIF VPA.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg2.BLIF IO1
+00------------- 1
+-------------0- 1
+------------0-- 1
+-----------1--- 1
+----------1---- 1
+---------0----- 1
+--------1------ 1
+-------0------- 1
+------0-------- 1
+-----1--------- 1
+----1---------- 1
+---1----------- 1
+--1------------ 1
+--------------1 1
+-10000110100110 0
+1-0000110100110 0
+.names VDA.BLIF VPA.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg2.BLIF IO2
+00------------- 1
 -------------1- 1
 ------------1-- 1
 -----------0--- 1
-----------0---- 1
----------1----- 1
+----------1---- 1
+---------0----- 1
 --------1------ 1
--------1------- 1
-------1-------- 1
+-------0------- 1
+------0-------- 1
 -----1--------- 1
 ----1---------- 1
 ---1----------- 1
 --1------------ 1
--1------------- 1
-1-------------- 1
 --------------1 1
-000000000011000 0
-.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF \
-A11.BLIF A10.BLIF A9.BLIF A8.BLIF A7.BLIF A6.BLIF A5.BLIF VIA2
--------------1- 1
-------------1-- 1
------------0--- 1
-----------0---- 1
----------1----- 1
---------1------ 1
--------1------- 1
-------1-------- 1
------1--------- 1
-----1---------- 1
----1----------- 1
---1------------ 1
--1------------- 1
-1-------------- 1
---------------0 1
-000000000011001 0
-.names A19.BLIF A18.BLIF A17.BLIF A16.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF \
-A11.BLIF A10.BLIF A9.BLIF A8.BLIF A7.BLIF A6.BLIF A5.BLIF RTC
+-10000110101000 0
+1-0000110101000 0
+.names VDA.BLIF VPA.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg2.BLIF IO3
+00------------- 1
 -------------0- 1
 ------------1-- 1
 -----------0--- 1
-----------0---- 1
----------1----- 1
+----------1---- 1
+---------0----- 1
 --------1------ 1
--------1------- 1
-------1-------- 1
+-------0------- 1
+------0-------- 1
 -----1--------- 1
 ----1---------- 1
 ---1----------- 1
 --1------------ 1
--1------------- 1
-1-------------- 1
 --------------1 1
-000000000011010 0
-.names RW.BLIF MRD
-0 1
-1 0
-.names RW.BLIF CLK.BLIF MWR
+-10000110101010 0
+1-0000110101010 0
+.names PHI.BLIF wsff1.BLIF wsext
 1- 1
 -0 1
 01 0
+.names VDA.BLIF VPA.BLIF vab
+1- 1
+-1 1
+00 0
+.names VDA.BLIF VPA.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF \
+blatch0.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF \
+A8.BLIF hmucfg0.BLIF hmucfg2.BLIF hmucfg1.BLIF wsflag
+-1-------010------ 1
+1--------010------ 1
+---------010----1- 1
+---------011--0--- 1
+---------011-0---- 1
+---------0110----- 1
+---------00----0-- 1
+--0-------0------- 1
+--0------1-------- 1
+---------1-------1 1
+--------0--------- 1
+-------0---------- 1
+------1----------- 1
+-----1------------ 1
+----1------------- 1
+---1-------------- 1
+00-000011010----0- 0
+---000011011111--- 0
+--100001100----1-- 0
+--10000111-------0 0
+.names RESB.PIN.BLIF hmucfg0.AR
+0 1
+1 0
+.names RESB.PIN.BLIF hmucfg1.AR
+0 1
+1 0
+.names RESB.PIN.BLIF hmucfg2.AR
+0 1
+1 0
+.names RESB.PIN.BLIF hmucfg3.AR
+0 1
+1 0
+.names PHI.BLIF vab.BLIF wsext.BLIF blatch0.LE
+010 1
+-0- 0
+1-- 0
+--1 0
+.names PHI.BLIF vab.BLIF wsext.BLIF blatch1.LE
+010 1
+-0- 0
+1-- 0
+--1 0
+.names PHI.BLIF vab.BLIF wsext.BLIF blatch2.LE
+010 1
+-0- 0
+1-- 0
+--1 0
+.names PHI.BLIF vab.BLIF wsext.BLIF blatch3.LE
+010 1
+-0- 0
+1-- 0
+--1 0
+.names PHI.BLIF VDA.BLIF VPA.BLIF D0.BLIF wsff1.BLIF blatch0.REG
+0-111 1
+01-11 1
+-00-- 0
+---0- 0
+1---- 0
+----0 0
+.names PHI.BLIF VDA.BLIF VPA.BLIF D1.BLIF wsff1.BLIF blatch1.REG
+0-111 1
+01-11 1
+-00-- 0
+---0- 0
+1---- 0
+----0 0
+.names PHI.BLIF VDA.BLIF VPA.BLIF D2.BLIF wsff1.BLIF blatch2.REG
+0-111 1
+01-11 1
+-00-- 0
+---0- 0
+1---- 0
+----0 0
+.names PHI.BLIF VDA.BLIF VPA.BLIF D3.BLIF wsff1.BLIF blatch3.REG
+0-111 1
+01-11 1
+-00-- 0
+---0- 0
+1---- 0
+----0 0
+.names wsflag.BLIF wsff0.AR
+0 1
+1 0
+.names wsflag.BLIF wsff1.AP
+0 1
+1 0
+.names wsff1.BLIF wsff0.REG
+0 1
+1 0
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF D0.OE
+11000011011111 1
+------------0- 0
+-----------0-- 0
+----------0--- 0
+---------0---- 0
+--------1----- 0
+-------0------ 0
+------0------- 0
+-----1-------- 0
+----1--------- 0
+---1---------- 0
+--1----------- 0
+-0------------ 0
+0------------- 0
+-------------0 0
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF D1.OE
+11000011011111 1
+------------0- 0
+-----------0-- 0
+----------0--- 0
+---------0---- 0
+--------1----- 0
+-------0------ 0
+------0------- 0
+-----1-------- 0
+----1--------- 0
+---1---------- 0
+--1----------- 0
+-0------------ 0
+0------------- 0
+-------------0 0
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF D2.OE
+11000011011111 1
+------------0- 0
+-----------0-- 0
+----------0--- 0
+---------0---- 0
+--------1----- 0
+-------0------ 0
+------0------- 0
+-----1-------- 0
+----1--------- 0
+---1---------- 0
+--1----------- 0
+-0------------ 0
+0------------- 0
+-------------0 0
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF D3.OE
+11000011011111 1
+------------0- 0
+-----------0-- 0
+----------0--- 0
+---------0---- 0
+--------1----- 0
+-------0------ 0
+------0------- 0
+-----1-------- 0
+----1--------- 0
+---1---------- 0
+--1----------- 0
+-0------------ 0
+0------------- 0
+-------------0 0
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg0.LE
+10000011011111 1
+------------0- 0
+-----------0-- 0
+----------0--- 0
+---------0---- 0
+--------1----- 0
+-------0------ 0
+------0------- 0
+-----1-------- 0
+----1--------- 0
+---1---------- 0
+--1----------- 0
+-1------------ 0
+0------------- 0
+-------------0 0
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg1.LE
+10000011011111 1
+------------0- 0
+-----------0-- 0
+----------0--- 0
+---------0---- 0
+--------1----- 0
+-------0------ 0
+------0------- 0
+-----1-------- 0
+----1--------- 0
+---1---------- 0
+--1----------- 0
+-1------------ 0
+0------------- 0
+-------------0 0
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg2.LE
+10000011011111 1
+------------0- 0
+-----------0-- 0
+----------0--- 0
+---------0---- 0
+--------1----- 0
+-------0------ 0
+------0------- 0
+-----1-------- 0
+----1--------- 0
+---1---------- 0
+--1----------- 0
+-1------------ 0
+0------------- 0
+-------------0 0
+.names PHI.BLIF RWB.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF \
+A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+hmucfg3.LE
+10000011011111 1
+------------0- 0
+-----------0-- 0
+----------0--- 0
+---------0---- 0
+--------1----- 0
+-------0------ 0
+------0------- 0
+-----1-------- 0
+----1--------- 0
+---1---------- 0
+--1----------- 0
+-1------------ 0
+0------------- 0
+-------------0 0
+.names PHI.BLIF RWB.BLIF D0.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF \
+blatch0.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF \
+A8.BLIF hmucfg0.REG
+101000011011111 1
+-------------0- 0
+------------0-- 0
+-----------0--- 0
+----------0---- 0
+---------1----- 0
+--------0------ 0
+-------0------- 0
+------1-------- 0
+-----1--------- 0
+----1---------- 0
+---1----------- 0
+--0------------ 0
+-1------------- 0
+0-------------- 0
+--------------0 0
+.names PHI.BLIF RWB.BLIF D1.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF \
+blatch0.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF \
+A8.BLIF hmucfg1.REG
+101000011011111 1
+-------------0- 0
+------------0-- 0
+-----------0--- 0
+----------0---- 0
+---------1----- 0
+--------0------ 0
+-------0------- 0
+------1-------- 0
+-----1--------- 0
+----1---------- 0
+---1----------- 0
+--0------------ 0
+-1------------- 0
+0-------------- 0
+--------------0 0
+.names PHI.BLIF RWB.BLIF D2.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF \
+blatch0.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF \
+A8.BLIF hmucfg2.REG
+101000011011111 1
+-------------0- 0
+------------0-- 0
+-----------0--- 0
+----------0---- 0
+---------1----- 0
+--------0------ 0
+-------0------- 0
+------1-------- 0
+-----1--------- 0
+----1---------- 0
+---1----------- 0
+--0------------ 0
+-1------------- 0
+0-------------- 0
+--------------0 0
+.names PHI.BLIF RWB.BLIF D3.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF \
+blatch0.BLIF A15.BLIF A14.BLIF A13.BLIF A12.BLIF A11.BLIF A10.BLIF A9.BLIF \
+A8.BLIF hmucfg3.REG
+101000011011111 1
+-------------0- 0
+------------0-- 0
+-----------0--- 0
+----------0---- 0
+---------1----- 0
+--------0------ 0
+-------0------- 0
+------1-------- 0
+-----1--------- 0
+----1---------- 0
+---1----------- 0
+--0------------ 0
+-1------------- 0
+0-------------- 0
+--------------0 0
+.names wsff1.BLIF STP
+1 1
+0 0
+.names PHI.BLIF wsff0.C
+1 1
+0 0
+.names PHI.BLIF wsff1.C
+1 1
+0 0
+.names wsff0.BLIF wsff1.REG
+1 1
+0 0
+.names wsflag.BLIF STP.OE
+1 1
+0 0
 .end

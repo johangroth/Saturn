@@ -9,8 +9,9 @@ Input file: z:/saturn/hw/cpld\saturn.tte
 Reading library information ...
 Mapping to combinational gates 
 Mapping to netlist view.
+Note 18862: NODE name wsflag being renamed to GATE_STP_AP.
 Utilization Estimate
-    Combinational Macros:         38
-    Flip-Flop and Latch Macros:    0
-    I/O Pads:                     26
+    Combinational Macros:        258
+    Flip-Flop and Latch Macros:   10
+    I/O Pads:                     32
 Elapsed time: 2 seconds

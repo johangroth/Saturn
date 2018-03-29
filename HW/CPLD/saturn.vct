@@ -114,7 +114,7 @@ Layer = OFF;
 
 [LOCATION ASSIGNMENT]
 Layer = OFF;
-CLK = input,11,-,-;
+PHI = input,11,-,-;
 
 [GROUP ASSIGNMENT]
 Layer = OFF;

@@ -51,11 +51,11 @@ Section IO
   A13 [in]
   A14 [in]
   A15 [in]
-  A16 [in]
-  A17 [in]
-  A18 [in]
-  A19 [in]
   CLK [in]
+  D0 [in]
+  D1 [in]
+  D2 [in]
+  D3 [in]
   RW [in]
 
 
@@ -64,83 +64,84 @@ Section tPD
    Delay         Level   Location(From => To)    Source                        Destination
   =====         =====   ====================    ======                        ===========
    10.0           1     p28       => p2         A5                            DUART
-   10.0           1     p28       => p43        A5                            RTC
-   10.0           1     p28       => p26        A5                            VIA1
-   10.0           1     p28       => p4         A5                            VIA2
+   10.0           1     p28       => p41        A5                            RTC
+   10.0           1     p28       => p4         A5                            VIA1
+   10.0           1     p28       => p43        A5                            VIA2
    10.0           1     p27       => p2         A6                            DUART
-   10.0           1     p27       => p43        A6                            RTC
-   10.0           1     p27       => p26        A6                            VIA1
-   10.0           1     p27       => p4         A6                            VIA2
+   10.0           1     p27       => p41        A6                            RTC
+   10.0           1     p27       => p4         A6                            VIA1
+   10.0           1     p27       => p43        A6                            VIA2
    10.0           1     p25       => p2         A7                            DUART
-   10.0           1     p25       => p43        A7                            RTC
-   10.0           1     p25       => p26        A7                            VIA1
-   10.0           1     p25       => p4         A7                            VIA2
+   10.0           1     p25       => p41        A7                            RTC
+   10.0           1     p25       => p4         A7                            VIA1
+   10.0           1     p25       => p43        A7                            VIA2
    10.0           1     p20       => p2         A8                            DUART
-   10.0           1     p20       => p41        A8                            RAM1
-   10.0           1     p20       => p43        A8                            RTC
-   10.0           1     p20       => p26        A8                            VIA1
-   10.0           1     p20       => p4         A8                            VIA2
+   10.0           1     p20       => p26        A8                            RAM1
+   10.0           1     p20       => p41        A8                            RTC
+   10.0           1     p20       => p4         A8                            VIA1
+   10.0           1     p20       => p43        A8                            VIA2
    10.0           1     p18       => p2         A9                            DUART
-   10.0           1     p18       => p41        A9                            RAM1
-   10.0           1     p18       => p43        A9                            RTC
-   10.0           1     p18       => p26        A9                            VIA1
-   10.0           1     p18       => p4         A9                            VIA2
+   10.0           1     p18       => p26        A9                            RAM1
+   10.0           1     p18       => p41        A9                            RTC
+   10.0           1     p18       => p4         A9                            VIA1
+   10.0           1     p18       => p43        A9                            VIA2
    10.0           1     p17       => p2         A10                           DUART
-   10.0           1     p17       => p41        A10                           RAM1
-   10.0           1     p17       => p43        A10                           RTC
-   10.0           1     p17       => p26        A10                           VIA1
-   10.0           1     p17       => p4         A10                           VIA2
+   10.0           1     p17       => p26        A10                           RAM1
+   10.0           1     p17       => p41        A10                           RTC
+   10.0           1     p17       => p4         A10                           VIA1
+   10.0           1     p17       => p43        A10                           VIA2
    10.0           1     p16       => p2         A11                           DUART
-   10.0           1     p16       => p41        A11                           RAM1
-   10.0           1     p16       => p43        A11                           RTC
-   10.0           1     p16       => p26        A11                           VIA1
-   10.0           1     p16       => p4         A11                           VIA2
+   10.0           1     p16       => p26        A11                           RAM1
+   10.0           1     p16       => p41        A11                           RTC
+   10.0           1     p16       => p4         A11                           VIA1
+   10.0           1     p16       => p43        A11                           VIA2
    10.0           1     p15       => p2         A12                           DUART
-   10.0           1     p15       => p41        A12                           RAM1
-   10.0           1     p15       => p43        A12                           RTC
-   10.0           1     p15       => p26        A12                           VIA1
-   10.0           1     p15       => p4         A12                           VIA2
+   10.0           1     p15       => p26        A12                           RAM1
+   10.0           1     p15       => p41        A12                           RTC
+   10.0           1     p15       => p4         A12                           VIA1
+   10.0           1     p15       => p43        A12                           VIA2
    10.0           1     p14       => p2         A13                           DUART
-   10.0           1     p14       => p41        A13                           RAM1
-   10.0           1     p14       => p43        A13                           RTC
-   10.0           1     p14       => p26        A13                           VIA1
-   10.0           1     p14       => p4         A13                           VIA2
+   10.0           1     p14       => p26        A13                           RAM1
+   10.0           1     p14       => p41        A13                           RTC
+   10.0           1     p14       => p4         A13                           VIA1
+   10.0           1     p14       => p43        A13                           VIA2
    10.0           1     p9        => p2         A14                           DUART
-   10.0           1     p9        => p41        A14                           RAM1
-   10.0           1     p9        => p43        A14                           RTC
-   10.0           1     p9        => p26        A14                           VIA1
-   10.0           1     p9        => p4         A14                           VIA2
+   10.0           1     p9        => p26        A14                           RAM1
+   10.0           1     p9        => p41        A14                           RTC
+   10.0           1     p9        => p4         A14                           VIA1
+   10.0           1     p9        => p43        A14                           VIA2
    10.0           1     p7        => p2         A15                           DUART
-   10.0           1     p7        => p41        A15                           RAM1
+   10.0           1     p7        => p26        A15                           RAM1
    10.0           1     p7        => p24        A15                           ROM
-   10.0           1     p7        => p43        A15                           RTC
-   10.0           1     p7        => p26        A15                           VIA1
-   10.0           1     p7        => p4         A15                           VIA2
-   10.0           1     p6        => p2         A16                           DUART
-   10.0           1     p6        => p41        A16                           RAM1
-   10.0           1     p6        => p24        A16                           ROM
-   10.0           1     p6        => p43        A16                           RTC
-   10.0           1     p6        => p26        A16                           VIA1
-   10.0           1     p6        => p4         A16                           VIA2
-   10.0           1     p5        => p2         A17                           DUART
-   10.0           1     p5        => p41        A17                           RAM1
-   10.0           1     p5        => p24        A17                           ROM
-   10.0           1     p5        => p43        A17                           RTC
-   10.0           1     p5        => p26        A17                           VIA1
-   10.0           1     p5        => p4         A17                           VIA2
-   10.0           1     p3        => p2         A18                           DUART
-   10.0           1     p3        => p41        A18                           RAM1
-   10.0           1     p3        => p24        A18                           ROM
-   10.0           1     p3        => p43        A18                           RTC
-   10.0           1     p3        => p26        A18                           VIA1
-   10.0           1     p3        => p4         A18                           VIA2
-   10.0           1     p33       => p2         A19                           DUART
-   10.0           1     p33       => p41        A19                           RAM1
-   10.0           1     p33       => p8         A19                           RAM2
-   10.0           1     p33       => p24        A19                           ROM
-   10.0           1     p33       => p43        A19                           RTC
-   10.0           1     p33       => p26        A19                           VIA1
-   10.0           1     p33       => p4         A19                           VIA2
+   10.0           1     p7        => p41        A15                           RTC
+   10.0           1     p7        => p4         A15                           VIA1
+   10.0           1     p7        => p43        A15                           VIA2
+   10.0           1     p11       => p21        CLK                           MRD
    10.0           1     p11       => p19        CLK                           MWR
+   10.0           1     p6        => p2         D0                            DUART
+   10.0           1     p6        => p26        D0                            RAM1
+   10.0           1     p6        => p24        D0                            ROM
+   10.0           1     p6        => p41        D0                            RTC
+   10.0           1     p6        => p4         D0                            VIA1
+   10.0           1     p6        => p43        D0                            VIA2
+   10.0           1     p5        => p2         D1                            DUART
+   10.0           1     p5        => p26        D1                            RAM1
+   10.0           1     p5        => p24        D1                            ROM
+   10.0           1     p5        => p41        D1                            RTC
+   10.0           1     p5        => p4         D1                            VIA1
+   10.0           1     p5        => p43        D1                            VIA2
+   10.0           1     p3        => p2         D2                            DUART
+   10.0           1     p3        => p26        D2                            RAM1
+   10.0           1     p3        => p24        D2                            ROM
+   10.0           1     p3        => p41        D2                            RTC
+   10.0           1     p3        => p4         D2                            VIA1
+   10.0           1     p3        => p43        D2                            VIA2
+   10.0           1     p33       => p2         D3                            DUART
+   10.0           1     p33       => p26        D3                            RAM1
+   10.0           1     p33       => p8         D3                            RAM2
+   10.0           1     p33       => p24        D3                            ROM
+   10.0           1     p33       => p41        D3                            RTC
+   10.0           1     p33       => p4         D3                            VIA1
+   10.0           1     p33       => p43        D3                            VIA2
    10.0           1     p29       => p21        RW                            MRD
    10.0           1     p29       => p19        RW                            MWR

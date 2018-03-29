@@ -5,8 +5,8 @@
 |--------------------------------------------|
 
 
-Start: Sun Dec 31 10:52:54 2017
-End  : Sun Dec 31 10:52:54 2017    $$$ Elapsed time: 00:00:00
+Start: Fri Mar 02 06:32:46 2018
+End  : Fri Mar 02 06:32:47 2018    $$$ Elapsed time: 00:00:01
 ===========================================================================
 Part [C:/ispLEVER_Classic2_0/ispcpld/dat/mach4a/mach463a] Design [saturn.tt4]
 
@@ -21,29 +21,29 @@ Part [C:/ispLEVER_Classic2_0/ispcpld/dat/mach4a/mach463a] Design [saturn.tt4]
  |    |    +- Signals to Place  |    |             +----- Logic Array Inputs
  |    |    |    +- Placed       |    |             |   +- Array Inputs Used
 _|____|____|____|_______________|____|_____________|___|________________
- 0 | 16 |  3 |  3 => 100% |     8 |  8 => 100% |  33 | 15    =>  45%
- 1 | 16 |  2 |  2 => 100% |     8 |  8 => 100% |  33 |  2    =>   6%
- 2 | 16 |  2 |  2 => 100% |     8 |  6 =>  75% |  33 | 15    =>  45%
- 3 | 16 |  2 |  2 => 100% |     8 |  2 =>  25% |  33 | 15    =>  45%
+ 0 | 16 |  8 |  8 => 100% |     8 |  8 => 100% |  33 | 23    =>  69%
+ 1 | 16 |  8 |  8 => 100% |     8 |  8 => 100% |  33 | 23    =>  69%
+ 2 | 16 |  7 |  7 => 100% |     8 |  8 => 100% |  33 | 23    =>  69%
+ 3 | 16 |  8 |  8 => 100% |     8 |  6 =>  75% |  33 | 22    =>  66%
 ---|----|----|------------|-------|------------|-----|------------------
-        | Avg number of array inputs in used blocks :  11.75 =>  35%
+        | Avg number of array inputs in used blocks :  22.75 =>  68%
 
-* Input/Clock Signal count:  17 -> placed:  17 = 100%
+* Input/Clock Signal count:  13 -> placed:  13 = 100%
 
           Resources           Available   Used
 -----------------------------------------------------------------
 	Input Pins            :   0        0    =>   0%
-	I/O Pins              :  32       24    =>  75%
+	I/O Pins              :  32       30    =>  93%
 	Clock Only Pins       :   0        0    =>   0%
 	Clock/Input Pins      :   2        2    => 100%
 	Logic Blocks          :   4        4    => 100%
-	Macrocells            :  64        9    =>  14%
-	PT Clusters           :  64        1    =>   1%
-	 - Single PT Clusters :  64        8    =>  12%
+	Macrocells            :  64       31    =>  48%
+	PT Clusters           :  64       20    =>  31%
+	 - Single PT Clusters :  64       12    =>  18%
 	Input Registers       :            0
 
 * Routing Completion: 100%
-* Attempts: Place [      26] Route [       0]
+* Attempts: Place [      45] Route [       0]
 ===========================================================================
 	Signal Fanout Table
 ===========================================================================
@@ -53,32 +53,53 @@ _|____|____|____|_______________|____|_____________|___|________________
    |  |  |    +- Signal-to-Pin Assignment
    |  |  |    |    Fanout to Logic Blocks               Signal Name
 ___|__|__|____|____________________________________________________________
-   1| 1|INP|  17|=> 0.23| A10
-   2| 1|INP|  16|=> 0.23| A11
-   3| 1|INP|  15|=> 0.23| A12
-   4| 1|INP|  14|=> 0.23| A13
-   5| 0|INP|   9|=> 0.23| A14
-   6| 0|INP|   7|=> 0.23| A15
-   7| 0|INP|   6|=> 0.23| A16
-   8| 0|INP|   5|=> 0.23| A17
-   9| 0|INP|   3|=> 0.23| A18
-  10| +|INP|  33|=> 0.23| A19
-  11| 2|INP|  28|=> 0.23| A5
-  12| 2|INP|  27|=> 0.23| A6
-  13| 2|INP|  25|=> 0.23| A7
-  14| 1|INP|  20|=> 0.23| A8
-  15| 1|INP|  18|=> 0.23| A9
-  16| +|INP|  11|=> .1..| CLK
-  17| 0|OUT|   2|=> ....| DUART
-  18| 1|OUT|  21|=> ....| MRD
-  19| 1|OUT|  19|=> ....| MWR
-  20| 3|OUT|  41|=> ....| RAM1
-  21| 0|OUT|   8|=> ....| RAM2
-  22| 2|OUT|  24|=> ....| ROM
-  23| 3|OUT|  43|=> ....| RTC
-  24| 2|INP|  29|=> .1..| RW
-  25| 2|OUT|  26|=> ....| VIA1
-  26| 0|OUT|   4|=> ....| VIA2
+   1| 1|INP|  16|=> 0123| A10
+   2| 1|INP|  18|=> 0123| A11
+   3| 1|INP|  20|=> 0123| A12
+   4| 2|INP|  27|=> 0123| A13
+   5| 2|INP|  29|=> 0123| A14
+   6| 2|INP|  31|=> 0123| A15
+   7| 1|OUT|  17|=> ....| A16
+   8| 0|OUT|   3|=> ....| A17
+   9| 0|OUT|   6|=> ....| A18
+  10| 0|INP|   9|=> 0123| A8
+  11| 1|INP|  14|=> 0123| A9
+  12| 3| IO|  41|=> 0.2.| D0
+  13| 3| IO|  43|=> 0.2.| D1
+  14| 0| IO|   4|=> 01..| D2
+  15| 2| IO|  26|=> .1..| D3
+  16| 0|OUT|   8|=> ....| DUART
+  17| 2|OUT|  28|=> ....| IO0
+  18| 1|OUT|  15|=> ....| IO1
+  19| 2|OUT|  30|=> ....| IO2
+  20| 1|OUT|  21|=> ....| IO3
+  21| +|Cin|  11|=> 0123| PHI
+  22| 0|OUT|   2|=> ....| RAM0
+  23| 2|OUT|  25|=> ....| RAM1
+  24| 1|OUT|  19|=> ....| RD
+  25| 3|INP|  36|=> 01..| RESB
+  26| 3|NOD|  . |=> .123| RN_STP
+		|=> Paired w/: STP
+  27| 3|OUT|  39|=> ....| ROM
+  28| 3|OUT|  37|=> ....| RTC
+  29| 0|INP|   7|=> 0123| RWB
+  30| 3| IO|  42|=> ....| STP
+		|=> Paired w/: RN_STP
+  31| 0|INP|   5|=> 0123| VDA
+  32| +|INP|  33|=> 0123| VPA
+  33| 2|OUT|  24|=> ....| WD
+  34| 2|NOD|  . |=> 0123| blatch0
+  35| 2|NOD|  . |=> 0123| blatch1
+  36| 1|NOD|  . |=> 0123| blatch2
+  37| 1|NOD|  . |=> 0123| blatch3
+  38| 0|NOD|  . |=> 0..3| hmucfg0
+  39| 0|NOD|  . |=> 0..3| hmucfg1
+  40| 0|NOD|  . |=> 0123| hmucfg2
+  41| 1|NOD|  . |=> ..2.| hmucfg3
+  42| 3|NOD|  . |=> .12.| vab
+  43| 1|NOD|  . |=> .12.| wsext
+  44| 3|NOD|  . |=> ...3| wsff0
+  45| 3|NOD|  . |=> ...3| wsflag
 ---------------------------------------------------------------------------
 ===========================================================================
 	< C:/ispLEVER_Classic2_0/ispcpld/dat/mach4a/mach463a Device Pin Assignments >
@@ -88,48 +109,48 @@ ___|__|__|____|____________________________________________________________
     |     |         |   Signal Name
 ____|_____|_________|______________________________________________________
     1 |  GND |     | |    (pwr/test)
-    2 |  I_O | 0_07| | DUART
-    3 |  I_O | 0_06| | A18
-    4 |  I_O | 0_05| | VIA2
-    5 |  I_O | 0_04| | A17
-    6 |  I_O | 0_03| | A16
-    7 |  I_O | 0_02| | A15
-    8 |  I_O | 0_01| | RAM2
-    9 |  I_O | 0_00| | A14
+    2 |  I_O | 0_07| | RAM0
+    3 |  I_O | 0_06| | A17
+    4 |  I_O | 0_05| | D2
+    5 |  I_O | 0_04| | VDA
+    6 |  I_O | 0_03| | A18
+    7 |  I_O | 0_02| | RWB
+    8 |  I_O | 0_01| | DUART
+    9 |  I_O | 0_00| | A8
    10 | JTAG |     | |    (pwr/test)
-   11 | CkIn |     |*| CLK
+   11 | CkIn |     |*| PHI
    12 |  GND |     | |    (pwr/test)
    13 | JTAG |     | |    (pwr/test)
-   14 |  I_O | 1_00| | A13
-   15 |  I_O | 1_01| | A12
-   16 |  I_O | 1_02| | A11
-   17 |  I_O | 1_03| | A10
-   18 |  I_O | 1_04| | A9
-   19 |  I_O | 1_05| | MWR
-   20 |  I_O | 1_06| | A8
-   21 |  I_O | 1_07| | MRD
+   14 |  I_O | 1_00| | A9
+   15 |  I_O | 1_01| | IO1
+   16 |  I_O | 1_02| | A10
+   17 |  I_O | 1_03| | A16
+   18 |  I_O | 1_04| | A11
+   19 |  I_O | 1_05| | RD
+   20 |  I_O | 1_06| | A12
+   21 |  I_O | 1_07| | IO3
    22 |  Vcc |     | |    (pwr/test)
    23 |  GND |     | |    (pwr/test)
-   24 |  I_O | 2_07| | ROM
-   25 |  I_O | 2_06| | A7
-   26 |  I_O | 2_05| | VIA1
-   27 |  I_O | 2_04| | A6
-   28 |  I_O | 2_03| | A5
-   29 |  I_O | 2_02| | RW
-   30 |  I_O | 2_01| |        -
-   31 |  I_O | 2_00| |        -
+   24 |  I_O | 2_07| | WD
+   25 |  I_O | 2_06| | RAM1
+   26 |  I_O | 2_05| | D3
+   27 |  I_O | 2_04| | A13
+   28 |  I_O | 2_03| | IO0
+   29 |  I_O | 2_02| | A14
+   30 |  I_O | 2_01| | IO2
+   31 |  I_O | 2_00| | A15
    32 | JTAG |     | |    (pwr/test)
-   33 | CkIn |     | | A19
+   33 | CkIn |     | | VPA
    34 |  GND |     | |    (pwr/test)
    35 | JTAG |     | |    (pwr/test)
-   36 |  I_O | 3_00| |        -
-   37 |  I_O | 3_01| |        -
+   36 |  I_O | 3_00| | RESB
+   37 |  I_O | 3_01| | RTC
    38 |  I_O | 3_02| |        -
-   39 |  I_O | 3_03| |        -
+   39 |  I_O | 3_03| | ROM
    40 |  I_O | 3_04| |        -
-   41 |  I_O | 3_05| | RAM1
-   42 |  I_O | 3_06| |        -
-   43 |  I_O | 3_07| | RTC
+   41 |  I_O | 3_05| | D0
+   42 |  I_O | 3_06| | STP
+   43 |  I_O | 3_07| | D1
    44 |  Vcc |     | |    (pwr/test)
 ---------------------------------------------------------------------------
 ===========================================================================
@@ -142,20 +163,20 @@ ____|_____|_________|______________________________________________________
  |        Sig Type-+  |  |   |     |  |      |   |  XOR to Mcell Assignment
  |  Signal Name    |  |  |   |     |  |      |   |          |
 _|_________________|__|__|___|_____|__|______|___|__________|______________
- 0|          VIA2|OUT| | S | 1      | 4 free   | 1 XOR to [ 0] for 1 PT sig
- 1|              | ? | | S |        | 4 free   | 1 XOR free
+ 0|            D2| IO| | S | 1      | 4 free   | 1 XOR to [ 0] for 1 PT sig
+ 1|           A17|OUT| | S | 2      | 4 to [ 1]| 1 XOR free
  2|              | ? | | S |        | 4 free   | 1 XOR free
  3|              | ? | | S |        | 4 free   | 1 XOR free
- 4|         DUART|OUT| | S | 1      | 4 free   | 1 XOR to [ 4] for 1 PT sig
- 5|              | ? | | S |        | 4 free   | 1 XOR free
+ 4|          RAM0|OUT| | S | 6      | 4 to [ 4]| 1 XOR to [ 4] as logic PT
+ 5|       hmucfg2|NOD| | A | 1      | 2 to [ 4]| 1 XOR to [ 5] for 1 PT sig
  6|              | ? | | S |        | 4 free   | 1 XOR free
  7|              | ? | | S |        | 4 free   | 1 XOR free
- 8|          RAM2|OUT| | S | 1      | 4 free   | 1 XOR to [ 8] for 1 PT sig
- 9|              | ? | | S |        | 4 free   | 1 XOR free
+ 8|         DUART|OUT| | S | 2      | 4 to [ 8]| 1 XOR free
+ 9|       hmucfg1|NOD| | A | 1      | 2 free   | 1 XOR to [ 9] for 1 PT sig
 10|              | ? | | S |        | 4 free   | 1 XOR free
 11|              | ? | | S |        | 4 free   | 1 XOR free
-12|              | ? | | S |        | 4 free   | 1 XOR free
-13|              | ? | | S |        | 4 free   | 1 XOR free
+12|           A18|OUT| | S | 2      | 4 to [12]| 1 XOR free
+13|       hmucfg0|NOD| | A | 1      | 2 free   | 1 XOR to [13] for 1 PT sig
 14|              | ? | | S |        | 4 free   | 1 XOR free
 15|              | ? | | S |        | 4 free   | 1 XOR free
 ---------------------------------------------------------------------------
@@ -169,21 +190,21 @@ _|_________________|__|__|___|_____|__|______|___|__________|______________
  |        Sig Type-+  |  |   |     |
  |  Signal Name    |  |  |   |     |     Maximum PT Capacity
 _|_________________|__|__|___|_____|_______________________________________
- 0|          VIA2|OUT| | S | 1      |=> can support up to [ 15] logic PT(s)
- 1|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 2|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 3|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 4|         DUART|OUT| | S | 1      |=> can support up to [ 20] logic PT(s)
- 5|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 6|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 7|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 8|          RAM2|OUT| | S | 1      |=> can support up to [ 20] logic PT(s)
- 9|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
-10|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-11|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-12|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-13|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-14|              | ? | | S |        |=> can support up to [ 15] logic PT(s)
+ 0|            D2| IO| | S | 1      |=> can support up to [ 10] logic PT(s)
+ 1|           A17|OUT| | S | 2      |=> can support up to [ 19] logic PT(s)
+ 2|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 3|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 4|          RAM0|OUT| | S | 6      |=> can support up to [ 17] logic PT(s)
+ 5|       hmucfg2|NOD| | A | 1      |=> can support up to [ 11] logic PT(s)
+ 6|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 7|              | ? | | S |        |=> can support up to [ 12] logic PT(s)
+ 8|         DUART|OUT| | S | 2      |=> can support up to [ 17] logic PT(s)
+ 9|       hmucfg1|NOD| | A | 1      |=> can support up to [ 13] logic PT(s)
+10|              | ? | | S |        |=> can support up to [ 12] logic PT(s)
+11|              | ? | | S |        |=> can support up to [ 12] logic PT(s)
+12|           A18|OUT| | S | 2      |=> can support up to [ 17] logic PT(s)
+13|       hmucfg0|NOD| | A | 1      |=> can support up to [ 13] logic PT(s)
+14|              | ? | | S |        |=> can support up to [ 12] logic PT(s)
 15|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
 ---------------------------------------------------------------------------
 ===========================================================================
@@ -194,20 +215,20 @@ _|_________________|__|__|___|_____|_______________________________________
  |      Sig Type---+  |  to | Block [ 0] IO Pin  |   Device Pin
  |  Signal Name    |  | pin |      Numbers       |     Numbers
 _|_________________|__|_____|____________________|________________________
- 0|          VIA2|OUT| | => |(  5)   6    7    0 |(  4)   3    2    9 
- 1|              |   | | => |   5    6    7    0 |   4    3    2    9 
+ 0|            D2| IO| | => |(  5)   6    7    0 |(  4)   3    2    9 
+ 1|           A17|OUT| | => |   5 (  6)   7    0 |   4 (  3)   2    9 
  2|              |   | | => |   6    7    0    1 |   3    2    9    8 
  3|              |   | | => |   6    7    0    1 |   3    2    9    8 
- 4|         DUART|OUT| | => |(  7)   0    1    2 |(  2)   9    8    7 
- 5|              |   | | => |   7    0    1    2 |   2    9    8    7 
+ 4|          RAM0|OUT| | => |(  7)   0    1    2 |(  2)   9    8    7 
+ 5|       hmucfg2|NOD| | => |   7    0    1    2 |   2    9    8    7 
  6|              |   | | => |   0    1    2    3 |   9    8    7    6 
  7|              |   | | => |   0    1    2    3 |   9    8    7    6 
- 8|          RAM2|OUT| | => |(  1)   2    3    4 |(  8)   7    6    5 
- 9|              |   | | => |   1    2    3    4 |   8    7    6    5 
+ 8|         DUART|OUT| | => |(  1)   2    3    4 |(  8)   7    6    5 
+ 9|       hmucfg1|NOD| | => |   1    2    3    4 |   8    7    6    5 
 10|              |   | | => |   2    3    4    5 |   7    6    5    4 
 11|              |   | | => |   2    3    4    5 |   7    6    5    4 
-12|              |   | | => |   3    4    5    6 |   6    5    4    3 
-13|              |   | | => |   3    4    5    6 |   6    5    4    3 
+12|           A18|OUT| | => |(  3)   4    5    6 |(  6)   5    4    3 
+13|       hmucfg0|NOD| | => |   3    4    5    6 |   6    5    4    3 
 14|              |   | | => |   4    5    6    7 |   5    4    3    2 
 15|              |   | | => |   4    5    6    7 |   5    4    3    2 
 ---------------------------------------------------------------------------
@@ -220,14 +241,14 @@ _|_________________|__|_____|____________________|________________________
  |       Sig Type--+  |   |     |
  |     Signal Name |  |   |     |  Node Destinations Via Output Matrix
 _|_________________|__|___|_____|___________________________________________
- 0|           A14|INP| |  9| => |   0    1    2    3    4    5    6    7 
- 1|          RAM2|OUT| |  8| => |   2    3    4    5    6    7  ( 8)   9 
- 2|           A15|INP| |  7| => |   4    5    6    7    8    9   10   11 
- 3|           A16|INP| |  6| => |   6    7    8    9   10   11   12   13 
- 4|           A17|INP| |  5| => |   8    9   10   11   12   13   14   15 
- 5|          VIA2|OUT| |  4| => |  10   11   12   13   14   15  ( 0)   1 
- 6|           A18|INP| |  3| => |  12   13   14   15    0    1    2    3 
- 7|         DUART|OUT| |  2| => |  14   15    0    1    2    3  ( 4)   5 
+ 0|            A8|INP| |  9| => |   0    1    2    3    4    5    6    7 
+ 1|         DUART|OUT| |  8| => |   2    3    4    5    6    7  ( 8)   9 
+ 2|           RWB|INP| |  7| => |   4    5    6    7    8    9   10   11 
+ 3|           A18|OUT| |  6| => |   6    7    8    9   10   11  (12)  13 
+ 4|           VDA|INP| |  5| => |   8    9   10   11   12   13   14   15 
+ 5|            D2| IO| |  4| => |  10   11   12   13   14   15  ( 0)   1 
+ 6|           A17|OUT| |  3| => |  12   13   14   15    0  ( 1)   2    3 
+ 7|          RAM0|OUT| |  2| => |  14   15    0    1    2    3  ( 4)   5 
 ---------------------------------------------------------------------------
 ===========================================================================
 	< Block [ 0] >	IO/Node and IO/Input Macrocell Pairing Table
@@ -238,14 +259,14 @@ _|_________________|__|___|_____|___________________________________________
  |       Sig Type--+  |   |     |
  |     Signal Name |  |   |     |  Input Macrocell and Node Pairs
 _|_________________|__|___|_____|__________________________________________
- 0|           A14|INP| |  9| => | Input macrocell   [             -]
- 1|          RAM2|OUT| |  8| => | Input macrocell   [             -]
- 2|           A15|INP| |  7| => | Input macrocell   [             -]
- 3|           A16|INP| |  6| => | Input macrocell   [             -]
- 4|           A17|INP| |  5| => | Input macrocell   [             -]
- 5|          VIA2|OUT| |  4| => | Input macrocell   [             -]
- 6|           A18|INP| |  3| => | Input macrocell   [             -]
- 7|         DUART|OUT| |  2| => | Input macrocell   [             -]
+ 0|            A8|INP| |  9| => | Input macrocell   [             -]
+ 1|         DUART|OUT| |  8| => | Input macrocell   [             -]
+ 2|           RWB|INP| |  7| => | Input macrocell   [             -]
+ 3|           A18|OUT| |  6| => | Input macrocell   [             -]
+ 4|           VDA|INP| |  5| => | Input macrocell   [             -]
+ 5|            D2| IO| |  4| => | Input macrocell   [             -]
+ 6|           A17|OUT| |  3| => | Input macrocell   [             -]
+ 7|          RAM0|OUT| |  2| => | Input macrocell   [             -]
 ---------------------------------------------------------------------------
 ===========================================================================
 	< Block [ 0] >	Input Multiplexer (IMX) Assignments
@@ -256,42 +277,42 @@ IMX No.    |    +---- Block IO Pin or Macrocell Number
    |       |    |  Pin Number      |      +- Signal Fixed (*) to Pin/Mcell
    |       |    |   |  Sig Type    |      | +- Feedback Required (*)
 ---|-------|----|---|---|----------|------|-|------------------------------
-   0	[IOpin  0 |  9|INP            A14| |*]
+   0	[IOpin  0 |  9|INP             A8| |*]
 	[RegIn  0 | 46|                 -| | ]
-	[MCell  0 | 45|OUT           VIA2| | ]
-	[MCell  1 | 47|                 -| | ]
+	[MCell  0 | 45| IO             D2| | ]
+	[MCell  1 | 47|OUT            A17| | ]
 
-   1	[IOpin  1 |  8|OUT           RAM2| | ]
+   1	[IOpin  1 |  8|OUT          DUART| | ]
 	[RegIn  1 | 49|                 -| | ]
 	[MCell  2 | 48|                 -| | ]
 	[MCell  3 | 50|                 -| | ]
 
-   2	[IOpin  2 |  7|INP            A15| |*]
+   2	[IOpin  2 |  7|INP            RWB| |*]
 	[RegIn  2 | 52|                 -| | ]
-	[MCell  4 | 51|OUT          DUART| | ]
-	[MCell  5 | 53|                 -| | ]
+	[MCell  4 | 51|OUT           RAM0| | ]
+	[MCell  5 | 53|NOD        hmucfg2| |*]
 
-   3	[IOpin  3 |  6|INP            A16| |*]
+   3	[IOpin  3 |  6|OUT            A18| | ]
 	[RegIn  3 | 55|                 -| | ]
 	[MCell  6 | 54|                 -| | ]
 	[MCell  7 | 56|                 -| | ]
 
-   4	[IOpin  4 |  5|INP            A17| |*]
+   4	[IOpin  4 |  5|INP            VDA| |*]
 	[RegIn  4 | 58|                 -| | ]
-	[MCell  8 | 57|OUT           RAM2| | ]
-	[MCell  9 | 59|                 -| | ]
+	[MCell  8 | 57|OUT          DUART| | ]
+	[MCell  9 | 59|NOD        hmucfg1| |*]
 
-   5	[IOpin  5 |  4|OUT           VIA2| | ]
+   5	[IOpin  5 |  4| IO             D2| |*]
 	[RegIn  5 | 61|                 -| | ]
 	[MCell 10 | 60|                 -| | ]
 	[MCell 11 | 62|                 -| | ]
 
-   6	[IOpin  6 |  3|INP            A18| |*]
+   6	[IOpin  6 |  3|OUT            A17| | ]
 	[RegIn  6 | 64|                 -| | ]
-	[MCell 12 | 63|                 -| | ]
-	[MCell 13 | 65|                 -| | ]
+	[MCell 12 | 63|OUT            A18| | ]
+	[MCell 13 | 65|NOD        hmucfg0| |*]
 
-   7	[IOpin  7 |  2|OUT          DUART| | ]
+   7	[IOpin  7 |  2|OUT           RAM0| | ]
 	[RegIn  7 | 67|                 -| | ]
 	[MCell 14 | 66|                 -| | ]
 	[MCell 15 | 68|                 -| | ]
@@ -302,38 +323,38 @@ IMX No.    |    +---- Block IO Pin or Macrocell Number
   +- Central Switch Matrix No.
   |   Src (ABEL Node/Pin#)   Signal
 --|--|--------------------|---------------------------------------------------
-Mux00|          ...       |      ...
-Mux01| IOPin  0  6  (   3)|   A18
-Mux02|          ...       |      ...
-Mux03| IOPin  1  0  (  14)|   A13
-Mux04| IOPin  2  6  (  25)|   A7
+Mux00|  Mcel  2  9  ( 107)|   blatch0
+Mux01|          ...       |      ...
+Mux02|  Input Pin   (  11)|   PHI
+Mux03| IOPin  2  2  (  29)|   A14
+Mux04|  Mcel  0  5  (  53)|   hmucfg2
 Mux05|          ...       |      ...
-Mux06| IOPin  1  2  (  16)|   A11
-Mux07|          ...       |      ...
-Mux08| IOPin  2  4  (  27)|   A6
-Mux09| IOPin  1  4  (  18)|   A9
-Mux10|          ...       |      ...
-Mux11| IOPin  1  6  (  20)|   A8
-Mux12| IOPin  1  1  (  15)|   A12
-Mux13|          ...       |      ...
-Mux14| IOPin  0  4  (   5)|   A17
-Mux15|          ...       |      ...
+Mux06| IOPin  1  2  (  16)|   A10
+Mux07| IOPin  3  0  (  36)|   RESB
+Mux08| IOPin  2  4  (  27)|   A13
+Mux09| IOPin  1  4  (  18)|   A11
+Mux10|  Mcel  1  5  (  77)|   blatch2
+Mux11| IOPin  1  6  (  20)|   A12
+Mux12| IOPin  0  4  (   5)|   VDA
+Mux13|  Mcel  0  9  (  59)|   hmucfg1
+Mux14| IOPin  2  0  (  31)|   A15
+Mux15|  Mcel  1  1  (  71)|   blatch3
 Mux16|          ...       |      ...
-Mux17| IOPin  0  0  (   9)|   A14
-Mux18|          ...       |      ...
-Mux19| IOPin  0  3  (   6)|   A16
-Mux20| IOPin  1  3  (  17)|   A10
-Mux21| IOPin  2  3  (  28)|   A5
-Mux22|          ...       |      ...
-Mux23|  Input Pin   (  33)|   A19
+Mux17| IOPin  0  0  (   9)|   A8
+Mux18| IOPin  3  7  (  43)|   D1
+Mux19|  Mcel  0 13  (  65)|   hmucfg0
+Mux20|  Mcel  2  5  ( 101)|   blatch1
+Mux21| IOPin  1  0  (  14)|   A9
+Mux22| IOPin  0  5  (   4)|   D2
+Mux23|  Input Pin   (  33)|   VPA
 Mux24|          ...       |      ...
 Mux25|          ...       |      ...
-Mux26| IOPin  0  2  (   7)|   A15
+Mux26| IOPin  0  2  (   7)|   RWB
 Mux27|          ...       |      ...
 Mux28|          ...       |      ...
 Mux29|          ...       |      ...
 Mux30|          ...       |      ...
-Mux31|          ...       |      ...
+Mux31| IOPin  3  5  (  41)|   D0
 Mux32|          ...       |      ...
 ---------------------------------------------------------------------------
 ===========================================================================
@@ -346,20 +367,20 @@ Mux32|          ...       |      ...
  |        Sig Type-+  |  |   |     |  |      |   |  XOR to Mcell Assignment
  |  Signal Name    |  |  |   |     |  |      |   |          |
 _|_________________|__|__|___|_____|__|______|___|__________|______________
- 0|           MWR|OUT| | S | 1      | 4 free   | 1 XOR to [ 0] for 1 PT sig
- 1|              | ? | | S |        | 4 free   | 1 XOR free
+ 0|            RD|OUT| | S | 3      | 4 to [ 0]| 1 XOR free
+ 1|       blatch3|NOD| | A | 2      | 2 to [ 1]| 1 XOR free
  2|              | ? | | S |        | 4 free   | 1 XOR free
  3|              | ? | | S |        | 4 free   | 1 XOR free
- 4|           MRD|OUT| | S | 1      | 4 free   | 1 XOR to [ 4] for 1 PT sig
- 5|              | ? | | S |        | 4 free   | 1 XOR free
+ 4|           IO3|OUT| | S | 2      | 4 to [ 4]| 1 XOR free
+ 5|       blatch2|NOD| | A | 2      | 2 to [ 5]| 1 XOR free
  6|              | ? | | S |        | 4 free   | 1 XOR free
  7|              | ? | | S |        | 4 free   | 1 XOR free
- 8|              | ? | | S |        | 4 free   | 1 XOR free
- 9|              | ? | | S |        | 4 free   | 1 XOR free
+ 8|           IO1|OUT| | S | 2      | 4 to [ 8]| 1 XOR free
+ 9|         wsext|NOD| | S | 1      | 4 free   | 1 XOR to [ 9] for 1 PT sig
 10|              | ? | | S |        | 4 free   | 1 XOR free
 11|              | ? | | S |        | 4 free   | 1 XOR free
-12|              | ? | | S |        | 4 free   | 1 XOR free
-13|              | ? | | S |        | 4 free   | 1 XOR free
+12|           A16|OUT| | S | 2      | 4 to [12]| 1 XOR free
+13|       hmucfg3|NOD| | A | 1      | 2 free   | 1 XOR to [13] for 1 PT sig
 14|              | ? | | S |        | 4 free   | 1 XOR free
 15|              | ? | | S |        | 4 free   | 1 XOR free
 ---------------------------------------------------------------------------
@@ -373,21 +394,21 @@ _|_________________|__|__|___|_____|__|______|___|__________|______________
  |        Sig Type-+  |  |   |     |
  |  Signal Name    |  |  |   |     |     Maximum PT Capacity
 _|_________________|__|__|___|_____|_______________________________________
- 0|           MWR|OUT| | S | 1      |=> can support up to [ 15] logic PT(s)
- 1|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 2|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 3|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 4|           MRD|OUT| | S | 1      |=> can support up to [ 20] logic PT(s)
- 5|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 6|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
- 7|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
- 8|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
- 9|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-10|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-11|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-12|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-13|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-14|              | ? | | S |        |=> can support up to [ 15] logic PT(s)
+ 0|            RD|OUT| | S | 3      |=> can support up to [ 10] logic PT(s)
+ 1|       blatch3|NOD| | A | 2      |=> can support up to [ 13] logic PT(s)
+ 2|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 3|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 4|           IO3|OUT| | S | 2      |=> can support up to [ 15] logic PT(s)
+ 5|       blatch2|NOD| | A | 2      |=> can support up to [ 13] logic PT(s)
+ 6|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 7|              | ? | | S |        |=> can support up to [ 14] logic PT(s)
+ 8|           IO1|OUT| | S | 2      |=> can support up to [ 19] logic PT(s)
+ 9|         wsext|NOD| | S | 1      |=> can support up to [ 15] logic PT(s)
+10|              | ? | | S |        |=> can support up to [ 14] logic PT(s)
+11|              | ? | | S |        |=> can support up to [ 12] logic PT(s)
+12|           A16|OUT| | S | 2      |=> can support up to [ 17] logic PT(s)
+13|       hmucfg3|NOD| | A | 1      |=> can support up to [ 13] logic PT(s)
+14|              | ? | | S |        |=> can support up to [ 12] logic PT(s)
 15|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
 ---------------------------------------------------------------------------
 ===========================================================================
@@ -398,20 +419,20 @@ _|_________________|__|__|___|_____|_______________________________________
  |      Sig Type---+  |  to | Block [ 1] IO Pin  |   Device Pin
  |  Signal Name    |  | pin |      Numbers       |     Numbers
 _|_________________|__|_____|____________________|________________________
- 0|           MWR|OUT| | => |(  5)   6    7    0 |( 19)  20   21   14 
- 1|              |   | | => |   5    6    7    0 |  19   20   21   14 
+ 0|            RD|OUT| | => |(  5)   6    7    0 |( 19)  20   21   14 
+ 1|       blatch3|NOD| | => |   5    6    7    0 |  19   20   21   14 
  2|              |   | | => |   6    7    0    1 |  20   21   14   15 
  3|              |   | | => |   6    7    0    1 |  20   21   14   15 
- 4|           MRD|OUT| | => |(  7)   0    1    2 |( 21)  14   15   16 
- 5|              |   | | => |   7    0    1    2 |  21   14   15   16 
+ 4|           IO3|OUT| | => |(  7)   0    1    2 |( 21)  14   15   16 
+ 5|       blatch2|NOD| | => |   7    0    1    2 |  21   14   15   16 
  6|              |   | | => |   0    1    2    3 |  14   15   16   17 
  7|              |   | | => |   0    1    2    3 |  14   15   16   17 
- 8|              |   | | => |   1    2    3    4 |  15   16   17   18 
- 9|              |   | | => |   1    2    3    4 |  15   16   17   18 
+ 8|           IO1|OUT| | => |(  1)   2    3    4 |( 15)  16   17   18 
+ 9|         wsext|NOD| | => |   1    2    3    4 |  15   16   17   18 
 10|              |   | | => |   2    3    4    5 |  16   17   18   19 
 11|              |   | | => |   2    3    4    5 |  16   17   18   19 
-12|              |   | | => |   3    4    5    6 |  17   18   19   20 
-13|              |   | | => |   3    4    5    6 |  17   18   19   20 
+12|           A16|OUT| | => |(  3)   4    5    6 |( 17)  18   19   20 
+13|       hmucfg3|NOD| | => |   3    4    5    6 |  17   18   19   20 
 14|              |   | | => |   4    5    6    7 |  18   19   20   21 
 15|              |   | | => |   4    5    6    7 |  18   19   20   21 
 ---------------------------------------------------------------------------
@@ -424,14 +445,14 @@ _|_________________|__|_____|____________________|________________________
  |       Sig Type--+  |   |     |
  |     Signal Name |  |   |     |  Node Destinations Via Output Matrix
 _|_________________|__|___|_____|___________________________________________
- 0|           A13|INP| | 14| => |   0    1    2    3    4    5    6    7 
- 1|           A12|INP| | 15| => |   2    3    4    5    6    7    8    9 
- 2|           A11|INP| | 16| => |   4    5    6    7    8    9   10   11 
- 3|           A10|INP| | 17| => |   6    7    8    9   10   11   12   13 
- 4|            A9|INP| | 18| => |   8    9   10   11   12   13   14   15 
- 5|           MWR|OUT| | 19| => |  10   11   12   13   14   15  ( 0)   1 
- 6|            A8|INP| | 20| => |  12   13   14   15    0    1    2    3 
- 7|           MRD|OUT| | 21| => |  14   15    0    1    2    3  ( 4)   5 
+ 0|            A9|INP| | 14| => |   0    1    2    3    4    5    6    7 
+ 1|           IO1|OUT| | 15| => |   2    3    4    5    6    7  ( 8)   9 
+ 2|           A10|INP| | 16| => |   4    5    6    7    8    9   10   11 
+ 3|           A16|OUT| | 17| => |   6    7    8    9   10   11  (12)  13 
+ 4|           A11|INP| | 18| => |   8    9   10   11   12   13   14   15 
+ 5|            RD|OUT| | 19| => |  10   11   12   13   14   15  ( 0)   1 
+ 6|           A12|INP| | 20| => |  12   13   14   15    0    1    2    3 
+ 7|           IO3|OUT| | 21| => |  14   15    0    1    2    3  ( 4)   5 
 ---------------------------------------------------------------------------
 ===========================================================================
 	< Block [ 1] >	IO/Node and IO/Input Macrocell Pairing Table
@@ -442,14 +463,14 @@ _|_________________|__|___|_____|___________________________________________
  |       Sig Type--+  |   |     |
  |     Signal Name |  |   |     |  Input Macrocell and Node Pairs
 _|_________________|__|___|_____|__________________________________________
- 0|           A13|INP| | 14| => | Input macrocell   [             -]
- 1|           A12|INP| | 15| => | Input macrocell   [             -]
- 2|           A11|INP| | 16| => | Input macrocell   [             -]
- 3|           A10|INP| | 17| => | Input macrocell   [             -]
- 4|            A9|INP| | 18| => | Input macrocell   [             -]
- 5|           MWR|OUT| | 19| => | Input macrocell   [             -]
- 6|            A8|INP| | 20| => | Input macrocell   [             -]
- 7|           MRD|OUT| | 21| => | Input macrocell   [             -]
+ 0|            A9|INP| | 14| => | Input macrocell   [             -]
+ 1|           IO1|OUT| | 15| => | Input macrocell   [             -]
+ 2|           A10|INP| | 16| => | Input macrocell   [             -]
+ 3|           A16|OUT| | 17| => | Input macrocell   [             -]
+ 4|           A11|INP| | 18| => | Input macrocell   [             -]
+ 5|            RD|OUT| | 19| => | Input macrocell   [             -]
+ 6|           A12|INP| | 20| => | Input macrocell   [             -]
+ 7|           IO3|OUT| | 21| => | Input macrocell   [             -]
 ---------------------------------------------------------------------------
 ===========================================================================
 	< Block [ 1] >	Input Multiplexer (IMX) Assignments
@@ -460,42 +481,42 @@ IMX No.    |    +---- Block IO Pin or Macrocell Number
    |       |    |  Pin Number      |      +- Signal Fixed (*) to Pin/Mcell
    |       |    |   |  Sig Type    |      | +- Feedback Required (*)
 ---|-------|----|---|---|----------|------|-|------------------------------
-   0	[IOpin  0 | 14|INP            A13| |*]
+   0	[IOpin  0 | 14|INP             A9| |*]
 	[RegIn  0 | 70|                 -| | ]
-	[MCell  0 | 69|OUT            MWR| | ]
-	[MCell  1 | 71|                 -| | ]
+	[MCell  0 | 69|OUT             RD| | ]
+	[MCell  1 | 71|NOD        blatch3| |*]
 
-   1	[IOpin  1 | 15|INP            A12| |*]
+   1	[IOpin  1 | 15|OUT            IO1| | ]
 	[RegIn  1 | 73|                 -| | ]
 	[MCell  2 | 72|                 -| | ]
 	[MCell  3 | 74|                 -| | ]
 
-   2	[IOpin  2 | 16|INP            A11| |*]
+   2	[IOpin  2 | 16|INP            A10| |*]
 	[RegIn  2 | 76|                 -| | ]
-	[MCell  4 | 75|OUT            MRD| | ]
-	[MCell  5 | 77|                 -| | ]
+	[MCell  4 | 75|OUT            IO3| | ]
+	[MCell  5 | 77|NOD        blatch2| |*]
 
-   3	[IOpin  3 | 17|INP            A10| |*]
+   3	[IOpin  3 | 17|OUT            A16| | ]
 	[RegIn  3 | 79|                 -| | ]
 	[MCell  6 | 78|                 -| | ]
 	[MCell  7 | 80|                 -| | ]
 
-   4	[IOpin  4 | 18|INP             A9| |*]
+   4	[IOpin  4 | 18|INP            A11| |*]
 	[RegIn  4 | 82|                 -| | ]
-	[MCell  8 | 81|                 -| | ]
-	[MCell  9 | 83|                 -| | ]
+	[MCell  8 | 81|OUT            IO1| | ]
+	[MCell  9 | 83|NOD          wsext| |*]
 
-   5	[IOpin  5 | 19|OUT            MWR| | ]
+   5	[IOpin  5 | 19|OUT             RD| | ]
 	[RegIn  5 | 85|                 -| | ]
 	[MCell 10 | 84|                 -| | ]
 	[MCell 11 | 86|                 -| | ]
 
-   6	[IOpin  6 | 20|INP             A8| |*]
+   6	[IOpin  6 | 20|INP            A12| |*]
 	[RegIn  6 | 88|                 -| | ]
-	[MCell 12 | 87|                 -| | ]
-	[MCell 13 | 89|                 -| | ]
+	[MCell 12 | 87|OUT            A16| | ]
+	[MCell 13 | 89|NOD        hmucfg3| |*]
 
-   7	[IOpin  7 | 21|OUT            MRD| | ]
+   7	[IOpin  7 | 21|OUT            IO3| | ]
 	[RegIn  7 | 91|                 -| | ]
 	[MCell 14 | 90|                 -| | ]
 	[MCell 15 | 92|                 -| | ]
@@ -506,34 +527,34 @@ IMX No.    |    +---- Block IO Pin or Macrocell Number
   +- Central Switch Matrix No.
   |   Src (ABEL Node/Pin#)   Signal
 --|--|--------------------|---------------------------------------------------
-Mux00|          ...       |      ...
+Mux00|  Mcel  3  1  ( 119)|   RN_STP
 Mux01|          ...       |      ...
-Mux02|  Input Pin   (  11)|   CLK
-Mux03| IOPin  2  2  (  29)|   RW
-Mux04|          ...       |      ...
+Mux02| IOPin  2  0  (  31)|   A15
+Mux03| IOPin  2  2  (  29)|   A14
+Mux04|  Input Pin   (  11)|   PHI
 Mux05|          ...       |      ...
-Mux06|          ...       |      ...
-Mux07|          ...       |      ...
-Mux08|          ...       |      ...
-Mux09|          ...       |      ...
-Mux10|          ...       |      ...
-Mux11|          ...       |      ...
-Mux12|          ...       |      ...
-Mux13|          ...       |      ...
+Mux06|  Mcel  1  5  (  77)|   blatch2
+Mux07| IOPin  3  0  (  36)|   RESB
+Mux08| IOPin  2  4  (  27)|   A13
+Mux09| IOPin  1  4  (  18)|   A11
+Mux10| IOPin  2  5  (  26)|   D3
+Mux11| IOPin  1  6  (  20)|   A12
+Mux12| IOPin  0  4  (   5)|   VDA
+Mux13|  Mcel  0  5  (  53)|   hmucfg2
 Mux14|          ...       |      ...
-Mux15|          ...       |      ...
-Mux16|          ...       |      ...
-Mux17|          ...       |      ...
-Mux18|          ...       |      ...
-Mux19|          ...       |      ...
+Mux15|  Mcel  3  5  ( 125)|   vab
+Mux16|  Mcel  1  9  (  83)|   wsext
+Mux17| IOPin  0  0  (   9)|   A8
+Mux18| IOPin  1  2  (  16)|   A10
+Mux19|  Mcel  2  5  ( 101)|   blatch1
 Mux20|          ...       |      ...
-Mux21|          ...       |      ...
-Mux22|          ...       |      ...
-Mux23|          ...       |      ...
+Mux21| IOPin  1  0  (  14)|   A9
+Mux22| IOPin  0  5  (   4)|   D2
+Mux23|  Input Pin   (  33)|   VPA
 Mux24|          ...       |      ...
-Mux25|          ...       |      ...
-Mux26|          ...       |      ...
-Mux27|          ...       |      ...
+Mux25|  Mcel  1  1  (  71)|   blatch3
+Mux26| IOPin  0  2  (   7)|   RWB
+Mux27|  Mcel  2  9  ( 107)|   blatch0
 Mux28|          ...       |      ...
 Mux29|          ...       |      ...
 Mux30|          ...       |      ...
@@ -550,19 +571,19 @@ Mux32|          ...       |      ...
  |        Sig Type-+  |  |   |     |  |      |   |  XOR to Mcell Assignment
  |  Signal Name    |  |  |   |     |  |      |   |          |
 _|_________________|__|__|___|_____|__|______|___|__________|______________
- 0|          VIA1|OUT| | S | 1      | 4 free   | 1 XOR to [ 0] for 1 PT sig
- 1|              | ? | | S |        | 4 free   | 1 XOR free
+ 0|            D3| IO| | S | 1      | 4 free   | 1 XOR to [ 0] for 1 PT sig
+ 1|          RAM1|OUT| | S | 2      | 4 to [ 1]| 1 XOR free
  2|              | ? | | S |        | 4 free   | 1 XOR free
  3|              | ? | | S |        | 4 free   | 1 XOR free
- 4|           ROM|OUT| | S | 1      | 4 free   | 1 XOR to [ 4] for 1 PT sig
- 5|              | ? | | S |        | 4 free   | 1 XOR free
+ 4|            WD|OUT| | S | 4      | 4 to [ 4]| 1 XOR free
+ 5|       blatch1|NOD| | A | 2      | 2 to [ 5]| 1 XOR free
  6|              | ? | | S |        | 4 free   | 1 XOR free
  7|              | ? | | S |        | 4 free   | 1 XOR free
- 8|              | ? | | S |        | 4 free   | 1 XOR free
- 9|              | ? | | S |        | 4 free   | 1 XOR free
+ 8|           IO2|OUT| | S | 2      | 4 to [ 8]| 1 XOR free
+ 9|       blatch0|NOD| | A | 2      | 2 to [ 9]| 1 XOR free
 10|              | ? | | S |        | 4 free   | 1 XOR free
 11|              | ? | | S |        | 4 free   | 1 XOR free
-12|              | ? | | S |        | 4 free   | 1 XOR free
+12|           IO0|OUT| | S | 2      | 4 to [12]| 1 XOR free
 13|              | ? | | S |        | 4 free   | 1 XOR free
 14|              | ? | | S |        | 4 free   | 1 XOR free
 15|              | ? | | S |        | 4 free   | 1 XOR free
@@ -577,20 +598,20 @@ _|_________________|__|__|___|_____|__|______|___|__________|______________
  |        Sig Type-+  |  |   |     |
  |  Signal Name    |  |  |   |     |     Maximum PT Capacity
 _|_________________|__|__|___|_____|_______________________________________
- 0|          VIA1|OUT| | S | 1      |=> can support up to [ 15] logic PT(s)
- 1|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 2|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 3|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 4|           ROM|OUT| | S | 1      |=> can support up to [ 20] logic PT(s)
- 5|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 6|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
- 7|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
- 8|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
- 9|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-10|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-11|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-12|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-13|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
+ 0|            D3| IO| | S | 1      |=> can support up to [ 10] logic PT(s)
+ 1|          RAM1|OUT| | S | 2      |=> can support up to [ 19] logic PT(s)
+ 2|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 3|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 4|            WD|OUT| | S | 4      |=> can support up to [ 15] logic PT(s)
+ 5|       blatch1|NOD| | A | 2      |=> can support up to [ 13] logic PT(s)
+ 6|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 7|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 8|           IO2|OUT| | S | 2      |=> can support up to [ 15] logic PT(s)
+ 9|       blatch0|NOD| | A | 2      |=> can support up to [ 13] logic PT(s)
+10|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+11|              | ? | | S |        |=> can support up to [ 15] logic PT(s)
+12|           IO0|OUT| | S | 2      |=> can support up to [ 20] logic PT(s)
+13|              | ? | | S |        |=> can support up to [ 15] logic PT(s)
 14|              | ? | | S |        |=> can support up to [ 15] logic PT(s)
 15|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
 ---------------------------------------------------------------------------
@@ -602,19 +623,19 @@ _|_________________|__|__|___|_____|_______________________________________
  |      Sig Type---+  |  to | Block [ 2] IO Pin  |   Device Pin
  |  Signal Name    |  | pin |      Numbers       |     Numbers
 _|_________________|__|_____|____________________|________________________
- 0|          VIA1|OUT| | => |(  5)   6    7    0 |( 26)  25   24   31 
- 1|              |   | | => |   5    6    7    0 |  26   25   24   31 
+ 0|            D3| IO| | => |(  5)   6    7    0 |( 26)  25   24   31 
+ 1|          RAM1|OUT| | => |   5 (  6)   7    0 |  26 ( 25)  24   31 
  2|              |   | | => |   6    7    0    1 |  25   24   31   30 
  3|              |   | | => |   6    7    0    1 |  25   24   31   30 
- 4|           ROM|OUT| | => |(  7)   0    1    2 |( 24)  31   30   29 
- 5|              |   | | => |   7    0    1    2 |  24   31   30   29 
+ 4|            WD|OUT| | => |(  7)   0    1    2 |( 24)  31   30   29 
+ 5|       blatch1|NOD| | => |   7    0    1    2 |  24   31   30   29 
  6|              |   | | => |   0    1    2    3 |  31   30   29   28 
  7|              |   | | => |   0    1    2    3 |  31   30   29   28 
- 8|              |   | | => |   1    2    3    4 |  30   29   28   27 
- 9|              |   | | => |   1    2    3    4 |  30   29   28   27 
+ 8|           IO2|OUT| | => |(  1)   2    3    4 |( 30)  29   28   27 
+ 9|       blatch0|NOD| | => |   1    2    3    4 |  30   29   28   27 
 10|              |   | | => |   2    3    4    5 |  29   28   27   26 
 11|              |   | | => |   2    3    4    5 |  29   28   27   26 
-12|              |   | | => |   3    4    5    6 |  28   27   26   25 
+12|           IO0|OUT| | => |(  3)   4    5    6 |( 28)  27   26   25 
 13|              |   | | => |   3    4    5    6 |  28   27   26   25 
 14|              |   | | => |   4    5    6    7 |  27   26   25   24 
 15|              |   | | => |   4    5    6    7 |  27   26   25   24 
@@ -628,14 +649,14 @@ _|_________________|__|_____|____________________|________________________
  |       Sig Type--+  |   |     |
  |     Signal Name |  |   |     |  Node Destinations Via Output Matrix
 _|_________________|__|___|_____|___________________________________________
- 0|              |   | | 31| => |   0    1    2    3    4    5    6    7 
- 1|              |   | | 30| => |   2    3    4    5    6    7    8    9 
- 2|            RW|INP| | 29| => |   4    5    6    7    8    9   10   11 
- 3|            A5|INP| | 28| => |   6    7    8    9   10   11   12   13 
- 4|            A6|INP| | 27| => |   8    9   10   11   12   13   14   15 
- 5|          VIA1|OUT| | 26| => |  10   11   12   13   14   15  ( 0)   1 
- 6|            A7|INP| | 25| => |  12   13   14   15    0    1    2    3 
- 7|           ROM|OUT| | 24| => |  14   15    0    1    2    3  ( 4)   5 
+ 0|           A15|INP| | 31| => |   0    1    2    3    4    5    6    7 
+ 1|           IO2|OUT| | 30| => |   2    3    4    5    6    7  ( 8)   9 
+ 2|           A14|INP| | 29| => |   4    5    6    7    8    9   10   11 
+ 3|           IO0|OUT| | 28| => |   6    7    8    9   10   11  (12)  13 
+ 4|           A13|INP| | 27| => |   8    9   10   11   12   13   14   15 
+ 5|            D3| IO| | 26| => |  10   11   12   13   14   15  ( 0)   1 
+ 6|          RAM1|OUT| | 25| => |  12   13   14   15    0  ( 1)   2    3 
+ 7|            WD|OUT| | 24| => |  14   15    0    1    2    3  ( 4)   5 
 ---------------------------------------------------------------------------
 ===========================================================================
 	< Block [ 2] >	IO/Node and IO/Input Macrocell Pairing Table
@@ -646,14 +667,14 @@ _|_________________|__|___|_____|___________________________________________
  |       Sig Type--+  |   |     |
  |     Signal Name |  |   |     |  Input Macrocell and Node Pairs
 _|_________________|__|___|_____|__________________________________________
- 0|              |   | | 31| => | Input macrocell   [             -]
- 1|              |   | | 30| => | Input macrocell   [             -]
- 2|            RW|INP| | 29| => | Input macrocell   [             -]
- 3|            A5|INP| | 28| => | Input macrocell   [             -]
- 4|            A6|INP| | 27| => | Input macrocell   [             -]
- 5|          VIA1|OUT| | 26| => | Input macrocell   [             -]
- 6|            A7|INP| | 25| => | Input macrocell   [             -]
- 7|           ROM|OUT| | 24| => | Input macrocell   [             -]
+ 0|           A15|INP| | 31| => | Input macrocell   [             -]
+ 1|           IO2|OUT| | 30| => | Input macrocell   [             -]
+ 2|           A14|INP| | 29| => | Input macrocell   [             -]
+ 3|           IO0|OUT| | 28| => | Input macrocell   [             -]
+ 4|           A13|INP| | 27| => | Input macrocell   [             -]
+ 5|            D3| IO| | 26| => | Input macrocell   [             -]
+ 6|          RAM1|OUT| | 25| => | Input macrocell   [             -]
+ 7|            WD|OUT| | 24| => | Input macrocell   [             -]
 ---------------------------------------------------------------------------
 ===========================================================================
 	< Block [ 2] >	Input Multiplexer (IMX) Assignments
@@ -664,42 +685,42 @@ IMX No.    |    +---- Block IO Pin or Macrocell Number
    |       |    |  Pin Number      |      +- Signal Fixed (*) to Pin/Mcell
    |       |    |   |  Sig Type    |      | +- Feedback Required (*)
 ---|-------|----|---|---|----------|------|-|------------------------------
-   0	[IOpin  0 | 31|                 -| | ]
+   0	[IOpin  0 | 31|INP            A15| |*]
 	[RegIn  0 | 94|                 -| | ]
-	[MCell  0 | 93|OUT           VIA1| | ]
-	[MCell  1 | 95|                 -| | ]
+	[MCell  0 | 93| IO             D3| | ]
+	[MCell  1 | 95|OUT           RAM1| | ]
 
-   1	[IOpin  1 | 30|                 -| | ]
+   1	[IOpin  1 | 30|OUT            IO2| | ]
 	[RegIn  1 | 97|                 -| | ]
 	[MCell  2 | 96|                 -| | ]
 	[MCell  3 | 98|                 -| | ]
 
-   2	[IOpin  2 | 29|INP             RW| |*]
+   2	[IOpin  2 | 29|INP            A14| |*]
 	[RegIn  2 |100|                 -| | ]
-	[MCell  4 | 99|OUT            ROM| | ]
-	[MCell  5 |101|                 -| | ]
+	[MCell  4 | 99|OUT             WD| | ]
+	[MCell  5 |101|NOD        blatch1| |*]
 
-   3	[IOpin  3 | 28|INP             A5| |*]
+   3	[IOpin  3 | 28|OUT            IO0| | ]
 	[RegIn  3 |103|                 -| | ]
 	[MCell  6 |102|                 -| | ]
 	[MCell  7 |104|                 -| | ]
 
-   4	[IOpin  4 | 27|INP             A6| |*]
+   4	[IOpin  4 | 27|INP            A13| |*]
 	[RegIn  4 |106|                 -| | ]
-	[MCell  8 |105|                 -| | ]
-	[MCell  9 |107|                 -| | ]
+	[MCell  8 |105|OUT            IO2| | ]
+	[MCell  9 |107|NOD        blatch0| |*]
 
-   5	[IOpin  5 | 26|OUT           VIA1| | ]
+   5	[IOpin  5 | 26| IO             D3| |*]
 	[RegIn  5 |109|                 -| | ]
 	[MCell 10 |108|                 -| | ]
 	[MCell 11 |110|                 -| | ]
 
-   6	[IOpin  6 | 25|INP             A7| |*]
+   6	[IOpin  6 | 25|OUT           RAM1| | ]
 	[RegIn  6 |112|                 -| | ]
-	[MCell 12 |111|                 -| | ]
+	[MCell 12 |111|OUT            IO0| | ]
 	[MCell 13 |113|                 -| | ]
 
-   7	[IOpin  7 | 24|OUT            ROM| | ]
+   7	[IOpin  7 | 24|OUT             WD| | ]
 	[RegIn  7 |115|                 -| | ]
 	[MCell 14 |114|                 -| | ]
 	[MCell 15 |116|                 -| | ]
@@ -710,34 +731,34 @@ IMX No.    |    +---- Block IO Pin or Macrocell Number
   +- Central Switch Matrix No.
   |   Src (ABEL Node/Pin#)   Signal
 --|--|--------------------|---------------------------------------------------
-Mux00|          ...       |      ...
-Mux01| IOPin  0  6  (   3)|   A18
-Mux02|          ...       |      ...
-Mux03| IOPin  1  0  (  14)|   A13
-Mux04| IOPin  2  6  (  25)|   A7
-Mux05|          ...       |      ...
-Mux06| IOPin  1  2  (  16)|   A11
-Mux07|          ...       |      ...
-Mux08| IOPin  2  4  (  27)|   A6
-Mux09| IOPin  1  4  (  18)|   A9
+Mux00|  Mcel  3  1  ( 119)|   RN_STP
+Mux01|          ...       |      ...
+Mux02| IOPin  2  0  (  31)|   A15
+Mux03| IOPin  2  2  (  29)|   A14
+Mux04|  Input Pin   (  11)|   PHI
+Mux05|  Mcel  1 13  (  89)|   hmucfg3
+Mux06| IOPin  1  2  (  16)|   A10
+Mux07|  Mcel  1  5  (  77)|   blatch2
+Mux08| IOPin  2  4  (  27)|   A13
+Mux09| IOPin  1  4  (  18)|   A11
 Mux10|          ...       |      ...
-Mux11| IOPin  1  6  (  20)|   A8
-Mux12| IOPin  1  1  (  15)|   A12
-Mux13|          ...       |      ...
-Mux14| IOPin  0  4  (   5)|   A17
-Mux15|          ...       |      ...
-Mux16|          ...       |      ...
-Mux17| IOPin  0  0  (   9)|   A14
-Mux18|          ...       |      ...
-Mux19| IOPin  0  3  (   6)|   A16
-Mux20| IOPin  1  3  (  17)|   A10
-Mux21| IOPin  2  3  (  28)|   A5
+Mux11| IOPin  1  6  (  20)|   A12
+Mux12| IOPin  0  4  (   5)|   VDA
+Mux13|  Mcel  0  5  (  53)|   hmucfg2
+Mux14|          ...       |      ...
+Mux15|  Mcel  3  5  ( 125)|   vab
+Mux16|  Mcel  1  9  (  83)|   wsext
+Mux17| IOPin  0  0  (   9)|   A8
+Mux18| IOPin  3  7  (  43)|   D1
+Mux19|  Mcel  2  5  ( 101)|   blatch1
+Mux20| IOPin  3  5  (  41)|   D0
+Mux21| IOPin  1  0  (  14)|   A9
 Mux22|          ...       |      ...
-Mux23|  Input Pin   (  33)|   A19
+Mux23|  Input Pin   (  33)|   VPA
 Mux24|          ...       |      ...
-Mux25|          ...       |      ...
-Mux26| IOPin  0  2  (   7)|   A15
-Mux27|          ...       |      ...
+Mux25|  Mcel  1  1  (  71)|   blatch3
+Mux26| IOPin  0  2  (   7)|   RWB
+Mux27|  Mcel  2  9  ( 107)|   blatch0
 Mux28|          ...       |      ...
 Mux29|          ...       |      ...
 Mux30|          ...       |      ...
@@ -754,20 +775,20 @@ Mux32|          ...       |      ...
  |        Sig Type-+  |  |   |     |  |      |   |  XOR to Mcell Assignment
  |  Signal Name    |  |  |   |     |  |      |   |          |
 _|_________________|__|__|___|_____|__|______|___|__________|______________
- 0|          RAM1|OUT| | S | 3      | 4 to [ 0]| 1 XOR free
- 1|              | ? | | S |        | 4 free   | 1 XOR free
+ 0|            D0| IO| | S | 1      | 4 free   | 1 XOR to [ 0] for 1 PT sig
+ 1|           STP| IO| | S | 1      | 4 free   | 1 XOR to [ 1] for 1 PT sig
  2|              | ? | | S |        | 4 free   | 1 XOR free
  3|              | ? | | S |        | 4 free   | 1 XOR free
- 4|           RTC|OUT| | S | 1      | 4 free   | 1 XOR to [ 4] for 1 PT sig
- 5|              | ? | | S |        | 4 free   | 1 XOR free
+ 4|            D1| IO| | S | 1      | 4 free   | 1 XOR to [ 4] for 1 PT sig
+ 5|           vab|NOD| | S | 1      | 4 free   | 1 XOR to [ 5] for 1 PT sig
  6|              | ? | | S |        | 4 free   | 1 XOR free
  7|              | ? | | S |        | 4 free   | 1 XOR free
- 8|              | ? | | S |        | 4 free   | 1 XOR free
- 9|              | ? | | S |        | 4 free   | 1 XOR free
+ 8|           RTC|OUT| | S | 2      | 4 to [ 8]| 1 XOR free
+ 9|        wsflag|NOD| | S | 4      | 4 to [ 9]| 1 XOR free
 10|              | ? | | S |        | 4 free   | 1 XOR free
 11|              | ? | | S |        | 4 free   | 1 XOR free
-12|              | ? | | S |        | 4 free   | 1 XOR free
-13|              | ? | | S |        | 4 free   | 1 XOR free
+12|           ROM|OUT| | S | 2      | 4 to [12]| 1 XOR free
+13|         wsff0|NOD| | S | 1      | 4 free   | 1 XOR to [13] for 1 PT sig
 14|              | ? | | S |        | 4 free   | 1 XOR free
 15|              | ? | | S |        | 4 free   | 1 XOR free
 ---------------------------------------------------------------------------
@@ -781,21 +802,21 @@ _|_________________|__|__|___|_____|__|______|___|__________|______________
  |        Sig Type-+  |  |   |     |
  |  Signal Name    |  |  |   |     |     Maximum PT Capacity
 _|_________________|__|__|___|_____|_______________________________________
- 0|          RAM1|OUT| | S | 3      |=> can support up to [ 15] logic PT(s)
- 1|              | ? | | S |        |=> can support up to [ 15] logic PT(s)
- 2|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 3|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 4|           RTC|OUT| | S | 1      |=> can support up to [ 20] logic PT(s)
- 5|              | ? | | S |        |=> can support up to [ 19] logic PT(s)
- 6|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
- 7|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
- 8|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
- 9|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-10|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-11|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-12|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-13|              | ? | | S |        |=> can support up to [ 20] logic PT(s)
-14|              | ? | | S |        |=> can support up to [ 15] logic PT(s)
+ 0|            D0| IO| | S | 1      |=> can support up to [ 14] logic PT(s)
+ 1|           STP| IO| | S | 1      |=> can support up to [ 19] logic PT(s)
+ 2|              | ? | | S |        |=> can support up to [ 18] logic PT(s)
+ 3|              | ? | | S |        |=> can support up to [ 18] logic PT(s)
+ 4|            D1| IO| | S | 1      |=> can support up to [ 19] logic PT(s)
+ 5|           vab|NOD| | S | 1      |=> can support up to [ 19] logic PT(s)
+ 6|              | ? | | S |        |=> can support up to [ 14] logic PT(s)
+ 7|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+ 8|           RTC|OUT| | S | 2      |=> can support up to [ 15] logic PT(s)
+ 9|        wsflag|NOD| | S | 4      |=> can support up to [ 15] logic PT(s)
+10|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
+11|              | ? | | S |        |=> can support up to [ 14] logic PT(s)
+12|           ROM|OUT| | S | 2      |=> can support up to [ 19] logic PT(s)
+13|         wsff0|NOD| | S | 1      |=> can support up to [ 15] logic PT(s)
+14|              | ? | | S |        |=> can support up to [ 14] logic PT(s)
 15|              | ? | | S |        |=> can support up to [ 10] logic PT(s)
 ---------------------------------------------------------------------------
 ===========================================================================
@@ -806,20 +827,20 @@ _|_________________|__|__|___|_____|_______________________________________
  |      Sig Type---+  |  to | Block [ 3] IO Pin  |   Device Pin
  |  Signal Name    |  | pin |      Numbers       |     Numbers
 _|_________________|__|_____|____________________|________________________
- 0|          RAM1|OUT| | => |(  5)   6    7    0 |( 41)  42   43   36 
- 1|              |   | | => |   5    6    7    0 |  41   42   43   36 
+ 0|            D0| IO| | => |(  5)   6    7    0 |( 41)  42   43   36 
+ 1|           STP| IO| | => |   5 (  6)   7    0 |  41 ( 42)  43   36 
  2|              |   | | => |   6    7    0    1 |  42   43   36   37 
  3|              |   | | => |   6    7    0    1 |  42   43   36   37 
- 4|           RTC|OUT| | => |(  7)   0    1    2 |( 43)  36   37   38 
- 5|              |   | | => |   7    0    1    2 |  43   36   37   38 
+ 4|            D1| IO| | => |(  7)   0    1    2 |( 43)  36   37   38 
+ 5|           vab|NOD| | => |   7    0    1    2 |  43   36   37   38 
  6|              |   | | => |   0    1    2    3 |  36   37   38   39 
  7|              |   | | => |   0    1    2    3 |  36   37   38   39 
- 8|              |   | | => |   1    2    3    4 |  37   38   39   40 
- 9|              |   | | => |   1    2    3    4 |  37   38   39   40 
+ 8|           RTC|OUT| | => |(  1)   2    3    4 |( 37)  38   39   40 
+ 9|        wsflag|NOD| | => |   1    2    3    4 |  37   38   39   40 
 10|              |   | | => |   2    3    4    5 |  38   39   40   41 
 11|              |   | | => |   2    3    4    5 |  38   39   40   41 
-12|              |   | | => |   3    4    5    6 |  39   40   41   42 
-13|              |   | | => |   3    4    5    6 |  39   40   41   42 
+12|           ROM|OUT| | => |(  3)   4    5    6 |( 39)  40   41   42 
+13|         wsff0|NOD| | => |   3    4    5    6 |  39   40   41   42 
 14|              |   | | => |   4    5    6    7 |  40   41   42   43 
 15|              |   | | => |   4    5    6    7 |  40   41   42   43 
 ---------------------------------------------------------------------------
@@ -832,14 +853,14 @@ _|_________________|__|_____|____________________|________________________
  |       Sig Type--+  |   |     |
  |     Signal Name |  |   |     |  Node Destinations Via Output Matrix
 _|_________________|__|___|_____|___________________________________________
- 0|              |   | | 36| => |   0    1    2    3    4    5    6    7 
- 1|              |   | | 37| => |   2    3    4    5    6    7    8    9 
+ 0|          RESB|INP| | 36| => |   0    1    2    3    4    5    6    7 
+ 1|           RTC|OUT| | 37| => |   2    3    4    5    6    7  ( 8)   9 
  2|              |   | | 38| => |   4    5    6    7    8    9   10   11 
- 3|              |   | | 39| => |   6    7    8    9   10   11   12   13 
+ 3|           ROM|OUT| | 39| => |   6    7    8    9   10   11  (12)  13 
  4|              |   | | 40| => |   8    9   10   11   12   13   14   15 
- 5|          RAM1|OUT| | 41| => |  10   11   12   13   14   15  ( 0)   1 
- 6|              |   | | 42| => |  12   13   14   15    0    1    2    3 
- 7|           RTC|OUT| | 43| => |  14   15    0    1    2    3  ( 4)   5 
+ 5|            D0| IO| | 41| => |  10   11   12   13   14   15  ( 0)   1 
+ 6|           STP| IO| | 42| => |  12   13   14   15    0  ( 1)   2    3 
+ 7|            D1| IO| | 43| => |  14   15    0    1    2    3  ( 4)   5 
 ---------------------------------------------------------------------------
 ===========================================================================
 	< Block [ 3] >	IO/Node and IO/Input Macrocell Pairing Table
@@ -850,14 +871,15 @@ _|_________________|__|___|_____|___________________________________________
  |       Sig Type--+  |   |     |
  |     Signal Name |  |   |     |  Input Macrocell and Node Pairs
 _|_________________|__|___|_____|__________________________________________
- 0|              |   | | 36| => | Input macrocell   [             -]
- 1|              |   | | 37| => | Input macrocell   [             -]
+ 0|          RESB|INP| | 36| => | Input macrocell   [             -]
+ 1|           RTC|OUT| | 37| => | Input macrocell   [             -]
  2|              |   | | 38| => | Input macrocell   [             -]
- 3|              |   | | 39| => | Input macrocell   [             -]
+ 3|           ROM|OUT| | 39| => | Input macrocell   [             -]
  4|              |   | | 40| => | Input macrocell   [             -]
- 5|          RAM1|OUT| | 41| => | Input macrocell   [             -]
- 6|              |   | | 42| => | Input macrocell   [             -]
- 7|           RTC|OUT| | 43| => | Input macrocell   [             -]
+ 5|            D0| IO| | 41| => | Input macrocell   [             -]
+ 6|           STP| IO| | 42| => | Input macrocell   [             -]
+  |              |   | |   |    | IO paired w/ node [        RN_STP]
+ 7|            D1| IO| | 43| => | Input macrocell   [             -]
 ---------------------------------------------------------------------------
 ===========================================================================
 	< Block [ 3] >	Input Multiplexer (IMX) Assignments
@@ -868,42 +890,42 @@ IMX No.    |    +---- Block IO Pin or Macrocell Number
    |       |    |  Pin Number      |      +- Signal Fixed (*) to Pin/Mcell
    |       |    |   |  Sig Type    |      | +- Feedback Required (*)
 ---|-------|----|---|---|----------|------|-|------------------------------
-   0	[IOpin  0 | 36|                 -| | ]
+   0	[IOpin  0 | 36|INP           RESB| |*]
 	[RegIn  0 |118|                 -| | ]
-	[MCell  0 |117|OUT           RAM1| | ]
-	[MCell  1 |119|                 -| | ]
+	[MCell  0 |117| IO             D0| | ]
+	[MCell  1 |119|NOD         RN_STP| |*] paired w/[           STP]
 
-   1	[IOpin  1 | 37|                 -| | ]
+   1	[IOpin  1 | 37|OUT            RTC| | ]
 	[RegIn  1 |121|                 -| | ]
 	[MCell  2 |120|                 -| | ]
 	[MCell  3 |122|                 -| | ]
 
    2	[IOpin  2 | 38|                 -| | ]
 	[RegIn  2 |124|                 -| | ]
-	[MCell  4 |123|OUT            RTC| | ]
-	[MCell  5 |125|                 -| | ]
+	[MCell  4 |123| IO             D1| | ]
+	[MCell  5 |125|NOD            vab| |*]
 
-   3	[IOpin  3 | 39|                 -| | ]
+   3	[IOpin  3 | 39|OUT            ROM| | ]
 	[RegIn  3 |127|                 -| | ]
 	[MCell  6 |126|                 -| | ]
 	[MCell  7 |128|                 -| | ]
 
    4	[IOpin  4 | 40|                 -| | ]
 	[RegIn  4 |130|                 -| | ]
-	[MCell  8 |129|                 -| | ]
-	[MCell  9 |131|                 -| | ]
+	[MCell  8 |129|OUT            RTC| | ]
+	[MCell  9 |131|NOD         wsflag| |*]
 
-   5	[IOpin  5 | 41|OUT           RAM1| | ]
+   5	[IOpin  5 | 41| IO             D0| |*]
 	[RegIn  5 |133|                 -| | ]
 	[MCell 10 |132|                 -| | ]
 	[MCell 11 |134|                 -| | ]
 
-   6	[IOpin  6 | 42|                 -| | ]
+   6	[IOpin  6 | 42| IO            STP| | ] paired w/[        RN_STP]
 	[RegIn  6 |136|                 -| | ]
-	[MCell 12 |135|                 -| | ]
-	[MCell 13 |137|                 -| | ]
+	[MCell 12 |135|OUT            ROM| | ]
+	[MCell 13 |137|NOD          wsff0| |*]
 
-   7	[IOpin  7 | 43|OUT            RTC| | ]
+   7	[IOpin  7 | 43| IO             D1| |*]
 	[RegIn  7 |139|                 -| | ]
 	[MCell 14 |138|                 -| | ]
 	[MCell 15 |140|                 -| | ]
@@ -914,34 +936,34 @@ IMX No.    |    +---- Block IO Pin or Macrocell Number
   +- Central Switch Matrix No.
   |   Src (ABEL Node/Pin#)   Signal
 --|--|--------------------|---------------------------------------------------
-Mux00|          ...       |      ...
-Mux01| IOPin  0  6  (   3)|   A18
-Mux02|          ...       |      ...
-Mux03| IOPin  1  0  (  14)|   A13
-Mux04| IOPin  2  6  (  25)|   A7
+Mux00|  Mcel  3  1  ( 119)|   RN_STP
+Mux01|          ...       |      ...
+Mux02|  Input Pin   (  11)|   PHI
+Mux03| IOPin  2  2  (  29)|   A14
+Mux04|  Mcel  0  5  (  53)|   hmucfg2
 Mux05|          ...       |      ...
-Mux06| IOPin  1  2  (  16)|   A11
-Mux07|          ...       |      ...
-Mux08| IOPin  2  4  (  27)|   A6
-Mux09| IOPin  1  4  (  18)|   A9
+Mux06| IOPin  1  2  (  16)|   A10
+Mux07|  Mcel  1  5  (  77)|   blatch2
+Mux08| IOPin  2  4  (  27)|   A13
+Mux09| IOPin  1  4  (  18)|   A11
 Mux10|          ...       |      ...
-Mux11| IOPin  1  6  (  20)|   A8
-Mux12| IOPin  1  1  (  15)|   A12
-Mux13|          ...       |      ...
-Mux14| IOPin  0  4  (   5)|   A17
-Mux15|          ...       |      ...
+Mux11| IOPin  1  6  (  20)|   A12
+Mux12| IOPin  0  4  (   5)|   VDA
+Mux13|  Mcel  0  9  (  59)|   hmucfg1
+Mux14| IOPin  2  0  (  31)|   A15
+Mux15|  Mcel  3 13  ( 137)|   wsff0
 Mux16|          ...       |      ...
-Mux17| IOPin  0  0  (   9)|   A14
-Mux18|          ...       |      ...
-Mux19| IOPin  0  3  (   6)|   A16
-Mux20| IOPin  1  3  (  17)|   A10
-Mux21| IOPin  2  3  (  28)|   A5
+Mux17| IOPin  0  0  (   9)|   A8
+Mux18|  Mcel  3  9  ( 131)|   wsflag
+Mux19|  Mcel  0 13  (  65)|   hmucfg0
+Mux20|  Mcel  2  5  ( 101)|   blatch1
+Mux21| IOPin  1  0  (  14)|   A9
 Mux22|          ...       |      ...
-Mux23|  Input Pin   (  33)|   A19
+Mux23|  Input Pin   (  33)|   VPA
 Mux24|          ...       |      ...
-Mux25|          ...       |      ...
-Mux26| IOPin  0  2  (   7)|   A15
-Mux27|          ...       |      ...
+Mux25|  Mcel  1  1  (  71)|   blatch3
+Mux26| IOPin  0  2  (   7)|   RWB
+Mux27|  Mcel  2  9  ( 107)|   blatch0
 Mux28|          ...       |      ...
 Mux29|          ...       |      ...
 Mux30|          ...       |      ...

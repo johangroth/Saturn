@@ -4,8 +4,8 @@ PROJECT Saturn
 DESIGN saturn Normal
 DEVKIT M4A5-64/32-10JC
 ENTRY ABEL/Schematic
-MODULE address_decoding.abl
-MODSTYLE Address_Decoding Normal
+MODULE saturn_abel.abl
+MODSTYLE saturn Normal
 SYNTHESIS_TOOL Synplify
 SIMULATOR_TOOL ActiveHDL
-TOPMODULE Address_Decoding
+TOPMODULE saturn
