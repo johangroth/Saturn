@@ -14547,3 +14547,485 @@ if [runCmd "\"$cpld_bin/ahdl2blf\" saturn_abel.abl -ojhd only -def _AMDMACH_ _MA
 
 ########## Tcl recorder end at 06/18/18 23:58:40 ###########
 
+
+########## Tcl recorder starts at 06/20/18 21:43:44 ##########
+
+# Commands to make the Process: 
+# Hierarchy
+if [runCmd "\"$cpld_bin/ahdl2blf\" saturn_abel.abl -ojhd only -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/20/18 21:43:44 ###########
+
+
+########## Tcl recorder starts at 06/20/18 22:08:38 ##########
+
+# Commands to make the Process: 
+# Post-Fit Pinouts
+if [runCmd "\"$cpld_bin/ahdl2blf\" saturn_abel.abl -mod saturn -ojhd compile -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" saturn.bl0 -collapse none -reduce none -keepwires  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblflink\" \"saturn.bl1\" -o \"saturn.bl2\" -omod \"saturn\"  -err \"automake.err\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/impsrc\"  -prj saturn -lci saturn.lct -log saturn.imp -err automake.err -tti saturn.bl2 -dir $proj_dir"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci saturn.lct -blifopt  saturn.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" saturn.bl2 -sweep -mergefb -err automake.err -o saturn.bl3  @saturn.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci saturn.lct -dev mach4a -diofft  saturn.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mdiofft\" saturn.bl3 -pla -family AMDMACH -idev van -o saturn.tt2 -oxrf saturn.xrf -err automake.err  @saturn.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/tt2tott3\" -prj saturn -dir $proj_dir -log saturn.log -tti saturn.tt2 -tto saturn.tt3"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci saturn.lct -dev mach4a -prefit  saturn.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/prefit\" -inp saturn.tt3 -out saturn.tt4 -err automake.err -log saturn.log -percent saturn.tte -mod saturn  @saturn.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/blif2eqn\" saturn.tte -o saturn.eq3 -use_short -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/lci2vci\" -lci saturn.lct -out saturn.vct -log saturn.l2v"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [catch {open saturn.rsp w} rspFile] {
+	puts stderr "Cannot create response file saturn.rsp: $rspFile"
+} else {
+	puts $rspFile "-inp \"saturn.tt4\" -vci \"saturn.vct\" -log \"saturn.log\" -eqn \"saturn.eq3\" -dev mach463a -dat \"$install_dir/ispcpld/dat/mach4a/\" -msg \"$install_dir/ispcpld/dat/\" -err automake.err -tmv \"NoInput.tmv\" 
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/machfitr\" \"@saturn.rsp\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+file delete saturn.rsp
+if [runCmd "\"$cpld_bin/lci2vci\" -vci saturn.vco -out saturn.lco -log saturn.v2l"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/synsvf\" -exe \"$install_dir/ispvmsystem/ispufw\" -prj saturn -if saturn.jed -j2s -log saturn.svl "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+# Application to view the Process: 
+# Post-Fit Pinouts
+if [catch {open lattice_cmd.rs2 w} rspFile] {
+	puts stderr "Cannot create response file lattice_cmd.rs2: $rspFile"
+} else {
+	puts $rspFile "-src saturn.tt4 -type PLA -devfile \"$install_dir/ispcpld/dat/mach4a/mach463ace.dev\" -postfit -lci saturn.lco
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/lciedit\" @lattice_cmd.rs2"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/20/18 22:08:38 ###########
+
+
+########## Tcl recorder starts at 06/20/18 22:09:18 ##########
+
+# Commands to make the Process: 
+# Post-Fit Pinouts
+if [runCmd "\"$cpld_bin/ahdl2blf\" saturn_abel.abl -mod saturn -ojhd compile -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" saturn.bl0 -collapse none -reduce none -keepwires  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblflink\" \"saturn.bl1\" -o \"saturn.bl2\" -omod \"saturn\"  -err \"automake.err\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/impsrc\"  -prj saturn -lci saturn.lct -log saturn.imp -err automake.err -tti saturn.bl2 -dir $proj_dir"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci saturn.lct -blifopt  saturn.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" saturn.bl2 -sweep -mergefb -err automake.err -o saturn.bl3  @saturn.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci saturn.lct -dev mach4a -diofft  saturn.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mdiofft\" saturn.bl3 -pla -family AMDMACH -idev van -o saturn.tt2 -oxrf saturn.xrf -err automake.err  @saturn.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/tt2tott3\" -prj saturn -dir $proj_dir -log saturn.log -tti saturn.tt2 -tto saturn.tt3"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci saturn.lct -dev mach4a -prefit  saturn.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/prefit\" -inp saturn.tt3 -out saturn.tt4 -err automake.err -log saturn.log -percent saturn.tte -mod saturn  @saturn.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/blif2eqn\" saturn.tte -o saturn.eq3 -use_short -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/lci2vci\" -lci saturn.lct -out saturn.vct -log saturn.l2v"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [catch {open saturn.rsp w} rspFile] {
+	puts stderr "Cannot create response file saturn.rsp: $rspFile"
+} else {
+	puts $rspFile "-inp \"saturn.tt4\" -vci \"saturn.vct\" -log \"saturn.log\" -eqn \"saturn.eq3\" -dev mach463a -dat \"$install_dir/ispcpld/dat/mach4a/\" -msg \"$install_dir/ispcpld/dat/\" -err automake.err -tmv \"NoInput.tmv\" 
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/machfitr\" \"@saturn.rsp\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+file delete saturn.rsp
+if [runCmd "\"$cpld_bin/lci2vci\" -vci saturn.vco -out saturn.lco -log saturn.v2l"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/synsvf\" -exe \"$install_dir/ispvmsystem/ispufw\" -prj saturn -if saturn.jed -j2s -log saturn.svl "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+# Application to view the Process: 
+# Post-Fit Pinouts
+if [catch {open lattice_cmd.rs2 w} rspFile] {
+	puts stderr "Cannot create response file lattice_cmd.rs2: $rspFile"
+} else {
+	puts $rspFile "-src saturn.tt4 -type PLA -devfile \"$install_dir/ispcpld/dat/mach4a/mach463ace.dev\" -postfit -lci saturn.lco
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/lciedit\" @lattice_cmd.rs2"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/20/18 22:09:18 ###########
+
+
+########## Tcl recorder starts at 06/20/18 22:09:29 ##########
+
+# Commands to make the Process: 
+# Fit Design
+if [runCmd "\"$cpld_bin/ahdl2blf\" saturn_abel.abl -mod saturn -ojhd compile -ret -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" saturn.bl0 -collapse none -reduce none -keepwires  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblflink\" \"saturn.bl1\" -o \"saturn.bl2\" -omod \"saturn\"  -err \"automake.err\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/impsrc\"  -prj saturn -lci saturn.lct -log saturn.imp -err automake.err -tti saturn.bl2 -dir $proj_dir"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci saturn.lct -blifopt  saturn.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mblifopt\" saturn.bl2 -sweep -mergefb -err automake.err -o saturn.bl3  @saturn.b2_"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci saturn.lct -dev mach4a -diofft  saturn.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/mdiofft\" saturn.bl3 -pla -family AMDMACH -idev van -o saturn.tt2 -oxrf saturn.xrf -err automake.err  @saturn.d0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/tt2tott3\" -prj saturn -dir $proj_dir -log saturn.log -tti saturn.tt2 -tto saturn.tt3"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/abelvci\" -vci saturn.lct -dev mach4a -prefit  saturn.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/prefit\" -inp saturn.tt3 -out saturn.tt4 -err automake.err -log saturn.log -percent saturn.tte -mod saturn  @saturn.l0"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/blif2eqn\" saturn.tte -o saturn.eq3 -use_short -err automake.err "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/lci2vci\" -lci saturn.lct -out saturn.vct -log saturn.l2v"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [catch {open saturn.rsp w} rspFile] {
+	puts stderr "Cannot create response file saturn.rsp: $rspFile"
+} else {
+	puts $rspFile "-inp \"saturn.tt4\" -vci \"saturn.vct\" -log \"saturn.log\" -eqn \"saturn.eq3\" -dev mach463a -dat \"$install_dir/ispcpld/dat/mach4a/\" -msg \"$install_dir/ispcpld/dat/\" -err automake.err -tmv \"NoInput.tmv\" 
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/machfitr\" \"@saturn.rsp\""] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+file delete saturn.rsp
+if [runCmd "\"$cpld_bin/lci2vci\" -vci saturn.vco -out saturn.lco -log saturn.v2l"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+if [runCmd "\"$cpld_bin/synsvf\" -exe \"$install_dir/ispvmsystem/ispufw\" -prj saturn -if saturn.jed -j2s -log saturn.svl "] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/20/18 22:09:29 ###########
+
