@@ -1,0 +1,325 @@
+/*
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+*                                                                                 *
+*                 W65C816S PROOF OF CONCEPT SINGLE-BOARD COMPUTER                 *
+*                                                                                 *
+* =============================================================================== *
+*                                                                                 *
+*     Copyright (c)1991-2018 by BCS Technology Limited.  All rights reserved.     *
+*                                                                                 *
+* Permission is hereby granted to use, copy, modify and distribute this software, *
+* provided this copyright notice remains unaltered in the source code and  proper *
+* attribution is given.  Redistribution, in any form, must be at no charge to the *
+* end user.  This code or any part  thereof, including any derivation, MAY NOT be *
+* incorporated into any package intended for sale unless written permission to do *
+* so has been granted by the copyright holder.                                    *
+* ------------------------------------------------------------------------------- *
+* THERE IS NO WARRANTY OF ANY KIND WITH THIS SOFTWARE.                            *
+*                                                                                 *
+* While it is believed that all code will perform as intended,  the user  assumes *
+* all risk in connection with the incorporation of this software into any system. *
+*                                                                                 *
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+* * * * * * * * * *
+* VERSION HISTORY *
+* * * * * * * * * *
+
+Ver    Rev Date    Revision
+--------------------------------------------------------------------------------
+0.1.0  2014/11/25  Original version.
+0.5.0  2016/08/16  Added D-block RAM decoding & HIRAM write protection.
+0.5.1  2018/05/20  Redesign wait-state logic & reduced wait-state duration to
+                   one clock cycle.
+--------------------------------------------------------------------------------
+*/
+
+Name        glue;
+PartNo      B402170001;
+Date        2014/11/25;
+Revision    0.5.1;
+Designer    BDD;
+Company     BCS Technology Limited;
+Assembly    POC V2;
+Location    U2;
+Device      f1504ispplcc44;
+
+/*
+                                 R    P
+                           V  V  E V  H  G  A  A
+                  D  R  W  C  P  S D  I  N  1  1
+                  1  D  D  C  A  B A  2  D  3  1
+               ____________________________________
+              /   6  5  4  3  2  1 44 43 42 41 40  \
+         TDI |  7                                39 | A10
+          D2 |  8                                38 | TDO
+          D0 |  9                                37 | A9
+         GND | 10                                36 | A8
+         IO0 | 11                                35 | VCC
+         IO1 | 12           ATF1504AS            34 | A12
+         TMS | 13          44-Lead PLCC          33 | D3
+         STP | 14                                32 | TCK
+         VCC | 15                                31 | RST
+         IO2 | 16                                30 | GND
+         IO3 | 17                                29 | ROM
+             |   18 19 20 21 22 23 24 25 26 27 28   |
+              \____________________________________/
+                 I  A  A  A  G  V  R  A  A  R  R
+                 O  1  1  1  N  C  W  1  1  A  A
+                 4  8  6  7  D  C  B  5  4  M  M
+                                            1  0
+*/
+
+property   atmel {cascade_logic=on};
+property   atmel {logic_doubling=off};
+property   atmel {output_fast=off};
+property   atmel {pin_keep=off};
+property   atmel {preassign=keep};
+property   atmel {security=off};
+property   atmel {xor_synthesis=on};
+
+/*
+===============
+PIN ASSIGNMENTS
+===============
+*/
+pin     1 = RESB;                                 /* system reset          */
+pin     2 = VPA;                                  /* valid program address */
+pin     4 = !WD;                                  /* write data            */
+pin     5 = !RD;                                  /* read data             */
+pin     6 = D1;                                   /* data line             */
+pin     8 = D2;                                   /* data line             */
+pin     9 = D0;                                   /* data line             */
+pin    11 = !IO1;                                 /* I/O device 'B' select */
+pin    12 = !IO0;                                 /* I/O device 'A' select */
+pin    14 = STP;                                  /* wait-state control    */
+pin    16 = !IO2;                                 /* I/O device 'C' select */
+pin    17 = !IO3;                                 /* I/O device 'D' select */
+pin    18 = !IO4;                                 /* I/O device 'E' select */
+pin    19 = A18;                                  /* address line          */
+pin    20 = A16;                                  /* address line          */
+pin    21 = A17;                                  /* address line          */
+pin    24 = RWB;                                  /* read/write            */
+pin    25 = A15;                                  /* address line          */
+pin    26 = A14;                                  /* address line          */
+pin    27 = !RAM1;                                /* RAM chip select       */
+pin    28 = !RAM0;                                /* RAM chip select       */
+pin    29 = !ROM;                                 /* ROM chip select       */
+pin    31 = !RST;                                 /* inverted reset        */
+pin    33 = D3;                                   /* data line             */
+pin    34 = A12;                                  /* address line          */
+pin    36 = A8;                                   /* address line          */
+pin    37 = A9;                                   /* address line          */
+pin    39 = A10;                                  /* address line          */
+pin    40 = A11;                                  /* address line          */
+pin    41 = A13;                                  /* address line          */
+pin    43 = PHI2;                                 /* system clock          */
+pin    44 = VDA;                                  /* valid data address    */
+
+/*
+==========================================================
+MACHINE ARCHITECTURE & HARDWARE MANAGEMENT UNIT DEFINTIONS
+==========================================================
+
+           +--------------------------+ $0FFFFF
+           |                          |
+           |                          |
+           |                          |
+           |  Extended RAM  (960 KB)  |
+           |                          |
+           |                          |
+           |                          |
+   +-------+--------------------------+ $010000
+   |       |                          |
+   | HIRAM |       HIROM (8 KB)       |
+   |       |                          |
+   +-------+--------------------------+ $00E000
+           |                          |
+           | Hardware Management Unit |
+           |                          |
+           +--------------------------+ $00DF00
+           |                          |
+           |      D8RAM (1.75 KB)     |
+           |                          |
+   +-------+--------------------------+ $00D800
+   |       |                          |
+   | IORAM |       IODEV (2 KB)       |
+   |       |                          |
+   +-------+--------------------------+ $00D000
+   |       |                          |
+   | LOROM |       LORAM (4 KB)       |
+   |       |                          |
+   +-------+--------------------------+ $00C000
+           |                          |
+           |      BASRAM (48 KB)      |
+           |                          |
+           +--------------------------+ $000000
+
+                1 KB = 1024 bytes
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  HMU
+Register   Address   Register Description   Type  Bit  Function
+------------------------------------------------------------------------------------------
+hmumcfg    $00DF00   System configuration:   R/W   0   0: RAM at $00C000-$00CFFF (default)
+                                                       1: ROM at $00C000-$00CFFF
+                                                   1   0: ROM at $00E000-$00FFFF (default)
+                                                       1: RAM at $00E000-$00FFFF
+                                                   2   0: I/O at $00D000-$00D7FF (default)
+                                                       1: RAM at $00D000-$00D7FF
+                                                   3   0: HIRAM write-enabled    (default)
+                                                       1: HIRAM write-protected
+------------------------------------------------------------------------------------------
+Notes:  1) Writing to ROM "bleeds through" to RAM at same address.  This behavior will be
+           inhibited when writing to HIROM if HIRAM has been write-protected.
+        2) The HMU itself is read/write & cannot be mapped out.
+*/
+
+$DEFINE   cblkmap   hmumcfg0                      /* LORAM/LOROM control */
+$DEFINE   dblkmap   hmumcfg2                      /* IODEV/IORAM control */
+$DEFINE   eblkmap   hmumcfg1                      /* HIROM/HIRAM control */
+$DEFINE   eblkctl   hmumcfg3                      /* HIRAM write control */
+
+/*
+=========================
+BURIED LOGIC DECLARATIONS
+=========================
+*/
+pinnode   = [blatch0..3];                         /* bank address registers               */
+pinnode   = [hmumcfg0..3];                        /* hardware management unit registers   */
+
+pinnode   = bank0;                                /* 1 = address is $000000-$00FFFF       */
+pinnode   = basram;                               /* 1 = address is $000000-$00BFFF       */
+pinnode   = bavalid;                              /* 1 = bank address valid               */
+pinnode   = cblk;                                 /* 1 = address is $00C000-$00CFFF       */
+pinnode   = dblk;                                 /* 1 = address is $00D000-$00DFFF       */
+pinnode   = eblk;                                 /* 1 = address is $00E000-$00FFFF       */
+pinnode   = extram;                               /* 1 = address is $010000-$07FFFF       */
+pinnode   = hmusel;                               /* 1 = HMU being accessed               */
+pinnode   = hiramwp;                              /* 1 = HIRAM write-protected            */
+pinnode   = ioblk;                                /* 1 = I/O address space being accessed */
+pinnode   = iosel;                                /* 1 = I/O device selected              */
+pinnode   = mcfgsel;                              /* 1 = HMU configuration being accessed */
+pinnode   = ramsel;                               /* 1 = RAM selected                     */
+pinnode   = rhflag;                               /* 1 = data fetch on high clock         */
+pinnode   = romsel;                               /* 1 = ROM selected                     */
+pinnode   = wsext;                                /* 1 = hold bus & control states        */
+pinnode   = vab;                                  /* 1 = address bus valid                */
+pinnode   = wsff;                                 /* wait-state flip-flop                 */
+pinnode   = wsflag;                               /* 1 = wait-state in progress           */
+
+/*
+======
+RESETS
+======
+*/
+$REPEAT i = [0..3]
+    hmumcfg{i}.AR = !RESB;
+$REPEND
+wsff.AR   = !RESB;
+
+/*
+==========================
+INTERMEDIATE CONTROL LOGIC
+==========================
+*/
+vab       = VDA # VPA;                            /* true if valid address       */
+rhflag    = RWB & PHI2;                           /* true if fetch on high clock */
+bavalid   = vab & !PHI2;                          /* true if bank address valid  */
+
+/*
+======================
+A16-A19 LATCHING LOGIC
+======================
+*/
+[blatch0..3].LE = bavalid & !wsext;               /* open latches, unless in wait-state */
+[blatch0..3].L  = [D0..3] & bavalid & !wsext;     /* capture bank, unless in wait-state */
+bank0     = [blatch0..3]:'b'0000;                 /* true if bank = $00                 */
+extram    = !bank0;                               /* true if bank != $00                */
+
+/*
+======================
+MEMORY MAP BASIC LOGIC
+======================
+*/
+basram    = bank0 & (!A15 # !A14);                /* $000000-$00BFFF */
+cblk      = bank0 & A15 & A14 & !A13 & !A12;      /* $00C000-$00CFFF */
+dblk      = bank0 & A15 & A14 & !A13 & A12;       /* $00D000-$00DFFF */
+eblk      = bank0 & A15 & A14 & A13;              /* $00E000-$00FFFF */
+
+ioblk     = dblk & !A11;                          /* $00D000-$00D7FF */
+d8ram     = dblk & A11 & !(A10 & A9 & A8);        /* $00D800-$00DEFF */
+hmu       = dblk & A11 & A10 & A9 & A8;           /* $00DF00-$00DFFF */
+
+/*
+===================
+RAM SELECTION LOGIC
+===================
+*/
+ramsel    = basram #                              /* select if BASRAM, or... */
+            (cblk & (!RWB # !cblkmap)) #          /* LORAM if mapped, or...  */
+            ioblk & dblkmap #                     /* IORAM if mapped, or...  */
+            d8ram #                               /* D8RAM, or...            */
+            eblk & (!RWB # eblkmap) #             /* HIRAM if mapped, or...  */
+            extram;                               /* extended RAM            */
+
+/* HIRAM write-protection rule... */
+
+hiramwp   = eblk & eblkctl;                       /* true if HIRAM is write protected */
+
+/*
+===================
+ROM SELECTION LOGIC
+===================
+*/
+romsel    = RWB & ((cblk & cblkmap) #             /* C-ROM if mapped, or... */
+            (eblk & !eblkmap));                   /* E-ROM if mapped        */
+
+/*
+===========================
+I/O DEVICES SELECTION LOGIC
+===========================
+*/
+iosel     = ioblk & !dblkmap;                     /* $00D0xx-$00DExx if mapped */
+
+/*
+================
+WAIT-STATE LOGIC
+================
+*/
+wsflag    = iosel # romsel;                       /* wait-state if I/O or ROM & enabled */
+wsff.CK   = PHI2;
+wsff.D    = !wsff & wsflag;
+wsext     = PHI2 # wsff;                          /* 1 = wait-state in progress         */
+
+/*
+=================
+OUTPUT STATEMENTS
+=================
+*/
+[A16..18] = [blatch0..2] & vab;                   /* A16-A18 address bits               */
+IO0       = iosel & vab & !A10 & !A9 & !A8;       /* I/O device 'A' select              */
+IO1       = iosel & vab & !A10 & !A9 &  A8;       /* I/O device 'B' select              */
+IO2       = iosel & vab & !A10 &  A9 & !A8;       /* I/O device 'C' select              */
+IO3       = iosel & vab & !A10 &  A9 &  A8;       /* I/O device 'D' select              */
+IO4       = iosel & vab &  A10 & !A9 & !A8;       /* I/O device 'E' select              */
+RAM0      = ramsel & !blatch3 & vab;              /* RAM0 chip enable                   */
+RAM1      = ramsel &  blatch3 & vab;              /* RAM1 chip enable                   */
+RD        = wsext & RWB & vab;                    /* read                               */
+STP       = !wsff;                                /* MPU wait-state                     */
+STP.oe    = wsflag;                               /* active if wait-stating             */
+ROM       = romsel & vab;                         /* ROM chip enable                    */
+RST       = RESB;                                 /* inverted reset                     */
+WD        = wsext & !RWB & !hiramwp & vab;        /* write, but not to protected HIRAM  */
+
+/*
+==================================
+HMU REGISTER READ/WRITE STATEMENTS
+==================================
+*/
+[D0..3].oe       = hmu & rhflag;                  /* enable output on D0-D3   */
+[D0..3]          = hmu & [hmumcfg0..3] & rhflag;  /* HMU bit pattern on D0-D3 */
+
+[hmumcfg0..3].LE = hmu & !RWB & PHI2;             /* open HMU latches         */
+[hmumcfg0..3].L  = hmu & [D0..3] & !RWB & PHI2;   /* D0-D3 bit pattern on HMU */
+                   
+/* * * * *   E N D   O F   F I L E   * * * * */

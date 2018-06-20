@@ -14489,3 +14489,61 @@ if [runCmd "\"$cpld_bin/lciedit\" @lattice_cmd.rs2"] {
 
 ########## Tcl recorder end at 03/02/18 06:35:14 ###########
 
+
+########## Tcl recorder starts at 06/18/18 23:05:36 ##########
+
+# Commands to make the Process: 
+# Post-Fit Pinouts
+# - none -
+# Application to view the Process: 
+# Post-Fit Pinouts
+if [catch {open lattice_cmd.rs2 w} rspFile] {
+	puts stderr "Cannot create response file lattice_cmd.rs2: $rspFile"
+} else {
+	puts $rspFile "-src saturn.tt4 -type PLA -devfile \"$install_dir/ispcpld/dat/mach4a/mach463ace.dev\" -postfit -lci saturn.lco
+"
+	close $rspFile
+}
+if [runCmd "\"$cpld_bin/lciedit\" @lattice_cmd.rs2"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/18/18 23:05:36 ###########
+
+
+########## Tcl recorder starts at 06/18/18 23:41:42 ##########
+
+# Commands to make the Process: 
+# Hierarchy
+if [runCmd "\"$cpld_bin/ahdl2blf\" saturn_abel.abl -ojhd only -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/18/18 23:41:42 ###########
+
+
+########## Tcl recorder starts at 06/18/18 23:58:40 ##########
+
+# Commands to make the Process: 
+# Hierarchy
+if [runCmd "\"$cpld_bin/ahdl2blf\" saturn_abel.abl -ojhd only -def _AMDMACH_ _MACH_ _MACH2_ _MACH4_ _LATTICE_  -err automake.err"] {
+	return
+} else {
+	vwait done
+	if [checkResult $done] {
+		return
+	}
+}
+
+########## Tcl recorder end at 06/18/18 23:58:40 ###########
+
