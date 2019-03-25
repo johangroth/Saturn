@@ -36,6 +36,7 @@ SIGNAL NAME       min  max  min  max  min  max  min  max
          blatch1   1    2    1    1   ..   ..    1    2   
          blatch2   1    2    1    1   ..   ..    1    2   
          blatch3   1    2    1    1   ..   ..    1    2   
+         blatch4   1    1    1    1   ..   ..    1    2   
          hmucfg0   1    2    1    1   ..   ..    2    2   
          hmucfg1   1    2    1    1   ..   ..    2    2   
          hmucfg2   1    2    1    1   ..   ..    2    2   
@@ -60,7 +61,7 @@ SIGNAL NAME       min  max  min  max  min  max  min  max
              IO3  ..   ..   ..   ..    1    1   ..   ..   
              STP  ..   ..    0    1   ..   ..    1    1   
           RN_STP  ..   ..    0    1   ..   ..    1    1   
+         bavalid  ..   ..   ..   ..    1    1   ..   ..   
            wsext  ..   ..   ..   ..    1    1   ..   ..   
-             vab  ..   ..   ..   ..    1    1   ..   ..   
           wsflag  ..   ..   ..   ..    1    1   ..   ..   
            wsff0  ..   ..   ..   ..   ..   ..    1    1   

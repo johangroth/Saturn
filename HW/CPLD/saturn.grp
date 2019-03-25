@@ -1,5 +1,5 @@
 
-GROUP MACH_SEG_A hmucfg0 hmucfg1 hmucfg2 RAM0 DUART D2 A17 A18 
-GROUP MACH_SEG_B hmucfg3 blatch2 blatch3 IO1 IO3 RD A16 wsext 
-GROUP MACH_SEG_C blatch0 blatch1 IO0 IO2 D3 WD RAM1 
-GROUP MACH_SEG_D STP RN_STP wsff0 RTC D1 D0 ROM wsflag vab 
+GROUP MACH_SEG_A hmucfg0 hmucfg2 hmucfg3 RAM0 DUART D2 A17 A18 
+GROUP MACH_SEG_B blatch4 blatch0 blatch1 wsff0 IO1 IO3 RD A16 
+GROUP MACH_SEG_C blatch2 blatch3 IO0 IO2 D3 WD RAM1 wsext 
+GROUP MACH_SEG_D STP RN_STP hmucfg1 RTC D0 D1 ROM wsflag bavalid 

@@ -2,88 +2,90 @@
 Copyright(C), 1992-2015, Lattice Semiconductor Corp.
 All Rights Reserved.
 
-Design saturn created  Fri Mar 02 06:32:43 2018
+Design saturn created  Thu Mar 14 22:08:24 2019
 
 Title:  Saturn address decoding with ROM/IO waitstates.
 
  P-Terms   Fan-in  Fan-out  Type  Name (attributes)
 ---------  ------  -------  ----  -----------------
-   1         15        1    Pin   D3 
-   1         14        1    Pin   D3.OE 
-   1         15        1    Pin   D2 
-   1         14        1    Pin   D2.OE 
-   1         15        1    Pin   D1 
-   1         14        1    Pin   D1.OE 
-   1         15        1    Pin   D0 
-   1         14        1    Pin   D0.OE 
+   1         16        1    Pin   D3 
+   1         15        1    Pin   D3.OE 
+   1         16        1    Pin   D2 
+   1         15        1    Pin   D2.OE 
+   1         16        1    Pin   D1 
+   1         15        1    Pin   D1.OE 
+   1         16        1    Pin   D0 
+   1         15        1    Pin   D0.OE 
    2          3        1    Pin   A16 
    2          3        1    Pin   A17 
    2          3        1    Pin   A18 
-   6         18        1    Pin   RAM0 
+   6         19        1    Pin   RAM0 
    2          3        1    Pin   RAM1 
-   2         11        1    Pin   ROM- 
+   2         12        1    Pin   ROM- 
    3          5        1    Pin   RD 
-   4         13        1    Pin   WD 
-   2         15        1    Pin   DUART- 
-   2         15        1    Pin   RTC- 
-   2         15        1    Pin   IO0- 
-   2         15        1    Pin   IO1- 
-   2         15        1    Pin   IO2- 
-   2         15        1    Pin   IO3- 
+   4         14        1    Pin   WD 
+   2         16        1    Pin   DUART- 
+   2         16        1    Pin   RTC- 
+   2         16        1    Pin   IO0- 
+   2         16        1    Pin   IO1- 
+   2         16        1    Pin   IO2- 
+   2         16        1    Pin   IO3- 
    1          1        1    Pin   STP.OE 
    1          1        1    Pin   STP.D 
    1          1        1    Pin   STP.AP 
    1          1        1    Pin   STP.C 
+   2          3        1    Node  bavalid 
    1          2        1    Node  wsext- 
-   1          2        1    Node  vab- 
-   4         18        1    Node  wsflag- 
+   4         19        1    Node  wsflag- 
    2          5        1    Node  blatch0.D 
-   1          3        1    Node  blatch0.LH- 
+   1          2        1    Node  blatch0.LH- 
    2          5        1    Node  blatch1.D 
-   1          3        1    Node  blatch1.LH- 
+   1          2        1    Node  blatch1.LH- 
    2          5        1    Node  blatch2.D 
-   1          3        1    Node  blatch2.LH- 
+   1          2        1    Node  blatch2.LH- 
    2          5        1    Node  blatch3.D 
-   1          3        1    Node  blatch3.LH- 
+   1          2        1    Node  blatch3.LH- 
+   2          5        1    Node  blatch4.D 
+   1          2        1    Node  blatch4.LH- 
    1          1        1    Node  hmucfg0.AR 
-   1         15        1    Node  hmucfg0.D 
-   1         14        1    Node  hmucfg0.LH- 
+   1         16        1    Node  hmucfg0.D 
+   1         15        1    Node  hmucfg0.LH- 
    1          1        1    Node  hmucfg1.AR 
-   1         15        1    Node  hmucfg1.D 
-   1         14        1    Node  hmucfg1.LH- 
+   1         16        1    Node  hmucfg1.D 
+   1         15        1    Node  hmucfg1.LH- 
    1          1        1    Node  hmucfg2.AR 
-   1         15        1    Node  hmucfg2.D 
-   1         14        1    Node  hmucfg2.LH- 
+   1         16        1    Node  hmucfg2.D 
+   1         15        1    Node  hmucfg2.LH- 
    1          1        1    Node  hmucfg3.AR 
-   1         15        1    Node  hmucfg3.D 
-   1         14        1    Node  hmucfg3.LH- 
+   1         16        1    Node  hmucfg3.D 
+   1         15        1    Node  hmucfg3.LH- 
    1          1        1    Node  wsff0.AR 
    1          1        1    Node  wsff0.D 
    1          1        1    Node  wsff0.C 
 =========
-  80                 P-Term Total: 80
-                       Total Pins: 32
-                      Total Nodes: 12
+  84                 P-Term Total: 84
+                       Total Pins: 33
+                      Total Nodes: 13
             Average P-Term/Output: 1
 
 
 Equations:
 
-D3 = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg3.Q);
+D3 = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg3.Q);
 
-D3.OE = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+D3.OE = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-D2 = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg2.Q);
+D2 = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg2.Q);
 
-D2.OE = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+D2.OE = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-D1 = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg1.Q);
+D1 = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg1.Q);
 
-D1.OE = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+D1.OE = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-D0 = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg0.Q);
+D0 = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg0.Q);
 
-D0.OE = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+D0.OE = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 A16 = (VDA & blatch0.Q
      # VPA & blatch0.Q);
@@ -96,16 +98,16 @@ A18 = (VDA & blatch2.Q
 
 RAM0 = (blatch3.Q
      # !VDA & !VPA
-     # RWB & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
-     # RWB & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q
-     # !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !hmucfg2.Q
-     # !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+     # RWB & !blatch4.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
+     # RWB & !blatch4.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q
+     # !blatch4.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !hmucfg2.Q
+     # !blatch4.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 RAM1 = (!blatch3.Q
      # !VDA & !VPA);
 
-!ROM = (RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
-     # RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q);
+!ROM = (RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
+     # RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q);
 
 RD = (!RWB
      # !VDA & !VPA
@@ -114,25 +116,25 @@ RD = (!RWB
 WD = (RWB
      # !VDA & !VPA
      # !PHI & STP.Q
-     # !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & hmucfg3.Q);
+     # !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & hmucfg3.Q);
 
-!DUART = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & !A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & !A8 & !hmucfg2.Q);
+!DUART = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & !A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & !A8 & !hmucfg2.Q);
 
-!RTC = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & A8 & !hmucfg2.Q);
+!RTC = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & A8 & !hmucfg2.Q);
 
-!IO0 = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & !A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & !A8 & !hmucfg2.Q);
+!IO0 = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & !A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & !A8 & !hmucfg2.Q);
 
-!IO1 = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & A8 & !hmucfg2.Q);
+!IO1 = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & A8 & !hmucfg2.Q);
 
-!IO2 = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & !A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & !A8 & !hmucfg2.Q);
+!IO2 = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & !A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & !A8 & !hmucfg2.Q);
 
-!IO3 = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & A8 & !hmucfg2.Q);
+!IO3 = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & A8 & !hmucfg2.Q);
 
 STP.OE = (wsflag);
 
@@ -142,58 +144,64 @@ STP.AP = (!wsflag);
 
 STP.C = (PHI);
 
+bavalid = (!PHI & VDA
+     # !PHI & VPA);
+
 !wsext = (!PHI & STP.Q);
 
-!vab = (!VDA & !VPA);
-
-!wsflag = (RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
-     # RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q
-     # !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8
-     # !VDA & !VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !hmucfg2.Q);
+!wsflag = (RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
+     # RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q
+     # !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8
+     # !VDA & !VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !hmucfg2.Q);
 
 blatch0.D = (!PHI & VDA & D0 & STP.Q
      # !PHI & VPA & D0 & STP.Q);
 
-!blatch0.LH = (!PHI & vab & !wsext);
+!blatch0.LH = (bavalid & !wsext);
 
 blatch1.D = (!PHI & VDA & D1 & STP.Q
      # !PHI & VPA & D1 & STP.Q);
 
-!blatch1.LH = (!PHI & vab & !wsext);
+!blatch1.LH = (bavalid & !wsext);
 
 blatch2.D = (!PHI & VDA & D2 & STP.Q
      # !PHI & VPA & D2 & STP.Q);
 
-!blatch2.LH = (!PHI & vab & !wsext);
+!blatch2.LH = (bavalid & !wsext);
 
 blatch3.D = (!PHI & VDA & D3 & STP.Q
      # !PHI & VPA & D3 & STP.Q);
 
-!blatch3.LH = (!PHI & vab & !wsext);
+!blatch3.LH = (bavalid & !wsext);
+
+blatch4.D = (!PHI & VDA & D4 & STP.Q
+     # !PHI & VPA & D4 & STP.Q);
+
+!blatch4.LH = (bavalid & !wsext);
 
 hmucfg0.AR = (!RESB.PIN);
 
-hmucfg0.D = (PHI & !RWB & D0 & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+hmucfg0.D = (PHI & !RWB & D0 & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-!hmucfg0.LH = (PHI & !RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+!hmucfg0.LH = (PHI & !RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 hmucfg1.AR = (!RESB.PIN);
 
-hmucfg1.D = (PHI & !RWB & D1 & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+hmucfg1.D = (PHI & !RWB & D1 & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-!hmucfg1.LH = (PHI & !RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+!hmucfg1.LH = (PHI & !RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 hmucfg2.AR = (!RESB.PIN);
 
-hmucfg2.D = (PHI & !RWB & D2 & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+hmucfg2.D = (PHI & !RWB & D2 & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-!hmucfg2.LH = (PHI & !RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+!hmucfg2.LH = (PHI & !RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 hmucfg3.AR = (!RESB.PIN);
 
-hmucfg3.D = (PHI & !RWB & D3 & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+hmucfg3.D = (PHI & !RWB & D3 & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-!hmucfg3.LH = (PHI & !RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+!hmucfg3.LH = (PHI & !RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 wsff0.AR = (!wsflag);
 

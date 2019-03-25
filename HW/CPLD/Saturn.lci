@@ -27,7 +27,6 @@ Synthesis = Synplify;
 
 [Location Assignments]
 layer = OFF;
-PHI = Pin, 11, -, -, -;
 A8 = Pin, 9, -, A, -;
 A9 = Pin, 14, -, B, -;
 A10 = Pin, 16, -, B, -;
@@ -59,6 +58,7 @@ D1 = Pin, 43, -, D, -;
 D2 = Pin, 4, -, A, -;
 D3 = Pin, 26, -, C, -;
 A15 = Pin, 31, -, C, -;
+PHI = pin,11,-,-,-;
 
 [Group Assignments]
 layer = OFF;

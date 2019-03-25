@@ -1,30 +1,31 @@
 #$ TOOL ispLEVER Classic 2.0.00.17.20.15
-#$ DATE Fri Mar 02 06:32:43 2018
+#$ DATE Thu Mar 14 22:08:24 2019
 #$ TITLE Saturn address decoding with ROM/IO waitstates.
 #$ MODULE saturn
 #$ JEDECFILE saturn
-#$ PINS 32 A15 A14 A13 A12 A11 A10 A9 A8 D3 D2 D1 D0 PHI:11 RWB VDA VPA RESB A16 A17 A18 RAM0 RAM1 \
-#  ROM RD WD STP DUART RTC IO0 IO1 IO2 IO3
-#$ NODES 32 bank0 basram bavalid cblk dblk eblk extram hiramwp ioblk iosel ramsel rhflag \
-#  romsel wsext vab wdflag whflag wsflag d8ram hmu ram0sel ram1sel blatch0+ blatch1+ blatch2+ \
-#  blatch3+ hmucfg0+ hmucfg1+ hmucfg2+ hmucfg3+ wsff0+ wsff1+
+#$ PINS 35 A15 A14 A13 A12 A11 A10 A9 A8 D4 D3 D2 D1 D0 PHI:11 RWB VDA VPA RESB A16 A17 A18 RAM0 \
+#  RAM1 RAM2 RAM3 ROM RD WD STP DUART RTC IO0 IO1 IO2 IO3
+#$ NODES 37 ramsel bank0 basram bavalid cblk dblk eblk extram hmusel hiramwp ioblk iosel \
+#  mcfgsel rhflag romsel wsext vab wdflag whflag wsflag d8ram hmu ram0sel ram1sel ram2sel \
+#  ram3sel blatch0+ blatch1+ blatch2+ blatch3+ blatch4+ hmucfg0+ hmucfg1+ hmucfg2+ \
+#  hmucfg3+ wsff0+ wsff1+
 .model saturn
 .inputs PHI.BLIF RESB.PIN.BLIF VDA.BLIF VPA.BLIF vab.BLIF RWB.BLIF \
-bavalid.BLIF wsext.BLIF D0.BLIF D1.BLIF D2.BLIF D3.BLIF blatch3.BLIF \
-blatch2.BLIF blatch1.BLIF blatch0.BLIF bank0.BLIF A15.BLIF A14.BLIF A13.BLIF \
-A12.BLIF dblk.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF basram.BLIF cblk.BLIF \
-wdflag.BLIF hmucfg0.BLIF ioblk.BLIF hmucfg2.BLIF d8ram.BLIF eblk.BLIF \
-hmucfg1.BLIF extram.BLIF ramsel.BLIF ram0sel.BLIF hmucfg3.BLIF iosel.BLIF \
-wsflag.BLIF wsff0.BLIF wsff1.BLIF ram1sel.BLIF romsel.BLIF hiramwp.BLIF \
-hmu.BLIF rhflag.BLIF whflag.BLIF
+bavalid.BLIF wsext.BLIF D0.BLIF D1.BLIF D2.BLIF D3.BLIF D4.BLIF blatch4.BLIF \
+blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF bank0.BLIF A15.BLIF \
+A14.BLIF A13.BLIF A12.BLIF dblk.BLIF A11.BLIF A10.BLIF A9.BLIF A8.BLIF \
+basram.BLIF cblk.BLIF wdflag.BLIF hmucfg0.BLIF ioblk.BLIF hmucfg2.BLIF \
+d8ram.BLIF eblk.BLIF hmucfg1.BLIF extram.BLIF ramsel.BLIF ram0sel.BLIF \
+hmucfg3.BLIF iosel.BLIF wsflag.BLIF wsff0.BLIF wsff1.BLIF ram1sel.BLIF \
+romsel.BLIF hiramwp.BLIF hmu.BLIF rhflag.BLIF whflag.BLIF
 .outputs D3 D2 D1 D0 A16 A17 A18 RAM0 RAM1 ROM RD WD STP DUART RTC IO0 IO1 IO2 \
-IO3 bank0 basram bavalid cblk dblk eblk extram hiramwp ioblk iosel ramsel \
+IO3 ramsel bank0 basram bavalid cblk dblk eblk extram hiramwp ioblk iosel \
 rhflag romsel wsext vab wdflag whflag wsflag d8ram hmu ram0sel ram1sel wsff0.C \
 wsff1.C hmucfg0.AR hmucfg1.AR hmucfg2.AR hmucfg3.AR blatch0.LE blatch1.LE \
-blatch2.LE blatch3.LE blatch0.REG blatch1.REG blatch2.REG blatch3.REG wsff0.AR \
-wsff1.AP wsff1.REG wsff0.REG STP.OE D0.OE D1.OE D2.OE D3.OE hmucfg0.LE \
-hmucfg1.LE hmucfg2.LE hmucfg3.LE hmucfg0.REG hmucfg1.REG hmucfg2.REG \
-hmucfg3.REG
+blatch2.LE blatch3.LE blatch4.LE blatch0.REG blatch1.REG blatch2.REG \
+blatch3.REG blatch4.REG wsff0.AR wsff1.AP wsff1.REG wsff0.REG STP.OE D0.OE \
+D1.OE D2.OE D3.OE hmucfg0.LE hmucfg1.LE hmucfg2.LE hmucfg3.LE hmucfg0.REG \
+hmucfg1.REG hmucfg2.REG hmucfg3.REG
 .names hmucfg3.BLIF hmu.BLIF rhflag.BLIF D3
 111 1
 .names hmucfg2.BLIF hmu.BLIF rhflag.BLIF D2
@@ -86,8 +87,18 @@ hmucfg3.REG
 -1-- 1
 --0- 1
 ---0 1
-.names blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF bank0
-0000 1
+.names basram.BLIF cblk.BLIF wdflag.BLIF hmucfg0.BLIF ioblk.BLIF hmucfg2.BLIF \
+d8ram.BLIF eblk.BLIF hmucfg1.BLIF extram.BLIF ramsel
+1--------- 1
+------1--- 1
+---------1 1
+-11------- 1
+-1-0------ 1
+----11---- 1
+--1----1-- 1
+-------11- 1
+.names blatch4.BLIF blatch3.BLIF blatch2.BLIF blatch1.BLIF blatch0.BLIF bank0
+00000 1
 .names bank0.BLIF A15.BLIF A14.BLIF basram
 10- 1
 1-0 1
@@ -107,16 +118,6 @@ hmucfg3.REG
 10 1
 .names vab.BLIF ioblk.BLIF hmucfg2.BLIF iosel
 110 1
-.names basram.BLIF cblk.BLIF wdflag.BLIF hmucfg0.BLIF ioblk.BLIF hmucfg2.BLIF \
-d8ram.BLIF eblk.BLIF hmucfg1.BLIF extram.BLIF ramsel
-1--------- 1
-------1--- 1
----------1 1
--11------- 1
--1-0------ 1
-----11---- 1
---1----1-- 1
--------11- 1
 .names PHI.BLIF RWB.BLIF rhflag
 11 1
 .names RWB.BLIF cblk.BLIF hmucfg0.BLIF eblk.BLIF hmucfg1.BLIF romsel
@@ -161,6 +162,8 @@ d8ram.BLIF eblk.BLIF hmucfg1.BLIF extram.BLIF ramsel
 10 1
 .names bavalid.BLIF wsext.BLIF blatch3.LE
 10 1
+.names bavalid.BLIF wsext.BLIF blatch4.LE
+10 1
 .names bavalid.BLIF wsext.BLIF D0.BLIF blatch0.REG
 101 1
 .names bavalid.BLIF wsext.BLIF D1.BLIF blatch1.REG
@@ -168,6 +171,8 @@ d8ram.BLIF eblk.BLIF hmucfg1.BLIF extram.BLIF ramsel
 .names bavalid.BLIF wsext.BLIF D2.BLIF blatch2.REG
 101 1
 .names bavalid.BLIF wsext.BLIF D3.BLIF blatch3.REG
+101 1
+.names bavalid.BLIF wsext.BLIF D4.BLIF blatch4.REG
 101 1
 .names wsflag.BLIF wsff0.AR
 0 1

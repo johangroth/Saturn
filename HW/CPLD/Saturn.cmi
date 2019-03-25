@@ -10,10 +10,10 @@ ACTIVE_SHEET=Opt Global Constraints
 Constraint Name=162,no
 Constraint Value=115,no
 [WINDOWS]
-MAIN_WINDOW_POSITION=744,11,1702,1211
+MAIN_WINDOW_POSITION=66,0,1079,1161
 LEFT_PANE_WIDTH=283
 CHILD_FRAME_STATE=Maximal
-CHILD_WINDOW_SIZE=958,792
+CHILD_WINDOW_SIZE=1013,973
 CHILD_WINDOW_POS=-8,-30
 [GUI SETTING]
 Remember_Setting=1
@@ -29,13 +29,13 @@ Sort_Type=0
 Sort_Direction=0
 Skip_Next_Pin=0
 [Pin Attributes]
-sort_column_1=Signal/Group Name
+sort_column_1=Pin
 Type=81,no
 Signal/Group Name=134,no
 Group Members=111,no
 GLB=36,no
 Macrocell=73,no
-Pin=32,no
+Pin=51,no
 Power=50,no
 Slewrate=64,no
 [Global Constraints]

@@ -12,7 +12,7 @@ Project_Summary
 
 Project Name :          saturn
 Project Path :          Z:\Saturn\HW\CPLD
-Project Fitted on :     Fri Mar 02 06:32:47 2018
+Project Fitted on :     Thu Mar 14 22:08:34 2019
 
 Device :                M4A5-64/32
 Package :               44PLCC
@@ -37,11 +37,11 @@ Fitter                                   00:00:00
 
 Design_Summary
 ~~~~~~~~~~~~~~
-  Total Input Pins :                 13
+  Total Input Pins :                 14
   Total Output Pins :                15
   Total Bidir I/O Pins :              4
-  Total Flip-Flops :                 10
-  Total Product Terms :              59
+  Total Flip-Flops :                 11
+  Total Product Terms :              62
   Total Reserved Pins :               0
   Total Reserved Blocks :             0
 
@@ -53,14 +53,14 @@ Device_Resource_Summary
 Dedicated Pins
   Input-Only Pins                ..       ..     ..    -->    ..
   Clock/Input Pins                2        2      0    -->   100%
-I/O Pins                         32       30      2    -->    93%
-Logic Macrocells                 64       31     33    -->    48%
+I/O Pins                         32       31      1    -->    96%
+Logic Macrocells                 64       32     32    -->    50%
   Input Registers                32        0     32    -->     0%
   Unusable Macrocells            ..        0     ..
 
-CSM Outputs/Total Block Inputs  132       91     41    -->    68%
-Logical Product Terms           320       59    261    -->    18%
-Product Term Clusters            64       24     40    -->    37%
+CSM Outputs/Total Block Inputs  132       97     35    -->    73%
+Logical Product Terms           320       62    258    -->    19%
+Product Term Clusters            64       26     38    -->    40%
 
 
 Blocks_Resource_Summary
@@ -71,10 +71,10 @@ Blocks_Resource_Summary
 ---------------------------------------------------------------------------------
 Maximum     33      8      8     --     --         16       80       16       -
 ---------------------------------------------------------------------------------
-Block  A    23      8      0      8      0          8       16       11       Hi 
-Block  B    23      8      0      8      0          8       15       10       Hi 
-Block  C    23      8      0      7      0          9       15       10       Hi 
-Block  D    22      6      0      8      0          8       13       13       Hi 
+Block  A    24      8      0      8      0          8       16       11       Hi 
+Block  B    25      8      0      8      0          8       16        9       Hi 
+Block  C    24      8      0      8      0          8       16       10       Hi 
+Block  D    24      7      0      8      0          8       14       12       Hi 
 ---------------------------------------------------------------------------------
 
 <Note> Four rightmost columns above reflect last status of the placement process.
@@ -164,48 +164,48 @@ Pinout_Listing
 Pin No| Type |Pad |Pin     | Signal name
 ---------------------------------------------------------------
     1 |  GND |    |        |
-    2 |  I_O | A7 |        |RAM0
-3     |  I_O | A6 |        |A17
-4     |  I_O | A5 |        |D2
-5     |  I_O | A4 |        |VDA
-6     |  I_O | A3 |        |A18
-7     |  I_O | A2 |        |RWB
-8     |  I_O | A1 |        |DUART
-9     |  I_O | A0 |        |A8
+    2 |  I_O | A7 |   *    |RAM0
+3     |  I_O | A6 |   *    |A17
+4     |  I_O | A5 |   *    |D2
+5     |  I_O | A4 |   *    |VDA
+6     |  I_O | A3 |   *    |A18
+7     |  I_O | A2 |   *    |RWB
+8     |  I_O | A1 |   *    |DUART
+9     |  I_O | A0 |   *    |A8
 10    | JTAG |    |        |
 11    | CkIn |    |   *    |PHI
 12    |  GND |    |        |
 13    | JTAG |    |        |
-14    |  I_O | B0 |        |A9
-15    |  I_O | B1 |        |IO1
-16    |  I_O | B2 |        |A10
-17    |  I_O | B3 |        |A16
-18    |  I_O | B4 |        |A11
-19    |  I_O | B5 |        |RD
-20    |  I_O | B6 |        |A12
-21    |  I_O | B7 |        |IO3
+14    |  I_O | B0 |   *    |A9
+15    |  I_O | B1 |   *    |IO1
+16    |  I_O | B2 |   *    |A10
+17    |  I_O | B3 |   *    |A16
+18    |  I_O | B4 |   *    |A11
+19    |  I_O | B5 |   *    |RD
+20    |  I_O | B6 |   *    |A12
+21    |  I_O | B7 |   *    |IO3
 22    |  Vcc |    |        |
 23    |  GND |    |        |
-24    |  I_O | C7 |        |WD
-25    |  I_O | C6 |        |RAM1
-26    |  I_O | C5 |        |D3
-27    |  I_O | C4 |        |A13
-28    |  I_O | C3 |        |IO0
-29    |  I_O | C2 |        |A14
-30    |  I_O | C1 |        |IO2
-31    |  I_O | C0 |        |A15
+24    |  I_O | C7 |   *    |WD
+25    |  I_O | C6 |   *    |RAM1
+26    |  I_O | C5 |   *    |D3
+27    |  I_O | C4 |   *    |A13
+28    |  I_O | C3 |   *    |IO0
+29    |  I_O | C2 |   *    |A14
+30    |  I_O | C1 |   *    |IO2
+31    |  I_O | C0 |   *    |A15
 32    | JTAG |    |        |
-33    | CkIn |    |        |VPA
+33    | CkIn |    |   *    |VPA
 34    |  GND |    |        |
 35    | JTAG |    |        |
-36    |  I_O | D0 |        |RESB
-37    |  I_O | D1 |        |RTC
-38    |  I_O | D2 |        |
-39    |  I_O | D3 |        |ROM
+36    |  I_O | D0 |   *    |RESB
+37    |  I_O | D1 |   *    |RTC
+38    |  I_O | D2 |        |D4
+39    |  I_O | D3 |   *    |ROM
 40    |  I_O | D4 |        |
-41    |  I_O | D5 |        |D0
-42    |  I_O | D6 |        |STP
-43    |  I_O | D7 |        |D1
+41    |  I_O | D5 |   *    |D0
+42    |  I_O | D6 |   *    |STP
+43    |  I_O | D7 |   *    |D1
 44    |  Vcc |    |        |
 
 ---------------------------------------------------------------------------
@@ -235,10 +235,11 @@ Pin Blk PTs Type e s E   Fanout Pwr Slew      Signal
  31  C   .  I/O          ABCD    Hi Fast      A15   
   9  A   .  I/O          ABCD    Hi Fast      A8   
  14  B   .  I/O          ABCD    Hi Fast      A9   
- 36  D   .  I/O          AB--    Hi Fast      RESB   
+ 38  D   .  I/O          -B--    Hi Fast      D4   
+ 36  D   .  I/O          A--D    Hi Fast      RESB   
   7  A   .  I/O          ABCD    Hi Fast      RWB   
   5  A   .  I/O          ABCD    Hi Fast      VDA   
- 11  .   . Ck/I          ---D    -  Fast      PHI   
+ 11  .   . Ck/I          -B-D    -  Fast      PHI   
  33  .   . Ck/I          ABCD    -  Fast      VPA   
 ----------------------------------------------------------------------
 
@@ -285,10 +286,10 @@ Bidir_Signal_List
             Pin  r e O   Bidir 
 Pin Blk PTs Type e s E   Fanout Pwr Slew      Signal 
 ----------------------------------------------------------------------
- 41  D   1  COM          A-C-    Hi Fast      D0   
- 43  D   1  COM          A-C-    Hi Fast      D1   
-  4  A   1  COM          AB--    Hi Fast      D2   
- 26  C   1  COM          -B--    Hi Fast      D3   
+ 41  D   1  COM          AB--    Hi Fast      D0   
+ 43  D   1  COM          -B-D    Hi Fast      D1   
+  4  A   1  COM          A-C-    Hi Fast      D2   
+ 26  C   1  COM          A-C-    Hi Fast      D3   
 ----------------------------------------------------------------------
 
 <Note> Power : Hi = High
@@ -304,19 +305,20 @@ Buried_Signal_List
             Pin  r e O   Node 
 #Mc Blk PTs Type e s E   Fanout Pwr Slew      Signal 
 ----------------------------------------------------------------------
- D1  D   1  DFF  * *     -BCD    Hi  -        RN_STP   --> STP
- C9  C   2  LAT  * *     ABCD    Hi Fast      blatch0   
- C5  C   2  LAT  * *     ABCD    Hi Fast      blatch1   
- B5  B   2  LAT  * *     ABCD    Hi Fast      blatch2   
- B1  B   2  LAT  * *     ABCD    Hi Fast      blatch3   
- A13  A   1  LAT  * *     A--D    Hi Fast      hmucfg0   
- A9  A   1  LAT  * *     A--D    Hi Fast      hmucfg1   
+ D1  D   1  DFF  * *     -BC-    Hi  -        RN_STP   --> STP
+ D9  D   2  COM          -BC-    Hi Fast      bavalid   
+ B9  B   2  LAT  * *     ABCD    Hi Fast      blatch0   
+ B1  B   2  LAT  * *     ABCD    Hi Fast      blatch1   
+ C9  C   2  LAT  * *     ABCD    Hi Fast      blatch2   
+ C5  C   2  LAT  * *     ABCD    Hi Fast      blatch3   
+ B12  B   2  LAT  * *     ABCD    Hi Fast      blatch4   
+ A9  A   1  LAT  * *     A--D    Hi Fast      hmucfg0   
+ D13  D   1  LAT  * *     A--D    Hi Fast      hmucfg1   
  A5  A   1  LAT  * *     ABCD    Hi Fast      hmucfg2   
- B13  B   1  LAT  * *     --C-    Hi Fast      hmucfg3   
- D5  D   1  COM          -BC-    Hi Fast      vab   
- B9  B   1  COM          -BC-    Hi Fast      wsext   
- D13  D   1  DFF  * *     ---D    Hi Fast      wsff0   
- D9  D   4  COM          ---D    Hi Fast      wsflag   
+ A13  A   1  LAT  * *     --C-    Hi Fast      hmucfg3   
+ C13  C   1  COM          -BC-    Hi Fast      wsext   
+ B13  B   1  DFF  * *     ---D    Hi Fast      wsff0   
+ D5  D   4  COM          -B-D    Hi Fast      wsflag   
 ----------------------------------------------------------------------
 
 <Note> Power : Hi = High
@@ -336,124 +338,132 @@ Signal Source  :    Fanout List
                :             WD{ C}          DUART{ A}            RTC{ D}
                :            IO0{ C}            IO1{ B}            IO2{ C}
                :            IO3{ B}         wsflag{ D}        hmucfg0{ A}
-               :        hmucfg1{ A}        hmucfg2{ A}        hmucfg3{ B}
+               :        hmucfg1{ D}        hmucfg2{ A}        hmucfg3{ A}
         A14{ D}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}           RAM0{ A}            ROM{ D}
                :             WD{ C}          DUART{ A}            RTC{ D}
                :            IO0{ C}            IO1{ B}            IO2{ C}
                :            IO3{ B}         wsflag{ D}        hmucfg0{ A}
-               :        hmucfg1{ A}        hmucfg2{ A}        hmucfg3{ B}
+               :        hmucfg1{ D}        hmucfg2{ A}        hmucfg3{ A}
         A13{ D}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}           RAM0{ A}            ROM{ D}
                :             WD{ C}          DUART{ A}            RTC{ D}
                :            IO0{ C}            IO1{ B}            IO2{ C}
                :            IO3{ B}         wsflag{ D}        hmucfg0{ A}
-               :        hmucfg1{ A}        hmucfg2{ A}        hmucfg3{ B}
+               :        hmucfg1{ D}        hmucfg2{ A}        hmucfg3{ A}
         A12{ C}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}           RAM0{ A}            ROM{ D}
                :          DUART{ A}            RTC{ D}            IO0{ C}
                :            IO1{ B}            IO2{ C}            IO3{ B}
-               :         wsflag{ D}        hmucfg0{ A}        hmucfg1{ A}
-               :        hmucfg2{ A}        hmucfg3{ B}
+               :         wsflag{ D}        hmucfg0{ A}        hmucfg1{ D}
+               :        hmucfg2{ A}        hmucfg3{ A}
         A11{ C}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}           RAM0{ A}          DUART{ A}
                :            RTC{ D}            IO0{ C}            IO1{ B}
                :            IO2{ C}            IO3{ B}         wsflag{ D}
-               :        hmucfg0{ A}        hmucfg1{ A}        hmucfg2{ A}
-               :        hmucfg3{ B}
+               :        hmucfg0{ A}        hmucfg1{ D}        hmucfg2{ A}
+               :        hmucfg3{ A}
         A10{ C}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}           RAM0{ A}          DUART{ A}
                :            RTC{ D}            IO0{ C}            IO1{ B}
                :            IO2{ C}            IO3{ B}         wsflag{ D}
-               :        hmucfg0{ A}        hmucfg1{ A}        hmucfg2{ A}
-               :        hmucfg3{ B}
+               :        hmucfg0{ A}        hmucfg1{ D}        hmucfg2{ A}
+               :        hmucfg3{ A}
          A9{ C}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}           RAM0{ A}          DUART{ A}
                :            RTC{ D}            IO0{ C}            IO1{ B}
                :            IO2{ C}            IO3{ B}         wsflag{ D}
-               :        hmucfg0{ A}        hmucfg1{ A}        hmucfg2{ A}
-               :        hmucfg3{ B}
+               :        hmucfg0{ A}        hmucfg1{ D}        hmucfg2{ A}
+               :        hmucfg3{ A}
          A8{ B}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}           RAM0{ A}          DUART{ A}
                :            RTC{ D}            IO0{ C}            IO1{ B}
                :            IO2{ C}            IO3{ B}         wsflag{ D}
-               :        hmucfg0{ A}        hmucfg1{ A}        hmucfg2{ A}
-               :        hmucfg3{ B}
-         D3{ D}:        blatch3{ B}        hmucfg3{ B}
-         D2{ B}:        blatch2{ B}        hmucfg2{ A}
-         D1{ E}:        blatch1{ C}        hmucfg1{ A}
-         D0{ E}:        blatch0{ C}        hmucfg0{ A}
+               :        hmucfg0{ A}        hmucfg1{ D}        hmucfg2{ A}
+               :        hmucfg3{ A}
+         D4{ E}:        blatch4{ B}
+         D3{ D}:        blatch3{ C}        hmucfg3{ A}
+         D2{ B}:        blatch2{ C}        hmucfg2{ A}
+         D1{ E}:        blatch1{ B}        hmucfg1{ D}
+         D0{ E}:        blatch0{ B}        hmucfg0{ A}
         PHI{. }:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}             RD{ B}             WD{ C}
-               :          wsext{ B}        blatch0{ C}        blatch1{ C}
-               :        blatch2{ B}        blatch3{ B}        hmucfg0{ A}
-               :        hmucfg1{ A}        hmucfg2{ A}        hmucfg3{ B}
+               :        bavalid{ D}          wsext{ C}        blatch0{ B}
+               :        blatch1{ B}        blatch2{ C}        blatch3{ C}
+               :        blatch4{ B}        hmucfg0{ A}        hmucfg1{ D}
+               :        hmucfg2{ A}        hmucfg3{ A}
         RWB{ B}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}           RAM0{ A}            ROM{ D}
                :             RD{ B}             WD{ C}         wsflag{ D}
-               :        hmucfg0{ A}        hmucfg1{ A}        hmucfg2{ A}
-               :        hmucfg3{ B}
+               :        hmucfg0{ A}        hmucfg1{ D}        hmucfg2{ A}
+               :        hmucfg3{ A}
         VDA{ B}:            A16{ B}            A17{ A}            A18{ A}
                :           RAM0{ A}           RAM1{ C}             RD{ B}
                :             WD{ C}          DUART{ A}            RTC{ D}
                :            IO0{ C}            IO1{ B}            IO2{ C}
-               :            IO3{ B}            vab{ D}         wsflag{ D}
-               :        blatch0{ C}        blatch1{ C}        blatch2{ B}
-               :        blatch3{ B}
+               :            IO3{ B}        bavalid{ D}         wsflag{ D}
+               :        blatch0{ B}        blatch1{ B}        blatch2{ C}
+               :        blatch3{ C}        blatch4{ B}
         VPA{. }:            A16{ B}            A17{ A}            A18{ A}
                :           RAM0{ A}           RAM1{ C}             RD{ B}
                :             WD{ C}          DUART{ A}            RTC{ D}
                :            IO0{ C}            IO1{ B}            IO2{ C}
-               :            IO3{ B}            vab{ D}         wsflag{ D}
-               :        blatch0{ C}        blatch1{ C}        blatch2{ B}
-               :        blatch3{ B}
-       RESB{ E}:        hmucfg0{ A}        hmucfg1{ A}        hmucfg2{ A}
-               :        hmucfg3{ B}
-     RN_STP{ E}:             RD{ B}             WD{ C}          wsext{ B}
-               :        blatch0{ C}        blatch1{ C}        blatch2{ B}
-               :        blatch3{ B}          wsff0{ D}
-      wsext{ C}:        blatch0{ C}        blatch1{ C}        blatch2{ B}
-               :        blatch3{ B}
-        vab{ E}:        blatch0{ C}        blatch1{ C}        blatch2{ B}
-               :        blatch3{ B}
-     wsflag{ E}:            STP{ D}          wsff0{ D}
-    blatch0{ D}:             D3{ C}             D2{ A}             D1{ D}
+               :            IO3{ B}        bavalid{ D}         wsflag{ D}
+               :        blatch0{ B}        blatch1{ B}        blatch2{ C}
+               :        blatch3{ C}        blatch4{ B}
+       RESB{ E}:        hmucfg0{ A}        hmucfg1{ D}        hmucfg2{ A}
+               :        hmucfg3{ A}
+     RN_STP{ E}:             RD{ B}             WD{ C}          wsext{ C}
+               :        blatch0{ B}        blatch1{ B}        blatch2{ C}
+               :        blatch3{ C}        blatch4{ B}          wsff0{ B}
+    bavalid{ E}:        blatch0{ B}        blatch1{ B}        blatch2{ C}
+               :        blatch3{ C}        blatch4{ B}
+      wsext{ D}:        blatch0{ B}        blatch1{ B}        blatch2{ C}
+               :        blatch3{ C}        blatch4{ B}
+     wsflag{ E}:            STP{ D}          wsff0{ B}
+    blatch0{ C}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}            A16{ B}           RAM0{ A}
                :            ROM{ D}             WD{ C}          DUART{ A}
                :            RTC{ D}            IO0{ C}            IO1{ B}
                :            IO2{ C}            IO3{ B}         wsflag{ D}
-               :        hmucfg0{ A}        hmucfg1{ A}        hmucfg2{ A}
-               :        hmucfg3{ B}
-    blatch1{ D}:             D3{ C}             D2{ A}             D1{ D}
+               :        hmucfg0{ A}        hmucfg1{ D}        hmucfg2{ A}
+               :        hmucfg3{ A}
+    blatch1{ C}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}            A17{ A}           RAM0{ A}
                :            ROM{ D}             WD{ C}          DUART{ A}
                :            RTC{ D}            IO0{ C}            IO1{ B}
                :            IO2{ C}            IO3{ B}         wsflag{ D}
-               :        hmucfg0{ A}        hmucfg1{ A}        hmucfg2{ A}
-               :        hmucfg3{ B}
-    blatch2{ C}:             D3{ C}             D2{ A}             D1{ D}
+               :        hmucfg0{ A}        hmucfg1{ D}        hmucfg2{ A}
+               :        hmucfg3{ A}
+    blatch2{ D}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}            A18{ A}           RAM0{ A}
                :            ROM{ D}             WD{ C}          DUART{ A}
                :            RTC{ D}            IO0{ C}            IO1{ B}
                :            IO2{ C}            IO3{ B}         wsflag{ D}
-               :        hmucfg0{ A}        hmucfg1{ A}        hmucfg2{ A}
-               :        hmucfg3{ B}
-    blatch3{ C}:             D3{ C}             D2{ A}             D1{ D}
+               :        hmucfg0{ A}        hmucfg1{ D}        hmucfg2{ A}
+               :        hmucfg3{ A}
+    blatch3{ D}:             D3{ C}             D2{ A}             D1{ D}
                :             D0{ D}           RAM0{ A}           RAM1{ C}
                :            ROM{ D}             WD{ C}          DUART{ A}
                :            RTC{ D}            IO0{ C}            IO1{ B}
                :            IO2{ C}            IO3{ B}         wsflag{ D}
-               :        hmucfg0{ A}        hmucfg1{ A}        hmucfg2{ A}
-               :        hmucfg3{ B}
+               :        hmucfg0{ A}        hmucfg1{ D}        hmucfg2{ A}
+               :        hmucfg3{ A}
+    blatch4{ C}:             D3{ C}             D2{ A}             D1{ D}
+               :             D0{ D}           RAM0{ A}            ROM{ D}
+               :             WD{ C}          DUART{ A}            RTC{ D}
+               :            IO0{ C}            IO1{ B}            IO2{ C}
+               :            IO3{ B}         wsflag{ D}        hmucfg0{ A}
+               :        hmucfg1{ D}        hmucfg2{ A}        hmucfg3{ A}
     hmucfg0{ B}:             D0{ D}           RAM0{ A}            ROM{ D}
                :         wsflag{ D}
-    hmucfg1{ B}:             D1{ D}           RAM0{ A}            ROM{ D}
+    hmucfg1{ E}:             D1{ D}           RAM0{ A}            ROM{ D}
                :         wsflag{ D}
     hmucfg2{ B}:             D2{ A}           RAM0{ A}          DUART{ A}
                :            RTC{ D}            IO0{ C}            IO1{ B}
                :            IO2{ C}            IO3{ B}         wsflag{ D}
-    hmucfg3{ C}:             D3{ C}             WD{ C}
-      wsff0{ E}:            STP{ D}
+    hmucfg3{ B}:             D3{ C}             WD{ C}
+      wsff0{ C}:            STP{ D}
 -----------------------------------------------------------------------------
 
 <Note> {.} : Indicates block location of signal
@@ -475,32 +485,32 @@ Equations :
 |     |     |     |     | A18
 |     |     |     |     | A17
 |  *  |  A  |     |     | hmucfg2
-|  *  |  A  |     |     | hmucfg1
 |  *  |  A  |     |     | hmucfg0
-|     |     |     |     | VDA
-|     |     |     |     | RWB
+|  *  |  A  |     |     | hmucfg3
 |     |     |     |     | A8
+|     |     |     |     | RWB
+|     |     |     |     | VDA
 
 
 Block  B
-block level set pt   : 
-block level reset pt : 
+block level set pt   : GND
+block level reset pt : !wsflag
 Equations :
 |     |     |Block|Block| Signal
 | Reg |Mode |Set  |Reset| Name
 +-----+-----+-----+-----+------------------------
 |     |     |     |     | RD
 |     |     |     |     | IO3
-|     |     |     |     | IO1
 |     |     |     |     | A16
-|  *  |  A  |     |     | blatch3
-|  *  |  A  |     |     | blatch2
-|     |     |     |     | wsext
-|  *  |  A  |     |     | hmucfg3
-|     |     |     |     | A9
-|     |     |     |     | A10
-|     |     |     |     | A11
+|     |     |     |     | IO1
+|  *  |  A  |     |     | blatch4
+|  *  |  A  |     |     | blatch1
+|  *  |  A  |     |     | blatch0
+|  *  |  S  | BS  | BR  | wsff0
 |     |     |     |     | A12
+|     |     |     |     | A11
+|     |     |     |     | A10
+|     |     |     |     | A9
 
 
 Block  C
@@ -515,11 +525,12 @@ Equations :
 |     |     |     |     | IO2
 |     |     |     |     | IO0
 |     |     |     |     | RAM1
-|  *  |  A  |     |     | blatch1
-|  *  |  A  |     |     | blatch0
-|     |     |     |     | A13
-|     |     |     |     | A14
+|  *  |  A  |     |     | blatch3
+|  *  |  A  |     |     | blatch2
+|     |     |     |     | wsext
 |     |     |     |     | A15
+|     |     |     |     | A14
+|     |     |     |     | A13
 
 
 Block  D
@@ -529,16 +540,17 @@ Equations :
 |     |     |Block|Block| Signal
 | Reg |Mode |Set  |Reset| Name
 +-----+-----+-----+-----+------------------------
-|     |     |     |     | D0
 |     |     |     |     | D1
-|     |     |     |     | RTC
+|     |     |     |     | D0
 |     |     |     |     | ROM
+|     |     |     |     | RTC
 |  *  |  S  | BS  | BR  | STP
-|  *  |  S  | BS  | BR  | RN_STP
-|     |     |     |     | vab
 |     |     |     |     | wsflag
-|  *  |  S  | BR  | BS  | wsff0
+|     |     |     |     | bavalid
+|  *  |  S  | BS  | BR  | RN_STP
+|  *  |  A  |     |     | hmucfg1
 |     |     |     |     | RESB
+|     |     |     |     | D4
 
 
 <Note> (S) means the macrocell is configured in synchronous mode
@@ -555,23 +567,23 @@ BLOCK_A_LOGIC_ARRAY_FANIN
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 CSM             Signal    Source        CSM             Signal    Source
 ------------------------------------    ------------------------------------
-mx A0         blatch0     mcell  C9     mx A17              A8         pin 9
-mx A1             ...           ...     mx A18              D1        pin 43
-mx A2             PHI        pin 11     mx A19         hmucfg0    mcell  A13
-mx A3             A14        pin 29     mx A20         blatch1     mcell  C5
-mx A4         hmucfg2     mcell  A5     mx A21              A9        pin 14
+mx A0         blatch2     mcell  C9     mx A17              A8         pin 9
+mx A1             ...           ...     mx A18             ...           ...
+mx A2             PHI        pin 11     mx A19         blatch3     mcell  C5
+mx A3              A9        pin 14     mx A20              D0        pin 41
+mx A4         hmucfg2     mcell  A5     mx A21         blatch4    mcell  B12
 mx A5             ...           ...     mx A22              D2         pin 4
 mx A6             A10        pin 16     mx A23             VPA        pin 33
 mx A7            RESB        pin 36     mx A24             ...           ...
-mx A8             A13        pin 27     mx A25             ...           ...
+mx A8             A13        pin 27     mx A25         blatch1     mcell  B1
 mx A9             A11        pin 18     mx A26             RWB         pin 7
-mx A10         blatch2     mcell  B5     mx A27             ...           ...
+mx A10              D3        pin 26     mx A27             ...           ...
 mx A11             A12        pin 20     mx A28             ...           ...
-mx A12             VDA         pin 5     mx A29             ...           ...
-mx A13         hmucfg1     mcell  A9     mx A30             ...           ...
-mx A14             A15        pin 31     mx A31              D0        pin 41
-mx A15         blatch3     mcell  B1     mx A32             ...           ...
-mx A16             ...           ...
+mx A12             VDA         pin 5     mx A29             A14        pin 29
+mx A13         hmucfg0     mcell  A9     mx A30             ...           ...
+mx A14             A15        pin 31     mx A31             ...           ...
+mx A15         hmucfg1    mcell  D13     mx A32             ...           ...
+mx A16         blatch0     mcell  B9
 ----------------------------------------------------------------------------
 
 
@@ -580,22 +592,22 @@ BLOCK_B_LOGIC_ARRAY_FANIN
 CSM             Signal    Source        CSM             Signal    Source
 ------------------------------------    ------------------------------------
 mx B0          RN_STP     mcell  D1     mx B17              A8         pin 9
-mx B1             ...           ...     mx B18             A10        pin 16
-mx B2             A15        pin 31     mx B19         blatch1     mcell  C5
-mx B3             A14        pin 29     mx B20             ...           ...
-mx B4             PHI        pin 11     mx B21              A9        pin 14
-mx B5             ...           ...     mx B22              D2         pin 4
-mx B6         blatch2     mcell  B5     mx B23             VPA        pin 33
-mx B7            RESB        pin 36     mx B24             ...           ...
-mx B8             A13        pin 27     mx B25         blatch3     mcell  B1
+mx B1           wsext    mcell  C13     mx B18         bavalid     mcell  D9
+mx B2             PHI        pin 11     mx B19         blatch3     mcell  C5
+mx B3              A9        pin 14     mx B20              D0        pin 41
+mx B4         hmucfg2     mcell  A5     mx B21         blatch4    mcell  B12
+mx B5             ...           ...     mx B22             ...           ...
+mx B6             A10        pin 16     mx B23             VPA        pin 33
+mx B7         blatch1     mcell  B1     mx B24             ...           ...
+mx B8             A13        pin 27     mx B25             ...           ...
 mx B9             A11        pin 18     mx B26             RWB         pin 7
-mx B10              D3        pin 26     mx B27         blatch0     mcell  C9
+mx B10             ...           ...     mx B27         blatch2     mcell  C9
 mx B11             A12        pin 20     mx B28             ...           ...
-mx B12             VDA         pin 5     mx B29             ...           ...
-mx B13         hmucfg2     mcell  A5     mx B30             ...           ...
-mx B14             ...           ...     mx B31             ...           ...
-mx B15             vab     mcell  D5     mx B32             ...           ...
-mx B16           wsext     mcell  B9
+mx B12             VDA         pin 5     mx B29             A14        pin 29
+mx B13              D4        pin 38     mx B30             ...           ...
+mx B14             A15        pin 31     mx B31              D1        pin 43
+mx B15          wsflag     mcell  D5     mx B32             ...           ...
+mx B16         blatch0     mcell  B9
 ----------------------------------------------------------------------------
 
 
@@ -604,22 +616,22 @@ BLOCK_C_LOGIC_ARRAY_FANIN
 CSM             Signal    Source        CSM             Signal    Source
 ------------------------------------    ------------------------------------
 mx C0          RN_STP     mcell  D1     mx C17              A8         pin 9
-mx C1             ...           ...     mx C18              D1        pin 43
-mx C2             A15        pin 31     mx C19         blatch1     mcell  C5
-mx C3             A14        pin 29     mx C20              D0        pin 41
-mx C4             PHI        pin 11     mx C21              A9        pin 14
-mx C5         hmucfg3    mcell  B13     mx C22             ...           ...
+mx C1           wsext    mcell  C13     mx C18         bavalid     mcell  D9
+mx C2             A15        pin 31     mx C19         hmucfg3    mcell  A13
+mx C3              A9        pin 14     mx C20         blatch3     mcell  C5
+mx C4             PHI        pin 11     mx C21         blatch4    mcell  B12
+mx C5             ...           ...     mx C22              D2         pin 4
 mx C6             A10        pin 16     mx C23             VPA        pin 33
-mx C7         blatch2     mcell  B5     mx C24             ...           ...
-mx C8             A13        pin 27     mx C25         blatch3     mcell  B1
+mx C7         blatch1     mcell  B1     mx C24             ...           ...
+mx C8             A13        pin 27     mx C25             ...           ...
 mx C9             A11        pin 18     mx C26             RWB         pin 7
-mx C10             ...           ...     mx C27         blatch0     mcell  C9
+mx C10              D3        pin 26     mx C27         blatch2     mcell  C9
 mx C11             A12        pin 20     mx C28             ...           ...
-mx C12             VDA         pin 5     mx C29             ...           ...
+mx C12             VDA         pin 5     mx C29             A14        pin 29
 mx C13         hmucfg2     mcell  A5     mx C30             ...           ...
 mx C14             ...           ...     mx C31             ...           ...
-mx C15             vab     mcell  D5     mx C32             ...           ...
-mx C16           wsext     mcell  B9
+mx C15             ...           ...     mx C32             ...           ...
+mx C16         blatch0     mcell  B9
 ----------------------------------------------------------------------------
 
 
@@ -627,23 +639,23 @@ BLOCK_D_LOGIC_ARRAY_FANIN
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 CSM             Signal    Source        CSM             Signal    Source
 ------------------------------------    ------------------------------------
-mx D0          RN_STP     mcell  D1     mx D17              A8         pin 9
-mx D1             ...           ...     mx D18          wsflag     mcell  D9
-mx D2             PHI        pin 11     mx D19         hmucfg0    mcell  A13
-mx D3             A14        pin 29     mx D20         blatch1     mcell  C5
-mx D4         hmucfg2     mcell  A5     mx D21              A9        pin 14
-mx D5             ...           ...     mx D22             ...           ...
+mx D0         blatch2     mcell  C9     mx D17              A8         pin 9
+mx D1             ...           ...     mx D18              D1        pin 43
+mx D2             PHI        pin 11     mx D19         blatch3     mcell  C5
+mx D3              A9        pin 14     mx D20             ...           ...
+mx D4         hmucfg2     mcell  A5     mx D21         blatch4    mcell  B12
+mx D5           wsff0    mcell  B13     mx D22             ...           ...
 mx D6             A10        pin 16     mx D23             VPA        pin 33
-mx D7         blatch2     mcell  B5     mx D24             ...           ...
-mx D8             A13        pin 27     mx D25         blatch3     mcell  B1
+mx D7            RESB        pin 36     mx D24             ...           ...
+mx D8             A13        pin 27     mx D25         blatch1     mcell  B1
 mx D9             A11        pin 18     mx D26             RWB         pin 7
-mx D10             ...           ...     mx D27         blatch0     mcell  C9
+mx D10             ...           ...     mx D27             ...           ...
 mx D11             A12        pin 20     mx D28             ...           ...
-mx D12             VDA         pin 5     mx D29             ...           ...
-mx D13         hmucfg1     mcell  A9     mx D30             ...           ...
+mx D12             VDA         pin 5     mx D29             A14        pin 29
+mx D13         hmucfg0     mcell  A9     mx D30          wsflag     mcell  D5
 mx D14             A15        pin 31     mx D31             ...           ...
-mx D15           wsff0    mcell  D13     mx D32             ...           ...
-mx D16             ...           ...
+mx D15         hmucfg1    mcell  D13     mx D32             ...           ...
+mx D16         blatch0     mcell  B9
 ----------------------------------------------------------------------------
 
 <Note> CSM indicates the mux inputs from the Central Switch Matrix.
@@ -659,82 +671,84 @@ Title:  Saturn address decoding with ROM/IO waitstates.
 
  P-Terms   Fan-in  Fan-out  Type  Name (attributes)
 ---------  ------  -------  ----  -----------------
-   1         15        1    Pin   D3 
-   1         14        1    Pin   D3.OE 
-   1         15        1    Pin   D2 
-   1         14        1    Pin   D2.OE 
-   1         15        1    Pin   D1 
-   1         14        1    Pin   D1.OE 
-   1         15        1    Pin   D0 
-   1         14        1    Pin   D0.OE 
+   1         16        1    Pin   D3 
+   1         15        1    Pin   D3.OE 
+   1         16        1    Pin   D2 
+   1         15        1    Pin   D2.OE 
+   1         16        1    Pin   D1 
+   1         15        1    Pin   D1.OE 
+   1         16        1    Pin   D0 
+   1         15        1    Pin   D0.OE 
    2          3        1    Pin   A16 
    2          3        1    Pin   A17 
    2          3        1    Pin   A18 
-   6         18        1    Pin   RAM0 
+   6         19        1    Pin   RAM0 
    2          3        1    Pin   RAM1 
-   2         11        1    Pin   ROM- 
+   2         12        1    Pin   ROM- 
    3          5        1    Pin   RD 
-   4         13        1    Pin   WD 
-   2         15        1    Pin   DUART- 
-   2         15        1    Pin   RTC- 
-   2         15        1    Pin   IO0- 
-   2         15        1    Pin   IO1- 
-   2         15        1    Pin   IO2- 
-   2         15        1    Pin   IO3- 
+   4         14        1    Pin   WD 
+   2         16        1    Pin   DUART- 
+   2         16        1    Pin   RTC- 
+   2         16        1    Pin   IO0- 
+   2         16        1    Pin   IO1- 
+   2         16        1    Pin   IO2- 
+   2         16        1    Pin   IO3- 
    1          1        1    Pin   STP.OE 
    1          1        1    Pin   STP.D 
    1          1        1    Pin   STP.AP 
    1          1        1    Pin   STP.C 
+   2          3        1    Node  bavalid 
    1          2        1    Node  wsext- 
-   1          2        1    Node  vab- 
-   4         18        1    Node  wsflag- 
+   4         19        1    Node  wsflag- 
    2          5        1    Node  blatch0.D 
-   1          3        1    Node  blatch0.LH- 
+   1          2        1    Node  blatch0.LH- 
    2          5        1    Node  blatch1.D 
-   1          3        1    Node  blatch1.LH- 
+   1          2        1    Node  blatch1.LH- 
    2          5        1    Node  blatch2.D 
-   1          3        1    Node  blatch2.LH- 
+   1          2        1    Node  blatch2.LH- 
    2          5        1    Node  blatch3.D 
-   1          3        1    Node  blatch3.LH- 
+   1          2        1    Node  blatch3.LH- 
+   2          5        1    Node  blatch4.D 
+   1          2        1    Node  blatch4.LH- 
    1          1        1    Node  hmucfg0.AR 
-   1         15        1    Node  hmucfg0.D 
-   1         14        1    Node  hmucfg0.LH- 
+   1         16        1    Node  hmucfg0.D 
+   1         15        1    Node  hmucfg0.LH- 
    1          1        1    Node  hmucfg1.AR 
-   1         15        1    Node  hmucfg1.D 
-   1         14        1    Node  hmucfg1.LH- 
+   1         16        1    Node  hmucfg1.D 
+   1         15        1    Node  hmucfg1.LH- 
    1          1        1    Node  hmucfg2.AR 
-   1         15        1    Node  hmucfg2.D 
-   1         14        1    Node  hmucfg2.LH- 
+   1         16        1    Node  hmucfg2.D 
+   1         15        1    Node  hmucfg2.LH- 
    1          1        1    Node  hmucfg3.AR 
-   1         15        1    Node  hmucfg3.D 
-   1         14        1    Node  hmucfg3.LH- 
+   1         16        1    Node  hmucfg3.D 
+   1         15        1    Node  hmucfg3.LH- 
    1          1        1    Node  wsff0.AR 
    1          1        1    Node  wsff0.D 
    1          1        1    Node  wsff0.C 
 =========
-  80                 P-Term Total: 80
-                       Total Pins: 32
-                      Total Nodes: 12
+  84                 P-Term Total: 84
+                       Total Pins: 33
+                      Total Nodes: 13
             Average P-Term/Output: 1
 
 
 Equations:
 
-D3 = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg3.Q);
+D3 = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg3.Q);
 
-D3.OE = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+D3.OE = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-D2 = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg2.Q);
+D2 = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg2.Q);
 
-D2.OE = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+D2.OE = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-D1 = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg1.Q);
+D1 = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg1.Q);
 
-D1.OE = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+D1.OE = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-D0 = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg0.Q);
+D0 = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8 & hmucfg0.Q);
 
-D0.OE = (PHI & RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+D0.OE = (PHI & RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 A16 = (VDA & blatch0.Q
      # VPA & blatch0.Q);
@@ -747,16 +761,16 @@ A18 = (VDA & blatch2.Q
 
 RAM0 = (blatch3.Q
      # !VDA & !VPA
-     # RWB & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
-     # RWB & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q
-     # !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !hmucfg2.Q
-     # !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+     # RWB & !blatch4.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
+     # RWB & !blatch4.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q
+     # !blatch4.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !hmucfg2.Q
+     # !blatch4.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 RAM1 = (!blatch3.Q
      # !VDA & !VPA);
 
-!ROM = (RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
-     # RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q);
+!ROM = (RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
+     # RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q);
 
 RD = (!RWB
      # !VDA & !VPA
@@ -765,25 +779,25 @@ RD = (!RWB
 WD = (RWB
      # !VDA & !VPA
      # !PHI & STP.Q
-     # !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & hmucfg3.Q);
+     # !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & hmucfg3.Q);
 
-!DUART = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & !A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & !A8 & !hmucfg2.Q);
+!DUART = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & !A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & !A8 & !hmucfg2.Q);
 
-!RTC = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & A8 & !hmucfg2.Q);
+!RTC = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & !A9 & A8 & !hmucfg2.Q);
 
-!IO0 = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & !A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & !A8 & !hmucfg2.Q);
+!IO0 = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & !A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & !A8 & !hmucfg2.Q);
 
-!IO1 = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & A8 & !hmucfg2.Q);
+!IO1 = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !A10 & A9 & A8 & !hmucfg2.Q);
 
-!IO2 = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & !A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & !A8 & !hmucfg2.Q);
+!IO2 = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & !A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & !A8 & !hmucfg2.Q);
 
-!IO3 = (VDA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & A8 & !hmucfg2.Q
-     # VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & A8 & !hmucfg2.Q);
+!IO3 = (VDA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & A8 & !hmucfg2.Q
+     # VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & A10 & !A9 & A8 & !hmucfg2.Q);
 
 STP.OE = (wsflag);
 
@@ -793,58 +807,64 @@ STP.AP = (!wsflag);
 
 STP.C = (PHI);
 
+bavalid = (!PHI & VDA
+     # !PHI & VPA);
+
 !wsext = (!PHI & STP.Q);
 
-!vab = (!VDA & !VPA);
-
-!wsflag = (RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
-     # RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q
-     # !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8
-     # !VDA & !VPA & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !hmucfg2.Q);
+!wsflag = (RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & A13 & !hmucfg1.Q
+     # RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & !A12 & hmucfg0.Q
+     # !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8
+     # !VDA & !VPA & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & !A11 & !hmucfg2.Q);
 
 blatch0.D = (!PHI & VDA & D0 & STP.Q
      # !PHI & VPA & D0 & STP.Q);
 
-!blatch0.LH = (!PHI & vab & !wsext);
+!blatch0.LH = (bavalid & !wsext);
 
 blatch1.D = (!PHI & VDA & D1 & STP.Q
      # !PHI & VPA & D1 & STP.Q);
 
-!blatch1.LH = (!PHI & vab & !wsext);
+!blatch1.LH = (bavalid & !wsext);
 
 blatch2.D = (!PHI & VDA & D2 & STP.Q
      # !PHI & VPA & D2 & STP.Q);
 
-!blatch2.LH = (!PHI & vab & !wsext);
+!blatch2.LH = (bavalid & !wsext);
 
 blatch3.D = (!PHI & VDA & D3 & STP.Q
      # !PHI & VPA & D3 & STP.Q);
 
-!blatch3.LH = (!PHI & vab & !wsext);
+!blatch3.LH = (bavalid & !wsext);
+
+blatch4.D = (!PHI & VDA & D4 & STP.Q
+     # !PHI & VPA & D4 & STP.Q);
+
+!blatch4.LH = (bavalid & !wsext);
 
 hmucfg0.AR = (!RESB.PIN);
 
-hmucfg0.D = (PHI & !RWB & D0 & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+hmucfg0.D = (PHI & !RWB & D0 & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-!hmucfg0.LH = (PHI & !RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+!hmucfg0.LH = (PHI & !RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 hmucfg1.AR = (!RESB.PIN);
 
-hmucfg1.D = (PHI & !RWB & D1 & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+hmucfg1.D = (PHI & !RWB & D1 & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-!hmucfg1.LH = (PHI & !RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+!hmucfg1.LH = (PHI & !RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 hmucfg2.AR = (!RESB.PIN);
 
-hmucfg2.D = (PHI & !RWB & D2 & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+hmucfg2.D = (PHI & !RWB & D2 & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-!hmucfg2.LH = (PHI & !RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+!hmucfg2.LH = (PHI & !RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 hmucfg3.AR = (!RESB.PIN);
 
-hmucfg3.D = (PHI & !RWB & D3 & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+hmucfg3.D = (PHI & !RWB & D3 & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
-!hmucfg3.LH = (PHI & !RWB & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
+!hmucfg3.LH = (PHI & !RWB & !blatch4.Q & !blatch3.Q & !blatch2.Q & !blatch1.Q & !blatch0.Q & A15 & A14 & !A13 & A12 & A11 & A10 & A9 & A8);
 
 wsff0.AR = (!wsflag);
 

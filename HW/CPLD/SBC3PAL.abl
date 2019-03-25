@@ -95,26 +95,6 @@ DBuff   = [DB18..DB16];                                 " Video Display Page poi
 HC      = [HC8..HC0];                                   " Horizontal address counter
 VC      = [VC8..VC0];                                   " Vertical line counter
 
-   " Video Engine Timing constants - NTSC Values using 14.318 MHz Clock
-//nHt     = 455;                                          " Number of horizontal total (vclks)
-//nHd     = 320;                                          " Number of horizontal display (vclks)
-//nHsp    = 352;                                          " H-sync position (vclks)
-//nHsw    = 34;                                           " H-sync width (vclks)
-//nVt     = 262;                                          " Number of vertical total (lines)
-//nVd     = 200;                                          " Number of vertical display (lines)
-//nVsp    = 225;                                          " V-sync position (line)
-//nVsw    = 3;                                            " V-sync width (lines)
-
-   " Video Engine Timing constants - PAL Values using 17.734 MHz Clock
-//nHt     = 567;                                          " Number of horizontal total (vclks)
-//nHd     = 320;                                          " Number of horizontal display (vclks)
-//nHsp    = 421;                                          " H-sync position (vclks)
-//nHsw    = 42;                                           " H-sync width (vclks)
-//nVt     = 312;                                          " Number of vertical total (lines)
-//nVd     = 200;                                          " Number of vertical display (lines)
-//nVsp    = 243;                                          " V-sync position (line)
-//nVsw    = 3;                                            " V-sync width (lines)
-
    " Video Engine Timing constants - PAL Values using 16 MHz Clock
 nHt     = 512;                                          " Number of horizontal total (vclks)
 nHd     = 320;                                          " Number of horizontal display (vclks)
