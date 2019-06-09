@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:saturn-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -401,9 +401,11 @@ Wire Bus Line
 Wire Wire Line
 	5125 2925 4800 2925
 $Comp
-L 65xx:WD65C816S_PLCC44 U1
+L saturn-rescue:WD65C816S_PLCC44-65xx U1
 U 1 1 5A3AB10B
 P 2600 2375
+AR Path="/5A3AB10B" Ref="U1"  Part="1" 
+AR Path="/5952FC78/5A3AB10B" Ref="U1"  Part="1" 
 F 0 "U1" H 2975 3400 60  0000 C CNN
 F 1 "WD65C816S_PLCC44" V 2600 2275 60  0000 C CNN
 F 2 "saturn:PLCC-44_THT-Socket" H 1975 1475 60  0001 C CNN
@@ -412,7 +414,7 @@ F 3 "" H 1975 1475 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:C_Small C12
+L saturn-rescue:C_Small-device C12
 U 1 1 5A3AB89B
 P 8725 3600
 F 0 "C12" V 8825 3550 50  0000 L CNN
@@ -423,7 +425,7 @@ F 3 "" H 8725 3600 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L device:C_Small C10
+L saturn-rescue:C_Small-device C10
 U 1 1 5A3AB916
 P 7350 3600
 F 0 "C10" V 7250 3550 50  0000 L CNN
@@ -434,7 +436,7 @@ F 3 "" H 7350 3600 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L device:C_Small C9
+L saturn-rescue:C_Small-device C9
 U 1 1 5A3AB953
 P 6025 3275
 F 0 "C9" V 6125 3225 50  0000 L CNN
@@ -445,7 +447,7 @@ F 3 "" H 6025 3275 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L device:C_Small C8
+L saturn-rescue:C_Small-device C8
 U 1 1 5A3ABA08
 P 3275 1125
 F 0 "C8" V 3375 1075 50  0000 L CNN
@@ -456,7 +458,7 @@ F 3 "" H 3275 1125 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L device:C_Small C7
+L saturn-rescue:C_Small-device C7
 U 1 1 5A3ABA2D
 P 2000 1125
 F 0 "C7" V 1900 1075 50  0000 L CNN
@@ -467,7 +469,7 @@ F 3 "" H 2000 1125 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power1:GND #PWR01
+L saturn-rescue:GND-power1 #PWR01
 U 1 1 5A3AC09F
 P 2600 3900
 F 0 "#PWR01" H 2600 3650 50  0001 C CNN
@@ -761,7 +763,7 @@ Wire Wire Line
 Wire Wire Line
 	7425 6100 7100 6100
 $Comp
-L device:C_Small C13
+L saturn-rescue:C_Small-device C13
 U 1 1 5A3C0579
 P 8750 6375
 F 0 "C13" V 8850 6325 50  0000 L CNN
@@ -772,7 +774,7 @@ F 3 "" H 8750 6375 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L device:C_Small C11
+L saturn-rescue:C_Small-device C11
 U 1 1 5A3C057F
 P 7350 6375
 F 0 "C11" V 7250 6325 50  0000 L CNN
@@ -883,7 +885,7 @@ Text HLabel 6350 2600 2    60   Input ~ 0
 Wire Wire Line
 	6050 2725 6350 2725
 $Comp
-L power1:VCC #PWR02
+L saturn-rescue:VCC-power1 #PWR02
 U 1 1 5A3F84C5
 P 6350 2725
 F 0 "#PWR02" H 6350 2575 50  0001 C CNN
@@ -918,7 +920,7 @@ RAM0 (00:0000-07:FFFF)
 Text Notes 9375 5175 0    60   ~ 12
 RAM1 (08:0000-0F:FFFF)
 $Comp
-L power1:GND #PWR03
+L saturn-rescue:GND-power1 #PWR03
 U 1 1 5AA65D61
 P 2700 3900
 F 0 "#PWR03" H 2700 3650 50  0001 C CNN
@@ -929,7 +931,7 @@ F 3 "" H 2700 3900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR04
+L saturn-rescue:GND-power1 #PWR04
 U 1 1 5AA65D8B
 P 2500 3900
 F 0 "#PWR04" H 2500 3650 50  0001 C CNN
@@ -952,7 +954,7 @@ Wire Wire Line
 Connection ~ 2500 3850
 Connection ~ 2700 3850
 $Comp
-L power1:VCC #PWR05
+L saturn-rescue:VCC-power1 #PWR05
 U 1 1 5AA1A97C
 P 7925 1225
 F 0 "#PWR05" H 7925 1075 50  0001 C CNN
@@ -963,7 +965,7 @@ F 3 "" H 7925 1225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:VCC #PWR06
+L saturn-rescue:VCC-power1 #PWR06
 U 1 1 5AA1AA07
 P 8125 1225
 F 0 "#PWR06" H 8125 1075 50  0001 C CNN
@@ -974,7 +976,7 @@ F 3 "" H 8125 1225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:VCC #PWR07
+L saturn-rescue:VCC-power1 #PWR07
 U 1 1 5AA1AA9D
 P 7925 4000
 F 0 "#PWR07" H 7925 3850 50  0001 C CNN
@@ -985,7 +987,7 @@ F 3 "" H 7925 4000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:VCC #PWR08
+L saturn-rescue:VCC-power1 #PWR08
 U 1 1 5AA1AAC5
 P 8125 4000
 F 0 "#PWR08" H 8125 3850 50  0001 C CNN
@@ -996,7 +998,7 @@ F 3 "" H 8125 4000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:VCC #PWR09
+L saturn-rescue:VCC-power1 #PWR09
 U 1 1 5AA1AB85
 P 2500 1125
 F 0 "#PWR09" H 2500 975 50  0001 C CNN
@@ -1007,7 +1009,7 @@ F 3 "" H 2500 1125 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:VCC #PWR010
+L saturn-rescue:VCC-power1 #PWR010
 U 1 1 5AA1ABAB
 P 2700 1125
 F 0 "#PWR010" H 2700 975 50  0001 C CNN
@@ -1018,7 +1020,7 @@ F 3 "" H 2700 1125 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR011
+L saturn-rescue:GND-power1 #PWR011
 U 1 1 5AA1AC83
 P 7925 3600
 F 0 "#PWR011" H 7925 3350 50  0001 C CNN
@@ -1029,7 +1031,7 @@ F 3 "" H 7925 3600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR012
+L saturn-rescue:GND-power1 #PWR012
 U 1 1 5AA1ACAB
 P 8125 3600
 F 0 "#PWR012" H 8125 3350 50  0001 C CNN
@@ -1040,7 +1042,7 @@ F 3 "" H 8125 3600 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR013
+L saturn-rescue:GND-power1 #PWR013
 U 1 1 5AA1AD6D
 P 7925 6375
 F 0 "#PWR013" H 7925 6125 50  0001 C CNN
@@ -1051,7 +1053,7 @@ F 3 "" H 7925 6375 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR014
+L saturn-rescue:GND-power1 #PWR014
 U 1 1 5AA1AD95
 P 8125 6375
 F 0 "#PWR014" H 8125 6125 50  0001 C CNN
@@ -1062,7 +1064,7 @@ F 3 "" H 8125 6375 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR015
+L saturn-rescue:GND-power1 #PWR015
 U 1 1 5AA1AED9
 P 5600 3275
 F 0 "#PWR015" H 5600 3025 50  0001 C CNN
@@ -1073,7 +1075,7 @@ F 3 "" H 5600 3275 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:VCC #PWR016
+L saturn-rescue:VCC-power1 #PWR016
 U 1 1 5AA1AF59
 P 5600 1275
 F 0 "#PWR016" H 5600 1125 50  0001 C CNN

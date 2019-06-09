@@ -1,0 +1,81 @@
+Source,/home/jgroth/dev/repos_github/Saturn/HW/saturn.sch
+Kicad Rev,Eeschema 5.1.2-f72e74a~84~ubuntu16.04.1
+Generated Date,Sun 09 Jun 2019 11:47:04 BST
+
+Title,Saturn SBC
+Company,Linux Grotto
+Revision,0.1
+Date Issue,2018-01-17
+Comment,Control logic is implemented using an ispMACH4A5
+Comment,IDE interface realised with two VIA 65C22
+Comment,DUART is a SC28L92 and a MAX238 as the line driver
+Comment,CPU WDC65C816 (8MHz), 2MiB Static ram, 32KiB EEPROM, Real Time clock, a DS1511Y
+
+Reference,Value,Library,Library Ref
+U2,AS7C34096A,pluto,AS7C34096A
+U5,AS6C62256A,pluto,AS6C62256A
+U1,WD65C816S_PLCC44,saturn-rescue,WD65C816S_PLCC44-65xx
+C12,0.1uF,saturn-rescue,C_Small-device
+C10,0.1uF,saturn-rescue,C_Small-device
+C9,0.1uF,saturn-rescue,C_Small-device
+C8,0.1uF,saturn-rescue,C_Small-device
+C7,0.1uF,saturn-rescue,C_Small-device
+U6,AS7C34096A,pluto,AS7C34096A
+C13,0.1uF,saturn-rescue,C_Small-device
+C11,0.1uF,saturn-rescue,C_Small-device
+U3,MAX238,saturn-rescue,MAX238-RESCUE-saturn
+C4,1.0uF,saturn-rescue,CP_Small-device
+C5,1.0uF,saturn-rescue,CP_Small-device
+C1,1.0uF,saturn-rescue,CP_Small-device
+C3,1.0uF,saturn-rescue,CP_Small-device
+C2,1.0uF,saturn-rescue,CP_Small-device
+U4,SC28L92PLCC44,saturn,SC28L92PLCC44
+J1,RS232a,saturn-rescue,Conn_02x05_Odd_Even
+J2,RS232b,saturn-rescue,Conn_02x05_Odd_Even
+X1,3.6864 MHz,saturn-rescue,CXO_DIP8-Oscillators
+C6,0.1uF,saturn-rescue,C-device
+R5,470,saturn-rescue,R_Small-device
+U7,WD65C22PLCC44,saturn,WD65C22PLCC44
+U8,WD65C22PLCC44,saturn,WD65C22PLCC44
+J4,IDE,saturn-rescue,CONN_02X20-conn
+J3,VIA2PB,saturn-rescue,CONN_02X07-conn
+C17,0.1uF,saturn-rescue,C_Small-device
+C16,0.1uF,saturn-rescue,C_Small-device
+D4,LED,saturn-rescue,LED-device
+R6,3.3k,saturn-rescue,R_Small-device
+R7,470,saturn-rescue,R_Small-device
+D3,DIRQ2,saturn-rescue,D_Schottky-Device
+D2,DIRQ1,saturn-rescue,D_Schottky-Device
+U10,TL7705B,saturn,TL7705B
+U9,74HC74,saturn-rescue,74HC74-74xx1
+X2,16MHz,saturn-rescue,CXO_DIP8-Oscillators
+C15,0.1uF,saturn-rescue,C_Small-device
+R3,3.3k,saturn-rescue,R_Small-device
+R2,475,saturn-rescue,R_Small-device
+C14,15uF,saturn-rescue,CP_Small-device
+R1,22k,saturn-rescue,R_Small-device
+SW1,RESET,saturn-rescue,SW_Push-switches
+U11,ispMACH4A,saturn,ispMACH4A
+RN1,3.3k,saturn-rescue,R_Network08-device
+F2,1A,saturn-rescue,Fuse-device
+F1,200mA,saturn-rescue,Fuse-device
+S1,SPDT,saturn,SPDT
+J5,POWER_IN,saturn-rescue,CONN_01X04-conn
+C19,100uF,saturn-rescue,CP_Small-device
+C18,100uF,saturn-rescue,CP_Small-device
+D1,LED,saturn-rescue,LED-device
+R4,470,saturn-rescue,R_Small-device
+J6,JTAG,saturn-rescue,CONN_02X05-conn
+C22,0.1uF,saturn-rescue,C_Small-device
+C21,0.1uF,saturn-rescue,C_Small-device
+J8,Stop System,saturn-rescue,CONN_01X03-conn
+Q1,DS1813,saturn-rescue,Q_NPN_EBC-device
+SW2,PANIC,saturn-rescue,SW_Push-switches
+H1,MountingHole,saturn-rescue,MountingHole-Mechanical
+H2,MountingHole,saturn-rescue,MountingHole-Mechanical
+H3,MountingHole,saturn-rescue,MountingHole-Mechanical
+H4,MountingHole,saturn-rescue,MountingHole-Mechanical
+RN2,3.3k,saturn-rescue,R_Network04-device
+U12,DS1511Y+,saturn,DS1511Y+
+C20,0.1uF,saturn-rescue,C_Small-device
+J7,Expansion Bus,saturn-rescue,CONN_02X20-conn

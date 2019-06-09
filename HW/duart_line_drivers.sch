@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:saturn-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -76,7 +76,7 @@ F 3 "" H 4025 3250 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L device:CP_Small C4
+L saturn-rescue:CP_Small-device C4
 U 1 1 5A14E4E1
 P 5000 1825
 F 0 "C4" H 5010 1895 50  0000 L CNN
@@ -87,7 +87,7 @@ F 3 "" H 5000 1825 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP_Small C5
+L saturn-rescue:CP_Small-device C5
 U 1 1 5A14E779
 P 5000 2225
 F 0 "C5" H 5010 2295 50  0000 L CNN
@@ -98,7 +98,7 @@ F 3 "" H 5000 2225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP_Small C1
+L saturn-rescue:CP_Small-device C1
 U 1 1 5A14E8FA
 P 3125 1450
 F 0 "C1" H 2975 1525 50  0000 L CNN
@@ -109,7 +109,7 @@ F 3 "" H 3125 1450 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L power1:VCC #PWR025
+L saturn-rescue:VCC-power1 #PWR025
 U 1 1 5A14EA51
 P 4025 1225
 F 0 "#PWR025" H 4025 1075 50  0001 C CNN
@@ -120,7 +120,7 @@ F 3 "" H 4025 1225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP_Small C3
+L saturn-rescue:CP_Small-device C3
 U 1 1 5A14EA93
 P 4850 1350
 F 0 "C3" V 4750 1225 50  0000 L CNN
@@ -131,7 +131,7 @@ F 3 "" H 4850 1350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power1:GND #PWR026
+L saturn-rescue:GND-power1 #PWR026
 U 1 1 5A14EB59
 P 5075 1350
 F 0 "#PWR026" H 5075 1100 50  0001 C CNN
@@ -142,7 +142,7 @@ F 3 "" H 5075 1350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L device:CP_Small C2
+L saturn-rescue:CP_Small-device C2
 U 1 1 5A14F3DD
 P 3125 2125
 F 0 "C2" H 2975 2200 50  0000 L CNN
@@ -153,7 +153,7 @@ F 3 "" H 3125 2125 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L power1:GND #PWR027
+L saturn-rescue:GND-power1 #PWR027
 U 1 1 5A14F46D
 P 3125 2225
 F 0 "#PWR027" H 3125 1975 50  0001 C CNN
@@ -164,7 +164,7 @@ F 3 "" H 3125 2225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR028
+L saturn-rescue:GND-power1 #PWR028
 U 1 1 5A14F656
 P 4025 4450
 F 0 "#PWR028" H 4025 4200 50  0001 C CNN
@@ -246,7 +246,7 @@ RS232CTSa
 Text Label 2800 3875 0    60   ~ 0
 RS232CTSb
 $Comp
-L power1:GND #PWR029
+L saturn-rescue:GND-power1 #PWR029
 U 1 1 5A1536E4
 P 1150 3725
 F 0 "#PWR029" H 1150 3475 50  0001 C CNN
@@ -257,7 +257,7 @@ F 3 "" H 1150 3725 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR030
+L saturn-rescue:GND-power1 #PWR030
 U 1 1 5A153732
 P 1150 3000
 F 0 "#PWR030" H 1150 2750 50  0001 C CNN
@@ -279,7 +279,7 @@ NoConn ~ 6200 3900
 NoConn ~ 6200 4025
 NoConn ~ 6200 4150
 $Comp
-L Oscillators:CXO_DIP8 X1
+L saturn-rescue:CXO_DIP8-Oscillators X1
 U 1 1 5A156C53
 P 8650 4250
 F 0 "X1" H 8450 4500 50  0000 L CNN
@@ -290,7 +290,7 @@ F 3 "" H 8550 4250 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power1:VCC #PWR031
+L saturn-rescue:VCC-power1 #PWR031
 U 1 1 5A1570C4
 P 8650 3950
 F 0 "#PWR031" H 8650 3800 50  0001 C CNN
@@ -301,7 +301,7 @@ F 3 "" H 8650 3950 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR032
+L saturn-rescue:GND-power1 #PWR032
 U 1 1 5A157100
 P 8650 4550
 F 0 "#PWR032" H 8650 4300 50  0001 C CNN
@@ -322,7 +322,7 @@ Text HLabel 7800 4000 2    60   Output ~ 0
 ~IRQ
 NoConn ~ 7400 4375
 $Comp
-L power1:VCC #PWR033
+L saturn-rescue:VCC-power1 #PWR033
 U 1 1 5A157C4F
 P 7800 4500
 F 0 "#PWR033" H 7800 4350 50  0001 C CNN
@@ -333,7 +333,7 @@ F 3 "" H 7800 4500 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power1:GND #PWR034
+L saturn-rescue:GND-power1 #PWR034
 U 1 1 5A157EAF
 P 6825 5325
 F 0 "#PWR034" H 6825 5075 50  0001 C CNN
@@ -344,7 +344,7 @@ F 3 "" H 6825 5325 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:C C6
+L saturn-rescue:C-device C6
 U 1 1 5A157F44
 P 7650 5325
 F 0 "C6" V 7500 5300 50  0000 L CNN
@@ -357,7 +357,7 @@ $EndComp
 Text HLabel 7800 3625 2    60   Input ~ 0
 ~DUARTSEL
 $Comp
-L device:R_Small R5
+L saturn-rescue:R_Small-device R5
 U 1 1 5A984B90
 P 8225 4050
 F 0 "R5" H 8255 4070 50  0000 L CNN
@@ -580,7 +580,7 @@ A2
 Text Label 7675 3325 2    60   ~ 0
 A3
 $Comp
-L power1:VCC #PWR035
+L saturn-rescue:VCC-power1 #PWR035
 U 1 1 5AA1B80C
 P 6825 1150
 F 0 "#PWR035" H 6825 1000 50  0001 C CNN
@@ -597,10 +597,10 @@ Wire Wire Line
 Wire Wire Line
 	8225 4250 8350 4250
 NoConn ~ 4575 3850
+Text Notes 7200 1000 0    60   ~ 12
+DUART (00:FEE0 - 00:FEFF)
 Wire Bus Line
 	7775 2850 7775 3225
 Wire Bus Line
 	7775 1475 7775 2525
-Text Notes 7200 1000 0    60   ~ 12
-DUART (00:FEE0 - 00:FEFF)
 $EndSCHEMATC
