@@ -1,0 +1,294 @@
+MODULE SBC3PAL
+
+ /////////////////////////////////////////////////////////////////////////////////
+//                                                                               //
+//  This program and its associated documentation are provided for your personal //
+//  use only and appear here exclusively by permission of the copyright holder.  //
+//  Please contact the copyright holder before re-distributing, re-publishing    //
+//  or disseminating this copyrighted work. This code is not GPL or in the       // 
+//  public domain. Please respect the author's copyright.                        //
+//                                                                               //
+//  No waranty, either expressed or implied, are given.  I assume no liability   //
+//  for its use in any project or device.                                        //
+//                                                                               //
+//  Your use of this program indicates your acceptance of all license terms.     //
+//  This particular version is freeware as long as the copyright messages are    //
+//  left intact.                                                                 //  
+//                                                                               //
+//  I would like to give credit to ChaN, who's work provided the basis for this  //
+//  video generator.                                                             //
+//  His work can be found here: http://elm-chan.org/works/crtc/report.html       //
+//                                                                               //
+ /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+     ///////////////////////////////////////////////// 
+    //  SBC-3 CPLD Firmware  (c) 2008 Daryl Rictor //
+   //   Written by Daryl Rictor                   //
+  //    Version 1.6                              //
+ //     9-11-2008                               //
+/////////////////////////////////////////////////
+
+
+// Input Pins
+CLK2              pin 9;                                " Master clock (14.318MHz)
+RESET             pin 74;                               " Master Reset
+RW                pin 10;                               " 6502 R/W pin
+A0..A15           pin 1,3,5,7,83,11,13,12,14,6,4,2,84,26,80,77;  " 6502 Address bus
+
+// 3 State I/O Pins
+D0..D7            pin 18,20,15,24,17,19,21,23 istype 'com,buffer'; " 6502 data bus
+MD0..MD7          pin 48,47,50,51,53,55,54,52 istype 'com,buffer'; " RAM data bus
+
+// Output Pins
+VD0..VD7          pin 31,32,33,34,35,36,37,39 istype 'reg'; " Video pixel bus
+MA0..MA18         pin 43,45,46,63,57,66,68,70,71,69,44,67,72,76,75,61,58,56,41 istype 'com';   
+PHI2              pin 81 istype 'com';                  " PHI2 & video clk (7.159 MHz)
+RES               pin 82 istype 'reg';                  " System Reset
+MRD               pin 65 istype 'com';                  " /RAM RD	
+MWR               pin 62 istype 'com';                  " /RAM WR		
+SYNC              pin 40 istype 'reg';                  " /sync
+IOSEL             pin 25 istype 'com';                  " /IO Device Select
+NMI               pin 79 istype 'com';                  " /Video IRQ out
+
+// Burried Nodes
+VCLK              node istype 'reg';                    " PHI2 & video clk (7.159 MHz)
+DB16..DB18        node istype 'reg';                    " Video Block Pointer
+A16..A23          node istype 'reg';                    " Upper Address bus latch
+VA0..VA18         node istype 'reg';                    " Display address counter
+PCLK              node istype 'com';                    " clock pulse for Video pixel buffer
+HC0..HC8          node istype 'reg';                    " Horizontal counter (0-444)
+VC0..VC8          node istype 'reg';                    " Vertical counter (0-262)
+VSI               node istype 'reg';                    " V-sync indicator
+VIR               node istype 'reg';                    " Vert IRQ register
+VIE               node istype 'reg';                    " Vert IRQ Enable
+Disp              node istype 'com,keep';               " Display active indicator
+EndOfHt           node istype 'com,keep';               " End of horizontal line flag
+EndOfFrm          node istype 'com,keep';               " End of frame flag
+HB                node istype 'reg';                    " Horizontal blanking   
+VB                node istype 'reg';                    " Vertical blanking   
+VIDCTL            node istype 'com,keep';               " Video Display Register decoder
+MP                node istype 'reg';                    " Memory Protect flag
+MPD               node istype 'com,keep';               " selects memory range to protect
+
+  /////////////////////////////
+ //  Constants and Symbols  //
+/////////////////////////////
+
+// For memory access controller
+
+ADDR    = [A15..A0];                                    " address bus
+MADDR   = [MA18..MA0];                                  " RAM Address 
+UADDR   = [A23..A16];                                   " upper address bus
+VADDR   = [VA18..VA0];                                  " Display address counter
+VADDRR  = [VA18..VA16,VA14..VA0];                       " Video Address (used for reset loading from eeprom)
+CDATA   = [D7..D0];                                     " cpu data bus
+MDATA   = [MD7..MD0];                                   " RAM data data
+VDATA   = [VD7..VD0];                                   " Video pixel data
+DBuff   = [DB18..DB16];                                 " Video Display Page pointer
+   
+// For display timing generator 
+
+HC      = [HC8..HC0];                                   " Horizontal address counter
+VC      = [VC8..VC0];                                   " Vertical line counter
+
+   " Video Engine Timing constants - NTSC Values using 14.318 MHz Clock
+//nHt     = 455;                                          " Number of horizontal total (vclks) 
+//nHd     = 320;                                          " Number of horizontal display (vclks)
+//nHsp    = 352;                                          " H-sync position (vclks)
+//nHsw    = 34;                                           " H-sync width (vclks)
+//nVt     = 262;                                          " Number of vertical total (lines)
+//nVd     = 200;                                          " Number of vertical display (lines)
+//nVsp    = 225;                                          " V-sync position (line)
+//nVsw    = 3;                                            " V-sync width (lines)
+
+   " Video Engine Timing constants - PAL Values using 17.734 MHz Clock
+//nHt     = 567;                                          " Number of horizontal total (vclks) 
+//nHd     = 320;                                          " Number of horizontal display (vclks)
+//nHsp    = 421;                                          " H-sync position (vclks)
+//nHsw    = 42;                                           " H-sync width (vclks)
+//nVt     = 312;                                          " Number of vertical total (lines)
+//nVd     = 200;                                          " Number of vertical display (lines)
+//nVsp    = 243;                                          " V-sync position (line)
+//nVsw    = 3;                                            " V-sync width (lines)
+
+" Video Engine Timing constants - PAL Values using 16 MHz Clock
+nHt     = 512;                                          " Number of horizontal total (vclks) 
+nHd     = 320;                                          " Number of horizontal display (vclks)
+nHsp    = 380;                                          " H-sync position (vclks)
+nHsw    = 38;                                           " H-sync width (vclks)
+nVt     = 312;                                          " Number of vertical total (lines)
+nVd     = 200;                                          " Number of vertical display (lines)
+nVsp    = 243;                                          " V-sync position (line)
+nVsw    = 3;                                            " V-sync width (lines)
+
+EQUATIONS
+  ///////////////////////////////////////////
+ //  65816 CLOCK, RESET, & MEMORY ACCESS  //
+///////////////////////////////////////////
+
+   // Master Reset Control  
+
+   RES.clk = VA16;                                      " Release RES when ROM copy completed ($10000)  
+   RES.d = 1;                                           " 
+   RES.ar = !RESET.pin;                                 " Drop RES when RESET is brought low
+ 
+   // CPU & Video Clock control
+
+   VCLK.clk = CLK2;                                     " Divide Input Clock / 2 for PHI2 and Dot clock	
+   VCLK.t = 1;                                          " 
+   PHI2 = VCLK;                                         " VCLK for Video, PHI2 for CPU
+   PCLK = !CLK2.pin & !VCLK;                            " Clock pulse to update video data buffer
+
+   // CPU & Memory Access controller  
+
+   UADDR.le  = PHI2;                                    " create transparent latch to get the upper address bus
+   UADDR.d   = CDATA.pin;                               " from the data bus  
+
+   when (PHI2 & RES) then     MADDR = [A18..A0]         " On PHI2 high, place CPU address on Memory Address bus
+     else                     MADDR = VADDR; 	        " on PHI2 low, put Video data address on Memory Address Bus 
+
+   // Memory Protected address range $0FC00-$0FFFF
+
+   MPD = MP & !A19 & !A18 & !A17 & !A16 & A15 & A14 & A13 & A12 & A11 & A10;
+
+   !MRD = (RES & RW & PHI2) # (!PHI2 & RES);            " Drop RAM RD on PHI2 & RW or low PHI2 for Video access
+   !MWR = (!A19 & RES & !RW & PHI2 & !CLK2 & !MPD)      " 
+          # (!RES & (HC>1) & (HC<4));                   " this writes EPROM data to RAM during /reset
+   	 
+   // CPU - MEM Interface  (All addresses except $0200-$02FF)
+
+																		  " *** Bit 3 of VDR is 0=NTSC, 1=PAL for Read mode
+   when VIDCTL & RW then     CDATA = [VIR,VSI,VIE,MP,0,DB18,DB17,!DB16]   " $00030 reads this
+     else                    CDATA = MDATA.pin;	        " all other have RAM data
+
+   CDATA.oe = RES & RW & PHI2 & IOSEL;                  " Only place CPLD data on CPU data bus when not IO space                 
+   
+   MDATA = CDATA.pin;                                   " CPU data moves to Memory data bus
+   MDATA.oe = RES & !RW & PHI2;                         " Output Memory data during /MWR
+
+  ///////////////////////////////////////////////////////////	  
+ //  I/O device decoder - All I/O are in the $002xx page  //
+///////////////////////////////////////////////////////////
+
+   // IO Page is $8xxxx
+   // Video Control register address decoder for $80030
+
+   VIDCTL = PHI2 & A19 & !A7 & !A6 & A5 & A4 & !A3 & !A2 & !A1 & !A0;
+
+   // IO address space is at $80000 - $8002F
+
+   !IOSEL = RES & A19 & !A7 & !A6 & !(A5 & A4);
+
+   // Set Video Display Register @ $80030 (Write to set Display buffer page address - also writes RAM)
+
+   DBuff.clk = VIDCTL & !RW & !CLK2;
+   DBuff.d = [D2.pin,D1.pin,!D0.pin];
+   DBuff.ar = !RES;                                     " set initial display page to $10000
+
+   // VIE Vertical IRQ Enable Register 
+
+   VIE.clk = VIDCTL & !RW & !CLK2;                      " bit 5 of $00030 controls Vertical Interrupt Enable
+   VIE.d = D5.pin;                                      " D5 from CPU
+   VIE.ar = !RES;                                       " this is reset during /RES
+
+   // Memory Protect Register 
+
+   MP.clk = VIDCTL & !RW & !CLK2;                       " bit 4 of $00030 controls memory protect Enable
+   MP.d = D4.pin;                                       " D4 from CPU
+   MP.ap = !RES;                                        " this is reset during /RES
+
+   // Vertical Sync Interrupt
+
+   VIR.clk = VSI;                                       " VIR set on first vertical sync line
+   VIR.d = VIE;                                         " only if VIE is enabled
+   VIR.ar = !RES # (VIDCTL & RW);                       " clear by reading $00030 or /RES
+
+   // IRQ Line logic
+
+   !NMI = VIR;                                          " IRQ line to CPU
+
+  ///////////////////////////////////////////////////
+ //  Display Generator Driven by VCLK (7.159MHz)  //
+///////////////////////////////////////////////////
+
+   [VADDR,HC,VC,HB,VB].clk = VCLK;
+
+   // Active Display flag 
+
+   Disp = !HB & !VB & RES;
+ 
+   // Set pixel data to port and enable output only during active display
+
+   VDATA.clk = PCLK; 
+   when Disp then   VDATA := MDATA
+     else           VDATA := [0,0,0,0,0,0,0,0];         " blanks edges of screen
+	   
+   // Horizontal Dot Counter (HC) & Horizontal Blanking
+
+   EndOfHt = (HC == nHt-1);                             " End of horizontal line
+   HC.ar = !RESET.pin;
+   when EndOfHt                               then HC := 0         " reset HC during display
+     else when RESET & !RES & (HC == 5)       then HC := 0         " reset HC during EEPROM copy to RAM
+     else                                          HC := HC + 1;   " inc HC every vclk
+
+   when (HC == nHd-1)   then HB := 1
+	  else when EndOfHt  then HB := 0
+	  else                    HB := HB ;
+
+   // Vertical line counter (VC) & Vertical Blanking
+
+   EndOfFrm = ((HC == nHt-1) & (VC == nVt-1));          " End of frame
+   VC.ar = !RESET.pin;
+   when EndOfFrm              then VC := 0              " reset VC at end of page
+     else when EndOfHt        then VC := VC + 1         " inc VC on each new line 
+     else                          VC := VC;            " keep VC same on all other vclks
+   
+     when (VC == nVd-1)&(HC == nHd-1)  then VB := 1
+	    else when EndOfFrm              then VB := 0
+	    else                                 VB := VB ;
+	
+   // Composite sync (SYNC)
+
+   SYNC.d = 0;                                          "
+   SYNC.clk = 0;                                        "
+   SYNC.ar = (HC == nHsp-1);                            " clear sync after sync pulse width time
+   SYNC.ap = (HC == nHsp-1+nHsw) & !VSI # (HC == nHsp-1-nHsw);   " set sync during horz and vert sync times
+
+   // Vertical sync (VSI)
+
+   VSI.d=0;                                             " 
+   VSI.clk = 0;                                         "
+   VSI.ar = EndOfHt & (VC == nVsp-1+nVsw);              " set VSI 
+   VSI.ap = EndOfHt & (VC == nVsp-1);                   " clear VSI
+   
+   // Video Address counter (VADDR) & /RESET EPROM Memry Transfer Counter
+   
+   VADDRR.ar = !RESET.pin ;                             " used to reset memory pointer to $08000 for EPROM copy	
+   VA15.ap =   !RESET.pin ;                             " used to reset memory pointer to $08000 for EPROM copy	
+   when EndOfFrm then                             VADDR := [DB18,DB17,!DB16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];  "set new page at end of frame
+     else when Disp 
+               # (RESET & !RES & (HC == 4))  then VADDR := VADDR + 1   " inc video memory pointer during active display and reset to load RAM from EEPROM
+     else                                         VADDR := VADDR;      " all other fclks, keep VADDr the same
+  
+END
+  //////////////////////
+ //  End of Program  //
+//////////////////////
+
+//
+//  Revision history
+//
+//  0.1 - First draft
+//  1.0 - Final draft
+//  1.1 - change video IRQ and Video Display register mappings
+//  1.2 - fix EEPROM loading to just $08000-$0FFFF, not $00000-$0FFFF
+//        move IO from $00200-$002FF to $00200-$0022F
+//        move VDR from $00300 to $00230
+//  1.3 - Simplified IO decode logic and move IO to $00000-$00030	
+//  1.4 - Added MP flag, makes $08000-$0FFFF read only
+//  1.5 - Renamed IRQ to NMI (cosmetic only) and inverted MP logic
+//  1.6 - move IO to bank 8, change MP area to just $0FC00-$0FFFF
+//

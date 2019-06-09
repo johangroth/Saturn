@@ -1,6 +1,41 @@
-EESchema Schematic File Version 4
+EESchema Schematic File Version 2
+LIBS:saturn-rescue
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:saturn
+LIBS:65xx
+LIBS:pluto
+LIBS:Oscillators
+LIBS:switches
 LIBS:saturn-cache
-EELAYER 26 0
+EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -11,8 +46,8 @@ Rev "0.1"
 Comp "Linux Grotto"
 Comment1 "Control logic is implemented using an ispMACH4A5"
 Comment2 "IDE interface realised with two VIA 65C22"
-Comment3 "DUART is a SC28L92 and a MAX238 as the line driver"
-Comment4 "CPU WDC65C816 (8MHz), 2MiB Static ram, 32KiB EEPROM, Real Time clock, a DS1511Y"
+Comment3 "Serial Communication with a 28L92 and MAX238"
+Comment4 "Real Time clock, a DS1511Y"
 $EndDescr
 $Sheet
 S 1225 1000 1775 2075
@@ -26,12 +61,12 @@ F5 "BE" I R 3000 1675 60
 F6 "~IRQ" I R 3000 1450 60 
 F7 "~MRD" I R 3000 2825 60 
 F8 "~MWR" I R 3000 2950 60 
-F9 "~RAM0" I L 1225 2750 50 
-F10 "~RAM1" I L 1225 2650 50 
-F11 "~ROM" I L 1225 2350 50 
+F9 "~RAM0" I L 1225 2750 60 
+F10 "~RAM1" I L 1225 2650 60 
+F11 "~ROM" I L 1225 2550 60 
 F12 "R/~W" O R 3000 1975 60 
-F13 "VDA" O L 1225 2850 50 
-F14 "VPA" O L 1225 2950 50 
+F13 "VDA" O L 1225 2850 60 
+F14 "VPA" O L 1225 2950 60 
 F15 "~RES" I R 3000 2075 60 
 F16 "~ABT" I R 3000 1875 60 
 F17 "A[0..18]" O R 3000 1200 60 
@@ -85,16 +120,14 @@ F14 "~RTCSEL" O R 6300 6225 60
 F15 "~ABT" O L 4050 4650 60 
 F16 "D[0..7]" B L 4050 5100 60 
 F17 "A[0..18]" I L 4050 4975 60 
-F18 "VDA" I L 4050 5950 60 
-F19 "VPA" I L 4050 5850 60 
-F20 "~RAM0" O L 4050 6075 60 
-F21 "~RAM1" O L 4050 6200 60 
-F22 "~ROM" O L 4050 6575 60 
+F18 "VDA" I L 4050 6275 60 
+F19 "VPA" I L 4050 6175 60 
+F20 "~RAM0" O L 4050 6400 60 
+F21 "~RAM1" O L 4050 6550 60 
+F22 "~ROM" O L 4050 6700 60 
 F23 "R/~W" I L 4050 4850 60 
 F24 "~MRD" O R 6300 5875 60 
 F25 "~MWR" O R 6300 6050 60 
-F26 "~IOSEL2" O R 6300 5375 50 
-F27 "~IOSEL3" O R 6300 4875 50 
 $EndSheet
 $Sheet
 S 6875 3975 1725 2450
@@ -110,31 +143,25 @@ F7 "~MRD" I L 6875 4550 60
 F8 "~RTCSEL" I L 6875 6225 60 
 F9 "A[0..18]" I L 6875 4150 60 
 F10 "~RES" O L 6875 5825 60 
-F11 "~IOSEL2" I R 8600 4500 50 
-F12 "R/~W" I R 8600 4800 50 
-F13 "CLK" I R 8600 4050 50 
-F14 "~NMI" I R 8600 4925 50 
-F15 "RDY" O R 8600 5125 50 
-F16 "~IOSEL3" I L 6875 4875 50 
 $EndSheet
 Text Label 3050 1075 0    60   ~ 0
 D[0..7]
 Text Label 3050 1200 0    60   ~ 0
 A[0..18]
 Wire Wire Line
-	3000 1450 3900 1450
+	3000 1450 4000 1450
 Wire Wire Line
-	3900 1450 3900 3200
+	3900 1450 3900 4200
 Wire Wire Line
-	3025 4200 3900 4200
+	3025 4200 4050 4200
 Wire Wire Line
 	3000 1325 3850 1325
 Wire Wire Line
 	3850 1325 3850 4075
 Wire Wire Line
-	3025 4075 3850 4075
+	3025 4075 4050 4075
 Wire Wire Line
-	3000 1575 3225 1575
+	3000 1575 3800 1575
 Wire Wire Line
 	3800 1575 3800 4325
 Wire Wire Line
@@ -153,17 +180,17 @@ Wire Wire Line
 Wire Wire Line
 	6300 5550 6875 5550
 Wire Bus Line
-	3000 1075 3450 1075
+	3000 1075 4000 1075
 Wire Bus Line
-	3000 1200 3550 1200
+	3000 1200 4000 1200
 Wire Bus Line
 	3025 4300 3450 4300
 Wire Bus Line
 	3550 4400 3025 4400
 Wire Bus Line
-	3550 900  3550 1200
+	3550 900  3550 4975
 Wire Wire Line
-	3025 4750 3400 4750
+	3025 4750 4050 4750
 Wire Wire Line
 	6350 4175 6300 4175
 Wire Wire Line
@@ -182,7 +209,7 @@ Wire Wire Line
 Wire Wire Line
 	4050 4550 3700 4550
 Wire Wire Line
-	3700 4550 3700 3625
+	3700 4550 3700 1775
 Wire Wire Line
 	3700 1775 3000 1775
 Wire Wire Line
@@ -192,12 +219,14 @@ Wire Wire Line
 Wire Wire Line
 	3650 1875 3000 1875
 Wire Wire Line
+	3025 4850 4050 4850
+Wire Wire Line
 	3600 4850 3600 1975
 Wire Wire Line
-	3600 1975 3300 1975
+	3600 1975 3000 1975
 Connection ~ 3600 4850
 Wire Wire Line
-	3400 2075 3400 4750
+	3400 2075 3400 7000
 Wire Wire Line
 	3400 2075 3000 2075
 Connection ~ 3400 4750
@@ -207,6 +236,8 @@ Wire Bus Line
 	3450 5100 4050 5100
 Wire Bus Line
 	3550 900  6650 900 
+Wire Bus Line
+	6650 900  6650 4150
 Wire Bus Line
 	3450 850  6750 850 
 Wire Bus Line
@@ -222,11 +253,11 @@ Wire Wire Line
 Wire Wire Line
 	6875 4550 6400 4550
 Wire Wire Line
-	6400 1500 6400 3250
+	6400 1500 6400 5875
 Wire Wire Line
 	6450 4375 6875 4375
 Wire Wire Line
-	6450 1350 6450 3300
+	6450 1350 6450 6050
 Wire Wire Line
 	6400 5875 6300 5875
 Connection ~ 6400 4550
@@ -240,13 +271,35 @@ Wire Wire Line
 Wire Wire Line
 	6500 1175 5775 1175
 Wire Wire Line
+	4050 6175 1150 6175
+Wire Wire Line
+	1150 6175 1150 2950
+Wire Wire Line
 	1150 2950 1225 2950
 Wire Wire Line
 	1225 2850 1100 2850
 Wire Wire Line
+	1100 2850 1100 6275
+Wire Wire Line
+	1100 6275 4050 6275
+Wire Wire Line
+	4050 6400 1050 6400
+Wire Wire Line
+	1050 6400 1050 2750
+Wire Wire Line
 	1050 2750 1225 2750
 Wire Wire Line
 	1225 2650 1000 2650
+Wire Wire Line
+	1000 2650 1000 6550
+Wire Wire Line
+	1000 6550 4050 6550
+Wire Wire Line
+	4050 6700 950  6700
+Wire Wire Line
+	950  6700 950  2550
+Wire Wire Line
+	950  2550 1225 2550
 Wire Wire Line
 	6400 3250 3150 3250
 Wire Wire Line
@@ -265,10 +318,12 @@ Wire Wire Line
 	6875 6225 6300 6225
 Wire Bus Line
 	3450 1075 3450 850 
+Wire Bus Line
+	6750 850  6750 4050
 Connection ~ 3450 1075
 Connection ~ 3550 1200
 Wire Bus Line
-	3450 1100 3450 4300
+	3450 1100 3450 5100
 Connection ~ 3550 4400
 Connection ~ 3450 4300
 Wire Wire Line
@@ -277,130 +332,4 @@ Wire Wire Line
 	6450 1350 5775 1350
 Wire Wire Line
 	5775 1500 6400 1500
-Wire Wire Line
-	3850 4075 3975 4075
-Wire Wire Line
-	3900 4200 4050 4200
-Wire Wire Line
-	3900 1450 4000 1450
-Wire Wire Line
-	3900 3200 3900 4200
-Wire Wire Line
-	3600 4850 4050 4850
-Wire Wire Line
-	3400 4750 4050 4750
-Wire Wire Line
-	3400 4750 3400 7000
-Wire Wire Line
-	6400 4550 6400 5875
-Wire Wire Line
-	6450 4375 6450 6050
-Wire Wire Line
-	6400 3250 6400 4550
-Wire Wire Line
-	6450 3300 6450 4375
-Wire Bus Line
-	3450 1075 4000 1075
-Wire Bus Line
-	3550 1200 4000 1200
-Wire Bus Line
-	3550 1200 3550 4400
-Wire Bus Line
-	3550 4400 3550 4975
-Wire Bus Line
-	3450 4300 3450 5100
-Wire Wire Line
-	1150 2950 1150 6050
-Wire Wire Line
-	1150 6050 3225 6050
-Wire Wire Line
-	3225 6050 3225 5850
-Wire Wire Line
-	3225 5850 4050 5850
-Wire Wire Line
-	1100 2850 1100 6100
-Wire Wire Line
-	1100 6100 3275 6100
-Wire Wire Line
-	3275 6100 3275 5950
-Wire Wire Line
-	3275 5950 4050 5950
-Wire Wire Line
-	1050 2750 1050 6150
-Wire Wire Line
-	1050 6150 3325 6150
-Wire Wire Line
-	3325 6150 3325 6075
-Wire Wire Line
-	3325 6075 4050 6075
-Wire Wire Line
-	1000 2650 1000 6200
-Wire Wire Line
-	1000 6200 4050 6200
-Wire Wire Line
-	1225 2350 775  2350
-Wire Wire Line
-	775  2350 775  6575
-Wire Wire Line
-	775  6575 4050 6575
-Wire Wire Line
-	3975 4075 3975 3825
-Wire Wire Line
-	8750 3825 8750 4050
-Wire Wire Line
-	8750 4050 8600 4050
-Connection ~ 3975 4075
-Wire Wire Line
-	3975 4075 4050 4075
-Wire Wire Line
-	6300 5375 6700 5375
-Wire Wire Line
-	6700 3675 8950 3675
-Wire Wire Line
-	8950 3675 8950 4500
-Wire Wire Line
-	8950 4500 8600 4500
-Wire Wire Line
-	3300 1975 3300 3350
-Wire Wire Line
-	3300 3350 9050 3350
-Wire Wire Line
-	9050 3350 9050 4800
-Wire Wire Line
-	9050 4800 8600 4800
-Connection ~ 3300 1975
-Wire Wire Line
-	3300 1975 3000 1975
-Wire Wire Line
-	3225 1575 3225 3400
-Wire Wire Line
-	3225 3400 9150 3400
-Wire Wire Line
-	9150 3400 9150 4925
-Wire Wire Line
-	9150 4925 8600 4925
-Connection ~ 3225 1575
-Wire Wire Line
-	3225 1575 3800 1575
-Wire Wire Line
-	3700 3625 9250 3625
-Wire Wire Line
-	9250 3625 9250 5125
-Wire Wire Line
-	9250 5125 8600 5125
-Connection ~ 3700 3625
-Wire Wire Line
-	3700 3625 3700 1775
-Wire Wire Line
-	6700 5375 6700 3675
-Wire Bus Line
-	6750 850  6750 4050
-Wire Bus Line
-	6650 900  6650 4150
-Wire Wire Line
-	3975 3825 8750 3825
-Wire Wire Line
-	3025 4850 3600 4850
-Wire Wire Line
-	6300 4875 6875 4875
 $EndSCHEMATC

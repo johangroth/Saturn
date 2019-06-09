@@ -1,0 +1,176 @@
+MODULE SBC3PAL
+
+ /////////////////////////////////////////////////////////////////////////////////
+//                                                                               //
+//  This program and its associated documentation are provided for your personal //
+//  use only and appear here exclusively by permission of the copyright holder.  //
+//  Please contact the copyright holder before re-distributing, re-publishing    //
+//  or disseminating this copyrighted work. This code is not GPL or in the       //
+//  public domain. Please respect the author's copyright.                        //
+//                                                                               //
+//  No waranty, either expressed or implied, are given.  I assume no liability   //
+//  for its use in any project or device.                                        //
+//                                                                               //
+//  Your use of this program indicates your acceptance of all license terms.     //
+//  This particular version is freeware as long as the copyright messages are    //
+//  left intact.                                                                 //
+//                                                                               //
+//  I would like to give credit to ChaN, who's work provided the basis for this  //
+//  video generator.                                                             //
+//  His work can be found here: http://elm-chan.org/works/crtc/report.html       //
+//                                                                               //
+ /////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+     /////////////////////////////////////////////////
+    //  SBC-3 CPLD Firmware  (c) 2008 Daryl Rictor //
+   //   Written by Daryl Rictor                   //
+  //    Version 1.6                              //
+ //     9-11-2008                               //
+/////////////////////////////////////////////////
+
+
+// Input Pins
+RESET             pin;  " Master Reset
+RW                pin;  " 65C816 R/W pin
+A15..A8           pin;  " 65C816 Address bus
+VDA	              PIN;	" Valid data address
+VPA	              PIN;	" Valid program address
+PHI2              pin;  " System clock
+
+// 3 State I/O Pins
+D3..D0            pin istype 'com,buffer'; " 65C816 data bus
+
+// Output Pins
+MA18..MA16        pin istype 'com';
+RES               pin istype 'reg';                  " System Reset
+MRD               pin istype 'com';                  " /RAM RD
+MWR               pin istype 'com';                  " /RAM WR
+IOSEL             pin istype 'com';                  " /IO Device Select
+
+// Burried Nodes
+CLK               node istype 'reg';                    " PHI2 & video clk (7.159 MHz)
+A18..A16          node istype 'reg';                    " Upper Address bus latch
+MP                node istype 'reg';                    " Memory Protect flag
+MPD               node istype 'com,keep';               " selects memory range to protect
+
+  /////////////////////////////
+ //  Constants and Symbols  //
+/////////////////////////////
+
+// For memory access controller
+
+ADDR    = [A15..A8];                                    " address bus
+MADDR   = [MA18..MA0];                                  " RAM Address
+UADDR   = [A19..A16];                                   " upper address bus
+
+
+EQUATIONS
+  ///////////////////////////////////////////
+ //  65816 CLOCK, RESET, & MEMORY ACCESS  //
+///////////////////////////////////////////
+
+   // Master Reset Control
+
+   RES.clk = VA16;                                      " Release RES when ROM copy completed ($10000)
+   RES.d = 1;                                           "
+   RES.ar = !RESET.pin;                                 " Drop RES when RESET is brought low
+
+   // CPU & Video Clock control
+
+   VCLK.clk = CLK2;                                     " Divide Input Clock / 2 for PHI2 and Dot clock
+   VCLK.t = 1;                                          "
+   PHI2 = VCLK;                                         " VCLK for Video, PHI2 for CPU
+   PCLK = !CLK2.pin & !VCLK;                            " Clock pulse to update video data buffer
+
+   // CPU & Memory Access controller
+
+   UADDR.le  = PHI2;                                    " create transparent latch to get the upper address bus
+   UADDR.d   = CDATA.pin;                               " from the data bus
+
+   when (PHI2 & RES) then     MADDR = [A18..A0]         " On PHI2 high, place CPU address on Memory Address bus
+     else                     MADDR = VADDR; 	        " on PHI2 low, put Video data address on Memory Address Bus
+
+   // Memory Protected address range $0FC00-$0FFFF (should be $00:8000-$00:FDFF, $00:FFF0-$00:FFFF)
+   // $00:FE00-$00:FEFF is IO area
+
+   MPD = MP & !A19 & !A18 & !A17 & !A16 & A15 & A14 & A13 & A12 & A11 & A10;
+
+   !MRD = (RES & RW & PHI2) # (!PHI2 & RES);            " Drop RAM RD on PHI2 & RW or low PHI2 for Video access
+   !MWR = (!A19 & RES & !RW & PHI2 & !CLK2 & !MPD)      "
+          # (!RES & (HC>1) & (HC<4));                   " this writes EPROM data to RAM during /reset
+
+   // CPU - MEM Interface  (All addresses except $0200-$02FF)
+
+																		  " *** Bit 3 of VDR is 0=NTSC, 1=PAL for Read mode
+   when VIDCTL & RW then     CDATA = [VIR,VSI,VIE,MP,0,DB18,DB17,!DB16]   " $00030 reads this
+     else                    CDATA = MDATA.pin;	        " all other have RAM data
+
+   CDATA.oe = RES & RW & PHI2 & IOSEL;                  " Only place CPLD data on CPU data bus when not IO space
+
+   MDATA = CDATA.pin;                                   " CPU data moves to Memory data bus
+   MDATA.oe = RES & !RW & PHI2;                         " Output Memory data during /MWR
+
+  ///////////////////////////////////////////////////////////
+ //  I/O device decoder - All I/O are in the $002xx page  //
+///////////////////////////////////////////////////////////
+
+   // IO Page is $8xxxx
+   // Video Control register address decoder for $80030
+
+   VIDCTL = PHI2 & A19 & !A7 & !A6 & A5 & A4 & !A3 & !A2 & !A1 & !A0;
+
+   // IO address space is at $80000 - $8002F
+
+   !IOSEL = RES & A19 & !A7 & !A6 & !(A5 & A4);
+
+   // Set Video Display Register @ $80030 (Write to set Display buffer page address - also writes RAM)
+
+   DBuff.clk = VIDCTL & !RW & !CLK2;
+   DBuff.d = [D2.pin,D1.pin,!D0.pin];
+   DBuff.ar = !RES;                                     " set initial display page to $10000
+
+   // VIE Vertical IRQ Enable Register
+
+   VIE.clk = VIDCTL & !RW & !CLK2;                      " bit 5 of $00030 controls Vertical Interrupt Enable
+   VIE.d = D5.pin;                                      " D5 from CPU
+   VIE.ar = !RES;                                       " this is reset during /RES
+
+   // Memory Protect Register
+
+   MP.clk = VIDCTL & !RW & !CLK2;                       " bit 4 of $00030 controls memory protect Enable
+   MP.d = D4.pin;                                       " D4 from CPU
+   MP.ap = !RES;                                        " this is reset during /RES
+
+   // Vertical Sync Interrupt
+
+   VIR.clk = VSI;                                       " VIR set on first vertical sync line
+   VIR.d = VIE;                                         " only if VIE is enabled
+   VIR.ar = !RES # (VIDCTL & RW);                       " clear by reading $00030 or /RES
+
+   // IRQ Line logic
+
+   !NMI = VIR;                                          " IRQ line to CPU
+
+
+END
+  //////////////////////
+ //  End of Program  //
+//////////////////////
+
+//
+//  Revision history
+//
+//  0.1 - First draft
+//  1.0 - Final draft
+//  1.1 - change video IRQ and Video Display register mappings
+//  1.2 - fix EEPROM loading to just $08000-$0FFFF, not $00000-$0FFFF
+//        move IO from $00200-$002FF to $00200-$0022F
+//        move VDR from $00300 to $00230
+//  1.3 - Simplified IO decode logic and move IO to $00000-$00030
+//  1.4 - Added MP flag, makes $08000-$0FFFF read only
+//  1.5 - Renamed IRQ to NMI (cosmetic only) and inverted MP logic
+//  1.6 - move IO to bank 8, change MP area to just $0FC00-$0FFFF
+//

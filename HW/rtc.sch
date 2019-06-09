@@ -455,7 +455,7 @@ U 1 1 5BE1F74C
 P 9450 2800
 F 0 "J7" H 9525 3850 50  0000 C CNN
 F 1 "Expansion Bus" H 9475 1450 50  0000 C CNN
-F 2 "Connectors_IDC:IDC-Header_2x20_Pitch2.54mm_Angled" H 9450 1850 50  0001 C CNN
+F 2 "Connectors_IDC:IDC-Header_2x20_Pitch2.54mm_Straight" H 9450 1850 50  0001 C CNN
 F 3 "" H 9450 1850 50  0001 C CNN
 	1    9450 2800
 	1    0    0    -1  

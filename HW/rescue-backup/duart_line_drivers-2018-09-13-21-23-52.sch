@@ -1,6 +1,41 @@
-EESchema Schematic File Version 4
+EESchema Schematic File Version 2
+LIBS:saturn-rescue
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:saturn
+LIBS:65xx
+LIBS:pluto
+LIBS:Oscillators
+LIBS:switches
 LIBS:saturn-cache
-EELAYER 26 0
+EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -63,7 +98,7 @@ A[0..18]
 Text HLabel 8250 2850 2    60   Input ~ 0
 A[0..18]
 $Comp
-L saturn-rescue:MAX238-RESCUE-saturn U3
+L MAX238-RESCUE-saturn U3
 U 1 1 5A14E417
 P 4025 3050
 AR Path="/5A14E417" Ref="U3"  Part="1" 
@@ -76,7 +111,7 @@ F 3 "" H 4025 3250 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L device:CP_Small C4
+L CP_Small C4
 U 1 1 5A14E4E1
 P 5000 1825
 F 0 "C4" H 5010 1895 50  0000 L CNN
@@ -87,7 +122,7 @@ F 3 "" H 5000 1825 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP_Small C5
+L CP_Small C5
 U 1 1 5A14E779
 P 5000 2225
 F 0 "C5" H 5010 2295 50  0000 L CNN
@@ -98,7 +133,7 @@ F 3 "" H 5000 2225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP_Small C1
+L CP_Small C1
 U 1 1 5A14E8FA
 P 3125 1450
 F 0 "C1" H 2975 1525 50  0000 L CNN
@@ -109,7 +144,7 @@ F 3 "" H 3125 1450 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L power1:VCC #PWR025
+L VCC #PWR025
 U 1 1 5A14EA51
 P 4025 1225
 F 0 "#PWR025" H 4025 1075 50  0001 C CNN
@@ -120,7 +155,7 @@ F 3 "" H 4025 1225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:CP_Small C3
+L CP_Small C3
 U 1 1 5A14EA93
 P 4850 1350
 F 0 "C3" V 4750 1225 50  0000 L CNN
@@ -131,7 +166,7 @@ F 3 "" H 4850 1350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L power1:GND #PWR026
+L GND #PWR026
 U 1 1 5A14EB59
 P 5075 1350
 F 0 "#PWR026" H 5075 1100 50  0001 C CNN
@@ -142,7 +177,7 @@ F 3 "" H 5075 1350 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L device:CP_Small C2
+L CP_Small C2
 U 1 1 5A14F3DD
 P 3125 2125
 F 0 "C2" H 2975 2200 50  0000 L CNN
@@ -153,7 +188,7 @@ F 3 "" H 3125 2125 50  0001 C CNN
 	1    0    0    1   
 $EndComp
 $Comp
-L power1:GND #PWR027
+L GND #PWR027
 U 1 1 5A14F46D
 P 3125 2225
 F 0 "#PWR027" H 3125 1975 50  0001 C CNN
@@ -164,7 +199,7 @@ F 3 "" H 3125 2225 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR028
+L GND #PWR028
 U 1 1 5A14F656
 P 4025 4450
 F 0 "#PWR028" H 4025 4200 50  0001 C CNN
@@ -175,7 +210,7 @@ F 3 "" H 4025 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L saturn:SC28L92PLCC44 U4
+L SC28L92PLCC44 U4
 U 1 1 5A14F76D
 P 6725 2600
 F 0 "U4" H 7125 3625 60  0000 C CNN
@@ -194,11 +229,9 @@ RTSa
 Text Label 6025 3400 0    60   ~ 0
 RTSb
 $Comp
-L saturn-rescue:Conn_02x05_Odd_Even J1
+L Conn_02x05_Odd_Even J1
 U 1 1 5A152192
 P 1725 2825
-AR Path="/5A152192" Ref="J1"  Part="1" 
-AR Path="/5952FC81/5A152192" Ref="J1"  Part="1" 
 F 0 "J1" H 1775 3125 50  0000 C CNN
 F 1 "RS232a" H 1775 2525 50  0000 C CNN
 F 2 "Connectors_IDC:IDC-Header_2x05_Pitch2.54mm_Straight" H 1725 2825 50  0001 C CNN
@@ -207,11 +240,9 @@ F 3 "" H 1725 2825 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L saturn-rescue:Conn_02x05_Odd_Even J2
+L Conn_02x05_Odd_Even J2
 U 1 1 5A15222D
 P 1725 3550
-AR Path="/5A15222D" Ref="J2"  Part="1" 
-AR Path="/5952FC81/5A15222D" Ref="J2"  Part="1" 
 F 0 "J2" H 1775 3850 50  0000 C CNN
 F 1 "RS232b" H 1775 3250 50  0000 C CNN
 F 2 "Connectors_IDC:IDC-Header_2x05_Pitch2.54mm_Straight" H 1725 3550 50  0001 C CNN
@@ -246,7 +277,7 @@ RS232CTSa
 Text Label 2800 3875 0    60   ~ 0
 RS232CTSb
 $Comp
-L power1:GND #PWR029
+L GND #PWR029
 U 1 1 5A1536E4
 P 1150 3725
 F 0 "#PWR029" H 1150 3475 50  0001 C CNN
@@ -257,7 +288,7 @@ F 3 "" H 1150 3725 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR030
+L GND #PWR030
 U 1 1 5A153732
 P 1150 3000
 F 0 "#PWR030" H 1150 2750 50  0001 C CNN
@@ -279,7 +310,7 @@ NoConn ~ 6200 3900
 NoConn ~ 6200 4025
 NoConn ~ 6200 4150
 $Comp
-L Oscillators:CXO_DIP8 X1
+L CXO_DIP8 X1
 U 1 1 5A156C53
 P 8650 4250
 F 0 "X1" H 8450 4500 50  0000 L CNN
@@ -290,7 +321,7 @@ F 3 "" H 8550 4250 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power1:VCC #PWR031
+L VCC #PWR031
 U 1 1 5A1570C4
 P 8650 3950
 F 0 "#PWR031" H 8650 3800 50  0001 C CNN
@@ -301,7 +332,7 @@ F 3 "" H 8650 3950 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power1:GND #PWR032
+L GND #PWR032
 U 1 1 5A157100
 P 8650 4550
 F 0 "#PWR032" H 8650 4300 50  0001 C CNN
@@ -322,7 +353,7 @@ Text HLabel 7800 4000 2    60   Output ~ 0
 ~IRQ
 NoConn ~ 7400 4375
 $Comp
-L power1:VCC #PWR033
+L VCC #PWR033
 U 1 1 5A157C4F
 P 7800 4500
 F 0 "#PWR033" H 7800 4350 50  0001 C CNN
@@ -333,7 +364,7 @@ F 3 "" H 7800 4500 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power1:GND #PWR034
+L GND #PWR034
 U 1 1 5A157EAF
 P 6825 5325
 F 0 "#PWR034" H 6825 5075 50  0001 C CNN
@@ -344,7 +375,7 @@ F 3 "" H 6825 5325 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L device:C C6
+L C C6
 U 1 1 5A157F44
 P 7650 5325
 F 0 "C6" V 7500 5300 50  0000 L CNN
@@ -357,7 +388,7 @@ $EndComp
 Text HLabel 7800 3625 2    60   Input ~ 0
 ~DUARTSEL
 $Comp
-L device:R_Small R5
+L R_Small R5
 U 1 1 5A984B90
 P 8225 4050
 F 0 "R5" H 8255 4070 50  0000 L CNN
@@ -384,6 +415,8 @@ Wire Wire Line
 Wire Wire Line
 	7400 2625 7675 2625
 Wire Bus Line
+	7775 1475 7775 2525
+Wire Bus Line
 	7775 1475 8250 1475
 Wire Wire Line
 	7400 2950 7675 2950
@@ -393,6 +426,8 @@ Wire Wire Line
 	7400 3200 7675 3200
 Wire Wire Line
 	7400 3325 7675 3325
+Wire Bus Line
+	7775 2850 7775 3225
 Wire Bus Line
 	7775 2850 8250 2850
 Wire Wire Line
@@ -404,13 +439,13 @@ Wire Wire Line
 Wire Wire Line
 	4825 2325 5000 2325
 Wire Wire Line
-	4025 1225 4025 1350
+	4025 1225 4025 1450
 Wire Wire Line
 	3275 1725 3125 1725
 Wire Wire Line
 	3125 1725 3125 1550
 Wire Wire Line
-	3125 1350 4025 1350
+	3125 1350 4750 1350
 Connection ~ 4025 1350
 Wire Wire Line
 	4950 1350 5075 1350
@@ -537,7 +572,7 @@ Wire Wire Line
 Wire Wire Line
 	1425 3650 1525 3650
 Wire Wire Line
-	7400 4250 8225 4250
+	7400 4250 8350 4250
 Wire Wire Line
 	7400 4125 7800 4125
 Wire Wire Line
@@ -580,7 +615,7 @@ A2
 Text Label 7675 3325 2    60   ~ 0
 A3
 $Comp
-L power1:VCC #PWR035
+L VCC #PWR035
 U 1 1 5AA1B80C
 P 6825 1150
 F 0 "#PWR035" H 6825 1000 50  0001 C CNN
@@ -590,17 +625,4 @@ F 3 "" H 6825 1150 50  0001 C CNN
 	1    6825 1150
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4025 1350 4025 1450
-Wire Wire Line
-	4025 1350 4750 1350
-Wire Wire Line
-	8225 4250 8350 4250
-NoConn ~ 4575 3850
-Wire Bus Line
-	7775 2850 7775 3225
-Wire Bus Line
-	7775 1475 7775 2525
-Text Notes 7200 1000 0    60   ~ 12
-DUART (00:FEE0 - 00:FEFF)
 $EndSCHEMATC

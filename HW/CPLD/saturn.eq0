@@ -1,0 +1,307 @@
+ispLEVER Classic 2.0.00.17.20.15 Linked Equations File
+Copyright(C), 1992-2015, Lattice Semiconductor Corp.
+All Rights Reserved.
+
+Design saturn created Fri Mar 02 05:48:30 2018
+
+Title: Saturn address decoding with ROM/IO waitstates.
+
+ P-Terms   Fan-in  Fan-out  Type  Name (attributes)
+---------  ------  -------  ----  -----------------
+   1          3        1    Pin   D3 
+   1          2        1    Pin   D3.OE 
+   1          3        1    Pin   D2 
+   1          2        1    Pin   D2.OE 
+   1          3        1    Pin   D1 
+   1          2        1    Pin   D1.OE 
+   1          3        1    Pin   D0 
+   1          2        1    Pin   D0.OE 
+   1          2        1    Pin   A16 
+   1          2        1    Pin   A17 
+   1          2        1    Pin   A18 
+   2          2        1    Pin   RAM0 
+   2          2        1    Pin   RAM1 
+   1          1        1    Pin   ROM 
+   3          3        1    Pin   RD 
+   4          4        1    Pin   WD 
+   1/1        1        1    Pin   STP 
+   1/1        1        1    Pin   STP.OE 
+   4          4        1    Pin   DUART 
+   4          4        1    Pin   RTC 
+   4          4        1    Pin   IO0 
+   4          4        1    Pin   IO1 
+   4          4        1    Pin   IO2 
+   4          4        1    Pin   IO3 
+   1          4        1    Node  bank0 
+   2          3        1    Node  basram 
+   1          2        1    Node  bavalid 
+   1          5        1    Node  cblk 
+   1          5        1    Node  dblk 
+   1          4        1    Node  eblk 
+   1          1        1    Node  extram 
+   1          3        1    Node  hiramwp 
+   1          2        1    Node  ioblk 
+   1          3        1    Node  iosel 
+   8         10        1    Node  ramsel 
+   1          2        1    Node  rhflag 
+   2          5        1    Node  romsel 
+   2          2        1    Node  wsext 
+   2          2        1    Node  vab 
+   1          1        1    Node  wdflag 
+   1          2        1    Node  whflag 
+   2          2        1    Node  wsflag 
+   3          5        1    Node  d8ram 
+   1          5        1    Node  hmu 
+   1          2        1    Node  ram0sel 
+   1          2        1    Node  ram1sel 
+   1          3        1    Node  blatch0.REG 
+   1          2        1    Node  blatch0.LE 
+   1          3        1    Node  blatch1.REG 
+   1          2        1    Node  blatch1.LE 
+   1          3        1    Node  blatch2.REG 
+   1          2        1    Node  blatch2.LE 
+   1          3        1    Node  blatch3.REG 
+   1          2        1    Node  blatch3.LE 
+   1          1        1    Node  hmucfg0.AR 
+   1          2        1    Node  hmucfg0.LE 
+   1          3        1    Node  hmucfg0.D 
+   1/1        1        1    Node  hmucfg0.C 
+   1          1        1    Node  hmucfg1.AR 
+   1          2        1    Node  hmucfg1.LE 
+   1          3        1    Node  hmucfg1.D 
+   1/1        1        1    Node  hmucfg1.C 
+   1          1        1    Node  hmucfg2.AR 
+   1          2        1    Node  hmucfg2.LE 
+   1          3        1    Node  hmucfg2.D 
+   1/1        1        1    Node  hmucfg2.C 
+   1          1        1    Node  hmucfg3.AR 
+   1          2        1    Node  hmucfg3.LE 
+   1          3        1    Node  hmucfg3.D 
+   1/1        1        1    Node  hmucfg3.C 
+   1          1        1    Node  wsff0.REG 
+   1          1        1    Node  wsff0.AR 
+   1/1        1        1    Node  wsff0.C 
+   1/1        1        1    Node  wsff1.REG 
+   1          1        1    Node  wsff1.AP 
+   1/1        1        1    Node  wsff1.C 
+=========
+ 115/9          Best P-Term Total: 115
+                       Total Pins: 32
+                      Total Nodes: 34
+            Average P-Term/Output: 1
+
+
+Equations:
+
+D3 = (hmucfg3 & hmu & rhflag);
+
+D3.OE = (hmu & rhflag);
+
+D2 = (hmucfg2 & hmu & rhflag);
+
+D2.OE = (hmu & rhflag);
+
+D1 = (hmucfg1 & hmu & rhflag);
+
+D1.OE = (hmu & rhflag);
+
+D0 = (hmucfg0 & hmu & rhflag);
+
+D0.OE = (hmu & rhflag);
+
+A16 = (vab & blatch0);
+
+A17 = (vab & blatch1);
+
+A18 = (vab & blatch2);
+
+RAM0 = (!vab
+     # !ram0sel);
+
+RAM1 = (!vab
+     # !ram1sel);
+
+ROM = (!romsel);
+
+RD = (!vab
+     # !RWB
+     # !wsext);
+
+WD = (!vab
+     # !wsext
+     # !wdflag
+     # hiramwp);
+
+STP = (wsff1);
+
+STP.OE = (wsflag);
+
+DUART = (A10
+     # A9
+     # A8
+     # !iosel);
+
+RTC = (A10
+     # A9
+     # !A8
+     # !iosel);
+
+IO0 = (A10
+     # !A9
+     # A8
+     # !iosel);
+
+IO1 = (A10
+     # !A9
+     # !A8
+     # !iosel);
+
+IO2 = (!A10
+     # A9
+     # A8
+     # !iosel);
+
+IO3 = (!A10
+     # A9
+     # !A8
+     # !iosel);
+
+bank0 = (!blatch3 & !blatch2 & !blatch1 & !blatch0);
+
+basram = (bank0 & !A15
+     # bank0 & !A14);
+
+bavalid = (!PHI & vab);
+
+cblk = (bank0 & A15 & A14 & !A13 & !A12);
+
+dblk = (bank0 & A15 & A14 & !A13 & A12);
+
+eblk = (bank0 & A15 & A14 & A13);
+
+extram = (!bank0);
+
+hiramwp = (eblk & ram0sel & hmucfg3);
+
+ioblk = (dblk & !A11);
+
+iosel = (vab & ioblk & !hmucfg2);
+
+ramsel = (basram
+     # d8ram
+     # extram
+     # cblk & wdflag
+     # cblk & !hmucfg0
+     # ioblk & hmucfg2
+     # wdflag & eblk
+     # eblk & hmucfg1);
+
+rhflag = (PHI & RWB);
+
+romsel = (RWB & cblk & hmucfg0
+     # RWB & eblk & !hmucfg1);
+
+wsext = (PHI
+     # !wsff1);
+
+vab = (VDA
+     # VPA);
+
+wdflag = (!RWB);
+
+whflag = (PHI & !RWB);
+
+wsflag = (ramsel
+     # iosel);
+
+d8ram = (dblk & A11 & !A10
+     # dblk & A11 & !A9
+     # dblk & A11 & !A8);
+
+hmu = (dblk & A11 & A10 & A9 & A8);
+
+ram0sel = (!blatch3 & ramsel);
+
+ram1sel = (blatch3 & ramsel);
+
+blatch0 := (bavalid & !wsext & D0);
+
+blatch0.LE = (bavalid & !wsext);
+
+blatch1 := (bavalid & !wsext & D1);
+
+blatch1.LE = (bavalid & !wsext);
+
+blatch2 := (bavalid & !wsext & D2);
+
+blatch2.LE = (bavalid & !wsext);
+
+blatch3 := (bavalid & !wsext & D3);
+
+blatch3.LE = (bavalid & !wsext);
+
+hmucfg0.AR = (!RESB);
+
+hmucfg0.LE = (hmu & whflag);
+
+hmucfg0.D = (D0 & hmu & whflag);
+
+hmucfg0.C = (PHI);
+
+hmucfg1.AR = (!RESB);
+
+hmucfg1.LE = (hmu & whflag);
+
+hmucfg1.D = (D1 & hmu & whflag);
+
+hmucfg1.C = (PHI);
+
+hmucfg2.AR = (!RESB);
+
+hmucfg2.LE = (hmu & whflag);
+
+hmucfg2.D = (D2 & hmu & whflag);
+
+hmucfg2.C = (PHI);
+
+hmucfg3.AR = (!RESB);
+
+hmucfg3.LE = (hmu & whflag);
+
+hmucfg3.D = (D3 & hmu & whflag);
+
+hmucfg3.C = (PHI);
+
+wsff0 := (!wsff1);
+
+wsff0.AR = (!wsflag);
+
+wsff0.C = (PHI);
+
+wsff1 := (wsff0);
+
+wsff1.AP = (!wsflag);
+
+wsff1.C = (PHI);
+
+
+Reverse-Polarity Equations:
+
+!STP = (!wsff1);
+
+!STP.OE = (!wsflag);
+
+!hmucfg0.C = (!PHI);
+
+!hmucfg1.C = (!PHI);
+
+!hmucfg2.C = (!PHI);
+
+!hmucfg3.C = (!PHI);
+
+!wsff0.C = (!PHI);
+
+!wsff1 := (!wsff0);
+
+!wsff1.C = (!PHI);
+

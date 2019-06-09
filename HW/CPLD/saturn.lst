@@ -1,0 +1,165 @@
+0002 |
+0003 |TITLE 'Saturn address decoding with ROM/IO waitstates.'
+0004 |// Revision: 	0.1
+0005 |// Date:	01/03/2018
+0006 |//
+0007 |//                           G  V
+0008 |//                           N  C
+0009 |//                           D  C
+0010 |//         ____________________________________
+0011 |//        /   6  5  4  3  2  1 44 43 42 41 40  \
+0012 |
+0013 |//       |  7                                39 |
+0014 |//       |  8                                38 |
+0015 |//       |  9                                37 |
+0016 |//    TDI| 10                                36 |
+0017 |//       | 11                                35 |TDO
+0018 |//    GND| 12           ispMACH4A            34 |GND
+0019 |//    TCK| 13          44-Lead PLCC          33 |
+0020 |//       | 14                                32 |TMS
+0021 |//       | 15                                31 |
+0022 |//       | 16                                30 |
+0023 |//       | 17                                29 |
+0024 |//       |   18 19 20 21 22 23 24 25 26 27 28   |
+0025 |//        \____________________________________/
+0026 |
+0027 |//                        V  G
+0028 |//                        C  N
+0029 |//                        C  D
+0030 |//
+0031 |
+0032 |"INPUT
+0033 |A15..A8	PIN;					"Address lines
+0034 |D3..D0	PIN;					"Data lines
+0035 |PHI	PIN;					"System clock
+0036 |RWB	PIN;					"R/~W
+0037 |VDA	PIN;					"Valid data address
+0038 |VPA	PIN;					"Valid program address
+0039 |RESB	PIN;					"System reset
+0040 |
+0041 |"OUTPUT
+0042 |A16..A18	PIN	ISTYPE 'COM';		"Address lines
+0043 |!RAM0		PIN	ISTYPE 'COM';		"RAM chip select
+0044 |!RAM1		PIN	ISTYPE 'COM';		"RAM chip select
+0045 |!ROM		PIN	ISTYPE 'COM';		"ROM chip select
+0046 |!RD		PIN	ISTYPE 'COM';		"Read data
+0047 |!WD		PIN	ISTYPE 'COM';		"Write data
+0048 |STP		PIN	ISTYPE 'COM';		"Wait-state control
+0049 |!DUART		PIN	ISTYPE 'COM';		"DUART chip select
+0050 |!RTC		PIN	ISTYPE 'COM';		"RTC chip select
+0051 |!IO0		PIN	ISTYPE 'COM';		"IO0 chip select
+0052 |!IO1		PIN	ISTYPE 'COM';		"IO1 chip select
+0053 |!IO2		PIN	ISTYPE 'COM';		"IO2 chip select
+0054 |!IO3		PIN	ISTYPE 'COM';		"IO3 chip select
+0055 |
+0056 |
+0057 |bank0	node;					"1 = address is $000000 - $00FFFF
+0058 |basram	node;					"1 = address is $000000 - $00BFFF
+0059 |bavalid	node;					"1 = bank address valid
+0060 |cblk	node;					"1 = address is $00C000 - $00CFFF
+0061 |dblk	node;					"1 = address is $00D000 - $00DFFF
+0062 |eblk	node;					"1 = address is $00E000 - $00EFFF
+0063 |extram	node;					"1 = address is $010000 - $07FFFF
+0064 |hmusel	node;					"1 = HMU being accessed
+0065 |hiramwp	node;					"1 = HIRAM write protected
+0066 |ioblk	node;					"1 = I/O address space being accessed
+0067 |iosel	node;					"1 = I/O device selected
+0068 |mcfgsel	node;					"1 = HMU configuration being accessed
+0069 |ramsel	node;					"1 = RAM selected
+0070 |rhflag	node;					"1 = data fetch on high clock
+0071 |romsel	node;					"1 = ROM selected
+0072 |wsext	node;					"1 = hold bus & control states
+0073 |vab	node;					"1 = address bus valid
+0074 |wdflag	node;					"1 = data store
+0075 |whflag	node;					"1 = data store on high clock
+0076 |wsflag	node;					"1 = wait-state required
+0077 |d8ram	node;
+0078 |hmu	node;
+0079 |ram0sel node;
+0080 |ram1sel node;
+0081 |blatch0..blatch3	NODE ISTYPE 'REG,BUFFER';			"Bank address latches
+0082 |hmucfg0..hmucfg3	NODE ISTYPE 'REG_D,BUFFER';			"HMU latches
+0083 |wsff0..wsff1		NODE ISTYPE 'REG,BUFFER';			"Wait-state latches
+0084 |
+0085 |blatch = [blatch0..blatch3];
+0086 |hmucfg = [hmucfg0..hmucfg3];
+0087 |wsff = [wsff0..wsff1];
+0088 |
+0089 |cblkmap = hmucfg0;				"LORAM/LOROM control
+0090 |eblkmap = hmucfg1;				"HIROM/HIRAM control
+0091 |dblkmap = hmucfg2;				"IODEV/IORAM control
+0092 |eblkctl = hmucfg3;				"HIRAM write control
+0093 |
+0094 |EQUATIONS
+0095 |
+0096 |"Resets, flags
+0097 |wsff.clk = PHI;
+0098 |hmucfg.clk = PHI;
+0099 |hmucfg.ar = !RESB;
+0100 |
+0101 |"Intermediate control logic
+0102 |vab 	= VDA # VPA;				"True if valid address
+0103 |bavalid	= vab & !PHI;				"True if bank address valid
+0104 |rhflag	= RWB & PHI;				"True if fetch on high clock
+0105 |wdflag	= !RWB;					"True if store
+0106 |whflag	= !RWB & PHI;				"True if store on high clock
+0107 |
+0108 |"A16-A18 latching logic
+0109 |blatch.le	= bavalid & !wsext;	"Open latches, unless in wait-state
+0110 |blatch.d	= [D0..D3] & bavalid & !wsext;	"Capture bank, unless in wait-state
+0111 |bank0	= (blatch == [0,0,0,0]);
+0112 |extram	= !bank0;
+0113 |
+0114 |"Memory map basic logic
+0115 |basram	= bank0 & !(A15 & A14);			" $000000-$00BFFF
+0116 |cblk	= bank0 & A15 & A14 & !A13 & !A12;	" $00C000-$00CFFF
+0117 |dblk	= bank0 & A15 & A14 & !A13 & A12;	" $00D000-$00DFFF
+0118 |eblk	= bank0 & A15 & A14 & A13;		" $00E000-$00FFFF
+0119 |
+0120 |ioblk	= dblk & !A11;				" $00D000-$00D7FF
+0121 |d8ram	= dblk & A11 & !(A10 & A9 & A8);	" $00D800-$00DEFF
+0122 |hmu	= dblk & A11 & A10 & A9 & A8;		" $00DF00-$00DFFF
+0123 |
+0124 |"RAM & ROM selection logic
+0125 |ramsel	= basram # (cblk & wdflag) # (cblk & !cblkmap) # (ioblk & dblkmap) # d8ram # (eblk & wdflag) # (eblk & eblkmap) # extram;
+0126 |romsel	= (cblk & cblkmap & RWB) # (eblk & !eblkmap & RWB);
+0127 |ram0sel	= !blatch3 & ramsel;
+0128 |ram1sel	= blatch3 & ramsel;
+0129 |hiramwp	= ram0sel & eblk & eblkctl;		" true if HIRAM is write protected
+0130 |
+0131 |"I/O devices selection logic
+0132 |iosel = vab & ioblk & !dblkmap;			" $00D0xx-$00Dexx if mapped
+0133 |
+0134 |"Wait-state logic
+0135 |wsflag = iosel # ramsel;			" wait-state if I/O or ROM selected
+0136 |wsff0.ar = !wsflag;				" reset when wait-state initiated
+0137 |wsff1.ap = !wsflag;				" start low when wait-state initiated
+0138 |wsff1.d	 = wsff0;				" chain
+0139 |wsff0.d  = !wsff1;				" feedback
+0140 |wsext    = PHI # !wsff1;			" 1 = wait-state in progress
+0141 |
+0142 |"Control output statements
+0143 |[A16..A18] = [blatch0..blatch2] & vab;		" A16-A18 address bits
+0144 |DUART =  iosel & !A10 & !A9 & !A8;
+0145 |RTC   =  iosel & !A10 & !A9 &  A8;
+0146 |IO0   =  iosel & !A10 &  A9 & !A8;
+0147 |IO1   =  iosel & !A10 &  A9 &  A8;
+0148 |IO2   =  iosel &  A10 & !A9 & !A8;
+0149 |IO3   =  iosel &  A10 & !A9 &  A8;
+0150 |RAM0  =  ram0sel & vab;
+0151 |RAM1  =  ram1sel & vab;
+0152 |RD    =  RWB & wsext & vab;
+0153 |STP   =  wsff1;					" MPU wait-state input
+0154 |STP.oe = wsflag;				" active if wait-stating
+0155 |ROM   =  romsel;
+0156 |WD    =  wdflag & wsext & vab & !hiramwp;
+0157 |
+0158 |"HMU register read/write statements
+0159 |[D0..D3].oe = hmu & rhflag;
+0160 |[D0..D3]    = hmu & hmucfg & rhflag;
+0161 |
+0162 |hmucfg.le = hmu & whflag;
+0163 |hmucfg.d  = hmu & [D0..D3] & whflag;
+0164 |
+0165 |END
+0166 |

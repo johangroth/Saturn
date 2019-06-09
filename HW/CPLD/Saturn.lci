@@ -58,7 +58,7 @@ D1 = Pin, 43, -, D, -;
 D2 = Pin, 4, -, A, -;
 D3 = Pin, 26, -, C, -;
 A15 = Pin, 31, -, C, -;
-PHI = pin,11,-,-,-;
+PHI = pin, 11, -, -, -;
 
 [Group Assignments]
 layer = OFF;

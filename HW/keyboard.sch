@@ -1,0 +1,500 @@
+EESchema Schematic File Version 4
+LIBS:saturn-cache
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 7 7
+Title "Atmos keyboard interface"
+Date "2018-11-17"
+Rev "0.1"
+Comp "Linux Grotto"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L saturn:WD65C22PLCC44 U15
+U 1 1 5BFAEC72
+P 6000 2625
+F 0 "U15" H 5925 3675 60  0000 C CNN
+F 1 "WD65C22PLCC44" V 6050 2025 60  0000 C CNN
+F 2 "saturn:PLCC-44_THT-Socket" H 5500 2650 60  0001 C CNN
+F 3 "" H 5500 2650 60  0000 C CNN
+	1    6000 2625
+	1    0    0    -1  
+$EndComp
+$Comp
+L conn:CONN_01X14 J9
+U 1 1 5BFAED56
+P 825 3000
+F 0 "J9" H 825 2250 50  0000 C CNN
+F 1 "KEYBOARD_CONN" V 925 3025 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x14_Pitch2.54mm" H 825 3000 50  0001 C CNN
+F 3 "" H 825 3000 50  0001 C CNN
+	1    825  3000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:Q_NPN_ECB Q2
+U 1 1 5BFAEE7B
+P 2600 2025
+F 0 "Q2" H 2791 2071 50  0000 L CNN
+F 1 "BC546" H 2791 1980 50  0000 L CNN
+F 2 "TO_SOT_Packages_THT:TO-92_Inline_Narrow_Oval" H 2800 2125 50  0001 C CNN
+F 3 "~" H 2600 2025 50  0001 C CNN
+	1    2600 2025
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:VCC #PWR059
+U 1 1 5BFAF008
+P 1625 1550
+F 0 "#PWR059" H 1625 1400 50  0001 C CNN
+F 1 "VCC" H 1642 1723 50  0000 C CNN
+F 2 "" H 1625 1550 50  0001 C CNN
+F 3 "" H 1625 1550 50  0001 C CNN
+	1    1625 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R10
+U 1 1 5BFAF0F0
+P 1925 1700
+F 0 "R10" V 1850 1650 50  0000 L CNN
+F 1 "47k" V 2000 1650 50  0000 L CNN
+F 2 "Resistors_ThroughHole:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" H 1925 1700 50  0001 C CNN
+F 3 "~" H 1925 1700 50  0001 C CNN
+	1    1925 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R11
+U 1 1 5BFAF164
+P 2225 2025
+F 0 "R11" V 2150 2025 50  0000 C CNN
+F 1 "47k" V 2325 2025 50  0000 C CNN
+F 2 "Resistors_ThroughHole:R_Axial_DIN0207_L6.3mm_D2.5mm_P2.54mm_Vertical" H 2225 2025 50  0001 C CNN
+F 3 "~" H 2225 2025 50  0001 C CNN
+	1    2225 2025
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1025 2350 1625 2350
+Wire Wire Line
+	1025 2750 1625 2750
+Wire Wire Line
+	1025 2950 1625 2950
+Wire Wire Line
+	1025 3050 1625 3050
+Wire Wire Line
+	1025 3150 1625 3150
+Wire Wire Line
+	1025 3250 1625 3250
+Wire Wire Line
+	1025 3350 1625 3350
+Wire Wire Line
+	1025 3450 1625 3450
+Wire Wire Line
+	1025 3550 1625 3550
+Wire Wire Line
+	1025 3650 1625 3650
+Wire Wire Line
+	1625 2350 1625 1600
+Wire Wire Line
+	1925 1600 1625 1600
+Connection ~ 1625 1600
+Wire Wire Line
+	1625 1600 1625 1550
+Wire Wire Line
+	2325 2025 2400 2025
+$Comp
+L power:GND #PWR063
+U 1 1 5BFAFB6B
+P 2700 2275
+F 0 "#PWR063" H 2700 2025 50  0001 C CNN
+F 1 "GND" H 2705 2102 50  0000 C CNN
+F 2 "" H 2700 2275 50  0001 C CNN
+F 3 "" H 2700 2275 50  0001 C CNN
+	1    2700 2275
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 2225 2700 2275
+Entry Wire Line
+	1625 2950 1725 3050
+Entry Wire Line
+	1625 3050 1725 3150
+Entry Wire Line
+	1625 3150 1725 3250
+Text Label 3475 4550 0    50   ~ 0
+KBD_ROWA[0..3]
+Text Notes 6100 2550 1    50   ~ 10
+VIA3
+Wire Wire Line
+	5350 1675 4825 1675
+Wire Wire Line
+	5350 1775 4825 1775
+Wire Wire Line
+	5350 1875 4825 1875
+Wire Wire Line
+	5350 1975 4825 1975
+Wire Wire Line
+	5350 2075 4825 2075
+Wire Wire Line
+	5350 2175 4825 2175
+Wire Wire Line
+	5350 2275 4825 2275
+Wire Wire Line
+	5350 2375 4825 2375
+Wire Wire Line
+	5350 3125 4825 3125
+Wire Wire Line
+	5350 3225 4825 3225
+Wire Wire Line
+	5350 3325 4825 3325
+Wire Wire Line
+	5350 3425 4825 3425
+Wire Wire Line
+	6775 1675 7300 1675
+Wire Wire Line
+	6775 1775 7300 1775
+Wire Wire Line
+	6775 1875 7300 1875
+Wire Wire Line
+	6775 1975 7300 1975
+Wire Wire Line
+	6775 2075 7300 2075
+Wire Wire Line
+	6775 2175 7300 2175
+Wire Wire Line
+	6775 2275 7300 2275
+Wire Wire Line
+	6775 2375 7300 2375
+Wire Wire Line
+	6775 2750 7300 2750
+Wire Wire Line
+	6775 2850 7300 2850
+Wire Wire Line
+	6775 2950 7300 2950
+Wire Wire Line
+	6775 3050 7300 3050
+Wire Wire Line
+	6775 3325 7300 3325
+Wire Wire Line
+	6775 3425 7300 3425
+Entry Wire Line
+	4725 1775 4825 1675
+Entry Wire Line
+	4725 1875 4825 1775
+Entry Wire Line
+	4725 1975 4825 1875
+Entry Wire Line
+	4725 2075 4825 1975
+Entry Wire Line
+	4725 2175 4825 2075
+Entry Wire Line
+	4725 2275 4825 2175
+Entry Wire Line
+	4725 2375 4825 2275
+Entry Wire Line
+	4725 2475 4825 2375
+Entry Wire Line
+	4725 3225 4825 3125
+Entry Wire Line
+	4725 3325 4825 3225
+Entry Wire Line
+	4725 3425 4825 3325
+Entry Wire Line
+	4725 3525 4825 3425
+Wire Bus Line
+	4725 2475 4100 2475
+Wire Bus Line
+	4100 2475 4100 4175
+Entry Wire Line
+	1625 3250 1725 3350
+Entry Wire Line
+	1625 3350 1725 3450
+Entry Wire Line
+	1625 3450 1725 3550
+Entry Wire Line
+	1625 3550 1725 3650
+Entry Wire Line
+	1625 3650 1725 3750
+Text Label 4000 4175 2    50   ~ 0
+KBD_COL[0..7]
+Entry Wire Line
+	2950 4075 3050 4175
+Entry Wire Line
+	2850 4075 2950 4175
+Entry Wire Line
+	2750 4075 2850 4175
+Wire Wire Line
+	2750 4075 2750 2850
+Wire Wire Line
+	1025 2850 2750 2850
+Wire Wire Line
+	2850 4075 2850 2650
+Wire Wire Line
+	1025 2650 2850 2650
+Wire Wire Line
+	2950 4075 2950 2550
+Wire Wire Line
+	1025 2550 2950 2550
+Wire Wire Line
+	1025 2450 1925 2450
+$Comp
+L power:GND #PWR062
+U 1 1 5BFC0DA3
+P 1625 2750
+F 0 "#PWR062" H 1625 2500 50  0001 C CNN
+F 1 "GND" V 1630 2622 50  0000 R CNN
+F 2 "" H 1625 2750 50  0001 C CNN
+F 3 "" H 1625 2750 50  0001 C CNN
+	1    1625 2750
+	0    -1   -1   0   
+$EndComp
+Entry Wire Line
+	7300 1675 7400 1575
+Entry Wire Line
+	7300 1775 7400 1675
+Entry Wire Line
+	7300 1875 7400 1775
+Entry Wire Line
+	7300 1975 7400 1875
+Entry Wire Line
+	7300 2075 7400 1975
+Entry Wire Line
+	7300 2175 7400 2075
+Entry Wire Line
+	7300 2275 7400 2175
+Entry Wire Line
+	7300 2375 7400 2275
+Entry Wire Line
+	7300 2750 7400 2650
+Entry Wire Line
+	7300 2850 7400 2750
+Entry Wire Line
+	7300 2950 7400 2850
+Entry Wire Line
+	7300 3050 7400 2950
+Wire Bus Line
+	7400 1575 8700 1575
+Wire Bus Line
+	7400 2650 8700 2650
+Text HLabel 8700 1575 2    50   BiDi ~ 0
+D[0..7]
+Text HLabel 8700 2650 2    50   Input ~ 0
+A[0..18]
+Entry Wire Line
+	2700 1250 2800 1150
+Wire Bus Line
+	2800 1150 3425 1150
+Text Label 3425 1150 2    50   ~ 0
+KBD_ROWA[0..3]
+Text Label 2700 1825 1    50   ~ 0
+KBD_ROWA3
+Wire Wire Line
+	6775 3950 7300 3950
+Wire Wire Line
+	6775 4050 7300 4050
+Wire Wire Line
+	6775 4150 7300 4150
+Text HLabel 7300 3950 2    50   Input ~ 0
+R/~W
+Text HLabel 7300 4150 2    50   Input ~ 0
+~RES
+Text HLabel 7300 4250 2    50   Output ~ 0
+~IRQ
+Text HLabel 7300 4050 2    50   Input ~ 0
+CLK
+Text HLabel 7300 3425 2    50   Input ~ 0
+~VIA3SEL
+$Comp
+L power:VCC #PWR071
+U 1 1 5C1B1F61
+P 7300 3325
+F 0 "#PWR071" H 7300 3175 50  0001 C CNN
+F 1 "VCC" H 7317 3498 50  0000 C CNN
+F 2 "" H 7300 3325 50  0001 C CNN
+F 3 "" H 7300 3325 50  0001 C CNN
+	1    7300 3325
+	1    0    0    -1  
+$EndComp
+NoConn ~ 5350 2475
+NoConn ~ 5350 2575
+NoConn ~ 5350 3925
+NoConn ~ 5350 4025
+Wire Wire Line
+	6075 4825 6075 5000
+Wire Wire Line
+	6075 5000 4375 5000
+Wire Wire Line
+	4375 5000 4375 1150
+Wire Wire Line
+	4375 1150 5625 1150
+$Comp
+L Device:C_Small C27
+U 1 1 5C1B9ADC
+P 5725 1150
+F 0 "C27" V 5625 1150 50  0000 C CNN
+F 1 "0.1uF" V 5850 1150 50  0000 C CNN
+F 2 "Capacitors_ThroughHole:C_Disc_D4.7mm_W2.5mm_P5.00mm" H 5725 1150 50  0001 C CNN
+F 3 "~" H 5725 1150 50  0001 C CNN
+	1    5725 1150
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6075 1325 6075 1150
+Wire Wire Line
+	6075 1150 5825 1150
+Text Label 4825 1675 0    50   ~ 0
+KBD_COL0
+Text Label 4825 1775 0    50   ~ 0
+KBD_COL1
+Text Label 4825 1875 0    50   ~ 0
+KBD_COL2
+Text Label 4825 1975 0    50   ~ 0
+KBD_COL3
+Text Label 4825 2075 0    50   ~ 0
+KBD_COL4
+Text Label 4825 2175 0    50   ~ 0
+KBD_COL5
+Text Label 4825 2275 0    50   ~ 0
+KBD_COL6
+Text Label 4825 2375 0    50   ~ 0
+KBD_COL7
+Text Label 4825 3125 0    50   ~ 0
+KBD_ROWA0
+Text Label 4825 3225 0    50   ~ 0
+KBD_ROWA1
+Text Label 4825 3325 0    50   ~ 0
+KBD_ROWA2
+Text Label 4825 3425 0    50   ~ 0
+KBD_ROWA3
+Text Label 7300 1675 2    50   ~ 0
+D0
+Text Label 7300 1775 2    50   ~ 0
+D1
+Text Label 7300 1875 2    50   ~ 0
+D2
+Text Label 7300 1975 2    50   ~ 0
+D3
+Text Label 7300 2075 2    50   ~ 0
+D4
+Text Label 7300 2175 2    50   ~ 0
+D5
+Text Label 7300 2275 2    50   ~ 0
+D6
+Text Label 7300 2375 2    50   ~ 0
+D7
+Text Label 7300 2750 2    50   ~ 0
+A0
+Text Label 7300 2850 2    50   ~ 0
+A1
+Text Label 7300 2950 2    50   ~ 0
+A2
+Text Label 7300 3050 2    50   ~ 0
+A3
+Wire Bus Line
+	1725 3250 3325 3250
+Wire Bus Line
+	3325 3250 3325 4550
+Wire Bus Line
+	3325 4550 4725 4550
+Wire Wire Line
+	2700 1250 2700 1825
+$Comp
+L power:GND #PWR0103
+U 1 1 5C1F15AA
+P 6075 5000
+F 0 "#PWR0103" H 6075 4750 50  0001 C CNN
+F 1 "GND" H 6080 4827 50  0000 C CNN
+F 2 "" H 6075 5000 50  0001 C CNN
+F 3 "" H 6075 5000 50  0001 C CNN
+	1    6075 5000
+	1    0    0    -1  
+$EndComp
+Connection ~ 6075 5000
+$Comp
+L power:VCC #PWR0104
+U 1 1 5C1F162D
+P 6075 1150
+F 0 "#PWR0104" H 6075 1000 50  0001 C CNN
+F 1 "VCC" H 6092 1323 50  0000 C CNN
+F 2 "" H 6075 1150 50  0001 C CNN
+F 3 "" H 6075 1150 50  0001 C CNN
+	1    6075 1150
+	1    0    0    -1  
+$EndComp
+Connection ~ 6075 1150
+Text Label 1025 2550 0    50   ~ 0
+KBD_COL4
+Text Label 1025 2350 0    50   ~ 0
+KBD_VCC
+Text Label 1025 2450 0    50   ~ 0
+KBD_INT
+Text Label 1025 2650 0    50   ~ 0
+KBD_COL5
+Text Label 1025 2750 0    50   ~ 0
+KBD_GND
+Text Label 1025 2850 0    50   ~ 0
+KBD_COL6
+Text Label 1025 2950 0    50   ~ 0
+KBD_ROWA0
+Text Label 1025 3050 0    50   ~ 0
+KBD_ROWA1
+Text Label 1025 3150 0    50   ~ 0
+KBD_ROWA2
+Text Label 1025 3250 0    50   ~ 0
+KBD_COL7
+Text Label 1025 3350 0    50   ~ 0
+KBD_COL3
+Text Label 1025 3450 0    50   ~ 0
+KBD_COL2
+Text Label 1025 3550 0    50   ~ 0
+KBD_COL1
+Text Label 1025 3650 0    50   ~ 0
+KBD_COL0
+NoConn ~ 5350 3825
+NoConn ~ 5350 3725
+NoConn ~ 5350 3625
+NoConn ~ 5350 3525
+$Comp
+L Device:D_Schottky D5
+U 1 1 5C26900B
+P 7025 4250
+F 0 "D5" H 7025 4150 50  0000 C CNN
+F 1 "DIRQ3" H 7200 4200 50  0000 C CNN
+F 2 "Diodes_ThroughHole:D_T-1_P5.08mm_Horizontal" H 7025 4250 50  0001 C CNN
+F 3 "~" H 7025 4250 50  0001 C CNN
+	1    7025 4250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6875 4250 6775 4250
+Wire Wire Line
+	7300 4250 7175 4250
+Wire Wire Line
+	1925 1800 1925 2025
+Wire Wire Line
+	2125 2025 1925 2025
+Wire Bus Line
+	1725 3050 1725 3250
+Wire Bus Line
+	7400 2650 7400 2950
+Wire Bus Line
+	1725 4175 4100 4175
+Wire Bus Line
+	1725 3350 1725 4175
+Wire Bus Line
+	4725 3225 4725 4550
+Wire Bus Line
+	4725 1775 4725 2475
+Wire Bus Line
+	7400 1575 7400 2275
+Connection ~ 1925 2025
+Wire Wire Line
+	1925 2025 1925 2450
+$EndSCHEMATC
