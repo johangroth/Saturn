@@ -422,14 +422,6 @@ Wire Wire Line
 	9700 3450 10000 3450
 Text Label 10000 3450 2    50   ~ 0
 A15
-Wire Bus Line
-	10100 1850 10100 3350
-Wire Bus Line
-	8800 1850 8800 2550
-Wire Bus Line
-	3825 1800 3825 2700
-Wire Bus Line
-	5675 1800 5675 3000
 Entry Wire Line
 	8800 1850 8900 1950
 Entry Wire Line
@@ -478,4 +470,12 @@ Entry Wire Line
 	10000 3350 10100 3250
 Entry Wire Line
 	10000 3450 10100 3350
+Wire Bus Line
+	3825 1800 3825 2700
+Wire Bus Line
+	8800 1850 8800 2550
+Wire Bus Line
+	5675 1800 5675 3000
+Wire Bus Line
+	10100 1850 10100 3350
 $EndSCHEMATC

@@ -1,9 +1,9 @@
 (fp_lib_table
   (lib (name saturn)(type KiCad)(uri "$(KIPRJMOD)/saturn.pretty")(options "")(descr "Corrected footprints"))
-  (lib (name Housings_LCC)(type Github)(uri https://github.com/kicad/Housings_LCC.pretty)(options "")(descr ""))
   (lib (name Connectors_Molex)(type Github)(uri https://github.com/kicad/Connectors_Molex.pretty)(options "")(descr ""))
   (lib (name Fuse_Holders_and_Fuses)(type Github)(uri https://github.com/kicad/Fuse_Holders_and_Fuses.pretty)(options "")(descr ""))
   (lib (name Heatsinks)(type Github)(uri https://github.com/kicad/Heatsinks.pretty)(options "")(descr ""))
   (lib (name Housings_SOIC)(type Github)(uri https://github.com/kicad/Housings_SOIC.pretty)(options "")(descr ""))
   (lib (name Housings_DIP)(type Github)(uri https://github.com/kicad/Housings_DIP.pretty)(options "")(descr ""))
+  (lib (name Grotto)(type KiCad)(uri /home/jgroth/dev/repos_github/kicad/footprints/grotto.pretty)(options "")(descr ""))
 )
