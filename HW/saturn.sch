@@ -12,7 +12,7 @@ Comp "Linux Grotto"
 Comment1 "Control logic is implemented using an ispMACH4A5"
 Comment2 "IDE interface realised with two VIA 65C22"
 Comment3 "DUART is a SC28L92 and a MAX238 as the line driver"
-Comment4 "CPU WDC65C816 (8MHz), 2MiB Static ram, 32KiB EEPROM, Real Time clock, a DS1511Y"
+Comment4 "CPU WDC65C816 (8MHz), 1MiB Static ram, 32KiB EEPROM, Real Time clock, a DS1511Y"
 $EndDescr
 $Sheet
 S 1225 1000 1775 2075
